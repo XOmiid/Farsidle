@@ -153,7 +153,7 @@ export default function FactleGame() {
       if (countriesMatch(name, answer)) {
         setGameOver(true);
         setWon(true);
-        persist({ guesses: [...guesses, name], gameOver: true, won: true });
+        persist({ guesses, gameOver: true, won: true });
         openResult(true);
         return;
       }

@@ -323,7 +323,7 @@ export default function WordleGame() {
         open={resultOpen}
         won={won}
         answer={answer}
-        tries={currentRow + 1}
+        tries={guesses.length}
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}
