@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --bg-0: #050805;
+  --bg-1: #0c130c;
+  --bg-2: #121d12;
+  --green: #22c55e;
+  --green-dim: #166534;
+  --yellow: #eab308;
+  --yellow-dim: #92720a;
+  --red: #ef4444;
+  --ivory: #e9f7ec;
+  --ivory-dim: #9db5a2;
+  --border: #1e2e1e;
+}
+
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-1: var(--bg-1);
+  --color-bg-2: var(--bg-2);
+  --color-green: var(--green);
+  --color-green-dim: var(--green-dim);
+  --color-yellow: var(--yellow);
+  --color-yellow-dim: var(--yellow-dim);
+  --color-red: var(--red);
+  --color-ivory: var(--ivory);
+  --color-ivory-dim: var(--ivory-dim);
+  --color-border: var(--border);
+  --font-display: 'Lalezar', sans-serif;
+  --font-body: 'Vazirmatn', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 20% -10%, #0e1e0e 0%, transparent 55%),
+    radial-gradient(circle at 85% 110%, #0a170a 0%, transparent 50%),
+    var(--bg-0);
+  color: var(--ivory);
+  font-family: 'Vazirmatn', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes flip-correct {
+  0% { transform: rotateX(0); background: rgba(255,255,255,.02); border-color: var(--border); color: var(--ivory); }
+  50% { transform: rotateX(90deg); }
+  51% { transform: rotateX(90deg); background: var(--green); border-color: var(--green); color: #04140a; }
+  100% { transform: rotateX(0); background: var(--green); border-color: var(--green); color: #04140a; }
+}
+@keyframes flip-present {
+  0% { transform: rotateX(0); background: rgba(255,255,255,.02); border-color: var(--border); color: var(--ivory); }
+  50% { transform: rotateX(90deg); }
+  51% { transform: rotateX(90deg); background: var(--yellow); border-color: var(--yellow); color: #2b2205; }
+  100% { transform: rotateX(0); background: var(--yellow); border-color: var(--yellow); color: #2b2205; }
+}
+@keyframes flip-absent {
+  0% { transform: rotateX(0); background: rgba(255,255,255,.02); border-color: var(--border); color: var(--ivory); }
+  50% { transform: rotateX(90deg); }
+  51% { transform: rotateX(90deg); background: var(--red); border-color: var(--red); color: #2b0605; }
+  100% { transform: rotateX(0); background: var(--red); border-color: var(--red); color: #2b0605; }
+}
+.flip-correct { animation: flip-correct .5s ease forwards; }
+.flip-present { animation: flip-present .5s ease forwards; }
+.flip-absent { animation: flip-absent .5s ease forwards; }
+
+@keyframes fact-reveal {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fact-in {
+  animation: fact-reveal .3s ease;
+}
+
+@keyframes shake-anim {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
+.shake-row {
+  animation: shake-anim .35s;
+}
