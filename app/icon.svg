@@ -1,5 +1,5 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <rect width="32" height="32" rx="7" fill="#22c55e"/>
-  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#166534" stroke-width="1"/>
-  <path d="M9 16.5 L14 21.5 L23 11" fill="none" stroke="#052e10" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="none" stroke="#15803d" stroke-width="1"/>
+  <text x="16" y="19" text-anchor="middle" font-family="Vazirmatn, Tahoma, 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="19" fill="#052e10">ف</text>
 </svg>
