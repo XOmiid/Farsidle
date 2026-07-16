@@ -1,13 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { games } from "@/lib/games";
+import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
+import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
+
+const STATUS_CHECKERS = {
+  wordle: checkWordleStatus,
+  factle: checkFactleStatus,
+};
 
 export default function HomePage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [playedToday, setPlayedToday] = useState({});
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const entries = await Promise.all(
+        Object.entries(STATUS_CHECKERS).map(async ([slug, check]) => {
+          const status = await check();
+          return [slug, status.played];
+        })
+      );
+      if (cancelled) return;
+      setPlayedToday(Object.fromEntries(entries));
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center px-3 pt-[18px] pb-6">
@@ -19,7 +44,7 @@ export default function HomePage() {
 
       <div className="w-full max-w-[480px] flex flex-col gap-3">
         {games.map((g) => (
-          <GameCard key={g.slug} game={g} />
+          <GameCard key={g.slug} game={g} played={!!playedToday[g.slug]} />
         ))}
       </div>
 
@@ -28,7 +53,7 @@ export default function HomePage() {
   );
 }
 
-function GameCard({ game }) {
+function GameCard({ game, played }) {
   const isLive = game.status === "live";
   const content = (
     <div
@@ -40,7 +65,17 @@ function GameCard({ game }) {
     >
       <span className="text-3xl">{game.icon}</span>
       <div className="flex-1 text-right">
-        <div className="font-display text-lg text-ivory">{game.title}</div>
+        <div className="font-display text-lg text-ivory flex items-center gap-2 justify-end">
+          {played && (
+            <span
+              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green text-[#04140a] text-[11px] font-bold flex-shrink-0"
+              title="امروز بازی کردی"
+            >
+              ✓
+            </span>
+          )}
+          {game.title}
+        </div>
         <div className="text-xs text-ivory-dim mt-0.5">{game.tagline}</div>
       </div>
       {!isLive && (

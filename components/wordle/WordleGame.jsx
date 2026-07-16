@@ -18,7 +18,7 @@ import {
   msUntilNextRollover,
   formatCountdown,
 } from "@/lib/wordle/logic";
-import { fetchTodayPuzzle, fetchTodayLeaderboard, submitScore } from "@/lib/wordle/api";
+import { fetchTodayPuzzle, fetchTodayLeaderboard, submitScore, checkTodayStatus, recordAttempt } from "@/lib/wordle/api";
 import { loadState, saveState } from "@/lib/wordle/storage";
 
 export default function WordleGame() {
@@ -32,6 +32,7 @@ export default function WordleGame() {
   const [currentRow, setCurrentRow] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
+  const [remoteOnly, setRemoteOnly] = useState(false);
   const [keyStatus, setKeyStatus] = useState({});
   const [revealingRow, setRevealingRow] = useState(null);
   const [locked, setLocked] = useState(false);
@@ -120,8 +121,32 @@ export default function WordleGame() {
       setWordLen(puzzle.length);
 
       const saved = loadState();
+      const serverStatus = await checkTodayStatus();
+      if (cancelled) return;
+
+      const localMatches = saved && saved.date_key === puzzle.date_key;
+
       let s;
-      if (saved && saved.date_key === puzzle.date_key) {
+      if (localMatches && saved.gameOver) {
+        // Local already knows the full outcome — normal fast path.
+        s = saved;
+      } else if (serverStatus.played) {
+        // The account already finished today's game (server-confirmed),
+        // but this device has no trustworthy local record of it — fresh
+        // device, cleared storage, or it was actually finished elsewhere.
+        // Trust the server and lock the game; don't fabricate a guess grid.
+        s = {
+          date_key: puzzle.date_key,
+          guesses: [],
+          gameOver: true,
+          won: serverStatus.won,
+          leaderboardSubmitted: false,
+          leaderboardSolvedAt: null,
+          remoteOnly: true,
+        };
+        saveState(s);
+      } else if (localMatches) {
+        // Genuinely still in progress on this device.
         s = saved;
       } else {
         s = {
@@ -135,6 +160,7 @@ export default function WordleGame() {
         saveState(s);
       }
       stateRef.current = s;
+      setRemoteOnly(!!s.remoteOnly);
 
       const committed = s.guesses.map((g) => ({ guess: g, result: evaluateGuess(g, puzzle.word) }));
       setGuesses(committed);
@@ -219,11 +245,13 @@ export default function WordleGame() {
         setGameOver(true);
         setWon(true);
         persist({ gameOver: true, won: true });
+        recordAttempt(true, newGuesses.length);
         openResult(true);
       } else if (isLastRow) {
         setGameOver(true);
         setWon(false);
         persist({ gameOver: true, won: false });
+        recordAttempt(false, newGuesses.length);
         openResult(false);
       } else {
         setCurrentRow((r) => r + 1);
@@ -254,7 +282,7 @@ export default function WordleGame() {
 
   const handleSubmitScore = useCallback(async () => {
     setSubmitError("");
-    const { data: entries, error } = await submitScore(currentRow + 1);
+    const { data: entries, error } = await submitScore(guesses.length);
     if (error || !entries) {
       setSubmitError(error?.message?.includes("وارد حساب") ? error.message : "ثبت نشد، دوباره امتحان کن");
       return;
@@ -265,7 +293,7 @@ export default function WordleGame() {
     persist({ leaderboardSubmitted: true, leaderboardSolvedAt: solvedAt });
     setLeaderboard(entries);
     setHighlightIndex(entries.length - 1);
-  }, [currentRow, persist]);
+  }, [guesses.length, persist]);
 
   const helpButton = (
     <button
@@ -286,6 +314,8 @@ export default function WordleGame() {
           ? "در حال بارگذاری..."
           : loadError
           ? "اتصال به سرور برقرار نشد، صفحه رو دوباره باز کن"
+          : remoteOnly
+          ? "امروز قبلاً این بازی رو انجام دادی"
           : `کلمه امروز ${toPersianDigits(wordLen)} حرفیه`}
       </p>
 
@@ -297,7 +327,7 @@ export default function WordleGame() {
 
       <Toast message={toastMsg} />
 
-      {!loading && !loadError && (
+      {!loading && !loadError && !remoteOnly && (
         <>
           <Grid
             wordLen={wordLen}

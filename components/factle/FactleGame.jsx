@@ -11,7 +11,7 @@ import FactsPanel from "@/components/factle/FactsPanel";
 import GuessInput from "@/components/factle/GuessInput";
 import GuessHistory from "@/components/factle/GuessHistory";
 import { MAX_TRIES, countriesMatch } from "@/lib/factle/logic";
-import { fetchTodayPuzzle, fetchCountryList, fetchTodayLeaderboard, submitScore } from "@/lib/factle/api";
+import { fetchTodayPuzzle, fetchCountryList, fetchTodayLeaderboard, submitScore, checkTodayStatus, recordAttempt } from "@/lib/factle/api";
 import { loadState, saveState } from "@/lib/factle/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 
@@ -25,6 +25,7 @@ export default function FactleGame() {
   const [guesses, setGuesses] = useState([]); // wrong guesses only
   const [gameOver, setGameOver] = useState(false);
   const [won, setWon] = useState(false);
+  const [remoteOnly, setRemoteOnly] = useState(false);
 
   const [toastMsg, setToastMsg] = useState("");
   const toastTimer = useRef(null);
@@ -116,8 +117,26 @@ export default function FactleGame() {
       setFacts(puzzle.facts);
 
       const saved = loadState();
+      const serverStatus = await checkTodayStatus();
+      if (cancelled) return;
+
+      const localMatches = saved && saved.date_key === puzzle.date_key;
+
       let s;
-      if (saved && saved.date_key === puzzle.date_key) {
+      if (localMatches && saved.gameOver) {
+        s = saved;
+      } else if (serverStatus.played) {
+        s = {
+          date_key: puzzle.date_key,
+          guesses: [],
+          gameOver: true,
+          won: serverStatus.won,
+          leaderboardSubmitted: false,
+          leaderboardSolvedAt: null,
+          remoteOnly: true,
+        };
+        saveState(s);
+      } else if (localMatches) {
         s = saved;
       } else {
         s = {
@@ -131,6 +150,7 @@ export default function FactleGame() {
         saveState(s);
       }
       stateRef.current = s;
+      setRemoteOnly(!!s.remoteOnly);
 
       setGuesses(s.guesses);
       setGameOver(s.gameOver);
@@ -154,6 +174,7 @@ export default function FactleGame() {
         setGameOver(true);
         setWon(true);
         persist({ guesses, gameOver: true, won: true });
+        recordAttempt(true, guesses.length + 1);
         openResult(true);
         return;
       }
@@ -165,6 +186,7 @@ export default function FactleGame() {
         setGameOver(true);
         setWon(false);
         persist({ guesses: newGuesses, gameOver: true, won: false });
+        recordAttempt(false, newGuesses.length);
         openResult(false);
       } else {
         persist({ guesses: newGuesses });
@@ -210,6 +232,8 @@ export default function FactleGame() {
           ? "در حال بارگذاری..."
           : loadError
           ? "اتصال به سرور برقرار نشد، صفحه رو دوباره باز کن"
+          : remoteOnly
+          ? "امروز قبلاً این بازی رو انجام دادی"
           : "این سرنخ‌ها مال کدوم کشوره؟"}
       </p>
 
@@ -221,7 +245,7 @@ export default function FactleGame() {
 
       <Toast message={toastMsg} />
 
-      {!loading && !loadError && (
+      {!loading && !loadError && !remoteOnly && (
         <>
           <FactsPanel facts={facts} revealedCount={revealedCount} />
           <GuessInput
