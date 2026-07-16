@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { games } from "@/lib/games";
 import { useAuth } from "@/lib/auth/AuthProvider";
+import Avatar from "@/components/common/Avatar";
 
 export default function Sidebar({ open, onClose }) {
   const { loading, user, profile, signOut } = useAuth();
@@ -36,9 +37,7 @@ export default function Sidebar({ open, onClose }) {
         <div className="mb-5 pb-5 border-b border-border">
           {loading ? null : user ? (
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-green/15 border border-green-dim text-green flex items-center justify-center font-bold flex-shrink-0">
-                {(profile?.username || "؟")[0]}
-              </div>
+              <Avatar avatarKey={profile?.avatar} username={profile?.username} size={40} />
               <div className="flex-1 min-w-0">
                 <div className="text-ivory text-sm font-semibold truncate">
                   {profile?.username || "بدون نام کاربری"}
