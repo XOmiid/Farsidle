@@ -65,19 +65,17 @@ function GameCard({ game, played }) {
     >
       <span className="text-3xl">{game.icon}</span>
       <div className="flex-1 text-right">
-        <div className="font-display text-lg text-ivory flex items-center gap-2 justify-start">
-          {played && (
-            <span
-              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green text-[#04140a] text-[11px] font-bold flex-shrink-0"
-              title="امروز بازی کردی"
-            >
-              ✓
-            </span>
-          )}
-          {game.title}
-        </div>
+        <div className="font-display text-lg text-ivory">{game.title}</div>
         <div className="text-xs text-ivory-dim mt-0.5">{game.tagline}</div>
       </div>
+      {isLive && played && (
+        <span
+          className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green text-[#04140a] text-[13px] font-bold flex-shrink-0"
+          title="امروز بازی کردی"
+        >
+          ✓
+        </span>
+      )}
       {!isLive && (
         <span className="text-[10px] px-2 py-1 rounded-full bg-yellow-dim/30 text-yellow flex-shrink-0">
           به‌زودی
