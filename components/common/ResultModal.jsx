@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { toPersianDigits } from "@/lib/wordle/logic";
 import { useAuth } from "@/lib/auth/AuthProvider";
-
-const MEDALS = ["🥇", "🥈", "🥉"];
+import Avatar from "@/components/common/Avatar";
 
 function LeaderboardList({ entries, highlightIndex, loading, emptyNoun }) {
   if (loading) {
@@ -19,32 +18,32 @@ function LeaderboardList({ entries, highlightIndex, loading, emptyNoun }) {
     );
   }
   return (
-    <div className="flex flex-col gap-1.5 max-h-[220px] overflow-y-auto">
-      {entries.slice(0, 15).map((e, i) => {
+    <div className="flex flex-col gap-2 max-h-[340px] overflow-y-auto pt-2">
+      {entries.slice(0, 30).map((e, i) => {
         const isMe = i === highlightIndex;
-        const isFirst = i === 0;
+        const rank = i + 1;
         return (
           <div
             key={`${e.name}-${e.solved_at}-${i}`}
-            className={`flex items-center gap-2.5 border rounded-lg px-3 py-[7px] text-[.85rem] ${
+            className={`flex items-center gap-3 border rounded-xl px-3 py-2.5 ${
               isMe
                 ? "border-green bg-green/[.14]"
-                : isFirst
+                : rank === 1
                 ? "border-yellow bg-yellow/10"
                 : "border-border bg-white/[.03]"
             }`}
           >
             <span
-              className={`font-extrabold min-w-[22px] text-center ${
-                isMe ? "text-green" : isFirst ? "text-yellow" : "text-green-dim"
+              className={`font-extrabold min-w-[20px] text-center text-[.8rem] ${
+                isMe ? "text-green" : rank === 1 ? "text-yellow" : "text-green-dim"
               }`}
             >
-              {toPersianDigits(i + 1)}
+              {toPersianDigits(rank)}
             </span>
-            <span className="flex-1 text-right text-ivory overflow-hidden text-ellipsis whitespace-nowrap">
+            <Avatar avatarKey={e.avatar} username={e.name} size={38} rank={rank} />
+            <span className="flex-1 text-right text-ivory text-[.9rem] overflow-hidden text-ellipsis whitespace-nowrap">
               {e.name}
             </span>
-            {MEDALS[i] && <span className="text-base">{MEDALS[i]}</span>}
           </div>
         );
       })}
@@ -80,7 +79,7 @@ export default function ResultModal({
 
   return (
     <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5 overflow-y-auto">
-      <div className="relative bg-bg-1 border border-green-dim rounded-2xl p-[26px_24px] max-w-[340px] w-full text-center">
+      <div className="relative bg-bg-1 border border-green-dim rounded-2xl p-[26px_24px] max-w-[420px] w-full text-center">
         <button
           onClick={onClose}
           aria-label="بستن"

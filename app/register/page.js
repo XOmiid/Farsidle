@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { translateAuthError } from "@/lib/auth/errors";
 import { AuthCard, FormField, OtpField, ErrorNote, SuccessNote, PrimaryButton } from "@/components/auth/AuthForm";
+import { fetchCountryList } from "@/lib/shared/countries";
 
 const USERNAME_RE = /^[a-zA-Z0-9_\u0600-\u06FF]{3,20}$/;
 const RESEND_COOLDOWN = 30;
@@ -17,6 +18,9 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [country, setCountry] = useState("");
+  const [countryList, setCountryList] = useState([]);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -24,6 +28,10 @@ export default function RegisterPage() {
   const [code, setCode] = useState("");
   const [verifying, setVerifying] = useState(false);
   const [cooldown, setCooldown] = useState(0);
+
+  useEffect(() => {
+    fetchCountryList().then(setCountryList);
+  }, []);
 
   useEffect(() => {
     if (cooldown <= 0) return;
@@ -49,7 +57,7 @@ export default function RegisterPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { username } },
+      options: { data: { username, birth_date: birthDate || null, country: country || null } },
     });
     setSubmitting(false);
 
@@ -70,8 +78,8 @@ export default function RegisterPage() {
   const handleVerify = async (e) => {
     e.preventDefault();
     setError("");
-    if (code.length !== 6) {
-      setError("کد باید ۶ رقم باشه.");
+    if (code.length !== 8) {
+      setError("کد رو کامل وارد کن.");
       return;
     }
 
@@ -109,7 +117,7 @@ export default function RegisterPage() {
     return (
       <AuthCard title="تایید ایمیل">
         <p className="text-ivory-dim text-[.85rem] text-center mb-4">
-          یه کد ۶ رقمی به {email} فرستادیم. کد رو وارد کن:
+          یه کد به {email} فرستادیم. کد رو وارد کن:
         </p>
         <form onSubmit={handleVerify}>
           <OtpField label="کد تایید" value={code} onChange={setCode} />
@@ -160,6 +168,33 @@ export default function RegisterPage() {
           placeholder="حداقل ۶ کاراکتر"
           required
         />
+
+        <label className="block text-right mb-3.5">
+          <span className="block text-[.8rem] text-ivory-dim mb-1.5">تاریخ تولد (اختیاری)</span>
+          <input
+            type="date"
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
+            max={new Date().toISOString().split("T")[0]}
+            className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
+          />
+        </label>
+
+        <label className="block text-right mb-3.5">
+          <span className="block text-[.8rem] text-ivory-dim mb-1.5">کشور (اختیاری)</span>
+          <select
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
+          >
+            <option value="">انتخاب نشده</option>
+            {countryList.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </label>
 
         <ErrorNote>{error}</ErrorNote>
 
