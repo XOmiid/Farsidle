@@ -15,7 +15,7 @@ async function loadProfile(userId) {
   if (!userId) return null;
   const { data, error } = await supabase
     .from("profiles")
-    .select("id, username, created_at")
+    .select("id, username, avatar, birth_date, country, created_at")
     .eq("id", userId)
     .maybeSingle();
   if (error) {
