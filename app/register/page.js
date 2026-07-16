@@ -143,7 +143,7 @@ export default function RegisterPage() {
 
   return (
     <AuthCard title="ثبت‌نام">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="overflow-x-hidden">
         <FormField
           label="نام کاربری (تو جدول برترین‌ها نشون داده می‌شه)"
           type="text"
@@ -176,7 +176,7 @@ export default function RegisterPage() {
             value={birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
             max={new Date().toISOString().split("T")[0]}
-            className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
+            className="w-full max-w-full min-w-0 box-border bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
           />
         </label>
 

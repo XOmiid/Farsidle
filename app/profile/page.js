@@ -81,7 +81,7 @@ export default function ProfilePage() {
       <div className="w-full max-w-[420px] mt-4">
         <h1 className="font-display text-2xl text-green text-center mb-6">پروفایل</h1>
 
-        <form onSubmit={handleSaveInfo} className="bg-bg-1 border border-green-dim rounded-2xl p-5 mb-4">
+        <form onSubmit={handleSaveInfo} className="bg-bg-1 border border-green-dim rounded-2xl p-5 mb-4 overflow-x-hidden">
           {/* Avatar top-left, username top-right */}
           <div className="flex items-center justify-between mb-5">
             <Avatar avatarKey={avatarKey} username={profile?.username} size={56} />
@@ -118,7 +118,7 @@ export default function ProfilePage() {
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
               max={new Date().toISOString().split("T")[0]}
-              className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
+              className="w-full max-w-full min-w-0 box-border bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-right focus:outline-none focus:border-green"
             />
           </label>
 
