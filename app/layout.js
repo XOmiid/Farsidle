@@ -2,8 +2,29 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/auth/AuthProvider";
 
 export const metadata = {
-  title: "فارسیدل | Farsidle",
-  description: "خانه‌ی بازی‌های کلمه‌ای فارسی — یک کلمه‌ی جدید هر روز.",
+  metadataBase: new URL("https://farsidle.com"),
+  title: {
+    default: "فارسیدل | Farsidle — بازی‌های کلمه‌ای فارسی",
+    template: "%s | فارسیدل",
+  },
+  description:
+    "خانه‌ی بازی‌های کلمه‌ای روزانه‌ی فارسی. وردل فارسی و فکتل رو هر روز رایگان بازی کن و با بقیه رقابت کن.",
+  keywords: ["وردل فارسی", "فارسیدل", "بازی کلمه فارسی", "فکتل", "wordle farsi", "بازی آنلاین فارسی"],
+  authors: [{ name: "Farsidle" }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "fa_IR",
+    url: "https://farsidle.com",
+    siteName: "فارسیدل",
+    title: "فارسیدل | بازی‌های کلمه‌ای فارسی",
+    description: "یک کلمه‌ی فارسی جدید هر روز. حدس بزن، رقابت کن، تو جدول برترین‌ها بمون.",
+  },
+  twitter: {
+    card: "summary",
+    title: "فارسیدل | بازی‌های کلمه‌ای فارسی",
+    description: "یک کلمه‌ی فارسی جدید هر روز. حدس بزن، رقابت کن، تو جدول برترین‌ها بمون.",
+  },
 };
 
 export default function RootLayout({ children }) {
