@@ -65,7 +65,7 @@ function GameCard({ game, played }) {
     >
       <span className="text-3xl">{game.icon}</span>
       <div className="flex-1 text-right">
-        <div className="font-display text-lg text-ivory flex items-center gap-2 justify-end">
+        <div className="font-display text-lg text-ivory flex items-center gap-2 justify-start">
           {played && (
             <span
               className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green text-[#04140a] text-[11px] font-bold flex-shrink-0"
