@@ -78,8 +78,8 @@ export default function RegisterPage() {
   const handleVerify = async (e) => {
     e.preventDefault();
     setError("");
-    if (code.length !== 8) {
-      setError("کد رو کامل وارد کن.");
+    if (code.trim().length === 0) {
+      setError("کد رو وارد کن.");
       return;
     }
 

@@ -54,8 +54,8 @@ export default function ForgotPasswordPage() {
   const handleVerify = async (e) => {
     e.preventDefault();
     setError("");
-    if (code.length !== 6) {
-      setError("کد باید ۶ رقم باشه.");
+    if (code.trim().length === 0) {
+      setError("کد رو وارد کن.");
       return;
     }
 
@@ -91,7 +91,7 @@ export default function ForgotPasswordPage() {
     return (
       <AuthCard title="کد بازیابی">
         <p className="text-ivory-dim text-[.85rem] text-center mb-4">
-          یه کد ۶ رقمی به {email} فرستادیم. کد رو وارد کن:
+          یه کد به {email} فرستادیم. کد رو وارد کن:
         </p>
         <form onSubmit={handleVerify}>
           <OtpField label="کد تایید" value={code} onChange={setCode} />

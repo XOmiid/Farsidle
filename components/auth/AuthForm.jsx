@@ -22,12 +22,12 @@ export function OtpField({ label, value, onChange, ...props }) {
         type="text"
         inputMode="numeric"
         pattern="[0-9]*"
-        maxLength={6}
+        maxLength={10}
         value={value}
         onChange={(e) => onChange(e.target.value.replace(/[^0-9]/g, ""))}
         {...props}
-        className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-2xl font-bold tracking-[8px] px-3.5 h-14 text-center placeholder:text-ivory-dim placeholder:tracking-normal placeholder:text-sm focus:outline-none focus:border-green"
-        placeholder="------"
+        className="w-full bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-2xl font-bold tracking-[6px] px-3.5 h-14 text-center placeholder:text-ivory-dim placeholder:tracking-normal placeholder:text-sm focus:outline-none focus:border-green"
+        placeholder="--------"
       />
     </label>
   );
