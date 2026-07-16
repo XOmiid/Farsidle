@@ -171,14 +171,16 @@ export default function RegisterPage() {
 
         <label className="block text-right mb-3.5">
           <span className="block text-[.8rem] text-ivory-dim mb-1.5">تاریخ تولد (اختیاری)</span>
-          <input
-            type="date"
-            dir="ltr"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            max={new Date().toISOString().split("T")[0]}
-            className="w-full max-w-full min-w-0 box-border bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.9rem] px-3.5 h-11 text-left focus:outline-none focus:border-green"
-          />
+          <div className="w-full max-w-full box-border bg-white/[.04] border border-green-dim rounded-[9px] h-11 px-3.5 flex items-center justify-start focus-within:border-green">
+            <input
+              type="date"
+              dir="ltr"
+              value={birthDate}
+              onChange={(e) => setBirthDate(e.target.value)}
+              max={new Date().toISOString().split("T")[0]}
+              className="bg-transparent text-ivory text-[.9rem] border-none outline-none text-left"
+            />
+          </div>
         </label>
 
         <label className="block text-right mb-3.5">
