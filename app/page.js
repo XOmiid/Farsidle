@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { games } from "@/lib/games";
+import { useAuth } from "@/lib/auth/AuthProvider";
 import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
 import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
 import { checkTodayStatus as checkColordleStatus } from "@/lib/colordle/api";
@@ -18,10 +19,16 @@ const STATUS_CHECKERS = {
 };
 
 export default function HomePage() {
+  const { loading: authLoading, user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [playedToday, setPlayedToday] = useState({});
 
   useEffect(() => {
+    // Wait for the auth session itself to finish resolving first —
+    // firing these in parallel before the session was attached could
+    // make every check see "logged out" even for a real account.
+    if (authLoading) return;
+
     let cancelled = false;
     (async () => {
       const entries = await Promise.all(
@@ -36,7 +43,7 @@ export default function HomePage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [authLoading, user]);
 
   return (
     <div className="min-h-screen flex flex-col items-center px-3 pt-[18px] pb-6">
