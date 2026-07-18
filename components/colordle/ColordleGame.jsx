@@ -12,11 +12,13 @@ import {
   fetchTodayPuzzle,
   submitGuess,
   fetchTodayLeaderboard,
+  submitScore,
   checkTodayStatus,
 } from "@/lib/colordle/api";
 import { loadState, saveState } from "@/lib/colordle/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { useAuth } from "@/lib/auth/AuthProvider";
+import { translatePostgrestError } from "@/lib/auth/errors";
 
 const DEFAULT_RGB = { r: 128, g: 128, b: 128 };
 
@@ -45,6 +47,8 @@ export default function ColordleGame() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const [countdownVisible, setCountdownVisible] = useState(false);
   const [countdownText, setCountdownText] = useState("۰۰:۰۰:۰۰");
@@ -120,6 +124,12 @@ export default function ColordleGame() {
       let s;
       if (localMatches && saved.gameOver) {
         s = saved;
+        // Server is the source of truth for whether the score was
+        // posted to the leaderboard (could've been done from another
+        // device, or the local flag could be stale).
+        s.leaderboardSubmitted = serverStatus.played
+          ? serverStatus.leaderboard_submitted
+          : !!s.leaderboardSubmitted;
       } else if (serverStatus.played) {
         s = {
           date_key: puzzle.date_key,
@@ -128,12 +138,20 @@ export default function ColordleGame() {
           target: { r: serverStatus.target_r, g: serverStatus.target_g, b: serverStatus.target_b },
           guess: null,
           remoteOnly: true,
+          leaderboardSubmitted: serverStatus.leaderboard_submitted,
         };
         saveState(s);
       } else if (localMatches) {
         s = saved;
       } else {
-        s = { date_key: puzzle.date_key, gameOver: false, score: null, target: null, guess: null };
+        s = {
+          date_key: puzzle.date_key,
+          gameOver: false,
+          score: null,
+          target: null,
+          guess: null,
+          leaderboardSubmitted: false,
+        };
         saveState(s);
       }
       stateRef.current = s;
@@ -143,6 +161,7 @@ export default function ColordleGame() {
       setScore(s.score);
       setTarget(s.target);
       setFinalGuess(s.guess);
+      setLeaderboardSubmitted(!!s.leaderboardSubmitted);
       setLoading(false);
 
       if (s.gameOver) openResult();
@@ -172,6 +191,20 @@ export default function ColordleGame() {
     persist({ gameOver: true, score: data.score, target: newTarget, guess: pick });
     openResult();
   }, [gameOver, submitting, pick, persist, openResult, showToast]);
+
+  const handleSubmitScore = useCallback(async () => {
+    setSubmitError("");
+    const { data: entries, error } = await submitScore();
+    if (error || !entries) {
+      setSubmitError(translatePostgrestError(error));
+      return;
+    }
+    setLeaderboardSubmitted(true);
+    persist({ leaderboardSubmitted: true });
+    setLeaderboard(entries);
+    const idx = profile?.username ? entries.findIndex((e) => e.name === profile.username) : -1;
+    setHighlightIndex(idx);
+  }, [persist, profile]);
 
   const helpButton = (
     <button
@@ -230,7 +263,10 @@ export default function ColordleGame() {
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}
+        alreadySubmitted={leaderboardSubmitted}
+        submitError={submitError}
         onClose={() => setResultOpen(false)}
+        onSubmitScore={handleSubmitScore}
       />
     </div>
   );

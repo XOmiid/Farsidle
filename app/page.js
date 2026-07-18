@@ -7,10 +7,12 @@ import Sidebar from "@/components/Sidebar";
 import { games } from "@/lib/games";
 import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
 import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
+import { checkTodayStatus as checkColordleStatus } from "@/lib/colordle/api";
 
 const STATUS_CHECKERS = {
   wordle: checkWordleStatus,
   factle: checkFactleStatus,
+  colordle: checkColordleStatus,
 };
 
 export default function HomePage() {
