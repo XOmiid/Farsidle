@@ -39,6 +39,7 @@ export default function DuelGame() {
   const [gameOver, setGameOver] = useState(false);
   const [remoteOnly, setRemoteOnly] = useState(false);
   const [score, setScore] = useState(null);
+  const [streak, setStreak] = useState(0);
 
   const [toastMsg, setToastMsg] = useState("");
   const toastTimer = useRef(null);
@@ -150,6 +151,7 @@ export default function DuelGame() {
       setRemoteOnly(!!s.remoteOnly);
       setScore(s.score);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
+      setStreak(serverStatus.streak || 0);
       setLoading(false);
 
       if (s.gameOver) openResult();
@@ -191,7 +193,7 @@ export default function DuelGame() {
     }
 
     setFinalizing(true);
-    const { data: finalScore, error } = await finalize();
+    const { data: finalScore, streak: newStreak, error } = await finalize();
     setFinalizing(false);
 
     if (error || finalScore === null) {
@@ -201,6 +203,7 @@ export default function DuelGame() {
 
     setGameOver(true);
     setScore(finalScore);
+    setStreak(newStreak || 0);
     persist({ gameOver: true, score: finalScore });
     openResult();
   }, [currentIndex, questions.length, persist, openResult, showToast]);
@@ -300,6 +303,7 @@ export default function DuelGame() {
       <DuelResultModal
         open={resultOpen}
         score={score}
+        streak={streak}
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}

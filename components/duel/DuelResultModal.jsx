@@ -5,10 +5,12 @@ import { useState } from "react";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { toPersianDigits } from "@/lib/shared/persian";
 import LeaderboardList from "@/components/common/LeaderboardList";
+import StreakBadge from "@/components/common/StreakBadge";
 
 export default function DuelResultModal({
   open,
   score,
+  streak,
   leaderboard,
   leaderboardLoading,
   highlightIndex,
@@ -43,6 +45,11 @@ export default function DuelResultModal({
           {score !== null ? toPersianDigits(score) : "-"}
           <span className="text-lg text-ivory-dim">/۵</span>
         </div>
+        {streak >= 2 && (
+          <p className="mb-2">
+            <StreakBadge streak={streak} className="text-base" /> <span className="text-ivory-dim text-[.8rem]">روز پشت‌سرهم!</span>
+          </p>
+        )}
 
         <div className="my-3.5 text-right">
           {!user && (

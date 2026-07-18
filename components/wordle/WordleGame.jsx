@@ -20,6 +20,7 @@ import {
 } from "@/lib/wordle/logic";
 import { fetchTodayPuzzle, fetchTodayLeaderboard, submitScore, checkTodayStatus, recordAttempt } from "@/lib/wordle/api";
 import { loadState, saveState } from "@/lib/wordle/storage";
+import { translatePostgrestError } from "@/lib/auth/errors";
 
 export default function WordleGame() {
   const [loading, setLoading] = useState(true);
@@ -49,6 +50,7 @@ export default function WordleGame() {
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
+  const [streak, setStreak] = useState(0);
 
   const [countdownVisible, setCountdownVisible] = useState(false);
   const [countdownText, setCountdownText] = useState("۰۰:۰۰:۰۰");
@@ -181,6 +183,7 @@ export default function WordleGame() {
       setGameOver(s.gameOver);
       setWon(s.won);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
+      setStreak(serverStatus.streak || 0);
       setLoading(false);
 
       if (s.gameOver) openResult(s.won);
@@ -245,13 +248,13 @@ export default function WordleGame() {
         setGameOver(true);
         setWon(true);
         persist({ gameOver: true, won: true });
-        recordAttempt(true, newGuesses.length);
+        recordAttempt(true, newGuesses.length).then(setStreak);
         openResult(true);
       } else if (isLastRow) {
         setGameOver(true);
         setWon(false);
         persist({ gameOver: true, won: false });
-        recordAttempt(false, newGuesses.length);
+        recordAttempt(false, newGuesses.length).then(setStreak);
         openResult(false);
       } else {
         setCurrentRow((r) => r + 1);
@@ -284,7 +287,7 @@ export default function WordleGame() {
     setSubmitError("");
     const { data: entries, error } = await submitScore(guesses.length);
     if (error || !entries) {
-      setSubmitError(error?.message?.includes("وارد حساب") ? error.message : "ثبت نشد، دوباره امتحان کن");
+      setSubmitError(translatePostgrestError(error));
       return;
     }
     const added = entries[entries.length - 1];
@@ -354,6 +357,7 @@ export default function WordleGame() {
         won={won}
         answer={answer}
         tries={guesses.length}
+        streak={streak}
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}

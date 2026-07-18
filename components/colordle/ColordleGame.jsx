@@ -36,6 +36,7 @@ export default function ColordleGame() {
   const [score, setScore] = useState(null);
   const [target, setTarget] = useState(null);
   const [finalGuess, setFinalGuess] = useState(null);
+  const [streak, setStreak] = useState(0);
 
   const [toastMsg, setToastMsg] = useState("");
   const toastTimer = useRef(null);
@@ -162,6 +163,7 @@ export default function ColordleGame() {
       setTarget(s.target);
       setFinalGuess(s.guess);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
+      setStreak(serverStatus.streak || 0);
       setLoading(false);
 
       if (s.gameOver) openResult();
@@ -188,6 +190,7 @@ export default function ColordleGame() {
     setScore(data.score);
     setTarget(newTarget);
     setFinalGuess(pick);
+    setStreak(data.streak || 0);
     persist({ gameOver: true, score: data.score, target: newTarget, guess: pick });
     openResult();
   }, [gameOver, submitting, pick, persist, openResult, showToast]);
@@ -260,6 +263,7 @@ export default function ColordleGame() {
         score={score}
         target={target}
         guess={finalGuess}
+        streak={streak}
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}

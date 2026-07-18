@@ -5,12 +5,14 @@ import { useState } from "react";
 import { toPersianDigits } from "@/lib/wordle/logic";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import LeaderboardList from "@/components/common/LeaderboardList";
+import StreakBadge from "@/components/common/StreakBadge";
 
 export default function ResultModal({
   open,
   won,
   answer,
   tries,
+  streak,
   leaderboard,
   leaderboardLoading,
   highlightIndex,
@@ -47,9 +49,15 @@ export default function ResultModal({
           {won ? "آفرین! 🎉" : "دفعه‌ی بعد بهتر می‌شی"}
         </h2>
         <div className="text-[2rem] font-extrabold text-green tracking-[2px] my-2.5">{answer}</div>
-        <p className="text-ivory-dim text-[.85rem] mb-3">
+        <p className="text-ivory-dim text-[.85rem] mb-1">
           {won ? `در ${toPersianDigits(tries)} تلاش حدس زدی` : loseAnswerText}
         </p>
+        {won && streak >= 2 && (
+          <p className="mb-3">
+            <StreakBadge streak={streak} className="text-base" /> <span className="text-ivory-dim text-[.8rem]">روز پشت‌سرهم!</span>
+          </p>
+        )}
+        {(!won || streak < 2) && <div className="mb-3" />}
 
         <div className="my-3.5 text-right">
           {won && !user && (

@@ -2,6 +2,7 @@
 
 import { toPersianDigits } from "@/lib/wordle/logic";
 import Avatar from "@/components/common/Avatar";
+import StreakBadge from "@/components/common/StreakBadge";
 
 export default function LeaderboardList({ entries, highlightIndex, loading, emptyNoun, renderExtra }) {
   if (loading) {
@@ -41,6 +42,7 @@ export default function LeaderboardList({ entries, highlightIndex, loading, empt
             <span className="flex-1 text-right text-ivory text-[.9rem] overflow-hidden text-ellipsis whitespace-nowrap">
               {e.name}
             </span>
+            <StreakBadge streak={e.streak} />
             {renderExtra && renderExtra(e)}
           </div>
         );

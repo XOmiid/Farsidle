@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 import { rgbToHex } from "@/lib/colordle/logic";
 import { toPersianDigits } from "@/lib/shared/persian";
 import LeaderboardList from "@/components/common/LeaderboardList";
+import StreakBadge from "@/components/common/StreakBadge";
 
 export default function ColordleResultModal({
   open,
@@ -13,6 +14,7 @@ export default function ColordleResultModal({
   score,
   target,
   guess,
+  streak,
   leaderboard,
   leaderboardLoading,
   highlightIndex,
@@ -47,6 +49,11 @@ export default function ColordleResultModal({
           {toPersianDigits(score)}
           <span className="text-lg text-ivory-dim">/۱۰</span>
         </div>
+        {streak >= 2 && (
+          <p className="mb-2">
+            <StreakBadge streak={streak} className="text-base" /> <span className="text-ivory-dim text-[.8rem]">روز پشت‌سرهم!</span>
+          </p>
+        )}
         <p className="text-ivory-dim text-[.85rem] mb-4">{colorName}</p>
 
         <div className="flex gap-4 justify-center mb-4">

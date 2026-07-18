@@ -14,6 +14,7 @@ import { MAX_TRIES, countriesMatch } from "@/lib/factle/logic";
 import { fetchTodayPuzzle, fetchCountryList, fetchTodayLeaderboard, submitScore, checkTodayStatus, recordAttempt } from "@/lib/factle/api";
 import { loadState, saveState } from "@/lib/factle/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
+import { translatePostgrestError } from "@/lib/auth/errors";
 
 export default function FactleGame() {
   const [loading, setLoading] = useState(true);
@@ -38,6 +39,7 @@ export default function FactleGame() {
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
+  const [streak, setStreak] = useState(0);
   const [submitError, setSubmitError] = useState("");
 
   const [countdownVisible, setCountdownVisible] = useState(false);
@@ -156,6 +158,7 @@ export default function FactleGame() {
       setGameOver(s.gameOver);
       setWon(s.won);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
+      setStreak(serverStatus.streak || 0);
       setLoading(false);
 
       if (s.gameOver) openResult(s.won);
@@ -174,7 +177,7 @@ export default function FactleGame() {
         setGameOver(true);
         setWon(true);
         persist({ guesses, gameOver: true, won: true });
-        recordAttempt(true, guesses.length + 1);
+        recordAttempt(true, guesses.length + 1).then(setStreak);
         openResult(true);
         return;
       }
@@ -186,7 +189,7 @@ export default function FactleGame() {
         setGameOver(true);
         setWon(false);
         persist({ guesses: newGuesses, gameOver: true, won: false });
-        recordAttempt(false, newGuesses.length);
+        recordAttempt(false, newGuesses.length).then(setStreak);
         openResult(false);
       } else {
         persist({ guesses: newGuesses });
@@ -200,7 +203,7 @@ export default function FactleGame() {
     setSubmitError("");
     const { data: entries, error } = await submitScore(guesses.length + 1);
     if (error || !entries) {
-      setSubmitError(error?.message?.includes("وارد حساب") ? error.message : "ثبت نشد، دوباره امتحان کن");
+      setSubmitError(translatePostgrestError(error));
       return;
     }
     const added = entries[entries.length - 1];
@@ -267,6 +270,7 @@ export default function FactleGame() {
         won={won}
         answer={answer}
         tries={won ? guesses.length + 1 : guesses.length}
+        streak={streak}
         leaderboard={leaderboard}
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}
