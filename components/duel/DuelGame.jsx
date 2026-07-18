@@ -298,6 +298,22 @@ export default function DuelGame() {
         </div>
       )}
 
+      {!loading && !loadError && gameOver && (
+        <div className="w-full flex flex-col items-center gap-3">
+          <p className="text-ivory-dim text-[.9rem]">نتیجه‌ی امروز:</p>
+          <div className="text-[3rem] font-extrabold text-green leading-none">
+            {score !== null ? toPersianDigits(score) : "-"}
+            <span className="text-lg text-ivory-dim">/۵</span>
+          </div>
+          <button
+            onClick={openResult}
+            className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
+      )}
+
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <HowToModal open={howtoOpen} onClose={() => setHowtoOpen(false)} />
       <DuelResultModal

@@ -51,6 +51,7 @@ export default function WordleGame() {
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
   const [streak, setStreak] = useState(0);
+  const [remoteTries, setRemoteTries] = useState(null);
 
   const [countdownVisible, setCountdownVisible] = useState(false);
   const [countdownText, setCountdownText] = useState("۰۰:۰۰:۰۰");
@@ -184,6 +185,7 @@ export default function WordleGame() {
       setWon(s.won);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
       setStreak(serverStatus.streak || 0);
+      setRemoteTries(serverStatus.tries ?? null);
       setLoading(false);
 
       if (s.gameOver) openResult(s.won);
@@ -348,6 +350,24 @@ export default function WordleGame() {
             onDelete={deleteLetter}
           />
         </>
+      )}
+
+      {!loading && !loadError && remoteOnly && (
+        <div className="w-full flex flex-col items-center gap-3">
+          <p className="text-ivory-dim text-[.9rem]">کلمه‌ی امروز:</p>
+          <div className="text-[2rem] font-extrabold text-green tracking-[2px]">{answer}</div>
+          {won && remoteTries !== null && (
+            <p className="text-ivory-dim text-[.85rem]">
+              در {toPersianDigits(remoteTries)} تلاش پیدا کردی
+            </p>
+          )}
+          <button
+            onClick={() => openResult(won)}
+            className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
       )}
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />

@@ -19,6 +19,8 @@ import { loadState, saveState } from "@/lib/colordle/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { translatePostgrestError } from "@/lib/auth/errors";
+import { rgbToHex } from "@/lib/colordle/logic";
+import { toPersianDigits } from "@/lib/shared/persian";
 
 const DEFAULT_RGB = { r: 128, g: 128, b: 128 };
 
@@ -253,6 +255,29 @@ export default function ColordleGame() {
             {submitting ? "در حال ثبت..." : "ثبت نهایی"}
           </button>
         </>
+      )}
+
+      {!loading && !loadError && gameOver && (
+        <div className="w-full flex flex-col items-center gap-3">
+          <h2 className="font-display text-xl text-ivory mb-1">{colorName}</h2>
+          {target && (
+            <div
+              className="w-full max-w-[380px] h-40 rounded-2xl border-2 border-green-dim"
+              style={{ background: rgbToHex(target.r, target.g, target.b) }}
+            />
+          )}
+          {score !== null && (
+            <p className="text-ivory-dim text-[.9rem]">
+              امتیازت: <span className="text-green font-bold">{toPersianDigits(score)}/۱۰</span>
+            </p>
+          )}
+          <button
+            onClick={openResult}
+            className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
       )}
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />

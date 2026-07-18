@@ -14,6 +14,7 @@ import { MAX_TRIES, countriesMatch } from "@/lib/factle/logic";
 import { fetchTodayPuzzle, fetchCountryList, fetchTodayLeaderboard, submitScore, checkTodayStatus, recordAttempt } from "@/lib/factle/api";
 import { loadState, saveState } from "@/lib/factle/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
+import { toPersianDigits } from "@/lib/shared/persian";
 import { translatePostgrestError } from "@/lib/auth/errors";
 
 export default function FactleGame() {
@@ -40,6 +41,7 @@ export default function FactleGame() {
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
   const [streak, setStreak] = useState(0);
+  const [remoteTries, setRemoteTries] = useState(null);
   const [submitError, setSubmitError] = useState("");
 
   const [countdownVisible, setCountdownVisible] = useState(false);
@@ -159,6 +161,7 @@ export default function FactleGame() {
       setWon(s.won);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
       setStreak(serverStatus.streak || 0);
+      setRemoteTries(serverStatus.tries ?? null);
       setLoading(false);
 
       if (s.gameOver) openResult(s.won);
@@ -261,6 +264,24 @@ export default function FactleGame() {
             <GuessHistory guesses={guesses} />
           </div>
         </>
+      )}
+
+      {!loading && !loadError && remoteOnly && (
+        <div className="w-full flex flex-col items-center gap-3">
+          <p className="text-ivory-dim text-[.9rem]">کشور امروز:</p>
+          <div className="text-[2rem] font-extrabold text-green tracking-[2px]">{answer}</div>
+          {won && remoteTries !== null && (
+            <p className="text-ivory-dim text-[.85rem]">
+              در {toPersianDigits(remoteTries)} تلاش پیدا کردی
+            </p>
+          )}
+          <button
+            onClick={() => openResult(won)}
+            className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
       )}
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
