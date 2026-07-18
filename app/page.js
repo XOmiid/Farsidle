@@ -8,11 +8,13 @@ import { games } from "@/lib/games";
 import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
 import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
 import { checkTodayStatus as checkColordleStatus } from "@/lib/colordle/api";
+import { checkTodayStatus as checkMordleStatus } from "@/lib/duel/api";
 
 const STATUS_CHECKERS = {
   wordle: checkWordleStatus,
   factle: checkFactleStatus,
   colordle: checkColordleStatus,
+  mordle: checkMordleStatus,
 };
 
 export default function HomePage() {
