@@ -1,5 +1,6 @@
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth/AuthProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   metadataBase: new URL("https://farsidle.com"),
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
