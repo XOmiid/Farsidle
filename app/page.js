@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import StreakBadge from "@/components/common/StreakBadge";
 import { games } from "@/lib/games";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
@@ -21,7 +22,7 @@ const STATUS_CHECKERS = {
 export default function HomePage() {
   const { loading: authLoading, user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [playedToday, setPlayedToday] = useState({});
+  const [statusByGame, setStatusByGame] = useState({});
 
   useEffect(() => {
     // Wait for the auth session itself to finish resolving first —
@@ -34,11 +35,11 @@ export default function HomePage() {
       const entries = await Promise.all(
         Object.entries(STATUS_CHECKERS).map(async ([slug, check]) => {
           const status = await check();
-          return [slug, status.played];
+          return [slug, { played: status.played, streak: status.streak || 0 }];
         })
       );
       if (cancelled) return;
-      setPlayedToday(Object.fromEntries(entries));
+      setStatusByGame(Object.fromEntries(entries));
     })();
     return () => {
       cancelled = true;
@@ -54,9 +55,10 @@ export default function HomePage() {
       </p>
 
       <div className="w-full max-w-[480px] flex flex-col gap-3">
-        {games.map((g) => (
-          <GameCard key={g.slug} game={g} played={!!playedToday[g.slug]} />
-        ))}
+        {games.map((g) => {
+          const status = statusByGame[g.slug] || {};
+          return <GameCard key={g.slug} game={g} played={!!status.played} streak={status.streak || 0} />;
+        })}
       </div>
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -64,7 +66,7 @@ export default function HomePage() {
   );
 }
 
-function GameCard({ game, played }) {
+function GameCard({ game, played, streak }) {
   const isLive = game.status === "live";
   const content = (
     <div
@@ -79,6 +81,7 @@ function GameCard({ game, played }) {
         <div className="font-display text-lg text-ivory">{game.title}</div>
         <div className="text-xs text-ivory-dim mt-0.5">{game.tagline}</div>
       </div>
+      {isLive && streak >= 2 && <StreakBadge streak={streak} className="flex-shrink-0" />}
       {isLive && played && (
         <span
           className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green text-[#04140a] text-[13px] font-bold flex-shrink-0"
