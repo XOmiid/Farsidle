@@ -149,7 +149,7 @@ export default function ColordleGame() {
         const revealedData = await reveal();
         if (cancelled) return;
         if (revealedData) {
-          const elapsed = Date.now() - new Date(revealedData.revealed_at).getTime();
+          const elapsed = Math.max(0, Date.now() - new Date(revealedData.revealed_at).getTime());
           if (elapsed < REVEAL_MS) {
             setTarget({ r: revealedData.target_r, g: revealedData.target_g, b: revealedData.target_b });
             setPhase("revealing");
@@ -178,7 +178,7 @@ export default function ColordleGame() {
       showToast("نمایش رنگ ناموفق بود، دوباره امتحان کن");
       return;
     }
-    const elapsed = Date.now() - new Date(data.revealed_at).getTime();
+    const elapsed = Math.max(0, Date.now() - new Date(data.revealed_at).getTime());
     setTarget({ r: data.target_r, g: data.target_g, b: data.target_b });
     if (elapsed < REVEAL_MS) {
       setPhase("revealing");
