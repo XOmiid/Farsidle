@@ -12,6 +12,7 @@ import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
 import { checkTodayStatus as checkColordleStatus } from "@/lib/colordle/api";
 import { checkTodayStatus as checkMordleStatus } from "@/lib/duel/api";
 import { checkTodayStatus as checkMoneydleStatus } from "@/lib/moneydle/api";
+import { checkTodayStatus as checkGoldleStatus } from "@/lib/goldle/api";
 
 const STATUS_CHECKERS = {
   wordle: checkWordleStatus,
@@ -19,6 +20,7 @@ const STATUS_CHECKERS = {
   colordle: checkColordleStatus,
   mordle: checkMordleStatus,
   moneydle: checkMoneydleStatus,
+  goldle: checkGoldleStatus,
 };
 
 export default function HomePage() {
