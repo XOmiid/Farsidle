@@ -31,7 +31,7 @@ export default function ForgotPasswordPage() {
   const sendCode = async () => {
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email);
     if (resetError) {
-      setError(translateAuthError(resetError.message));
+      setError(translateAuthError(resetError));
       return false;
     }
     return true;
@@ -68,7 +68,7 @@ export default function ForgotPasswordPage() {
     setVerifying(false);
 
     if (verifyError) {
-      setError(translateAuthError(verifyError.message));
+      setError(translateAuthError(verifyError));
       return;
     }
     if (data.session) {
@@ -92,6 +92,8 @@ export default function ForgotPasswordPage() {
       <AuthCard title="کد بازیابی">
         <p className="text-ivory-dim text-[.85rem] text-center mb-4">
           یه کد به {email} فرستادیم. کد رو وارد کن:
+          <br />
+          <span className="text-[.78rem]">اگه تو اینباکس نبود، پوشه‌ی اسپم رو هم چک کن.</span>
         </p>
         <form onSubmit={handleVerify}>
           <OtpField label="کد تایید" value={code} onChange={setCode} />

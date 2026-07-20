@@ -62,7 +62,7 @@ export default function RegisterPage() {
     setSubmitting(false);
 
     if (signUpError) {
-      setError(translateAuthError(signUpError.message));
+      setError(translateAuthError(signUpError));
       return;
     }
 
@@ -92,7 +92,7 @@ export default function RegisterPage() {
     setVerifying(false);
 
     if (verifyError) {
-      setError(translateAuthError(verifyError.message));
+      setError(translateAuthError(verifyError));
       return;
     }
     if (data.session) {
@@ -106,7 +106,7 @@ export default function RegisterPage() {
     setNotice("");
     const { error: resendError } = await supabase.auth.resend({ type: "signup", email });
     if (resendError) {
-      setError(translateAuthError(resendError.message));
+      setError(translateAuthError(resendError));
       return;
     }
     setNotice("کد جدید فرستاده شد.");
@@ -118,6 +118,8 @@ export default function RegisterPage() {
       <AuthCard title="تایید ایمیل">
         <p className="text-ivory-dim text-[.85rem] text-center mb-4">
           یه کد به {email} فرستادیم. کد رو وارد کن:
+          <br />
+          <span className="text-[.78rem]">اگه تو اینباکس نبود، پوشه‌ی اسپم رو هم چک کن.</span>
         </p>
         <form onSubmit={handleVerify}>
           <OtpField label="کد تایید" value={code} onChange={setCode} />
