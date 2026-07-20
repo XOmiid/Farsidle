@@ -10,7 +10,6 @@ import StreakBadge from "@/components/common/StreakBadge";
 
 export default function ColordleResultModal({
   open,
-  colorName,
   score,
   target,
   guess,
@@ -54,7 +53,6 @@ export default function ColordleResultModal({
             <StreakBadge streak={streak} className="text-base" /> <span className="text-ivory-dim text-[.8rem]">روز پشت‌سرهم!</span>
           </p>
         )}
-        <p className="text-ivory-dim text-[.85rem] mb-4">{colorName}</p>
 
         <div className="flex gap-4 justify-center mb-4">
           <div className="flex flex-col items-center gap-1.5">
