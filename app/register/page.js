@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { translateAuthError } from "@/lib/auth/errors";
 import { AuthCard, FormField, OtpField, ErrorNote, SuccessNote, PrimaryButton } from "@/components/auth/AuthForm";
 import { fetchCountryList } from "@/lib/shared/countries";
+import PersianDateInput from "@/components/common/PersianDateInput";
 
 const USERNAME_RE = /^[a-zA-Z0-9_\u0600-\u06FF]{3,20}$/;
 const RESEND_COOLDOWN = 30;
@@ -173,16 +174,7 @@ export default function RegisterPage() {
 
         <label className="block text-right mb-3.5">
           <span className="block text-[.8rem] text-ivory-dim mb-1.5">تاریخ تولد (اختیاری)</span>
-          <div className="w-full max-w-full box-border bg-white/[.04] border border-green-dim rounded-[9px] h-11 px-3.5 flex items-center justify-start focus-within:border-green">
-            <input
-              type="date"
-              dir="ltr"
-              value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
-              max={new Date().toISOString().split("T")[0]}
-              className="bg-transparent text-ivory text-[.9rem] border-none outline-none text-left"
-            />
-          </div>
+          <PersianDateInput value={birthDate} onChange={setBirthDate} />
         </label>
 
         <label className="block text-right mb-3.5">

@@ -8,10 +8,11 @@ import Sidebar from "@/components/Sidebar";
 import Avatar from "@/components/common/Avatar";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
-import { translateAuthError } from "@/lib/auth/errors";
+import { translatePostgrestError } from "@/lib/auth/errors";
 import { AVATARS } from "@/lib/shared/avatars";
 import { fetchCountryList } from "@/lib/shared/countries";
 import { ErrorNote, SuccessNote, PrimaryButton } from "@/components/auth/AuthForm";
+import PersianDateInput from "@/components/common/PersianDateInput";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -67,7 +68,7 @@ export default function ProfilePage() {
     setSavingInfo(false);
 
     if (error) {
-      setInfoError(translateAuthError(error.message));
+      setInfoError(translatePostgrestError(error));
       return;
     }
     setInfoNotice("پروفایلت به‌روزرسانی شد.");
@@ -113,16 +114,7 @@ export default function ProfilePage() {
 
           <label className="block text-right mb-3.5">
             <span className="block text-[.8rem] text-ivory-dim mb-1.5">تاریخ تولد (اختیاری)</span>
-            <div className="w-full max-w-full box-border bg-white/[.04] border border-green-dim rounded-[9px] h-11 px-3.5 flex items-center justify-start focus-within:border-green">
-              <input
-                type="date"
-                dir="ltr"
-                value={birthDate}
-                onChange={(e) => setBirthDate(e.target.value)}
-                max={new Date().toISOString().split("T")[0]}
-                className="bg-transparent text-ivory text-[.9rem] border-none outline-none text-left"
-              />
-            </div>
+            <PersianDateInput value={birthDate} onChange={setBirthDate} />
           </label>
 
           <label className="block text-right mb-1">
