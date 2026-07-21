@@ -6,13 +6,10 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 import { toPersianDigits } from "@/lib/shared/persian";
 import LeaderboardList from "@/components/common/LeaderboardList";
 import StreakBadge from "@/components/common/StreakBadge";
-import { currencyFlag } from "@/lib/moneydle/flags";
 
 export default function MoneydleResultModal({
   open,
   score,
-  submittedOrder,
-  correctOrder,
   streak,
   leaderboard,
   leaderboardLoading,
@@ -52,36 +49,6 @@ export default function MoneydleResultModal({
           <p className="mb-2">
             <StreakBadge streak={streak} className="text-base" /> <span className="text-ivory-dim text-[.8rem]">روز پشت‌سرهم!</span>
           </p>
-        )}
-
-        {correctOrder && (
-          <div className="my-4 text-right">
-            <h3 className="font-display font-normal text-[1rem] text-green m-0 mb-2 text-center">
-              ترتیب درست
-            </h3>
-            <div className="flex flex-col gap-1.5">
-              {correctOrder.map((c, i) => {
-                const yours = submittedOrder ? submittedOrder[i] : null;
-                const isMatch = yours && yours.code === c.code;
-                return (
-                  <div
-                    key={c.code}
-                    className={`flex items-center gap-2.5 border rounded-lg px-3 py-2 text-[.85rem] ${
-                      isMatch ? "border-green bg-green/[.1]" : "border-border bg-white/[.03]"
-                    }`}
-                  >
-                    <span className="text-green-dim font-bold min-w-[16px]">{toPersianDigits(i + 1)}</span>
-                    <span className="text-base flex-shrink-0">{currencyFlag(c.code)}</span>
-                    <span className="flex-1 text-ivory">{c.name_fa}</span>
-                    <span className="text-ivory-dim text-[.72rem]" dir="ltr">
-                      {c.code}
-                    </span>
-                    {isMatch && <span className="text-green">✓</span>}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         )}
 
         <div className="my-3.5 text-right">
