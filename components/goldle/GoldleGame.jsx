@@ -166,7 +166,7 @@ export default function GoldleGame() {
       return;
     }
     setSubmitting(true);
-    const { data, error } = await submitBet(qIndex, bets.a || 0, bets.b || 0, bets.c || 0, bets.d || 0);
+    const { data, error } = await submitBet(qIndex, bets.a || 0, bets.b || 0, bets.c || 0, bets.d || 0, gold);
     setSubmitting(false);
 
     if (error || !data) {
