@@ -14,6 +14,7 @@ import {
   fetchTodayLeaderboard,
   submitScore,
   checkTodayStatus,
+  fetchTodayReveal,
 } from "@/lib/goldle/api";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { toPersianDigits } from "@/lib/shared/persian";
@@ -34,6 +35,7 @@ export default function GoldleGame() {
 
   const [gameOver, setGameOver] = useState(false);
   const [finalGold, setFinalGold] = useState(null);
+  const [revealQuestions, setRevealQuestions] = useState(null);
   const [questionsReached, setQuestionsReached] = useState(null);
   const [streak, setStreak] = useState(0);
 
@@ -41,7 +43,15 @@ export default function GoldleGame() {
   const toastTimer = useRef(null);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [howtoOpen, setHowtoOpen] = useState(false);
+  const [howtoOpen, setHowtoOpen] = useState(() => {
+    try {
+      if (typeof window === "undefined") return false;
+      const seen = localStorage.getItem("fa-goldle-howto-seen");
+      return !seen;
+    } catch (e) {
+      return false;
+    }
+  });
 
   const [resultOpen, setResultOpen] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
@@ -94,6 +104,18 @@ export default function GoldleGame() {
     };
   }, []);
 
+  // Mark the instructions as seen so they don't auto-open again next
+  // time — the initial open/closed state itself is decided once, up
+  // front, by the lazy useState initializer above.
+  useEffect(() => {
+    if (!howtoOpen) return;
+    try {
+      localStorage.setItem("fa-goldle-howto-seen", "1");
+    } catch (e) {
+      // ignore
+    }
+  }, [howtoOpen]);
+
   // Boot
   useEffect(() => {
     let cancelled = false;
@@ -117,6 +139,9 @@ export default function GoldleGame() {
         setGameOver(true);
         setFinalGold(status.final_gold);
         setQuestionsReached(status.questions_reached);
+        const reveal = await fetchTodayReveal();
+        if (cancelled) return;
+        setRevealQuestions(reveal);
         setLoading(false);
         openResult();
         return;
@@ -149,27 +174,27 @@ export default function GoldleGame() {
       return;
     }
 
+    // Just show the reveal for now — finishing (gameOver) only happens once
+    // they click "continue" below, so the reveal animation always has a
+    // chance to actually display before anything else changes.
     setReveal(data);
-
-    if (data.game_over) {
-      setGameOver(true);
-      setFinalGold(data.gold_after);
-      setQuestionsReached(qIndex);
-      setStreak((s) => s); // streak updates reflected on next status check; fine as-is for now
-    }
   }, [bets, gold, qIndex, showToast]);
 
-  const handleContinue = useCallback(() => {
+  const handleContinue = useCallback(async () => {
     if (reveal?.game_over) {
+      setFinalGold(reveal.gold_after);
+      setQuestionsReached(qIndex);
+      setGameOver(true);
       setReveal(null);
-      openResult();
+      const revealData = await fetchTodayReveal();
+      setRevealQuestions(revealData);
       return;
     }
     setGold(reveal.gold_after);
     setQIndex((i) => i + 1);
     setBets({ a: 0, b: 0, c: 0, d: 0 });
     setReveal(null);
-  }, [reveal, openResult]);
+  }, [reveal, qIndex]);
 
   const handleSubmitScore = useCallback(async () => {
     setSubmitError("");
@@ -259,6 +284,22 @@ export default function GoldleGame() {
           <p className="text-ivory-dim text-[.9rem]">
             طلای نهایی: <span className="text-green font-bold">{toPersianDigits(finalGold)}</span>
           </p>
+
+          {revealQuestions && revealQuestions.length > 0 && (
+            <div className="w-full max-w-[420px] flex flex-col gap-2.5 mt-1">
+              {revealQuestions.map((q, i) => (
+                <div key={i} className="bg-bg-1 border border-green-dim rounded-xl p-3 text-right">
+                  <p className="text-ivory text-[.85rem] mb-2">
+                    {toPersianDigits(i + 1)}. {q.question_fa}
+                  </p>
+                  <p className="text-green text-[.82rem] font-semibold">
+                    ✓ {q[`choice_${q.correct_choice}`]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
           <button
             onClick={openResult}
             className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"

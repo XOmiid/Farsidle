@@ -15,6 +15,7 @@ import {
   fetchTodayLeaderboard,
   submitScore,
   checkTodayStatus,
+  fetchTodayReveal,
 } from "@/lib/duel/api";
 import { loadState, saveState } from "@/lib/duel/storage";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
@@ -39,6 +40,7 @@ export default function DuelGame() {
   const [gameOver, setGameOver] = useState(false);
   const [remoteOnly, setRemoteOnly] = useState(false);
   const [score, setScore] = useState(null);
+  const [revealPairs, setRevealPairs] = useState(null);
   const [streak, setStreak] = useState(0);
 
   const [toastMsg, setToastMsg] = useState("");
@@ -152,6 +154,13 @@ export default function DuelGame() {
       setScore(s.score);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
       setStreak(serverStatus.streak || 0);
+
+      if (s.gameOver) {
+        const reveal = await fetchTodayReveal();
+        if (cancelled) return;
+        setRevealPairs(reveal);
+      }
+
       setLoading(false);
 
       if (s.gameOver) openResult();
@@ -205,6 +214,10 @@ export default function DuelGame() {
     setScore(finalScore);
     setStreak(newStreak || 0);
     persist({ gameOver: true, score: finalScore });
+
+    const reveal = await fetchTodayReveal();
+    setRevealPairs(reveal);
+
     openResult();
   }, [currentIndex, questions.length, persist, openResult, showToast]);
 
@@ -305,6 +318,39 @@ export default function DuelGame() {
             {score !== null ? toPersianDigits(score) : "-"}
             <span className="text-lg text-ivory-dim">/۵</span>
           </div>
+
+          {revealPairs && revealPairs.length > 0 && (
+            <div className="w-full flex flex-col gap-2 mt-2">
+              {revealPairs.map((p, i) => {
+                const aWins = p.value_a > p.value_b;
+                return (
+                  <div key={i} className="bg-bg-1 border border-green-dim rounded-xl p-3 text-[.82rem]">
+                    <div
+                      className={`flex items-center justify-between gap-2 py-1 ${
+                        aWins ? "text-green font-bold" : "text-ivory-dim"
+                      }`}
+                    >
+                      <span>{p.prompt_a}</span>
+                      <span dir="ltr">
+                        {toPersianDigits(p.value_a)} {p.unit_a || ""}
+                      </span>
+                    </div>
+                    <div
+                      className={`flex items-center justify-between gap-2 py-1 border-t border-border ${
+                        !aWins ? "text-green font-bold" : "text-ivory-dim"
+                      }`}
+                    >
+                      <span>{p.prompt_b}</span>
+                      <span dir="ltr">
+                        {toPersianDigits(p.value_b)} {p.unit_b || ""}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
           <button
             onClick={openResult}
             className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"

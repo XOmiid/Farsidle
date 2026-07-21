@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 import { toPersianDigits } from "@/lib/shared/persian";
 import LeaderboardList from "@/components/common/LeaderboardList";
 import StreakBadge from "@/components/common/StreakBadge";
+import { currencyFlag } from "@/lib/moneydle/flags";
 
 export default function MoneydleResultModal({
   open,
@@ -70,6 +71,7 @@ export default function MoneydleResultModal({
                     }`}
                   >
                     <span className="text-green-dim font-bold min-w-[16px]">{toPersianDigits(i + 1)}</span>
+                    <span className="text-base flex-shrink-0">{currencyFlag(c.code)}</span>
                     <span className="flex-1 text-ivory">{c.name_fa}</span>
                     <span className="text-ivory-dim text-[.72rem]" dir="ltr">
                       {c.code}

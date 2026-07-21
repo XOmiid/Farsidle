@@ -20,6 +20,18 @@ export default function BettingPanel({ question, totalGold, bets, onChangeBets, 
     onChangeBets(next);
   };
 
+  const splitEvenly = () => {
+    const base = Math.floor(totalGold / 4);
+    const leftover = totalGold - base * 4;
+    // distribute any remainder to the first few choices so the total
+    // always sums to exactly totalGold
+    const next = {};
+    LETTERS.forEach((letter, i) => {
+      next[letter] = base + (i < leftover ? 1 : 0);
+    });
+    onChangeBets(next);
+  };
+
   return (
     <div className="w-full max-w-[420px] flex flex-col gap-3">
       <p className="text-ivory text-[1.05rem] leading-8 text-right font-semibold">
@@ -27,16 +39,25 @@ export default function BettingPanel({ question, totalGold, bets, onChangeBets, 
       </p>
 
       {!reveal && (
-        <div
-          className={`text-center text-[.85rem] rounded-lg py-2 border ${
-            remaining === 0
-              ? "border-green-dim text-green bg-green/10"
-              : "border-yellow text-yellow bg-yellow/10"
-          }`}
-        >
-          {remaining === 0
-            ? "همه‌ی طلات تخصیص داده شد ✓"
-            : `${toPersianDigits(remaining)} طلا هنوز تخصیص داده نشده`}
+        <div className="flex items-center gap-2">
+          <div
+            className={`flex-1 text-center text-[.85rem] rounded-lg py-2 border ${
+              remaining === 0
+                ? "border-green-dim text-green bg-green/10"
+                : "border-yellow text-yellow bg-yellow/10"
+            }`}
+          >
+            {remaining === 0
+              ? "همه‌ی طلات تخصیص داده شد ✓"
+              : `${toPersianDigits(remaining)} طلا هنوز تخصیص داده نشده`}
+          </div>
+          <button
+            onClick={splitEvenly}
+            disabled={disabled}
+            className="text-[.78rem] bg-white/[.04] border border-green-dim text-ivory rounded-lg px-3 py-2 cursor-pointer disabled:opacity-40 flex-shrink-0"
+          >
+            تقسیم مساوی
+          </button>
         </div>
       )}
 
@@ -78,7 +99,8 @@ export default function BettingPanel({ question, totalGold, bets, onChangeBets, 
                     inputMode="numeric"
                     min={0}
                     max={totalGold}
-                    value={bets[letter] || 0}
+                    value={bets[letter] === 0 ? "" : bets[letter]}
+                    placeholder="۰"
                     disabled={disabled}
                     onChange={(e) => setBet(letter, e.target.value)}
                     className="flex-1 bg-white/[.04] border border-green-dim rounded-lg text-ivory text-[.9rem] px-3 h-10 text-center focus:outline-none focus:border-green disabled:opacity-40"

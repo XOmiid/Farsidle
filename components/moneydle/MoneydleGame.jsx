@@ -14,10 +14,13 @@ import {
   fetchTodayLeaderboard,
   submitScore,
   checkTodayStatus,
+  fetchTodayReveal,
 } from "@/lib/moneydle/api";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { translatePostgrestError } from "@/lib/auth/errors";
+import { toPersianDigits } from "@/lib/shared/persian";
+import { currencyFlag } from "@/lib/moneydle/flags";
 
 export default function MoneydleGame() {
   const { profile } = useAuth();
@@ -114,6 +117,9 @@ export default function MoneydleGame() {
         setGameOver(true);
         setRemoteOnly(true);
         setScore(status.score);
+        const reveal = await fetchTodayReveal();
+        if (cancelled) return;
+        setCorrectOrder(reveal);
         setLoading(false);
         openResult();
         return;
@@ -209,6 +215,25 @@ export default function MoneydleGame() {
           <p className="text-ivory-dim text-[.9rem]">
             امتیازت: <span className="text-green font-bold">{score}/۵</span>
           </p>
+
+          {correctOrder && correctOrder.length > 0 && (
+            <div className="w-full max-w-[420px] flex flex-col gap-1.5 mt-1">
+              {correctOrder.map((c, i) => (
+                <div
+                  key={c.code}
+                  className="flex items-center gap-2.5 bg-bg-1 border border-green-dim rounded-lg px-3 py-2 text-[.85rem]"
+                >
+                  <span className="text-green-dim font-bold min-w-[16px]">{toPersianDigits(i + 1)}</span>
+                  <span className="text-base flex-shrink-0">{currencyFlag(c.code)}</span>
+                  <span className="flex-1 text-ivory text-right">{c.name_fa}</span>
+                  <span className="text-ivory-dim text-[.72rem]" dir="ltr">
+                    {c.code}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
           <button
             onClick={openResult}
             className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"

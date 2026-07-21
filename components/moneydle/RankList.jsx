@@ -1,6 +1,7 @@
 "use client";
 
 import { toPersianDigits } from "@/lib/shared/persian";
+import { currencyFlag } from "@/lib/moneydle/flags";
 
 export default function RankList({ items, onReorder, disabled }) {
   const move = (index, dir) => {
@@ -21,6 +22,7 @@ export default function RankList({ items, onReorder, disabled }) {
           <span className="text-green font-extrabold text-[.9rem] min-w-[20px] text-center">
             {toPersianDigits(i + 1)}
           </span>
+          <span className="text-xl flex-shrink-0">{currencyFlag(item.code)}</span>
           <div className="flex-1 text-right">
             <div className="text-ivory text-[.95rem] font-semibold">{item.name_fa}</div>
             <div className="text-ivory-dim text-[.72rem]" dir="ltr">
