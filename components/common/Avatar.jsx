@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getAvatarSrc } from "@/lib/shared/avatars";
+import { buildAvatarUrl, parseAvatarOptions } from "@/lib/shared/avatars";
 
 const CROWN_COLORS = { 1: "#facc15", 2: "#cbd5e1", 3: "#d97706" };
 
@@ -21,14 +21,20 @@ function Crown({ rank }) {
 
 export default function Avatar({ avatarKey, username, size = 40, rank }) {
   const [imgFailed, setImgFailed] = useState(false);
-  const src = getAvatarSrc(avatarKey);
   const showCrown = rank && rank <= 3;
-  const showImage = src && !imgFailed;
+
+  // avatarKey can be:
+  //  - a JSON string (new format, stored in DB)
+  //  - a plain options object (passed directly from profile page preview)
+  //  - "boy" / "girl" (old format — generate from username as fallback seed)
+  //  - null / undefined (no avatar set — generate from username)
+  const options = parseAvatarOptions(avatarKey, username || "farsidle");
+  const src = buildAvatarUrl(options, size * 2); // 2x for retina
 
   return (
     <div className="relative flex-shrink-0" style={{ width: size, height: size }}>
       {showCrown && <Crown rank={rank} />}
-      {showImage ? (
+      {src && !imgFailed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}

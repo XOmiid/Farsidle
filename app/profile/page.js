@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Avatar from "@/components/common/Avatar";
+import AvatarBuilder from "@/components/common/AvatarBuilder";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { supabase } from "@/lib/supabaseClient";
 import { translatePostgrestError } from "@/lib/auth/errors";
-import { AVATARS } from "@/lib/shared/avatars";
+import { parseAvatarOptions, randomAvatarOptions } from "@/lib/shared/avatars";
 import { fetchCountryList } from "@/lib/shared/countries";
 import { ErrorNote, SuccessNote, PrimaryButton } from "@/components/auth/AuthForm";
 import PersianDateInput from "@/components/common/PersianDateInput";
@@ -19,13 +20,14 @@ export default function ProfilePage() {
   const { loading, user, profile, refreshProfile, signOut } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const [avatarKey, setAvatarKey] = useState(null);
+  const [avatarOptions, setAvatarOptions] = useState(null);
   const [birthDate, setBirthDate] = useState("");
   const [country, setCountry] = useState("");
   const [syncedProfileId, setSyncedProfileId] = useState(null);
+
   if (profile && profile.id !== syncedProfileId) {
     setSyncedProfileId(profile.id);
-    setAvatarKey(profile.avatar || null);
+    setAvatarOptions(parseAvatarOptions(profile.avatar, profile.username || user?.id));
     setBirthDate(profile.birth_date || "");
     setCountry(profile.country || "");
   }
@@ -43,7 +45,7 @@ export default function ProfilePage() {
     if (!loading && !user) router.replace("/login");
   }, [loading, user, router]);
 
-  if (loading || !user) {
+  if (loading || !user || !avatarOptions) {
     return (
       <div className="min-h-screen flex items-center justify-center text-ivory-dim text-sm">
         در حال بارگذاری...
@@ -55,12 +57,11 @@ export default function ProfilePage() {
     e.preventDefault();
     setInfoError("");
     setInfoNotice("");
-
     setSavingInfo(true);
     const { error } = await supabase
       .from("profiles")
       .update({
-        avatar: avatarKey,
+        avatar: avatarOptions,
         birth_date: birthDate || null,
         country: country || null,
       })
@@ -82,34 +83,27 @@ export default function ProfilePage() {
       <div className="w-full max-w-[420px] mt-4">
         <h1 className="font-display text-2xl text-green text-center mb-6">پروفایل</h1>
 
-        <form onSubmit={handleSaveInfo} className="bg-bg-1 border border-green-dim rounded-2xl p-5 mb-4 overflow-x-hidden">
-          {/* Avatar top-left, username top-right */}
+        <form onSubmit={handleSaveInfo} className="bg-bg-1 border border-green-dim rounded-2xl p-5 mb-4">
+          {/* Username display */}
           <div className="flex items-center justify-between mb-5">
-            <Avatar avatarKey={avatarKey} username={profile?.username} size={56} />
+            <Avatar avatarKey={avatarOptions} username={profile?.username} size={56} />
             <div className="text-right">
               <p className="text-[.75rem] text-ivory-dim mb-0.5">نام کاربری</p>
               <p className="text-ivory text-base font-semibold m-0">{profile?.username || "..."}</p>
             </div>
           </div>
 
-          {/* Avatar picker */}
-          <div className="mb-4">
-            <span className="block text-[.8rem] text-ivory-dim mb-2 text-right">انتخاب آواتار</span>
-            <div className="flex gap-3 justify-end">
-              {AVATARS.map((a) => (
-                <button
-                  type="button"
-                  key={a.key}
-                  onClick={() => setAvatarKey(a.key)}
-                  className={`rounded-full transition-shadow ${
-                    avatarKey === a.key ? "ring-2 ring-green ring-offset-2 ring-offset-bg-1" : ""
-                  }`}
-                  aria-label={a.label}
-                >
-                  <Avatar avatarKey={a.key} username={a.label} size={52} />
-                </button>
-              ))}
-            </div>
+          {/* Avatar builder */}
+          <div className="mb-5">
+            <span className="block text-[.8rem] text-ivory-dim mb-3 text-right">ساخت آواتار</span>
+            <AvatarBuilder options={avatarOptions} onChange={setAvatarOptions} />
+            <button
+              type="button"
+              onClick={() => setAvatarOptions(randomAvatarOptions(profile?.username || user?.id))}
+              className="mt-3 w-full bg-white/[.04] border border-border text-ivory-dim rounded-[9px] py-2 text-[.82rem] cursor-pointer hover:border-green-dim transition-colors"
+            >
+              آواتار تصادفی
+            </button>
           </div>
 
           <label className="block text-right mb-3.5">
@@ -126,9 +120,7 @@ export default function ProfilePage() {
             >
               <option value="">انتخاب نشده</option>
               {countryList.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
+                <option key={c} value={c}>{c}</option>
               ))}
             </select>
           </label>
@@ -156,10 +148,6 @@ export default function ProfilePage() {
             تغییر رمز عبور
           </Link>
         </div>
-
-        <p className="text-center text-[.78rem] text-ivory-dim mb-4">
-          اشتراک ویژه به‌زودی از همین صفحه قابل فعال‌سازیه 👀
-        </p>
 
         <button
           onClick={async () => {
