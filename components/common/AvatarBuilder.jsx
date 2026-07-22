@@ -21,9 +21,10 @@ const SECTIONS = [
 ];
 
 const COLOR_SECTIONS = [
-  { key: "skinColor",    label: "رنگ پوست" },
-  { key: "hairColor",    label: "رنگ مو" },
-  { key: "clothesColor", label: "رنگ لباس" },
+  { key: "skinColor",       label: "رنگ پوست" },
+  { key: "hairColor",       label: "رنگ مو" },
+  { key: "clothesColor",    label: "رنگ لباس" },
+  { key: "backgroundColor", label: "رنگ پس‌زمینه" },
 ];
 
 function OptionButton({ label, active, onClick }) {
