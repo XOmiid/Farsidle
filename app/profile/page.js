@@ -95,15 +95,11 @@ export default function ProfilePage() {
 
           {/* Avatar builder */}
           <div className="mb-5">
-            <span className="block text-[.8rem] text-ivory-dim mb-3 text-right">ساخت آواتار</span>
-            <AvatarBuilder options={avatarOptions} onChange={setAvatarOptions} />
-            <button
-              type="button"
-              onClick={() => setAvatarOptions(randomAvatarOptions(profile?.username || user?.id))}
-              className="mt-3 w-full bg-white/[.04] border border-border text-ivory-dim rounded-[9px] py-2 text-[.82rem] cursor-pointer hover:border-green-dim transition-colors"
-            >
-              آواتار تصادفی
-            </button>
+            <AvatarBuilder
+              options={avatarOptions}
+              onChange={setAvatarOptions}
+              onRandomize={() => setAvatarOptions(randomAvatarOptions(profile?.username || user?.id))}
+            />
           </div>
 
           <label className="block text-right mb-3.5">
