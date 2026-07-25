@@ -33,6 +33,7 @@ export default function ChordleGame() {
   const [slots, setSlots] = useState([]);
   const [sequence, setSequence] = useState(null);
   const [playing, setPlaying] = useState(false);
+  const cancelPlayRef = useRef(null); // holds the cancel fn for the active sequence
   const [hasPlayed, setHasPlayed] = useState(false);
   const [selected, setSelected] = useState(null); // which chord button is tapped
 
@@ -83,6 +84,7 @@ export default function ChordleGame() {
   useEffect(() => () => {
     if (countdownRef.current) clearInterval(countdownRef.current);
     if (toastTimer.current) clearTimeout(toastTimer.current);
+    if (cancelPlayRef.current) cancelPlayRef.current();
   }, []);
 
   useEffect(() => {
@@ -137,22 +139,50 @@ export default function ChordleGame() {
     return () => { cancelled = true; };
   }, [openResult, initRound]);
 
+  const startPlaying = useCallback(async (seq) => {
+    setPlaying(true);
+    const { promise, cancel } = playSequence(seq);
+    cancelPlayRef.current = cancel;
+    await promise;
+    cancelPlayRef.current = null;
+    setPlaying(false);
+  }, []);
+
   const handlePlay = useCallback(async () => {
     resumeAudio();
     if (!sequence) {
       const seq = await fetchRoundSequence(currentRound);
       if (!seq) { showToast("خطا در دریافت توالی"); return; }
       setSequence(seq);
-      setPlaying(true);
       setHasPlayed(true);
-      await playSequence(seq);
-      setPlaying(false);
+      await startPlaying(seq);
     } else {
-      setPlaying(true);
-      await playSequence(sequence);
+      await startPlaying(sequence);
+    }
+  }, [sequence, currentRound, showToast, startPlaying]);
+
+  const handlePause = useCallback(() => {
+    if (cancelPlayRef.current) {
+      cancelPlayRef.current();
+      cancelPlayRef.current = null;
       setPlaying(false);
     }
-  }, [sequence, currentRound, showToast]);
+  }, []);
+
+  const handleRestart = useCallback(async () => {
+    // cancel any active playback first, then replay from chord 1
+    if (cancelPlayRef.current) {
+      cancelPlayRef.current();
+      cancelPlayRef.current = null;
+      setPlaying(false);
+      // small pause so the last chord's decay doesn't overlap
+      await new Promise((r) => setTimeout(r, 150));
+    }
+    resumeAudio();
+    const seq = sequence;
+    if (!seq) return;
+    await startPlaying(seq);
+  }, [sequence, startPlaying]);
 
   const handleChordTap = useCallback((chordIndex) => {
     resumeAudio();
@@ -285,14 +315,42 @@ export default function ChordleGame() {
             </div>
           </div>
 
-          {/* Play button */}
-          <button
-            onClick={handlePlay}
-            disabled={playing || !!reveal}
-            className="mb-5 flex items-center gap-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer disabled:opacity-50"
-          >
-            {playing ? "▶ در حال پخش..." : hasPlayed ? "▶ پخش دوباره" : "▶ پخش توالی"}
-          </button>
+          {/* Playback controls */}
+          <div className="flex gap-2 mb-5">
+            {!playing ? (
+              <button
+                onClick={handlePlay}
+                disabled={!!reveal}
+                className="flex-1 flex items-center justify-center gap-2 bg-green/10 border border-green-dim text-green rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer disabled:opacity-50"
+              >
+                ▶ {hasPlayed ? "پخش دوباره" : "پخش توالی"}
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={handlePause}
+                  className="flex-1 flex items-center justify-center gap-2 bg-yellow/10 border border-yellow text-yellow rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer"
+                >
+                  ⏸ توقف
+                </button>
+                <button
+                  onClick={handleRestart}
+                  className="flex-1 flex items-center justify-center gap-2 bg-white/[.04] border border-border text-ivory-dim rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer"
+                >
+                  ↩ از اول
+                </button>
+              </>
+            )}
+            {!playing && hasPlayed && (
+              <button
+                onClick={handleRestart}
+                disabled={!!reveal}
+                className="flex items-center justify-center bg-white/[.04] border border-border text-ivory-dim rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer disabled:opacity-50"
+              >
+                ↩
+              </button>
+            )}
+          </div>
 
           {/* 9 chord buttons */}
           <div className="w-full max-w-[420px] mb-5">
