@@ -33,7 +33,6 @@ export default function ChordleGame() {
   const [slots, setSlots] = useState([]); // chord indices in the answer slots, null = empty
   const [sequence, setSequence] = useState(null); // the actual sequence for this round (revealed after play)
   const [playing, setPlaying] = useState(false);
-  const [highlightedChord, setHighlightedChord] = useState(null);
   const [reveal, setReveal] = useState(null); // { correct, correct_sequence } after submit
   const [submitting, setSubmitting] = useState(false);
   const [gameOver, setGameOver] = useState(false);
@@ -142,13 +141,11 @@ export default function ChordleGame() {
       setSequence(seq);
       setPlaying(true);
       setHasPlayed(true);
-      await playSequence(seq, (chordIdx) => setHighlightedChord(chordIdx));
-      setHighlightedChord(null);
+      await playSequence(seq);
       setPlaying(false);
     } else {
       setPlaying(true);
-      await playSequence(sequence, (chordIdx) => setHighlightedChord(chordIdx));
-      setHighlightedChord(null);
+      await playSequence(sequence);
       setPlaying(false);
     }
   }, [sequence, currentRound, showToast]);
@@ -308,13 +305,11 @@ export default function ChordleGame() {
                   onDragStart={() => handleDragStart("chord", idx)}
                   onDragEnd={() => setDragging(null)}
                   onClick={() => handleChordTap(idx)}
-                  className={`aspect-square rounded-xl border-2 flex items-center justify-center text-[1.4rem] font-extrabold cursor-pointer select-none transition-transform active:scale-95 ${
-                    highlightedChord === idx ? "scale-110 brightness-125" : ""
-                  }`}
+                  className="aspect-square rounded-xl border-2 flex items-center justify-center text-[1.4rem] font-extrabold cursor-pointer select-none transition-transform active:scale-95"
                   style={{
                     borderColor: CHORD_COLORS[idx],
-                    background: highlightedChord === idx ? CHORD_COLORS[idx] : `${CHORD_COLORS[idx]}22`,
-                    color: highlightedChord === idx ? "#04140a" : CHORD_COLORS[idx],
+                    background: `${CHORD_COLORS[idx]}22`,
+                    color: CHORD_COLORS[idx],
                   }}
                 >
                   {toPersianDigits(idx)}
