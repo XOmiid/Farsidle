@@ -30,17 +30,17 @@ export default function ChordleGame() {
   const [loadError, setLoadError] = useState(false);
 
   const [currentRound, setCurrentRound] = useState(1);
-  const [slots, setSlots] = useState([]); // chord indices in the answer slots, null = empty
-  const [sequence, setSequence] = useState(null); // the actual sequence for this round (revealed after play)
+  const [slots, setSlots] = useState([]);       // chord indices in slots, null = empty
+  const [sequence, setSequence] = useState(null);
   const [playing, setPlaying] = useState(false);
-  const [reveal, setReveal] = useState(null); // { correct, correct_sequence } after submit
+  const [reveal, setReveal] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [roundsCompleted, setRoundsCompleted] = useState(null);
-  const [hasPlayed, setHasPlayed] = useState(false); // has pressed play at least once this round
+  const [hasPlayed, setHasPlayed] = useState(false);
 
-  // drag state
-  const [dragging, setDragging] = useState(null); // { source: 'chord'|'slot', id: chordIndex|slotIndex }
+  // Tap-to-place state: which chord button is currently selected
+  const [selected, setSelected] = useState(null);
 
   const [toastMsg, setToastMsg] = useState("");
   const toastTimer = useRef(null);
@@ -103,6 +103,7 @@ export default function ChordleGame() {
     setSequence(null);
     setReveal(null);
     setHasPlayed(false);
+    setSelected(null);
   }, []);
 
   // Boot
@@ -150,10 +151,32 @@ export default function ChordleGame() {
     }
   }, [sequence, currentRound, showToast]);
 
+  // Tap a chord button: play its sound + select it for placement
   const handleChordTap = useCallback((chordIndex) => {
     resumeAudio();
     playChord(chordIndex);
-  }, []);
+    if (reveal) return;
+    setSelected((prev) => prev === chordIndex ? null : chordIndex);
+  }, [reveal]);
+
+  // Tap a slot:
+  //   - if a chord is selected → place it in this slot
+  //   - if slot is already filled and nothing is selected → clear it
+  //   - if slot is filled and a chord IS selected → replace it
+  const handleSlotTap = useCallback((slotIndex) => {
+    if (reveal) return;
+    const next = [...slots];
+    if (selected !== null) {
+      next[slotIndex] = selected;
+      setSlots(next);
+      // auto-advance selection to next empty slot if any
+      const nextEmpty = next.findIndex((s, i) => i > slotIndex && s === null);
+      if (nextEmpty === -1) setSelected(null); // all filled, deselect
+    } else if (next[slotIndex] !== null) {
+      next[slotIndex] = null;
+      setSlots(next);
+    }
+  }, [reveal, selected, slots]);
 
   const handleSubmit = useCallback(async () => {
     if (!hasPlayed) { showToast("اول باید آهنگ رو گوش بدی"); return; }
@@ -162,6 +185,7 @@ export default function ChordleGame() {
     const { data, error } = await submitRound(currentRound, slots);
     setSubmitting(false);
     if (!data || error) { showToast("خطا در ارسال — دوباره امتحان کن"); return; }
+    setSelected(null);
     setReveal(data);
   }, [slots, currentRound, hasPlayed, showToast]);
 
@@ -186,45 +210,10 @@ export default function ChordleGame() {
     setLeaderboard(entries);
   }, []);
 
-  // ── Drag and drop ──────────────────────────────────────────
-  const handleDragStart = useCallback((source, id) => {
-    setDragging({ source, id });
-  }, []);
-
-  const handleDropOnSlot = useCallback((slotIndex) => {
-    if (!dragging) return;
-    const next = [...slots];
-    if (dragging.source === "chord") {
-      next[slotIndex] = dragging.id;
-    } else if (dragging.source === "slot") {
-      // swap
-      const from = dragging.id;
-      [next[from], next[slotIndex]] = [next[slotIndex], next[from]];
-    }
-    setSlots(next);
-    setDragging(null);
-  }, [dragging, slots]);
-
-  const handleDropOnChordArea = useCallback((slotIndex) => {
-    // dragging from a slot back to clear it
-    if (!dragging || dragging.source !== "slot") return;
-    const next = [...slots];
-    next[dragging.id] = null;
-    setSlots(next);
-    setDragging(null);
-  }, [dragging, slots]);
-
-  const clearSlot = useCallback((slotIndex) => {
-    const next = [...slots];
-    next[slotIndex] = null;
-    setSlots(next);
-  }, [slots]);
-
-  const slotBgClass = (chordIndex, slotIndex) => {
-    if (!reveal) return "border-green-dim bg-bg-1";
+  const slotBorderColor = (chordIdx, slotIndex) => {
+    if (!reveal) return chordIdx !== null ? CHORD_COLORS[chordIdx] : undefined;
     const correct = reveal.correct_sequence[slotIndex];
-    if (chordIndex === correct) return "border-green bg-green/20";
-    return "border-red-500 bg-red-500/10";
+    return chordIdx === correct ? "#4ade80" : "#ef4444";
   };
 
   const helpButton = (
@@ -235,7 +224,9 @@ export default function ChordleGame() {
   );
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center text-ivory-dim text-sm">در حال بارگذاری...</div>
+    <div className="min-h-screen flex items-center justify-center text-ivory-dim text-sm">
+      در حال بارگذاری...
+    </div>
   );
 
   return (
@@ -251,36 +242,42 @@ export default function ChordleGame() {
           <div className="w-full max-w-[420px] flex items-center justify-between mb-4 px-1">
             <span className="text-ivory-dim text-[.85rem]">دور {toPersianDigits(currentRound)} از ۳</span>
             <div className="flex gap-1.5">
-              {[1,2,3].map((r) => (
-                <div key={r} className={`w-2 h-2 rounded-full ${r < currentRound ? "bg-green" : r === currentRound ? "bg-green/60" : "bg-border"}`} />
+              {[1, 2, 3].map((r) => (
+                <div key={r} className={`w-2 h-2 rounded-full ${
+                  r < currentRound ? "bg-green" : r === currentRound ? "bg-green/60" : "bg-border"
+                }`} />
               ))}
             </div>
           </div>
 
           {/* Answer slots */}
           <div className="w-full max-w-[420px] mb-5">
-            <p className="text-[.78rem] text-ivory-dim mb-2 text-right">ترتیب جواب</p>
-            <div className="flex gap-2 justify-center"
-              onDragOver={(e) => e.preventDefault()}>
+            <p className="text-[.78rem] text-ivory-dim mb-2 text-right">
+              {selected !== null
+                ? "حالا روی یه خانه بزن تا نت رو بذاری"
+                : "روی یه نت بزن تا انتخاب بشه"}
+            </p>
+            <div className="flex gap-2 justify-center">
               {slots.map((chordIdx, i) => (
-                <div
+                <button
                   key={i}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={() => handleDropOnSlot(i)}
-                  draggable={chordIdx !== null && !reveal}
-                  onDragStart={() => chordIdx !== null && handleDragStart("slot", i)}
-                  onClick={() => !reveal && chordIdx !== null && clearSlot(i)}
-                  className={`flex-1 aspect-square max-w-[72px] rounded-xl border-2 flex items-center justify-center text-[1.2rem] font-bold transition-colors cursor-pointer select-none ${
-                    chordIdx !== null ? slotBgClass(chordIdx, i) : "border-dashed border-border bg-white/[.03]"
-                  }`}
-                  style={chordIdx !== null ? { background: `${CHORD_COLORS[chordIdx]}22`, borderColor: CHORD_COLORS[chordIdx] } : {}}
+                  onClick={() => handleSlotTap(i)}
+                  className="flex-1 aspect-square max-w-[72px] rounded-xl border-2 flex items-center justify-center text-[1.3rem] font-bold transition-all cursor-pointer select-none"
+                  style={{
+                    borderColor: chordIdx !== null
+                      ? slotBorderColor(chordIdx, i)
+                      : selected !== null ? "#4ade80" : "#2a3d2e",
+                    borderStyle: chordIdx !== null ? "solid" : "dashed",
+                    background: chordIdx !== null
+                      ? `${slotBorderColor(chordIdx, i)}22`
+                      : selected !== null ? "rgba(74,222,128,.08)" : "rgba(255,255,255,.02)",
+                    color: chordIdx !== null ? slotBorderColor(chordIdx, i) : "#4ade80",
+                  }}
                 >
-                  {chordIdx !== null ? (
-                    <span style={{ color: CHORD_COLORS[chordIdx] }}>{toPersianDigits(chordIdx)}</span>
-                  ) : (
-                    <span className="text-border text-[.9rem]">{toPersianDigits(i + 1)}</span>
-                  )}
-                </div>
+                  {chordIdx !== null
+                    ? toPersianDigits(chordIdx)
+                    : <span className="text-[.85rem] opacity-40">{toPersianDigits(i + 1)}</span>}
+                </button>
               ))}
             </div>
           </div>
@@ -291,30 +288,32 @@ export default function ChordleGame() {
             disabled={playing || !!reveal}
             className="mb-5 flex items-center gap-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer disabled:opacity-50"
           >
-            <span>{playing ? "▶ در حال پخش..." : hasPlayed ? "▶ پخش دوباره" : "▶ پخش توالی"}</span>
+            {playing ? "▶ در حال پخش..." : hasPlayed ? "▶ پخش دوباره" : "▶ پخش توالی"}
           </button>
 
           {/* 9 chord buttons */}
           <div className="w-full max-w-[420px] mb-5">
-            <p className="text-[.78rem] text-ivory-dim mb-2 text-right">نت‌ها — بکش و بذار</p>
+            <p className="text-[.78rem] text-ivory-dim mb-2 text-right">نت‌ها — بزن تا انتخاب بشه</p>
             <div className="grid grid-cols-3 gap-2.5">
-              {Array.from({ length: CHORD_COUNT }, (_, i) => i + 1).map((idx) => (
-                <div
-                  key={idx}
-                  draggable={!reveal}
-                  onDragStart={() => handleDragStart("chord", idx)}
-                  onDragEnd={() => setDragging(null)}
-                  onClick={() => handleChordTap(idx)}
-                  className="aspect-square rounded-xl border-2 flex items-center justify-center text-[1.4rem] font-extrabold cursor-pointer select-none transition-transform active:scale-95"
-                  style={{
-                    borderColor: CHORD_COLORS[idx],
-                    background: `${CHORD_COLORS[idx]}22`,
-                    color: CHORD_COLORS[idx],
-                  }}
-                >
-                  {toPersianDigits(idx)}
-                </div>
-              ))}
+              {Array.from({ length: CHORD_COUNT }, (_, i) => i + 1).map((idx) => {
+                const isSelected = selected === idx;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleChordTap(idx)}
+                    className="aspect-square rounded-xl border-2 flex items-center justify-center text-[1.4rem] font-extrabold cursor-pointer select-none transition-all active:scale-95"
+                    style={{
+                      borderColor: CHORD_COLORS[idx],
+                      background: isSelected ? CHORD_COLORS[idx] : `${CHORD_COLORS[idx]}22`,
+                      color: isSelected ? "#04140a" : CHORD_COLORS[idx],
+                      transform: isSelected ? "scale(1.08)" : "scale(1)",
+                      boxShadow: isSelected ? `0 0 12px ${CHORD_COLORS[idx]}88` : "none",
+                    }}
+                  >
+                    {toPersianDigits(idx)}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -323,12 +322,14 @@ export default function ChordleGame() {
             <div className={`w-full max-w-[420px] rounded-xl px-4 py-3 text-center mb-4 border ${
               reveal.correct ? "border-green bg-green/10 text-green" : "border-red-500 bg-red-500/10 text-red-400"
             }`}>
-              <p className="font-bold text-[.95rem] mb-1">{reveal.correct ? "آفرین! درسته ✓" : "اشتباه بود ✗"}</p>
+              <p className="font-bold text-[.95rem] mb-1">
+                {reveal.correct ? "آفرین! درسته ✓" : "اشتباه بود ✗"}
+              </p>
               {!reveal.correct && (
                 <p className="text-[.8rem] text-ivory-dim">
                   ترتیب درست:{" "}
-                  {reveal.correct_sequence.map((idx) => (
-                    <span key={idx} style={{ color: CHORD_COLORS[idx] }} className="font-bold mx-0.5">
+                  {reveal.correct_sequence.map((idx, i) => (
+                    <span key={i} style={{ color: CHORD_COLORS[idx] }} className="font-bold mx-0.5">
                       {toPersianDigits(idx)}
                     </span>
                   ))}
@@ -339,13 +340,18 @@ export default function ChordleGame() {
 
           {/* Submit / Continue */}
           {!reveal ? (
-            <button onClick={handleSubmit} disabled={submitting || !hasPlayed || slots.some(s => s === null)}
-              className="w-full max-w-[420px] bg-green text-[#04140a] border-none rounded-xl py-3 font-bold text-[.95rem] cursor-pointer disabled:opacity-40">
+            <button
+              onClick={handleSubmit}
+              disabled={submitting || !hasPlayed || slots.some(s => s === null)}
+              className="w-full max-w-[420px] bg-green text-[#04140a] border-none rounded-xl py-3 font-bold text-[.95rem] cursor-pointer disabled:opacity-40"
+            >
               {submitting ? "در حال بررسی..." : "ثبت جواب"}
             </button>
           ) : (
-            <button onClick={handleContinue}
-              className="w-full max-w-[420px] bg-green text-[#04140a] border-none rounded-xl py-3 font-bold text-[.95rem] cursor-pointer">
+            <button
+              onClick={handleContinue}
+              className="w-full max-w-[420px] bg-green text-[#04140a] border-none rounded-xl py-3 font-bold text-[.95rem] cursor-pointer"
+            >
               {reveal.game_over ? "دیدن نتیجه" : `دور ${toPersianDigits(currentRound + 1)} ←`}
             </button>
           )}
