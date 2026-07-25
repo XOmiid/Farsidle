@@ -30,17 +30,20 @@ export default function ChordleGame() {
   const [loadError, setLoadError] = useState(false);
 
   const [currentRound, setCurrentRound] = useState(1);
-  const [slots, setSlots] = useState([]);       // chord indices in slots, null = empty
+  const [slots, setSlots] = useState([]);
   const [sequence, setSequence] = useState(null);
   const [playing, setPlaying] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const [selected, setSelected] = useState(null); // which chord button is tapped
+
+  // reveal: { correct_slots: bool[], round_score, max_score, game_over, correct_sequence }
   const [reveal, setReveal] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [roundsCompleted, setRoundsCompleted] = useState(null);
-  const [hasPlayed, setHasPlayed] = useState(false);
 
-  // Tap-to-place state: which chord button is currently selected
-  const [selected, setSelected] = useState(null);
+  // running tally across all 3 rounds
+  const [totalScore, setTotalScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [finalScore, setFinalScore] = useState(null);
 
   const [toastMsg, setToastMsg] = useState("");
   const toastTimer = useRef(null);
@@ -122,7 +125,7 @@ export default function ChordleGame() {
 
       if (status.played) {
         setGameOver(true);
-        setRoundsCompleted(status.rounds_completed);
+        setFinalScore(status.total_score);
         setLoading(false);
         openResult();
         return;
@@ -151,7 +154,6 @@ export default function ChordleGame() {
     }
   }, [sequence, currentRound, showToast]);
 
-  // Tap a chord button: play its sound + select it for placement
   const handleChordTap = useCallback((chordIndex) => {
     resumeAudio();
     playChord(chordIndex);
@@ -159,19 +161,14 @@ export default function ChordleGame() {
     setSelected((prev) => prev === chordIndex ? null : chordIndex);
   }, [reveal]);
 
-  // Tap a slot:
-  //   - if a chord is selected → place it in this slot
-  //   - if slot is already filled and nothing is selected → clear it
-  //   - if slot is filled and a chord IS selected → replace it
   const handleSlotTap = useCallback((slotIndex) => {
     if (reveal) return;
     const next = [...slots];
     if (selected !== null) {
       next[slotIndex] = selected;
       setSlots(next);
-      // auto-advance selection to next empty slot if any
       const nextEmpty = next.findIndex((s, i) => i > slotIndex && s === null);
-      if (nextEmpty === -1) setSelected(null); // all filled, deselect
+      if (nextEmpty === -1) setSelected(null);
     } else if (next[slotIndex] !== null) {
       next[slotIndex] = null;
       setSlots(next);
@@ -186,14 +183,14 @@ export default function ChordleGame() {
     setSubmitting(false);
     if (!data || error) { showToast("خطا در ارسال — دوباره امتحان کن"); return; }
     setSelected(null);
+    setTotalScore((prev) => prev + (data.round_score || 0));
     setReveal(data);
-  }, [slots, currentRound, hasPlayed, showToast]);
+    if (data.game_over) setFinalScore(totalScore + (data.round_score || 0));
+  }, [slots, currentRound, hasPlayed, showToast, totalScore]);
 
   const handleContinue = useCallback(() => {
     if (!reveal) return;
     if (reveal.game_over) {
-      const completed = reveal.correct ? currentRound : currentRound - 1;
-      setRoundsCompleted(completed);
       setGameOver(true);
       setReveal(null);
       openResult();
@@ -210,10 +207,13 @@ export default function ChordleGame() {
     setLeaderboard(entries);
   }, []);
 
-  const slotBorderColor = (chordIdx, slotIndex) => {
-    if (!reveal) return chordIdx !== null ? CHORD_COLORS[chordIdx] : undefined;
-    const correct = reveal.correct_sequence[slotIndex];
-    return chordIdx === correct ? "#4ade80" : "#ef4444";
+  const slotColor = (slotIndex) => {
+    const chordIdx = slots[slotIndex];
+    if (!reveal) {
+      if (chordIdx !== null) return CHORD_COLORS[chordIdx];
+      return selected !== null ? "#4ade80" : undefined;
+    }
+    return reveal.correct_slots[slotIndex] ? "#4ade80" : "#ef4444";
   };
 
   const helpButton = (
@@ -232,21 +232,25 @@ export default function ChordleGame() {
   return (
     <div className="min-h-screen flex flex-col items-center px-3 pt-[18px] pb-6">
       <Header title="کوردل" onMenuClick={() => setSidebarOpen(true)} right={helpButton} />
-
       <CountdownBar visible={countdownVisible} text={countdownText} onClick={() => gameOver && openResult()} />
       <Toast message={toastMsg} />
 
       {!loadError && !gameOver && (
         <>
-          {/* Round indicator */}
+          {/* Round indicator + running score */}
           <div className="w-full max-w-[420px] flex items-center justify-between mb-4 px-1">
             <span className="text-ivory-dim text-[.85rem]">دور {toPersianDigits(currentRound)} از ۳</span>
-            <div className="flex gap-1.5">
-              {[1, 2, 3].map((r) => (
-                <div key={r} className={`w-2 h-2 rounded-full ${
-                  r < currentRound ? "bg-green" : r === currentRound ? "bg-green/60" : "bg-border"
-                }`} />
-              ))}
+            <div className="flex items-center gap-3">
+              <span className="text-green text-[.85rem] font-bold">
+                {toPersianDigits(totalScore)}/۱۲
+              </span>
+              <div className="flex gap-1.5">
+                {[1,2,3].map((r) => (
+                  <div key={r} className={`w-2 h-2 rounded-full ${
+                    r < currentRound ? "bg-green" : r === currentRound ? "bg-green/60" : "bg-border"
+                  }`} />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -258,27 +262,26 @@ export default function ChordleGame() {
                 : "روی یه نت بزن تا انتخاب بشه"}
             </p>
             <div className="flex gap-2 justify-center">
-              {slots.map((chordIdx, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleSlotTap(i)}
-                  className="flex-1 aspect-square max-w-[72px] rounded-xl border-2 flex items-center justify-center text-[1.3rem] font-bold transition-all cursor-pointer select-none"
-                  style={{
-                    borderColor: chordIdx !== null
-                      ? slotBorderColor(chordIdx, i)
-                      : selected !== null ? "#4ade80" : "#2a3d2e",
-                    borderStyle: chordIdx !== null ? "solid" : "dashed",
-                    background: chordIdx !== null
-                      ? `${slotBorderColor(chordIdx, i)}22`
-                      : selected !== null ? "rgba(74,222,128,.08)" : "rgba(255,255,255,.02)",
-                    color: chordIdx !== null ? slotBorderColor(chordIdx, i) : "#4ade80",
-                  }}
-                >
-                  {chordIdx !== null
-                    ? toPersianDigits(chordIdx)
-                    : <span className="text-[.85rem] opacity-40">{toPersianDigits(i + 1)}</span>}
-                </button>
-              ))}
+              {slots.map((chordIdx, i) => {
+                const color = slotColor(i);
+                return (
+                  <button
+                    key={i}
+                    onClick={() => handleSlotTap(i)}
+                    className="flex-1 aspect-square max-w-[72px] rounded-xl border-2 flex items-center justify-center text-[1.3rem] font-bold transition-all cursor-pointer select-none"
+                    style={{
+                      borderColor: color ?? "#2a3d2e",
+                      borderStyle: chordIdx !== null || reveal ? "solid" : "dashed",
+                      background: color ? `${color}22` : "rgba(255,255,255,.02)",
+                      color: color ?? "#4ade80",
+                    }}
+                  >
+                    {chordIdx !== null
+                      ? toPersianDigits(chordIdx)
+                      : <span className="text-[.85rem] opacity-40">{toPersianDigits(i + 1)}</span>}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -319,14 +322,20 @@ export default function ChordleGame() {
 
           {/* Reveal feedback */}
           {reveal && (
-            <div className={`w-full max-w-[420px] rounded-xl px-4 py-3 text-center mb-4 border ${
-              reveal.correct ? "border-green bg-green/10 text-green" : "border-red-500 bg-red-500/10 text-red-400"
-            }`}>
-              <p className="font-bold text-[.95rem] mb-1">
-                {reveal.correct ? "آفرین! درسته ✓" : "اشتباه بود ✗"}
+            <div className="w-full max-w-[420px] rounded-xl px-4 py-3 text-center mb-4 border border-green-dim bg-white/[.03]">
+              <p className="font-bold text-[.95rem] mb-1 text-ivory">
+                {toPersianDigits(reveal.round_score)} از {toPersianDigits(reveal.max_score)} درست
+                {reveal.round_score === reveal.max_score ? " 🎯" : reveal.round_score === 0 ? " 😅" : " 👍"}
               </p>
-              {!reveal.correct && (
-                <p className="text-[.8rem] text-ivory-dim">
+              <div className="flex gap-1.5 justify-center mt-1">
+                {reveal.correct_slots.map((ok, i) => (
+                  <span key={i} className={`text-[.9rem] ${ok ? "text-green" : "text-red-400"}`}>
+                    {ok ? "✓" : "✗"}
+                  </span>
+                ))}
+              </div>
+              {!reveal.game_over && (
+                <p className="text-[.78rem] text-ivory-dim mt-2">
                   ترتیب درست:{" "}
                   {reveal.correct_sequence.map((idx, i) => (
                     <span key={i} style={{ color: CHORD_COLORS[idx] }} className="font-bold mx-0.5">
@@ -352,7 +361,7 @@ export default function ChordleGame() {
               onClick={handleContinue}
               className="w-full max-w-[420px] bg-green text-[#04140a] border-none rounded-xl py-3 font-bold text-[.95rem] cursor-pointer"
             >
-              {reveal.game_over ? "دیدن نتیجه" : `دور ${toPersianDigits(currentRound + 1)} ←`}
+              {reveal.game_over ? "دیدن نتیجه نهایی" : `دور ${toPersianDigits(currentRound + 1)} ←`}
             </button>
           )}
         </>
@@ -361,7 +370,7 @@ export default function ChordleGame() {
       {gameOver && !resultOpen && (
         <div className="w-full max-w-[420px] flex flex-col items-center gap-3 mt-4">
           <p className="text-ivory-dim text-[.9rem]">
-            دور تموم کردی: <span className="text-green font-bold">{toPersianDigits(roundsCompleted ?? 0)}/۳</span>
+            امتیاز نهایی: <span className="text-green font-bold text-xl">{toPersianDigits(finalScore ?? 0)}/۱۲</span>
           </p>
           <button onClick={openResult}
             className="bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer">
@@ -374,7 +383,7 @@ export default function ChordleGame() {
       <HowToModal open={howtoOpen} onClose={() => setHowtoOpen(false)} />
       <ChordleResultModal
         open={resultOpen}
-        roundsCompleted={roundsCompleted}
+        finalScore={finalScore}
         streak={streak}
         leaderboard={leaderboard}
         leaderboardLoading={lbLoading}

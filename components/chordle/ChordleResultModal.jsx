@@ -8,7 +8,7 @@ import LeaderboardList from "@/components/common/LeaderboardList";
 import StreakBadge from "@/components/common/StreakBadge";
 
 export default function ChordleResultModal({
-  open, roundsCompleted, streak, leaderboard, leaderboardLoading,
+  open, finalScore, streak, leaderboard, leaderboardLoading,
   alreadySubmitted, submitError, onClose, onSubmitScore,
 }) {
   const { user, profile } = useAuth();
@@ -21,8 +21,8 @@ export default function ChordleResultModal({
     setSubmitting(false);
   };
 
-  const perfect = roundsCompleted === 3;
-  const emoji = perfect ? "🎹" : roundsCompleted >= 2 ? "👏" : roundsCompleted === 1 ? "💪" : "😅";
+  const score = finalScore ?? 0;
+  const emoji = score === 12 ? "🎹" : score >= 9 ? "🌟" : score >= 6 ? "👍" : score >= 3 ? "💪" : "😅";
 
   return (
     <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5 overflow-y-auto">
@@ -32,10 +32,11 @@ export default function ChordleResultModal({
 
         <div className="text-[2.5rem] mb-1">{emoji}</div>
         <h2 className="font-display text-[1.6rem] m-0 mb-1">
-          {perfect ? "عالی! همه رو درست گرفتی" : `دور ${toPersianDigits(roundsCompleted ?? 0)} از ۳`}
+          {score === 12 ? "کامل! همه رو درست گرفتی" : "نتیجه‌ی امروز"}
         </h2>
-        <div className="text-[3rem] font-extrabold text-green leading-none my-2">
-          {toPersianDigits(roundsCompleted ?? 0)}<span className="text-lg text-ivory-dim">/۳</span>
+        <div className="text-[3.5rem] font-extrabold text-green leading-none my-2">
+          {toPersianDigits(score)}
+          <span className="text-xl text-ivory-dim">/۱۲</span>
         </div>
 
         {streak >= 2 && (
@@ -58,7 +59,7 @@ export default function ChordleResultModal({
             </div>
           )}
 
-          {user && !alreadySubmitted && roundsCompleted !== null && (
+          {user && !alreadySubmitted && finalScore !== null && (
             <div className="flex items-center gap-2 mb-3">
               <span className="flex-1 bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.88rem] px-3 h-10 flex items-center justify-center truncate">
                 {profile?.username || "..."}
@@ -83,7 +84,7 @@ export default function ChordleResultModal({
             emptyNoun="بازی"
             renderExtra={(e) => (
               <span className="text-green font-bold text-[.85rem] flex-shrink-0">
-                {toPersianDigits(e.score)}/۳
+                {toPersianDigits(e.score)}/۱۲
               </span>
             )}
           />
