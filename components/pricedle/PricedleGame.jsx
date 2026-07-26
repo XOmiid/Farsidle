@@ -157,7 +157,7 @@ export default function PricedleGame() {
   }, []);
 
   const currentQ = questions[qIndex - 1];
-  const emoji = currentQ ? (CATEGORY_EMOJI[currentQ.category] || "💰") : "💰";
+  const emoji = currentQ ? (CATEGORY_EMOJI[currentQ.category] || "🧾") : "🧾";
 
   const helpButton = (
     <button onClick={() => setHowtoOpen(true)} aria-label="راهنما"
