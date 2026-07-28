@@ -10,10 +10,9 @@ export default function Header({ title, onMenuClick, right }) {
       dir="ltr"
       className="w-full max-w-[480px] flex items-center justify-between mb-4 px-1 relative"
     >
-      {/* Top left — Coins + ? */}
-      <div className="flex items-center gap-2">
+      {/* Top left — Coins */}
+      <div className="flex items-center">
         <CoinDisplay />
-        {right}
       </div>
 
       {/* Center — page title */}
@@ -30,14 +29,17 @@ export default function Header({ title, onMenuClick, right }) {
         </span>
       )}
 
-      {/* Top right — Hamburger menu */}
-      <button
-        onClick={onMenuClick}
-        aria-label="منو"
-        className="w-9 h-9 rounded-full border border-green-dim text-green flex items-center justify-center hover:bg-green/10 flex-shrink-0"
-      >
-        ☰
-      </button>
+      {/* Top right — ? + Hamburger */}
+      <div className="flex items-center gap-2">
+        {right}
+        <button
+          onClick={onMenuClick}
+          aria-label="منو"
+          className="w-9 h-9 rounded-full border border-green-dim text-green flex items-center justify-center hover:bg-green/10 flex-shrink-0"
+        >
+          ☰
+        </button>
+      </div>
     </header>
   );
 }
