@@ -15,6 +15,7 @@ import { checkTodayStatus as checkMoneydleStatus } from "@/lib/moneydle/api";
 import { checkTodayStatus as checkGoldleStatus } from "@/lib/goldle/api";
 import { checkTodayStatus as checkChordleStatus } from "@/lib/chordle/api";
 import { checkTodayStatus as checkPricedleStatus } from "@/lib/pricedle/api";
+import { checkTodayStatus as checkMemorydleStatus } from "@/lib/memorydle/api";
 
 const STATUS_CHECKERS = {
   wordle: checkWordleStatus,
@@ -25,6 +26,7 @@ const STATUS_CHECKERS = {
   goldle: checkGoldleStatus,
   chordle: checkChordleStatus,
   pricedle: checkPricedleStatus,
+  memorydle: checkMemorydleStatus,
 };
 
 export default function HomePage() {
