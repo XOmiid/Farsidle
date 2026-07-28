@@ -35,33 +35,20 @@ export default function CoinDisplay() {
   if (!user) return null;
 
   return (
-    <div className="flex items-center gap-2">
-      {/* Coin balance */}
-      <button
-        onClick={!claimedToday ? handleClaim : undefined}
-        title={claimedToday ? "سکه‌های امروز گرفته شد" : "کلیک کن تا سکه‌ی روزانه بگیری"}
-        className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 border text-[.8rem] font-bold transition-colors ${
-          claimedToday
-            ? "border-green-dim bg-green/10 text-green cursor-default"
-            : "border-yellow bg-yellow/10 text-yellow cursor-pointer hover:bg-yellow/20"
-        }`}
-      >
-        <span>🪙</span>
-        <span>{balance !== null ? toPersianDigits(balance) : "..."}</span>
-        {!claimedToday && (
-          <span className="text-[.65rem] opacity-80">+۲۵</span>
-        )}
-      </button>
-
-      {/* Store — greyed out, coming soon */}
-      <button
-        disabled
-        className="flex items-center gap-1 text-[.78rem] text-border border border-border rounded-full px-2.5 py-1 cursor-not-allowed opacity-50"
-        title="به‌زودی..."
-      >
-        <span>🏪</span>
-        <span>فروشگاه</span>
-      </button>
-    </div>
+    <button
+      onClick={!claimedToday ? handleClaim : undefined}
+      title={claimedToday ? "سکه‌های امروز گرفته شد" : "کلیک کن تا سکه‌ی روزانه بگیری"}
+      className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 border text-[.8rem] font-bold transition-colors ${
+        claimedToday
+          ? "border-green-dim bg-green/10 text-green cursor-default"
+          : "border-yellow bg-yellow/10 text-yellow cursor-pointer hover:bg-yellow/20"
+      }`}
+    >
+      <span>🪙</span>
+      <span>{balance !== null ? toPersianDigits(balance) : "..."}</span>
+      {!claimedToday && (
+        <span className="text-[.65rem] opacity-80">+۲۵</span>
+      )}
+    </button>
   );
 }
