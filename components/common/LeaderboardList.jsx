@@ -22,10 +22,10 @@ function PodiumSlot({ entry, rank, coins, renderExtra }) {
 
   const medal  = rank === 1 ? "🥇" : rank === 2 ? "🥈" : "🥉";
   const ringCls = is1st
-    ? "border-yellow shadow-[0_0_18px_rgba(250,204,21,0.4)]"
+    ? "ring-[3px] ring-yellow ring-offset-1 ring-offset-bg-1 shadow-[0_0_18px_rgba(250,204,21,0.4)]"
     : is2nd
-    ? "border-slate-300"
-    : "border-amber-600";
+    ? "ring-[2px] ring-slate-300 ring-offset-1 ring-offset-bg-1"
+    : "ring-[2px] ring-amber-600 ring-offset-1 ring-offset-bg-1";
   const avatarSize = is1st ? 60 : 44;
   const nameCls = is1st ? "text-[.95rem] font-bold" : "text-[.78rem] font-semibold";
 
@@ -37,7 +37,7 @@ function PodiumSlot({ entry, rank, coins, renderExtra }) {
       </span>
 
       {/* Avatar using the real Avatar component */}
-      <div className={`rounded-full border-2 ${ringCls} overflow-hidden flex-shrink-0`}
+      <div className={`rounded-full overflow-hidden flex-shrink-0 ${ringCls}`}
         style={{ width: avatarSize, height: avatarSize }}>
         <Avatar
           avatarKey={entry.avatar}
@@ -128,8 +128,8 @@ export default function LeaderboardList({
   return (
     <div className="w-full">
 
-      {/* Olympic podium — 2nd | 1st | 3rd */}
-      <div className="flex items-end justify-center gap-4 mb-4 pb-3 border-b border-border">
+      {/* Olympic podium — dir=ltr locks: 2nd left | 1st center | 3rd right */}
+      <div dir="ltr" className="flex items-end justify-center gap-4 mb-4 pb-3 border-b border-border">
 
         {/* 2nd place — left */}
         {second ? (
@@ -138,7 +138,7 @@ export default function LeaderboardList({
           <div className="w-[80px] mt-6" />
         )}
 
-        {/* 1st place — center, elevated */}
+        {/* 1st place — center */}
         <PodiumSlot entry={first} rank={1} coins={coins1} renderExtra={renderExtra} />
 
         {/* 3rd place — right */}
