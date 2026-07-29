@@ -93,7 +93,6 @@ export default function PricedleResultModal({
           />
         </div>
       </div>
-        </div>
       </div>
     </div>
   );

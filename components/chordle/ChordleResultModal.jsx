@@ -95,7 +95,6 @@ export default function ChordleResultModal({
           />
         </div>
       </div>
-        </div>
       </div>
     </div>
   );

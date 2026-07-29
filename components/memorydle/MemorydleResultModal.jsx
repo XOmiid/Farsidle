@@ -110,7 +110,6 @@ export default function MemorydleResultModal({
           />
         </div>
       </div>
-        </div>
       </div>
     </div>
   );
