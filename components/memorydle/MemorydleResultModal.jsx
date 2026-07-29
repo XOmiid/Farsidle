@@ -28,10 +28,15 @@ export default function MemorydleResultModal({
   const emoji = total === 10 ? "🧠" : total >= 8 ? "🌟" : total >= 6 ? "👍" : total >= 4 ? "💪" : "😅";
 
   return (
-    <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5 overflow-y-auto">
-      <div className="relative bg-bg-1 border border-green-dim rounded-2xl p-[26px_24px] max-w-[420px] w-full text-center">
-        <button onClick={onClose} aria-label="بستن"
-          className="absolute top-3 left-3 bg-transparent border-none text-ivory-dim text-xl cursor-pointer">✕</button>
+    <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-3">
+      <div className="relative bg-bg-1 border border-green-dim rounded-2xl max-w-[420px] w-full text-center max-h-[90vh] flex flex-col overflow-hidden">
+        {/* Sticky header with close button */}
+        <div className="sticky top-0 z-10 bg-bg-1 flex justify-end px-4 pt-3 pb-1 border-b border-transparent">
+          <button onClick={onClose} aria-label="بستن"
+            className="bg-transparent border-none text-ivory-dim text-xl cursor-pointer leading-none">✕</button>
+        </div>
+        {/* Scrollable content */}
+        <div className="overflow-y-auto flex-1 px-6 pb-6">
 
         <div className="text-[2.5rem] mb-1">{emoji}</div>
         <h2 className="font-display text-[1.6rem] m-0 mb-1">
@@ -103,6 +108,8 @@ export default function MemorydleResultModal({
               </span>
             )}
           />
+        </div>
+      </div>
         </div>
       </div>
     </div>
