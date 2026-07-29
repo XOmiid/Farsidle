@@ -283,12 +283,12 @@ export default function CrosswordPlayer({ id }) {
 
     if (checked && correctMap[key] !== undefined) {
       return correctMap[key]
-        ? "bg-green/20 border-green text-green"
-        : "bg-red-500/20 border-red-400 text-red-300";
+        ? "bg-green/20 border-gray-400 text-black"
+        : "bg-red-100 border-gray-400 text-black";
     }
-    if (isSel) return "bg-yellow/20 border-yellow text-ivory";
-    if (isActive) return "bg-green/10 border-green/50 text-ivory";
-    return "bg-white/[.04] border-border text-ivory";
+    if (isSel) return "bg-blue-200 border-blue-500 text-black";
+    if (isActive) return "bg-blue-50 border-gray-400 text-black";
+    return "bg-white border-gray-400 text-black";
   };
 
   if (loading) return (
@@ -328,15 +328,15 @@ export default function CrosswordPlayer({ id }) {
       <Toast message={toastMsg} />
 
       {solved && (
-        <div className="w-full max-w-[420px] bg-green/10 border border-green rounded-xl px-4 py-2.5 text-green text-center font-bold text-[.9rem] mb-3">
+        <div className="w-full max-w-[420px] bg-green/10 border border-green-dim rounded-xl px-4 py-2.5 text-green text-center font-bold text-[.9rem] mb-3">
           ✓ این جدول رو حل کردی!
         </div>
       )}
 
       {/* Grid */}
-      <div className="mb-4" dir="ltr">
+      <div className="mb-4">
         <div
-          className="grid gap-[2px]"
+          className="grid gap-0 border-[1.5px] border-black"
           style={{
             gridTemplateColumns: `repeat(${puzzle.cols}, ${cellSize}px)`,
             gridTemplateRows: `repeat(${puzzle.rows}, ${cellSize}px)`,
@@ -352,7 +352,7 @@ export default function CrosswordPlayer({ id }) {
               if (isBlack) {
                 return (
                   <div key={key}
-                    className="bg-[#0a1a0d] rounded-[3px]"
+                    className="bg-black rounded-[2px]"
                     style={{ width: cellSize, height: cellSize }}
                   />
                 );
@@ -362,15 +362,15 @@ export default function CrosswordPlayer({ id }) {
                 <div
                   key={key}
                   onClick={() => handleCellClick(r, c)}
-                  className={`relative rounded-[3px] border flex items-center justify-center cursor-pointer select-none transition-colors ${getCellStyle(r, c)}`}
+                  className={`relative border-[1.5px] flex items-center justify-center cursor-pointer select-none transition-colors ${getCellStyle(r, c)}`}
                   style={{ width: cellSize, height: cellSize }}
                 >
                   {cellNum !== null && (
-                    <span className="absolute top-[1px] right-[2px] text-[8px] text-ivory-dim leading-none font-bold">
+                    <span className="absolute top-[1px] right-[2px] text-[8px] text-gray-600 leading-none font-bold">
                       {toPersianDigits(cellNum)}
                     </span>
                   )}
-                  <span className="text-[1.1rem] font-bold leading-none">
+                  <span className="text-[1.1rem] font-bold leading-none text-black">
                     {letter}
                   </span>
                 </div>
