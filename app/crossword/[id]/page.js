@@ -4,6 +4,7 @@ export const metadata = {
   title: "مینی جدول",
 };
 
-export default function CrosswordPlayerPage({ params }) {
-  return <CrosswordPlayer id={params.id} />;
+export default async function CrosswordPlayerPage({ params }) {
+  const { id } = await params;
+  return <CrosswordPlayer id={id} />;
 }
