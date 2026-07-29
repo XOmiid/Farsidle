@@ -15,5 +15,6 @@ export default function sitemap() {
     { url: `${base}/login`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${base}/register`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${base}/memorydle`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${base}/crossword`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
   ];
 }
