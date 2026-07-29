@@ -296,7 +296,7 @@ export default function CrosswordPlayer({ id }) {
     </div>
   );
 
-  const cellSize = Math.min(52, Math.floor((Math.min(window?.innerWidth || 380, 420) - 32) / puzzle.cols));
+  const cellSize = Math.min(52, Math.floor((Math.min(typeof window !== "undefined" ? window.innerWidth : 380, 420) - 32) / puzzle.cols));
 
   return (
     <div
