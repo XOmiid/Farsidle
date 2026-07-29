@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Toast from "@/components/Toast";
 import { fetchCrossword, saveLetter, checkCrossword } from "@/lib/crossword/api";
+import { supabase } from "@/lib/supabaseClient";
 import { toPersianDigits } from "@/lib/shared/persian";
 
 const PERSIAN_LETTERS = "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی";
@@ -67,10 +68,20 @@ export default function CrosswordPlayer({ id }) {
     toastTimer.current = setTimeout(() => setToastMsg(""), 2000);
   }, []);
 
-  // Boot
+  // Boot — wait for auth session before fetching
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      // Wait for Supabase to restore session from localStorage
+      const { data: { session } } = await supabase.auth.getSession();
+      if (cancelled) return;
+
+      if (!session) {
+        setError("برای بازی کردن باید وارد حساب بشی");
+        setLoading(false);
+        return;
+      }
+
       const { data, error: err } = await fetchCrossword(id);
       if (cancelled) return;
       if (err || !data) {
@@ -289,10 +300,18 @@ export default function CrosswordPlayer({ id }) {
   if (error) return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-5">
       <p className="text-red-400 text-center">{error}</p>
-      <button onClick={() => router.push("/crossword")}
-        className="bg-green/10 border border-green-dim text-green rounded-xl px-5 py-2.5 font-bold text-[.9rem] cursor-pointer">
-        بازگشت به لیست جدول‌ها
-      </button>
+      <div className="flex gap-3">
+        <button onClick={() => router.push("/crossword")}
+          className="bg-green/10 border border-green-dim text-green rounded-xl px-5 py-2.5 font-bold text-[.9rem] cursor-pointer">
+          بازگشت
+        </button>
+        {error.includes("وارد") && (
+          <button onClick={() => router.push("/login")}
+            className="bg-green text-[#04140a] border-none rounded-xl px-5 py-2.5 font-bold text-[.9rem] cursor-pointer">
+            ورود
+          </button>
+        )}
+      </div>
     </div>
   );
 
