@@ -76,14 +76,15 @@ export default function Sidebar({ open, onClose }) {
 
         {/* Store — greyed out, coming soon */}
         <div dir="rtl" className="mb-5 pb-5 border-b border-border">
-          <button
-            disabled
-            className="w-full flex items-center gap-2 text-right text-border text-sm py-2 bg-transparent border-none cursor-not-allowed opacity-50"
+          <Link
+            href="/store"
+            onClick={onClose}
+            className="w-full flex items-center gap-2 text-right text-ivory-dim text-sm py-2 no-underline hover:text-ivory transition-colors"
           >
             <span>🏪</span>
             <span className="font-semibold">فروشگاه</span>
-            <span className="text-xs mr-auto opacity-60">به‌زودی</span>
-          </button>
+            <span className="text-[.65rem] mr-auto text-yellow opacity-80">به‌زودی</span>
+          </Link>
         </div>
 
         {/* Games list */}
