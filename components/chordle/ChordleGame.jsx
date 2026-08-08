@@ -186,12 +186,20 @@ export default function ChordleGame() {
     await new Promise((r) => setTimeout(r, 150));
     handleStartSequence();
   }, [clearTimers, handleStartSequence]);
+  
+  const handleSlotClick = useCallback((slotIdx) => {
     if (phase !== "pick" || reveal) return;
+  
     const next = [...slots];
+  
     if (selected !== null) {
       next[slotIdx] = selected;
       setSlots(next);
-      const nextEmpty = next.findIndex((s, i) => i > slotIdx && s === null);
+  
+      const nextEmpty = next.findIndex(
+        (s, i) => i > slotIdx && s === null
+      );
+  
       if (nextEmpty === -1) setSelected(null);
     } else if (next[slotIdx] !== null) {
       next[slotIdx] = null;
