@@ -286,7 +286,7 @@ export default function ChordleGame() {
                   ? reveal.correct_slots[i] ? "#4ade80" : "#ef4444"
                   : color;
                 return (
-                  <button key={i} onClick={() => handleSlotTap(i)}
+                  <button key={i} onClick={() => handleSlotClick(i)}
                     className="flex-1 aspect-square max-w-[64px] rounded-xl border-2 flex items-center justify-center text-[1.2rem] font-bold transition-all cursor-pointer select-none"
                     style={{
                       borderColor: revealColor ?? (phase === "pick" && selected !== null ? "#4ade80" : "#2a3d2e"),
