@@ -10,22 +10,14 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 import { checkTodayStatus as checkWordleStatus } from "@/lib/wordle/api";
 import { checkTodayStatus as checkFactleStatus } from "@/lib/factle/api";
 import { checkTodayStatus as checkColordleStatus } from "@/lib/colordle/api";
-import { checkTodayStatus as checkMordleStatus } from "@/lib/duel/api";
-import { checkTodayStatus as checkMoneydleStatus } from "@/lib/moneydle/api";
-import { checkTodayStatus as checkGoldleStatus } from "@/lib/goldle/api";
 import { checkTodayStatus as checkChordleStatus } from "@/lib/chordle/api";
-import { checkTodayStatus as checkPricedleStatus } from "@/lib/pricedle/api";
 import { checkTodayStatus as checkMemorydleStatus } from "@/lib/memorydle/api";
 
 const STATUS_CHECKERS = {
   wordle: checkWordleStatus,
   factle: checkFactleStatus,
   colordle: checkColordleStatus,
-  mordle: checkMordleStatus,
-  moneydle: checkMoneydleStatus,
-  goldle: checkGoldleStatus,
   chordle: checkChordleStatus,
-  pricedle: checkPricedleStatus,
   memorydle: checkMemorydleStatus,
 };
 
