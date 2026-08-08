@@ -174,7 +174,18 @@ export default function ChordleGame() {
     setSelected((prev) => prev === buttonIdx ? null : buttonIdx);
   }, [phase, reveal, instrument, getActualId]);
 
-  const handleSlotTap = useCallback((slotIdx) => {
+  const handlePause = useCallback(() => {
+    clearTimers();
+    setPhase("ready");
+  }, [clearTimers]);
+
+  const handleRestart = useCallback(async () => {
+    clearTimers();
+    setPhase("ready");
+    // small gap then restart
+    await new Promise((r) => setTimeout(r, 150));
+    handleStartSequence();
+  }, [clearTimers, handleStartSequence]);
     if (phase !== "pick" || reveal) return;
     const next = [...slots];
     if (selected !== null) {
@@ -282,18 +293,39 @@ export default function ChordleGame() {
             </div>
           </div>
 
-          {/* Play button */}
+          {/* Playback controls */}
           {(phase === "ready" || phase === "running") && (
-            <button onClick={phase === "ready" ? handleStartSequence : undefined}
-              disabled={phase === "running"}
-              className="mb-4 flex items-center gap-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer disabled:opacity-50 w-full max-w-[420px] justify-center">
-              {phase === "running" ? `▶ در حال پخش ${roundInfo?.emoji}...` : `▶ شروع نمایش — ${roundInfo?.label}`}
-            </button>
+            <div className="flex gap-2 mb-4 w-full max-w-[420px]">
+              {phase === "ready" ? (
+                <>
+                  <button onClick={handleStartSequence}
+                    className="flex-1 flex items-center justify-center gap-2 bg-green/10 border border-green-dim text-green rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer">
+                    ▶ شروع نمایش — {roundInfo?.label} {roundInfo?.emoji}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button onClick={handlePause}
+                    className="flex-1 flex items-center justify-center gap-2 bg-yellow/10 border border-yellow text-yellow rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer">
+                    ⏸ توقف
+                  </button>
+                  <button onClick={handleRestart}
+                    className="flex-1 flex items-center justify-center gap-2 bg-white/[.04] border border-border text-ivory-dim rounded-xl px-4 py-2.5 font-bold text-[.9rem] cursor-pointer">
+                    ↩ از اول
+                  </button>
+                </>
+              )}
+            </div>
           )}
 
           {/* 9 sound buttons */}
           {phase === "pick" && !reveal && (
             <div className="w-full max-w-[420px] mb-4">
+              {/* Replay button */}
+              <button onClick={handleStartSequence}
+                className="w-full flex items-center justify-center gap-2 bg-white/[.04] border border-border text-ivory-dim rounded-xl px-4 py-2 font-bold text-[.82rem] cursor-pointer mb-3 hover:border-green-dim hover:text-green transition-colors">
+                ↩ شنیدن دوباره
+              </button>
               <div className="grid grid-cols-3 gap-2.5">
                 {Array.from({ length: 9 }, (_, i) => i + 1).map((idx) => {
                   const isSelected = selected === idx;
