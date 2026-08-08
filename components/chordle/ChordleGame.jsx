@@ -42,6 +42,8 @@ export default function ChordleGame() {
   const [round, setRound] = useState(1);
   const [phase, setPhase] = useState("ready"); // ready | running | pick
   const [selected, setSelected] = useState(null);
+  const selectedRef = useRef(null);
+
   const [slots, setSlots] = useState([null, null, null, null, null]);
   const [reveal, setReveal] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -149,7 +151,10 @@ export default function ChordleGame() {
     (r) => {
       setRound(r);
       setPhase("ready");
+
       setSelected(null);
+      selectedRef.current = null;
+
       setSlots([null, null, null, null, null]);
       setReveal(null);
       clearTimers();
@@ -255,9 +260,11 @@ export default function ChordleGame() {
 
       if (reveal) return;
 
-      setSelected((prev) =>
-        prev === buttonIdx ? null : buttonIdx
-      );
+      const nextSelected =
+        selectedRef.current === buttonIdx ? null : buttonIdx;
+
+      selectedRef.current = nextSelected;
+      setSelected(nextSelected);
     },
     [reveal, instrument, getActualId]
   );
@@ -280,17 +287,22 @@ export default function ChordleGame() {
   // Select a chord first, then click the slot where you want to place it.
   const handleSlotClick = useCallback(
     (slotIdx) => {
-      if (reveal || selected === null) return;
+      if (reveal) return;
+
+      const selectedChord = selectedRef.current;
+
+      if (selectedChord === null) return;
 
       setSlots((prev) => {
         const next = [...prev];
-        next[slotIdx] = selected;
+        next[slotIdx] = selectedChord;
         return next;
       });
 
+      selectedRef.current = null;
       setSelected(null);
     },
-    [reveal, selected]
+    [reveal]
   );
 
   const handleSubmit = useCallback(async () => {
@@ -310,7 +322,9 @@ export default function ChordleGame() {
       return;
     }
 
+    selectedRef.current = null;
     setSelected(null);
+
     setTotalScore((prev) => prev + data.round_score);
     setReveal(data);
 
@@ -424,7 +438,7 @@ export default function ChordleGame() {
           {/* Answer slots */}
           <div className="w-full max-w-[420px] mb-4">
             <p className="text-[.75rem] text-ivory-dim mb-2 text-right">
-              {phase === "pick" && selected !== null
+              {selected !== null
                 ? "روی یه خانه بزن"
                 : phase === "pick"
                 ? "یه دکمه انتخاب کن"
@@ -452,7 +466,7 @@ export default function ChordleGame() {
                     style={{
                       borderColor:
                         revealColor ??
-                        (phase === "pick" && selected !== null
+                        (selected !== null
                           ? "#4ade80"
                           : "#2a3d2e"),
 
