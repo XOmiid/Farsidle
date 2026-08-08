@@ -3,26 +3,22 @@
 export default function HowToModal({ open, onClose }) {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5 overflow-y-auto"
+    <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5"
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="relative bg-bg-1 border border-green-dim rounded-2xl p-[26px_24px] max-w-[340px] w-full text-right">
-        <button onClick={onClose} aria-label="بستن"
-          className="absolute top-3 left-3 bg-transparent border-none text-ivory-dim text-xl cursor-pointer">✕</button>
+        <button onClick={onClose} className="absolute top-3 left-3 bg-transparent border-none text-ivory-dim text-xl cursor-pointer">✕</button>
         <h2 className="font-display text-2xl text-green m-0 mb-3 text-center">طرز بازی کوردل</h2>
-
         <p className="text-ivory-dim text-sm leading-7 mb-3">
-          هر روز یه توالی صوتی از نت‌های پیانو برات پخش می‌شه. تو باید همون توالی رو دوباره بسازی. سه دور داری و هر دور امتیاز جداگانه داره.
+          هر روز سه دور موسیقی داری — گیتار 🎸، پیانو 🎹، درامز 🥁. هر دور یه توالی از ۵ صدا پخش می‌شه که باید ترتیبشو به خاطر بسپاری.
         </p>
-
         <ul className="text-ivory-dim text-sm leading-7 mb-3 pr-4 list-disc space-y-1">
-          <li>روی «پخش توالی» بزن تا آهنگ رو بشنوی — می‌تونی هر بار که خواستی دوباره گوش بدی.</li>
-          <li>روی یه نت بزن تا انتخاب بشه، بعد روی یه خانه بزن تا اونجا بذاریش.</li>
-          <li>روی یه خانه‌ی پر بزن (بدون انتخاب نت) تا خالیش کنی.</li>
-          <li>هر خانه‌ای که درست باشه یه امتیاز می‌گیری — حتی اگه کل توالی اشتباه باشه.</li>
-          <li>دور اول: ۳ نت (۳ امتیاز) — دور دوم: ۴ نت (۴ امتیاز) — دور سوم: ۵ نت (۵ امتیاز).</li>
-          <li>هر سه دور بازی می‌شن — حتی اگه اشتباه کنی. امتیاز نهایی از ۱۲ محاسبه می‌شه.</li>
+          <li>روی «شروع نمایش» بزن تا توالی پخش بشه.</li>
+          <li>بعد از پخش، ۹ دکمه صوتی ظاهر می‌شن — روی هر کدوم بزن تا صداش رو بشنوی.</li>
+          <li>یه دکمه رو انتخاب کن، بعد روی یه خانه بزن تا اونجا بذاریش.</li>
+          <li>هر دور ۵ امتیاز داره — هر خانه‌ی درست یه امتیاز.</li>
+          <li>مجموع ۱۵ امتیاز، ضربدر ۱۰ = سکه می‌گیری.</li>
+          <li>هر شب ۹ صدا از بانک بزرگ‌تری به‌صورت تصادفی انتخاب می‌شن.</li>
         </ul>
-
         <button onClick={onClose}
           className="w-full bg-green text-[#04140a] border-none rounded-[9px] py-2.5 font-bold text-[.95rem] cursor-pointer">
           بزن بریم
