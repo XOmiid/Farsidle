@@ -280,7 +280,7 @@ export default function ChordleGame() {
   // Select a chord first, then click the slot where you want to place it.
   const handleSlotClick = useCallback(
     (slotIdx) => {
-      if (phase !== "pick" || reveal || selected === null) return;
+      if (reveal || selected === null) return;
 
       setSlots((prev) => {
         const next = [...prev];
@@ -290,7 +290,7 @@ export default function ChordleGame() {
 
       setSelected(null);
     },
-    [phase, reveal, selected]
+    [reveal, selected]
   );
 
   const handleSubmit = useCallback(async () => {
