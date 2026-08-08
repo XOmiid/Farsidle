@@ -253,13 +253,13 @@ export default function ChordleGame() {
       const actualId = getActualId(buttonIdx);
       playSound(actualId, instrument);
 
-      if (phase !== "pick" || reveal) return;
+      if (reveal) return;
 
       setSelected((prev) =>
         prev === buttonIdx ? null : buttonIdx
       );
     },
-    [phase, reveal, instrument, getActualId]
+    [reveal, instrument, getActualId]
   );
 
   const handlePause = useCallback(() => {
