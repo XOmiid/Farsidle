@@ -515,7 +515,7 @@ export default function ChordleGame() {
           )}
 
           {/* 9 sound buttons */}
-          {phase === "pick" && !reveal && (
+          {!reveal && (
             <div className="w-full max-w-[420px] mb-4">
               {/* Replay button */}
               <button
