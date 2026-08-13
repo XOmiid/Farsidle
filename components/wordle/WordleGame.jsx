@@ -51,7 +51,6 @@ export default function WordleGame() {
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const [leaderboardSubmitted, setLeaderboardSubmitted] = useState(false);
   const [streak, setStreak] = useState(0);
-  const [remoteTries, setRemoteTries] = useState(null);
 
   const [countdownVisible, setCountdownVisible] = useState(false);
   const [countdownText, setCountdownText] = useState("۰۰:۰۰:۰۰");
@@ -86,6 +85,8 @@ export default function WordleGame() {
   }, []);
 
   const openResult = useCallback(async (didWin) => {
+    // Auto-submit to leaderboard
+    if (user) { try { await submitScore(); } catch(e) {} }
     setResultOpen(true);
     setLeaderboardLoading(true);
     const entries = await fetchTodayLeaderboard();
@@ -185,7 +186,6 @@ export default function WordleGame() {
       setWon(s.won);
       setLeaderboardSubmitted(!!s.leaderboardSubmitted);
       setStreak(serverStatus.streak || 0);
-      setRemoteTries(serverStatus.tries ?? null);
       setLoading(false);
 
       if (s.gameOver) openResult(s.won);
@@ -283,22 +283,7 @@ export default function WordleGame() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [gameOver, locked, resultOpen, howtoOpen, submitGuess, deleteLetter, handleLetter]);
 
-  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmitScore = useCallback(async () => {
-    setSubmitError("");
-    const { data: entries, error } = await submitScore(guesses.length);
-    if (error || !entries) {
-      setSubmitError(translatePostgrestError(error));
-      return;
-    }
-    const added = entries[entries.length - 1];
-    const solvedAt = added ? added.solved_at : null;
-    setLeaderboardSubmitted(true);
-    persist({ leaderboardSubmitted: true, leaderboardSolvedAt: solvedAt });
-    setLeaderboard(entries);
-    setHighlightIndex(entries.length - 1);
-  }, [guesses.length, persist]);
 
   const helpButton = (
     <button
@@ -352,24 +337,6 @@ export default function WordleGame() {
         </>
       )}
 
-      {!loading && !loadError && remoteOnly && (
-        <div className="w-full flex flex-col items-center gap-3">
-          <p className="text-ivory-dim text-[.9rem]">کلمه‌ی امروز:</p>
-          <div className="text-[2rem] font-extrabold text-green tracking-[2px]">{answer}</div>
-          {won && remoteTries !== null && (
-            <p className="text-ivory-dim text-[.85rem]">
-              در {toPersianDigits(remoteTries)} تلاش پیدا کردی
-            </p>
-          )}
-          <button
-            onClick={() => openResult(won)}
-            className="mt-2 bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
-          >
-            دیدن نتیجه و جدول برترین‌ها
-          </button>
-        </div>
-      )}
-
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <HowToModal open={howtoOpen} onClose={() => setHowtoOpen(false)} />
       <ResultModal
@@ -382,9 +349,7 @@ export default function WordleGame() {
         leaderboardLoading={leaderboardLoading}
         highlightIndex={highlightIndex}
         alreadySubmitted={leaderboardSubmitted}
-        submitError={submitError}
         onClose={() => setResultOpen(false)}
-        onSubmitScore={handleSubmitScore}
       />
     </div>
   );

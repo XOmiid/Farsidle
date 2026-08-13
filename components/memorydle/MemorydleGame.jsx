@@ -62,7 +62,6 @@ export default function MemorydleGame() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [lbLoading, setLbLoading] = useState(false);
   const [lbSubmitted, setLbSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState("");
   const [streak, setStreak] = useState(0);
 
   const [countdownVisible, setCountdownVisible] = useState(false);
@@ -99,6 +98,8 @@ export default function MemorydleGame() {
   }, [howtoOpen]);
 
   const openResult = useCallback(async () => {
+    // Auto-submit to leaderboard
+    if (user) { try { await submitScore(); } catch(e) {} }
     setResultOpen(true);
     setLbLoading(true);
     const entries = await fetchLeaderboard();
@@ -195,13 +196,6 @@ export default function MemorydleGame() {
     openResult();
   }, [picks, level, l1Picks, showToast, openResult, clearTimers]);
 
-  const handleSubmitScore = useCallback(async () => {
-    setSubmitError("");
-    const { data: entries, error } = await submitScore();
-    if (error || !entries) { setSubmitError(translatePostgrestError(error)); return; }
-    setLbSubmitted(true);
-    setLeaderboard(entries);
-  }, []);
 
   const grid = puzzle ? (level === 1 ? puzzle.l1_grid : puzzle.l2_grid) : [];
 
@@ -337,9 +331,7 @@ export default function MemorydleGame() {
         leaderboard={leaderboard}
         leaderboardLoading={lbLoading}
         alreadySubmitted={lbSubmitted}
-        submitError={submitError}
         onClose={() => setResultOpen(false)}
-        onSubmitScore={handleSubmitScore}
       />
     </div>
   );

@@ -18,19 +18,11 @@ export default function ColordleResultModal({
   leaderboardLoading,
   highlightIndex,
   alreadySubmitted,
-  submitError,
   onClose,
-  onSubmitScore,
 }) {
   const { user, profile } = useAuth();
-  const [submitting, setSubmitting] = useState(false);
   if (!open) return null;
 
-  const handleSubmit = async () => {
-    setSubmitting(true);
-    await onSubmitScore();
-    setSubmitting(false);
-  };
 
   return (
     <div className="fixed inset-0 bg-[rgba(2,8,3,.86)] flex items-center justify-center z-30 p-5 overflow-y-auto">
@@ -113,9 +105,9 @@ export default function ColordleResultModal({
             </div>
           )}
 
-          {submitError && (
+          {
             <p className="text-[.8rem] text-red bg-red/10 border border-red/30 rounded-lg px-3 py-2 mb-3 text-center">
-              {submitError}
+              {
             </p>
           )}
 
