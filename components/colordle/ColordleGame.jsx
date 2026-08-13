@@ -288,14 +288,17 @@ export default function ColordleGame() {
 
           {/* Sliders — shown after preview ends */}
           {!previewColor && (
-          <><ColorPicker r={pick.r} g={pick.g} b={pick.b} onChange={setPick} disabled={submitting} />
-          <button
-            onClick={handleSubmit}
-            disabled={submitting}
-            className="mt-6 bg-green text-[#04140a] border-none rounded-xl px-8 py-3 font-bold text-[1rem] cursor-pointer disabled:opacity-50"
-          >
-            {submitting ? "در حال ثبت..." : "ثبت نهایی"}
-          </button>
+            <>
+              <ColorPicker r={pick.r} g={pick.g} b={pick.b} onChange={setPick} disabled={submitting} />
+              <button
+                onClick={handleSubmit}
+                disabled={submitting}
+                className="mt-6 bg-green text-[#04140a] border-none rounded-xl px-8 py-3 font-bold text-[1rem] cursor-pointer disabled:opacity-50"
+              >
+                {submitting ? "در حال ثبت..." : "ثبت نهایی"}
+              </button>
+            </>
+          )}
         </>
       )}
 
