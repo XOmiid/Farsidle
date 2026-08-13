@@ -432,9 +432,12 @@ function TeamLeaderboard({ entries, loading, myTeam }) {
               <span className="font-bold text-[.88rem]" style={{ color: cfg.color }}>{cfg.label}</span>
               {team === myTeam && <span className="text-[.65rem] text-green bg-green/10 border border-green-dim rounded-full px-1.5 py-0.5">تیم تو</span>}
             </div>
-            <span className="font-extrabold text-[1.1rem]" style={{ color: cfg.color }}>
-              {toPersianDigits(Number(total))}
-            </span>
+            <div className="text-right">
+              <span className="font-extrabold text-[1.1rem]" style={{ color: cfg.color }}>
+                {toPersianDigits(Number(total))}
+              </span>
+              <p className="text-[.6rem] opacity-60" style={{ color: cfg.color }}>امتیاز واقعی</p>
+            </div>
           </div>
           {/* Players */}
           <div className="divide-y divide-border/50">
@@ -444,10 +447,13 @@ function TeamLeaderboard({ entries, loading, myTeam }) {
               <div key={i} className="flex items-center justify-between px-4 py-2">
                 <div className="flex items-center gap-2">
                   <span className="text-ivory-dim text-[.72rem] w-4">{toPersianDigits(i + 1)}</span>
-                  <span className="text-ivory text-[.85rem]">{p.player_name}</span>
+                  <span className={`text-[.85rem] ${p.pending ? "text-ivory-dim" : "text-ivory"}`}>{p.player_name}</span>
+                  {p.pending && (
+                    <span className="text-[.6rem] text-yellow bg-yellow/10 border border-yellow/30 rounded-full px-1.5 py-0.5">در انتظار</span>
+                  )}
                 </div>
-                <span className="text-green font-bold text-[.85rem]">
-                  {toPersianDigits(p.player_score)}/۴
+                <span className={`font-bold text-[.85rem] ${p.pending ? "text-ivory-dim" : "text-green"}`}>
+                  {p.pending ? "—" : `${toPersianDigits(p.player_score)}/۴`}
                 </span>
               </div>
             ))}
