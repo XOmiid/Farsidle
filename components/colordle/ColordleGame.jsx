@@ -84,7 +84,7 @@ export default function ColordleGame() {
 
   const openResult = useCallback(async () => {
     // Auto-submit to leaderboard
-    if (user && !lbSubmitted) { try { await submitScore(); setLbSubmitted(true); } catch(e) {} }
+    if (user && !leaderboardSubmitted) { try { await submitScore(); setLeaderboardSubmitted(true); } catch(e) {} }
     setResultOpen(true);
     setLeaderboardLoading(true);
     const entries = await fetchTodayLeaderboard();
