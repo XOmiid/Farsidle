@@ -90,27 +90,6 @@ export default function ColordleResultModal({
             </div>
           )}
 
-          {user && !alreadySubmitted && score !== null && (
-            <div className="flex items-center gap-2 mb-3">
-              <span className="flex-1 min-w-0 bg-white/[.04] border border-green-dim rounded-[9px] text-ivory text-[.88rem] px-3 h-10 flex items-center justify-center truncate">
-                {profile?.username || "..."}
-              </span>
-              <button
-                onClick={handleSubmit}
-                disabled={submitting || !profile?.username}
-                className="shrink-0 bg-green text-[#04140a] border-none rounded-[9px] px-3.5 text-[.82rem] font-bold cursor-pointer disabled:opacity-50"
-              >
-                ثبت در جدول
-              </button>
-            </div>
-          )}
-
-          {
-            <p className="text-[.8rem] text-red bg-red/10 border border-red/30 rounded-lg px-3 py-2 mb-3 text-center">
-              {
-            </p>
-          )}
-
           <h3 className="font-display font-normal text-[1.1rem] text-green m-0 mb-2">
             جدول برترین‌ها
           </h3>
