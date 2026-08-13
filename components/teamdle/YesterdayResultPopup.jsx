@@ -2,8 +2,8 @@
 
 import { toPersianDigits } from "@/lib/shared/persian";
 
-export default function YesterdayResultPopup({ result, onClose }) {
-  if (!result || !result.played) return null;
+export default function YesterdayResultPopup({ result, open, onClose }) {
+  if (!open || !result || !result.played) return null;
 
   const won = result.winner === result.your_team;
   const draw = result.winner === "draw";
