@@ -23,7 +23,7 @@ import { translatePostgrestError } from "@/lib/auth/errors";
 const DEFAULT_RGB = { r: 128, g: 128, b: 128 };
 
 export default function ColordleGame() {
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [colorName, setColorName] = useState("");

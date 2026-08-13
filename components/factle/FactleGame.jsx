@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/lib/auth/AuthProvider";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -17,6 +18,7 @@ import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { translatePostgrestError } from "@/lib/auth/errors";
 
 export default function FactleGame() {
+  const { user, profile } = useAuth();
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [answer, setAnswer] = useState("");

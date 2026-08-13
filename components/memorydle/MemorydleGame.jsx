@@ -24,7 +24,7 @@ const GAP_MS  = 400;  // ms blank between numbers
 const MAX_PICKS = 5;
 
 export default function MemorydleGame() {
-  const { profile } = useAuth();
+  const { user, profile } = useAuth();
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [puzzle, setPuzzle] = useState(null);
@@ -106,7 +106,7 @@ export default function MemorydleGame() {
     setLbLoading(false);
     setLeaderboard(entries);
     startCountdown();
-  }, [startCountdown]);
+  }, [startCountdown, user, lbSubmitted]);
 
   // Boot
   useEffect(() => {
