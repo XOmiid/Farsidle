@@ -110,7 +110,7 @@ export default function ChordleGame() {
 
   const openResult = useCallback(async () => {
     // Auto-submit to leaderboard
-    if (user) { try { await submitScore(); } catch(e) {} }
+    if (user && !lbSubmitted) { try { await submitScore(); setLbSubmitted(true); } catch(e) {} }
     setResultOpen(true);
     setLbLoading(true);
     const entries = await fetchLeaderboard();

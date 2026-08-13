@@ -99,7 +99,7 @@ export default function MemorydleGame() {
 
   const openResult = useCallback(async () => {
     // Auto-submit to leaderboard
-    if (user) { try { await submitScore(); } catch(e) {} }
+    if (user && !lbSubmitted) { try { await submitScore(); setLbSubmitted(true); } catch(e) {} }
     setResultOpen(true);
     setLbLoading(true);
     const entries = await fetchLeaderboard();
@@ -317,6 +317,18 @@ export default function MemorydleGame() {
           <p className="text-green font-bold text-xl">{toPersianDigits(result.total_score ?? (result.l1_correct + result.l2_correct))}/۱۰</p>
           <button onClick={openResult}
             className="bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer">
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
+      )}
+
+      {/* Reopen result button */}
+      {gameOver && !resultOpen && (
+        <div className="w-full max-w-[420px] flex justify-center mt-4">
+          <button
+            onClick={() => openResult()}
+            className="bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
             دیدن نتیجه و جدول برترین‌ها
           </button>
         </div>

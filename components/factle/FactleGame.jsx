@@ -76,7 +76,7 @@ export default function FactleGame() {
   const openResult = useCallback(
     async (didWin) => {
       // Auto-submit to leaderboard
-      if (user) { try { await submitScore(); } catch(e) {} }
+      if (user && !leaderboardSubmitted) { try { await submitScore(); setLeaderboardSubmitted(true); } catch(e) {} }
       setResultOpen(true);
       setLeaderboardLoading(true);
       const entries = await fetchTodayLeaderboard();
@@ -248,6 +248,18 @@ export default function FactleGame() {
             <GuessHistory guesses={guesses} />
           </div>
         </>
+      )}
+
+      {/* Reopen result button */}
+      {gameOver && !resultOpen && (
+        <div className="w-full max-w-[420px] flex justify-center mt-4">
+          <button
+            onClick={() => openResult()}
+            className="bg-green/10 border border-green-dim text-green rounded-xl px-6 py-2.5 font-bold text-[.9rem] cursor-pointer"
+          >
+            دیدن نتیجه و جدول برترین‌ها
+          </button>
+        </div>
       )}
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
