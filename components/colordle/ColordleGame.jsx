@@ -16,6 +16,7 @@ import {
   checkTodayStatus,
 } from "@/lib/colordle/api";
 import { loadState, saveState } from "@/lib/colordle/storage";
+import { supabase } from "@/lib/supabaseClient";
 import { msUntilNextRollover, formatCountdown } from "@/lib/shared/time";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { translatePostgrestError } from "@/lib/auth/errors";
@@ -25,6 +26,9 @@ const DEFAULT_RGB = { r: 128, g: 128, b: 128 };
 export default function ColordleGame() {
   const { user, profile } = useAuth();
   const [loading, setLoading] = useState(true);
+  const [previewColor, setPreviewColor] = useState(null); // {r,g,b} shown for 10s
+  const [previewTime, setPreviewTime] = useState(10);
+  const previewTimerRef = useRef(null);
   const [loadError, setLoadError] = useState(false);
   const [colorName, setColorName] = useState("");
 
@@ -103,7 +107,23 @@ export default function ColordleGame() {
     };
   }, []);
 
-  // Boot
+  const startPreview = useCallback((rgb) => {
+    setPreviewColor(rgb);
+    setPreviewTime(10);
+    if (previewTimerRef.current) clearInterval(previewTimerRef.current);
+    previewTimerRef.current = setInterval(() => {
+      setPreviewTime((prev) => {
+        if (prev <= 1) {
+          clearInterval(previewTimerRef.current);
+          setPreviewColor(null);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  }, []);
+
+    // Boot
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -157,6 +177,14 @@ export default function ColordleGame() {
         saveState(s);
       }
       stateRef.current = s;
+
+      // Fetch preview color for fresh games
+      if (!s.gameOver && !s.remoteOnly) {
+        const { data: previewData } = await supabase.rpc('colordle_get_preview');
+        if (!cancelled && previewData && previewData.length) {
+          startPreview({ r: previewData[0].r, g: previewData[0].g, b: previewData[0].b });
+        }
+      }
 
       setGameOver(s.gameOver);
       setRemoteOnly(!!s.remoteOnly);
@@ -232,7 +260,35 @@ export default function ColordleGame() {
       {!loading && !loadError && !gameOver && (
         <>
           <h2 className="font-display text-xl text-ivory mb-4">{colorName}</h2>
-          <ColorPicker r={pick.r} g={pick.g} b={pick.b} onChange={setPick} disabled={submitting} />
+
+          {/* Preview phase — show the color for 10 seconds */}
+          {previewColor && (
+            <div className="flex flex-col items-center gap-3 mb-4 w-full max-w-[340px]">
+              <div
+                className="w-full rounded-2xl border-2 border-green-dim shadow-lg"
+                style={{
+                  height: 180,
+                  background: `rgb(${previewColor.r},${previewColor.g},${previewColor.b})`,
+                }}
+              />
+              <div className="flex items-center gap-2 text-ivory-dim text-[.85rem]">
+                <span>این رنگ رو به خاطر بسپار</span>
+                <span className={`font-bold text-[1rem] tabular-nums ${previewTime <= 3 ? "text-red-400" : "text-green"}`}>
+                  {previewTime}
+                </span>
+                <span>ثانیه</span>
+              </div>
+              {/* Timer bar */}
+              <div className="w-full h-1.5 bg-border rounded-full overflow-hidden">
+                <div className="h-full bg-green rounded-full transition-all duration-1000"
+                  style={{ width: `${(previewTime / 10) * 100}%` }} />
+              </div>
+            </div>
+          )}
+
+          {/* Sliders — shown after preview ends */}
+          {!previewColor && (
+          <><ColorPicker r={pick.r} g={pick.g} b={pick.b} onChange={setPick} disabled={submitting} />
           <button
             onClick={handleSubmit}
             disabled={submitting}
