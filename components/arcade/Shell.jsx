@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Icon } from './Art';
+import IranClock from './IranClock';
 import { useArcade } from './Provider';
 import { fa } from '@/lib/classic/rules.mjs';
 const NAV = [
@@ -44,6 +45,7 @@ export default function Shell({ children, back, title, help }) {
             <span>{fa(player?.balance ?? 0)}</span>
           </Link>
         </div>
+        <IranClock />
       </header>
       <main id="main" className="main-content">
         {back && (

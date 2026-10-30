@@ -565,7 +565,6 @@ function Memory({ state, action, busy }) {
       <Progress index={level} total={2} score={state.score} max={10} />
       {!started ? (
         <>
-          <div className="number-display">{level === 0 ? '۱۲' : '۱۲۳'}</div>
           <p className="center-note">
             پنج عدد را به خاطر بسپار.
             <br />
@@ -745,7 +744,7 @@ function Teamdle({ state, action, busy }) {
       <Progress index={index} total={4} score={state.score} max={4} />
       <div className="score-tag" style={{ textAlign: 'center', marginBottom: 20 }}>
         {state.puzzle.team === 'coral' || state.puzzle.team === 'red'
-          ? '🔴 تیم مرجانی'
+          ? '🔴 تیم قرمز'
           : '🔵 تیم آبی'}
         {isLocal ? ' · تمرین محلی' : ''}
       </div>

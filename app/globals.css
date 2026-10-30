@@ -2513,3 +2513,149 @@ body {
     gap: 16px;
   }
 }
+
+.iran-clock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 1084px;
+  margin: 0 auto;
+  padding: 7px 0 10px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.iran-clock time {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  min-width: 67px;
+  text-align: left;
+}
+.leaderboard-player {
+  min-width: 0;
+}
+.leaderboard-player strong {
+  overflow-wrap: anywhere;
+}
+.submission-time,
+.pending-note {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 3px;
+}
+.submission-time {
+  direction: ltr;
+  text-align: right;
+}
+.wordle-result {
+  margin-right: auto;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.wordle-result.success {
+  color: #8fd4a9;
+  background: #254437;
+}
+.wordle-result.failure {
+  color: #f1a598;
+  background: #4a3031;
+}
+.team-leaderboard {
+  max-width: 900px;
+}
+.team-boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.team-board {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--white);
+  min-width: 0;
+}
+.team-board-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.team-board-heading h2 {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.team-board-heading i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d67168;
+}
+.team-blue .team-board-heading i {
+  background: #8dace1;
+}
+.team-board-heading strong {
+  display: block;
+  font-size: 28px;
+  text-align: center;
+}
+.team-board-heading small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+}
+.team-members {
+  padding: 0 16px;
+}
+.team-members .leaderboard-row {
+  gap: 9px;
+}
+.team-members .leaderboard-row:last-child {
+  border-bottom: 0;
+}
+.team-members .leaderboard-avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+.team-members .score-tag {
+  margin-right: auto;
+  white-space: nowrap;
+}
+@media (max-width: 1160px) {
+  .iran-clock {
+    margin-left: 28px;
+    margin-right: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .iran-clock {
+    margin: 0 20px;
+    padding-top: 0;
+    font-size: 10px;
+  }
+  .team-boards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .team-board-heading {
+    padding: 14px 17px;
+  }
+}
+@media (max-width: 350px) {
+  .iran-clock {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}

@@ -260,6 +260,48 @@ test('Supabase upgrade runs in isolated PostgreSQL and enforces access, rewards 
       },
     );
 
+    await t.test(
+      'Wordle lists all winners by submission time before even an earlier loss',
+      async () => {
+        const loser = '00000000-0000-4000-8000-000000000005';
+        await db.query('insert into auth.users values($1)', [loser]);
+        await db.query('insert into public.profiles(id,username)values($1,$2)', [
+          loser,
+          'player_loss',
+        ]);
+        await db.query("select set_config('request.jwt.claim.sub',$1,false)", [loser]);
+        const initial = await rpc(db, 'classic_get', ['wordle', null]);
+        for (const letter of ['ا', 'ب', 'پ', 'ت', 'ث', 'ج'])
+          await rpc(db, 'classic_act', [
+            'wordle',
+            { type: 'guess', word: letter.repeat(initial.puzzle.length) },
+            null,
+          ]);
+        assert.equal((await raw(db, 'wordle')).won, false);
+        for (const [n, seconds] of [
+          [1, 20],
+          [2, 40],
+          [3, 10],
+          [4, 30],
+          [5, -60],
+        ])
+          await db.query(
+            "update classic_private.games set updated_at=clock_timestamp()+($2::text||' seconds')::interval where user_id=$1 and state->>'game'='wordle'",
+            ['00000000-0000-4000-8000-00000000000' + n, seconds],
+          );
+        const rows = await rpc(db, 'classic_leaderboard', ['wordle']);
+        assert.deepEqual(
+          rows.map((e) => e.name),
+          ['player_3', 'player_one', 'player_4', 'player_2', 'player_loss'],
+        );
+        assert.deepEqual(
+          rows.map((e) => e.won),
+          [true, true, true, true, false],
+        );
+        assert(rows.every((e) => e.submittedAt));
+        await db.query("select set_config('request.jwt.claim.sub',$1,false)", [uid]);
+      },
+    );
     await t.test('team leaderboard reports balanced totals from matched players', async () => {
       const id = '00000000-0000-4000-8000-000000000002';
       await db.query("select set_config('request.jwt.claim.sub',$1,false)", [id]);
@@ -277,6 +319,14 @@ test('Supabase upgrade runs in isolated PostgreSQL and enforces access, rewards 
       assert.equal(result.totals.coral, 3);
       assert.equal(result.totals.blue, 4);
       assert.equal(result.entries.filter((e) => e.pending).length, 0);
+      assert.deepEqual(
+        result.entries.filter((e) => e.team === 'coral').map((e) => [e.name, e.score]),
+        [['player_one', 3]],
+      );
+      assert.deepEqual(
+        result.entries.filter((e) => e.team === 'blue').map((e) => [e.name, e.score]),
+        [['player_2', 4]],
+      );
       await db.query("select set_config('request.jwt.claim.sub',$1,false)", [uid]);
     });
     await t.test('team settlement pays only matched participants, once', async () => {

@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
+  iranTime,
   createGame,
   applyAction,
   gameView,
@@ -142,4 +143,10 @@ test('Every Teamdle pair is a capital and another city from that same country', 
   }
   assert.equal(seen.size, catalog.countries.length);
   assert.equal(capitalPositions.size, 2);
+});
+
+test('Iran clock uses Tehran time rather than the browser timezone', () => {
+  assert.equal(iranTime('2026-10-30T00:00:00Z'), '۰۳:۳۰:۰۰');
+  assert.equal(iranTime('2026-10-30T21:00:00Z'), '۰۰:۳۰:۰۰');
+  assert.equal(iranTime('2026-06-30T00:00:00Z'), '۰۳:۳۰:۰۰');
 });
