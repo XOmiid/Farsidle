@@ -9,9 +9,10 @@ create or replace function public.classic_act(p_game text,p_action jsonb,p_id te
 declare v_uid uuid:=classic_private.ensure_player();v_day text:=classic_private.game_day();v_key text;s jsonb;p jsonb;secret jsonb;history jsonb;d jsonb;kind text:=p_action->>'type';idx integer;score numeric;reward integer:=0;done boolean:=false;won boolean:=false;now_ms bigint:=floor(extract(epoch from clock_timestamp())*1000);word text;country jsonb;selected jsonb;correct boolean;result jsonb;arr jsonb;target jsonb;level jsonb;cells jsonb;cell text;letter text;guess_rgb integer[];target_rgb integer[];dist numeric;i integer;round_score integer;rank_no integer;v_count integer;v_last text;v_old_count integer;v_cost integer;
 begin
  -- A user-wide lock serializes purchases, claims and scores across tabs/games.
+ if p_game='crossword' and p_id is null then select data#>>'{crosswords,0,id}' into p_id from classic_private.content where singleton;end if;
  perform pg_advisory_xact_lock(hashtextextended(v_uid::text,0));
  perform public.classic_get(p_game,p_id);
- v_key:=case when p_game='crossword' then 'crossword:'||coalesce(p_id,'1') else v_day||':'||p_game end;
+ v_key:=case when p_game='crossword' then 'crossword:'||p_id else v_day||':'||p_game end;
  select state into s from classic_private.games where user_id=v_uid and game_key=v_key for update;
  if (s->>'finished')::boolean then return classic_private.view_state(s);end if;
  if p_game<>'crossword' and (s->>'date'<>v_day or p_action->>'day' is null or p_action->>'day'<>v_day) then raise exception 'بازی تازه‌ای شروع شده. صفحه را دوباره باز کن.';end if;

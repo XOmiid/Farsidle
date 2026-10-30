@@ -1776,51 +1776,31 @@
   ],
   "crosswords": [
     {
-      "id": 1,
-      "title": "بوی باران",
+      "id": 101,
+      "title": "مینی‌جدول ۱",
       "cost": 1000,
       "rows": 5,
       "cols": 5,
       "blackCells": [
         [
-          1,
+          0,
+          0
+        ],
+        [
+          0,
           1
         ],
         [
           1,
-          2
-        ],
-        [
-          1,
-          3
-        ],
-        [
-          1,
-          4
-        ],
-        [
-          2,
-          3
-        ],
-        [
-          2,
-          4
-        ],
-        [
-          3,
-          1
-        ],
-        [
-          3,
-          2
-        ],
-        [
-          3,
-          3
+          0
         ],
         [
           3,
           4
+        ],
+        [
+          4,
+          3
         ],
         [
           4,
@@ -1830,252 +1810,313 @@
       "slots": [
         {
           "number": 1,
-          "direction": "down",
-          "row": 0,
-          "col": 0,
-          "word": "باران",
-          "clue": "قطره‌هایی که از ابر می‌بارند"
-        },
-        {
-          "number": 1,
           "direction": "across",
           "row": 0,
-          "col": 0,
-          "word": "باغچه",
-          "clue": "باغ کوچک کنار خانه"
+          "col": 2,
+          "word": "دزد",
+          "clue": "کسی که مال دیگران را پنهانی می‌برد"
         },
         {
-          "number": 2,
+          "number": 4,
+          "direction": "across",
+          "row": 1,
+          "col": 1,
+          "word": "سیاه",
+          "clue": "رنگ مقابل سفید"
+        },
+        {
+          "number": 5,
           "direction": "across",
           "row": 2,
           "col": 0,
-          "word": "رنگ",
-          "clue": "آنچه قرمز و آبی نمونه‌های آن هستند"
+          "word": "پروین",
+          "clue": "نام کوچک اعتصامی، شاعر ایرانی"
         },
         {
-          "number": 3,
+          "number": 6,
+          "direction": "across",
+          "row": 3,
+          "col": 0,
+          "word": "لواش",
+          "clue": "نان نازک و پهن"
+        },
+        {
+          "number": 7,
           "direction": "across",
           "row": 4,
           "col": 0,
-          "word": "نسیم",
-          "clue": "باد ملایم و خوشایند"
+          "word": "کدر",
+          "clue": "نه شفاف و نه زلال"
+        },
+        {
+          "number": 1,
+          "direction": "down",
+          "row": 0,
+          "col": 2,
+          "word": "دیوار",
+          "clue": "جداکنندهٔ عمودی میان دو اتاق"
+        },
+        {
+          "number": 2,
+          "direction": "down",
+          "row": 0,
+          "col": 3,
+          "word": "زایش",
+          "clue": "به دنیا آمدن؛ تولد"
+        },
+        {
+          "number": 3,
+          "direction": "down",
+          "row": 0,
+          "col": 4,
+          "word": "دهن",
+          "clue": "صورت گفتاریِ «دهان»"
+        },
+        {
+          "number": 4,
+          "direction": "down",
+          "row": 1,
+          "col": 1,
+          "word": "سرود",
+          "clue": "آواز دسته‌جمعی، مانند نوع ملی آن"
+        },
+        {
+          "number": 5,
+          "direction": "down",
+          "row": 2,
+          "col": 0,
+          "word": "پلک",
+          "clue": "پوشش متحرک روی چشم"
         }
       ]
     },
     {
-      "id": 2,
-      "title": "آبی آرام",
+      "id": 102,
+      "title": "مینی‌جدول ۲",
       "cost": 1000,
-      "rows": 4,
+      "rows": 5,
       "cols": 5,
       "blackCells": [
         [
-          1,
+          0,
+          0
+        ],
+        [
+          0,
           1
         ],
         [
           1,
-          2
-        ],
-        [
-          1,
-          3
-        ],
-        [
-          1,
-          4
-        ],
-        [
-          2,
-          3
-        ],
-        [
-          2,
-          4
-        ],
-        [
-          3,
-          1
-        ],
-        [
-          3,
-          2
-        ],
-        [
-          3,
-          3
+          0
         ],
         [
           3,
           4
-        ]
-      ],
-      "slots": [
-        {
-          "number": 1,
-          "direction": "down",
-          "row": 0,
-          "col": 0,
-          "word": "دریا",
-          "clue": "پهنه بزرگ آب شور"
-        },
-        {
-          "number": 1,
-          "direction": "across",
-          "row": 0,
-          "col": 0,
-          "word": "دلفین",
-          "clue": "پستاندار دریایی بازیگوش و باهوش"
-        },
-        {
-          "number": 2,
-          "direction": "across",
-          "row": 2,
-          "col": 0,
-          "word": "یاس",
-          "clue": "گل خوشبوی سفید"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "شب روشن",
-      "cost": 1000,
-      "rows": 5,
-      "cols": 4,
-      "blackCells": [
-        [
-          1,
-          1
-        ],
-        [
-          1,
-          2
-        ],
-        [
-          1,
-          3
-        ],
-        [
-          3,
-          1
-        ],
-        [
-          3,
-          2
-        ],
-        [
-          3,
-          3
         ],
         [
           4,
           3
+        ],
+        [
+          4,
+          4
         ]
       ],
       "slots": [
         {
           "number": 1,
-          "direction": "down",
-          "row": 0,
-          "col": 0,
-          "word": "ستاره",
-          "clue": "چراغ درخشان آسمان شب"
-        },
-        {
-          "number": 1,
           "direction": "across",
           "row": 0,
-          "col": 0,
-          "word": "سلام",
-          "clue": "واژه آغاز دیدار"
+          "col": 2,
+          "word": "پند",
+          "clue": "اندرز و نصیحت"
         },
         {
-          "number": 2,
+          "number": 4,
+          "direction": "across",
+          "row": 1,
+          "col": 1,
+          "word": "جوهر",
+          "clue": "مایعی که در خودنویس می‌ریزند"
+        },
+        {
+          "number": 5,
           "direction": "across",
           "row": 2,
           "col": 0,
-          "word": "امید",
-          "clue": "انتظار خوب برای آینده"
+          "word": "چالاک",
+          "clue": "تند و فرز در حرکت"
         },
         {
-          "number": 3,
+          "number": 6,
+          "direction": "across",
+          "row": 3,
+          "col": 0,
+          "word": "کمان",
+          "clue": "وسیله‌ای برای پرتاب تیر"
+        },
+        {
+          "number": 7,
           "direction": "across",
           "row": 4,
           "col": 0,
-          "word": "هوا",
-          "clue": "آنچه نفس می‌کشیم"
+          "word": "شهد",
+          "clue": "مایع شیرینی که زنبور از گل می‌گیرد"
+        },
+        {
+          "number": 1,
+          "direction": "down",
+          "row": 0,
+          "col": 2,
+          "word": "پولاد",
+          "clue": "نام دیگر فولاد"
+        },
+        {
+          "number": 2,
+          "direction": "down",
+          "row": 0,
+          "col": 3,
+          "word": "نهان",
+          "clue": "پنهان؛ دور از دید"
+        },
+        {
+          "number": 3,
+          "direction": "down",
+          "row": 0,
+          "col": 4,
+          "word": "درک",
+          "clue": "فهمیدن و دریافتن"
+        },
+        {
+          "number": 4,
+          "direction": "down",
+          "row": 1,
+          "col": 1,
+          "word": "جامه",
+          "clue": "لباس؛ پوشاک"
+        },
+        {
+          "number": 5,
+          "direction": "down",
+          "row": 2,
+          "col": 0,
+          "word": "چکش",
+          "clue": "ابزاری برای کوبیدن میخ"
         }
       ]
     },
     {
-      "id": 4,
-      "title": "پرواز کلمات",
+      "id": 103,
+      "title": "مینی‌جدول ۳",
       "cost": 1000,
       "rows": 5,
-      "cols": 4,
+      "cols": 5,
       "blackCells": [
         [
-          1,
+          0,
+          0
+        ],
+        [
+          0,
           1
         ],
         [
           1,
-          2
-        ],
-        [
-          1,
-          3
+          0
         ],
         [
           3,
-          1
-        ],
-        [
-          3,
-          2
-        ],
-        [
-          3,
-          3
+          4
         ],
         [
           4,
           3
+        ],
+        [
+          4,
+          4
         ]
       ],
       "slots": [
         {
           "number": 1,
-          "direction": "down",
-          "row": 0,
-          "col": 0,
-          "word": "کبوتر",
-          "clue": "پرنده‌ای آشنا با نماد صلح"
-        },
-        {
-          "number": 1,
           "direction": "across",
           "row": 0,
-          "col": 0,
-          "word": "کتاب",
-          "clue": "دوست کاغذی اهل مطالعه"
+          "col": 2,
+          "word": "منع",
+          "clue": "جلوگیری و بازداشتن از کاری"
         },
         {
-          "number": 2,
+          "number": 4,
+          "direction": "across",
+          "row": 1,
+          "col": 1,
+          "word": "خرید",
+          "clue": "گرفتن کالا در برابر پرداخت پول"
+        },
+        {
+          "number": 5,
           "direction": "across",
           "row": 2,
           "col": 0,
-          "word": "ورزش",
-          "clue": "فعالیت بدنی برای تندرستی"
+          "word": "خرداد",
+          "clue": "سومین ماه سال خورشیدی"
         },
         {
-          "number": 3,
+          "number": 6,
+          "direction": "across",
+          "row": 3,
+          "col": 0,
+          "word": "آواز",
+          "clue": "صدای آهنگین انسان هنگام خواندن"
+        },
+        {
+          "number": 7,
           "direction": "across",
           "row": 4,
           "col": 0,
-          "word": "رود",
-          "clue": "جریان آب روان در طبیعت"
+          "word": "رشد",
+          "clue": "بزرگ‌تر شدن و بالیدن"
+        },
+        {
+          "number": 1,
+          "direction": "down",
+          "row": 0,
+          "col": 2,
+          "word": "مرداد",
+          "clue": "پنجمین ماه سال خورشیدی"
+        },
+        {
+          "number": 2,
+          "direction": "down",
+          "row": 0,
+          "col": 3,
+          "word": "نیاز",
+          "clue": "احتیاج به چیزی"
+        },
+        {
+          "number": 3,
+          "direction": "down",
+          "row": 0,
+          "col": 4,
+          "word": "عدد",
+          "clue": "آنچه برای شمردن به کار می‌بریم"
+        },
+        {
+          "number": 4,
+          "direction": "down",
+          "row": 1,
+          "col": 1,
+          "word": "خروش",
+          "clue": "فریاد بلند؛ بانگ پرهیاهو"
+        },
+        {
+          "number": 5,
+          "direction": "down",
+          "row": 2,
+          "col": 0,
+          "word": "خار",
+          "clue": "نوک تیز روی ساقهٔ برخی گیاهان"
         }
       ]
     }

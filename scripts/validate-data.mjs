@@ -31,7 +31,7 @@ for (const chord of data.chords)
   assert(
     chord.notes.length >= 3 && chord.notes.every((n) => Number.isInteger(n) && n >= 36 && n <= 96),
   );
-assert(data.crosswords.length >= 4);
+assert(data.crosswords.length >= 3);
 for (const puzzle of data.crosswords) {
   const cells = crosswordSolution(puzzle);
   const black = new Set(puzzle.blackCells.map(([r, c]) => r + '_' + c));
@@ -50,6 +50,58 @@ for (const puzzle of data.crosswords) {
     assert(r >= 0 && r < puzzle.rows && c >= 0 && c < puzzle.cols);
     assert(!black.has(cell));
   }
+  assert.equal(puzzle.rows, 5);
+  assert.equal(puzzle.cols, 5);
+  for (const [r, c] of puzzle.blackCells)
+    assert(
+      black.has(puzzle.rows - 1 - r + '_' + (puzzle.cols - 1 - c)),
+      'Black cells must be rotationally symmetric',
+    );
+  const coverage = {};
+  for (const slot of puzzle.slots) {
+    assert(normalize(slot.word).length >= 3);
+    [...normalize(slot.word)].forEach((_, i) => {
+      const key =
+        slot.row +
+        (slot.direction === 'down' ? i : 0) +
+        '_' +
+        (slot.col + (slot.direction === 'across' ? i : 0));
+      (coverage[key] ??= new Set()).add(slot.direction);
+    });
+    const dr = slot.direction === 'down' ? 1 : 0,
+      dc = slot.direction === 'across' ? 1 : 0,
+      len = normalize(slot.word).length;
+    for (const [r, c] of [
+      [slot.row - dr, slot.col - dc],
+      [slot.row + len * dr, slot.col + len * dc],
+    ])
+      assert(
+        r < 0 || c < 0 || r >= puzzle.rows || c >= puzzle.cols || black.has(r + '_' + c),
+        'Every entry must fill a whole white run',
+      );
+  }
+  assert(
+    Object.values(coverage).every((directions) => directions.size === 2),
+    'Every white cell must be checked across and down',
+  );
+  const reached = new Set(),
+    queue = [Object.keys(cells)[0]];
+  while (queue.length) {
+    const key = queue.pop();
+    if (reached.has(key)) continue;
+    reached.add(key);
+    const [r, c] = key.split('_').map(Number);
+    for (const [dr, dc] of [
+      [0, 1],
+      [0, -1],
+      [1, 0],
+      [-1, 0],
+    ]) {
+      const next = r + dr + '_' + (c + dc);
+      if (cells[next] && !reached.has(next)) queue.push(next);
+    }
+  }
+  assert.equal(reached.size, Object.keys(cells).length, 'White cells must be connected');
   assert(puzzle.cost > 0);
 }
 console.log(

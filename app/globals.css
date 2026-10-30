@@ -762,7 +762,7 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  direction: rtl;
+  direction: ltr;
   max-width: 510px;
   margin: 23px auto 0;
 }
@@ -2392,5 +2392,124 @@ body {
   .game-title-row {
     gap: 4px;
     flex-wrap: wrap;
+  }
+}
+
+.optional-details {
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 14px 0 0;
+  margin: 24px 0;
+  min-width: 0;
+}
+.optional-details legend {
+  padding-left: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.field-label small {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-right: 6px;
+}
+.field-hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 9px;
+}
+.guest-auth-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.guest-auth-actions .button {
+  flex: 1;
+  margin-top: 8px;
+}
+.dialog > .text-button {
+  width: 100%;
+  margin-top: 12px;
+}
+.mini-grid-preview {
+  display: grid;
+  grid-template-columns: repeat(5, 11px);
+  gap: 1px;
+  padding: 2px;
+  background: #111a22;
+  border: 1px solid #64717a;
+  border-radius: 3px;
+  flex-shrink: 0;
+  direction: rtl;
+}
+.mini-grid-preview i {
+  width: 11px;
+  height: 11px;
+  background: #e5e1d8;
+}
+.mini-grid-preview i.black {
+  background: #111a22;
+}
+.crossword-board {
+  --cell: 47px;
+  gap: 1px;
+  background: #111a22;
+  border: 2px solid #111a22;
+  border-radius: 3px;
+  padding: 1px;
+}
+.crossword-cell {
+  border: 0;
+  border-radius: 0;
+  background: #e9e5dc;
+  color: #17212a;
+  font-size: 24px;
+  font-weight: 600;
+}
+.crossword-cell.black {
+  background: #111a22;
+  border: 0;
+}
+.crossword-cell.active-slot {
+  background: #e2d0a6;
+}
+.crossword-cell.selected {
+  background: #c6d7ea;
+  border: 0;
+  box-shadow: inset 0 0 0 2px #617e9d;
+}
+.crossword-cell.good {
+  background: #b9d5c7;
+}
+.crossword-cell.bad {
+  background: #e5b7af;
+}
+.crossword-cell small {
+  font-size: 9px;
+  right: 3px;
+  top: 0;
+  font-weight: 400;
+}
+.clue-list button {
+  min-height: 40px;
+  font-size: 12px;
+  line-height: 1.9;
+  border-bottom: 1px solid var(--line);
+  width: 100%;
+  padding: 8px 0;
+}
+.clue-list button.active {
+  color: var(--coral);
+}
+@media (max-width: 760px) {
+  .crossword-board {
+    --cell: 44px;
+  }
+  .guest-auth-actions {
+    flex-direction: column;
+    gap: 0;
+  }
+  .clue-list {
+    gap: 16px;
   }
 }

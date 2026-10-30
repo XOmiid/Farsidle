@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 const read = (path) => readFile(new URL('../' + path, import.meta.url), 'utf8');
 const catalog = JSON.parse(await read('data/catalog.json'));
+catalog.crosswords.push(...JSON.parse(await read('data/crosswords-archive.json')));
 // Dollar-quoted JSON is unambiguous even with Persian apostrophes and punctuation.
 const json = JSON.stringify(catalog);
 if (json.includes('$catalog$')) throw new Error('Invalid delimiter in content');

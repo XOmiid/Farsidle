@@ -55,6 +55,16 @@ npm run db:prepare
 
 This regenerates the reviewable `supabase/upgrade.sql`; it makes no database connection and does not publish anything. The already-applied rollout is recorded in Supabase migration history. Do not reapply the upgrade as part of every frontend deployment.
 
-Verification includes all 30 automated tests, the production build, direct live API checks for every leaderboard and denied anonymous account access, plus a live database smoke check for all seven games, profile updates, daily rewards and both ledger views. That smoke check rolled back its synthetic user, results, coins and daily puzzles. Existing account login/email delivery should also be checked with a real user; no real password was collected or automated email sent during verification.
+Verification includes all 35 automated tests, the production build, direct live API checks for every leaderboard and denied anonymous account access, plus a live database smoke check for all seven games, profile updates, daily rewards and both ledger views. That smoke check rolled back its synthetic user, results, coins and daily puzzles. Existing account login/email delivery should also be checked with a real user; no real password was collected or automated email sent during verification.
 
 Supabase's existing [leaked-password-protection warning](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection) and [legacy function-access advisories](https://supabase.com/docs/guides/database/postgres/functions#function-privileges) remain project-level follow-up items. The new private helpers and allowlisted account RPCs were checked separately. No GitHub push or website deployment has been performed.
+
+## Account and mini-crossword follow-up
+
+Optional date of birth (Gregorian date input) and country of residence are available on signup and profile editing. Empty values are accepted, saved values may be cleared, existing values are preserved, and these fields are excluded from public profile columns and leaderboards. Signup metadata is passed to the existing Auth profile trigger; signed-in edits use the authenticated three-argument profile RPC. The older two-argument RPC remains compatible.
+
+Signup and recovery codes continue through Supabase Auth and the project’s configured SMTP provider; no Resend secret belongs in browser code. Recovery resends now use the same redirect as the first request, code types remain separate (`email` for signup, `recovery` for password reset), and the interface waits 60 seconds before allowing resend. The project’s confirmation and recovery templates must contain `{{ .Token }}` for a code-based flow. See [Supabase email templates](https://supabase.com/docs/guides/auth/auth-email-templates) and [SMTP configuration](https://supabase.com/docs/guides/auth/auth-smtp). Actual delivery requires an approved test recipient and access to the SMTP/template settings; it is not established by the code tests alone.
+
+Guest completions show a dismissible login/register dialog. Guest scores are practice scores and are not retroactively inserted into authenticated leaderboards. The shared Wordle/crossword keyboard uses left-to-right row layout so the Persian physical-key order is mirrored correctly.
+
+The crossword library now has three fully checked, symmetric 5×5 minis (101–103). Earlier content and purchases remain available by their archived IDs. `supabase/account-crosswords-update.sql` records the additive update already applied to the connected database.

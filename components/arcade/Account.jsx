@@ -7,6 +7,13 @@ import { Icon } from './Art';
 import { useArcade } from './Provider';
 import { updateProfile, claimDaily, resetLocal, getSupabase, isLocal } from '@/lib/classic/gateway';
 import { fa, dateKey } from '@/lib/classic/rules.mjs';
+import OptionalDetails from './OptionalDetails';
+import {
+  profileDetails,
+  sendRecoveryCode,
+  resendAccountCode,
+  verifyAccountCode,
+} from '@/lib/classic/account.mjs';
 import { gameById } from '@/lib/classic/catalog';
 const AVATARS = ['◉', '◇', '△', '□', '○', '⬡', '◎', '◈'];
 export function authError(error) {
@@ -26,6 +33,8 @@ export default function Profile() {
   const { player, reload, notify } = useArcade();
   const [name, setName] = useState(''),
     [avatar, setAvatar] = useState(null),
+    [birthDate, setBirthDate] = useState(null),
+    [country, setCountry] = useState(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState(''),
     [reset, setReset] = useState(false);
@@ -35,7 +44,14 @@ export default function Profile() {
     setBusy(true);
     setError('');
     try {
-      await updateProfile(name || player.name, avatar || player.avatar);
+      await updateProfile(
+        name || player.name,
+        avatar || player.avatar,
+        profileDetails({
+          birthDate: birthDate ?? player.birthDate,
+          country: country ?? player.country,
+        }),
+      );
       await reload();
       notify('پروفایل ذخیره شد.');
     } catch (e) {
@@ -97,6 +113,13 @@ export default function Profile() {
                   onChange={(e) => {
                     setName(e.target.value);
                   }}
+                />
+                <OptionalDetails
+                  prefix="profile"
+                  birthDate={birthDate ?? player.birthDate ?? ''}
+                  country={country ?? player.country ?? ''}
+                  onBirthDate={setBirthDate}
+                  onCountry={setCountry}
                 />
                 <span className="field-label">نشان پروفایل</span>
                 <div className="avatar-options">
@@ -224,6 +247,8 @@ export default function Profile() {
                 reload();
                 setReset(false);
                 setName('');
+                setBirthDate(null);
+                setCountry(null);
                 notify('پیش‌نمایش از نو آماده است.');
               }}
             >
@@ -244,6 +269,8 @@ export function Auth({ mode = 'login' }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [name, setName] = useState(''),
+    [birthDate, setBirthDate] = useState(''),
+    [country, setCountry] = useState(''),
     [token, setToken] = useState(''),
     [step, setStep] = useState('form'),
     [busy, setBusy] = useState(false),
@@ -261,8 +288,14 @@ export function Auth({ mode = 'login' }) {
   useEffect(() => {
     if (isLocal || !['reset', 'password'].includes(mode)) return;
     let active = true;
+    let subscription;
     getSupabase()
-      .then((c) => c.auth.getSession())
+      .then((c) => {
+        subscription = c.auth.onAuthStateChange((_event, session) => {
+          if (active) setReady(!!session);
+        }).data.subscription;
+        return c.auth.getSession();
+      })
       .then(({ data }) => {
         if (active) setReady(!!data.session);
       })
@@ -271,6 +304,7 @@ export function Auth({ mode = 'login' }) {
       });
     return () => {
       active = false;
+      subscription?.unsubscribe();
     };
   }, [mode]);
   useEffect(() => {
@@ -287,11 +321,7 @@ export function Auth({ mode = 'login' }) {
       const client = await getSupabase();
       let result;
       if (step === 'code') {
-        result = await client.auth.verifyOtp({
-          email,
-          token,
-          type: mode === 'forgot' ? 'recovery' : 'email',
-        });
+        result = await verifyAccountCode(client, mode, email, token);
         if (result.error) throw result.error;
         await reload();
         router.push(mode === 'forgot' ? '/reset-password' : '/classic');
@@ -299,18 +329,19 @@ export function Auth({ mode = 'login' }) {
       }
       if (mode === 'login') result = await client.auth.signInWithPassword({ email, password });
       if (mode === 'register') {
-        if (!/^[a-zA-Z0-9_\u0600-\u06ff]{3,20}$/.test(name))
+        if (!/^[a-zA-Z0-9_آ-ی]{3,20}$/.test(name))
           throw new Error('نام کاربری باید ۳ تا ۲۰ حرف، عدد یا زیرخط باشد.');
+        const details = profileDetails({ birthDate, country });
         result = await client.auth.signUp({
-          email,
+          email: email.trim(),
           password,
-          options: { data: { username: name } },
+          options: {
+            emailRedirectTo: window.location.origin + '/classic',
+            data: { username: name, birth_date: details.birthDate, country: details.country },
+          },
         });
       }
-      if (mode === 'forgot')
-        result = await client.auth.resetPasswordForEmail(email, {
-          redirectTo: window.location.origin + '/reset-password',
-        });
+      if (mode === 'forgot') result = await sendRecoveryCode(client, email, window.location.origin);
       if (['reset', 'password'].includes(mode)) {
         if (!ready) throw new Error('ابتدا وارد حساب شو یا کد بازیابی را تأیید کن.');
         result = await client.auth.updateUser({ password });
@@ -318,7 +349,7 @@ export function Auth({ mode = 'login' }) {
       if (result?.error) throw result.error;
       if (mode === 'forgot' || (mode === 'register' && !result.data.session)) {
         setStep('code');
-        setCooldown(30);
+        setCooldown(60);
         setNotice('کد تأیید به ایمیلت فرستاده شد. پوشهٔ اسپم را هم بررسی کن.');
       } else if (['reset', 'password'].includes(mode)) {
         setNotice('رمز عبور با موفقیت تغییر کرد.');
@@ -338,12 +369,9 @@ export function Auth({ mode = 'login' }) {
     setBusy(true);
     try {
       const client = await getSupabase();
-      const result =
-        mode === 'forgot'
-          ? await client.auth.resetPasswordForEmail(email)
-          : await client.auth.resend({ type: 'signup', email });
+      const result = await resendAccountCode(client, mode, email, window.location.origin);
       if (result.error) throw result.error;
-      setCooldown(30);
+      setCooldown(60);
       setNotice('کد تازه فرستاده شد.');
     } catch (e) {
       setError(authError(e));
@@ -457,6 +485,15 @@ export function Auth({ mode = 'login' }) {
                       </>
                     )}
                   </>
+                )}
+                {mode === 'register' && step === 'form' && (
+                  <OptionalDetails
+                    prefix="register"
+                    birthDate={birthDate}
+                    country={country}
+                    onBirthDate={setBirthDate}
+                    onCountry={setCountry}
+                  />
                 )}
                 {error && (
                   <p className="field-error" role="alert">

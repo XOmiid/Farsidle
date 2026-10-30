@@ -7,7 +7,7 @@ Version: `classic-2026-10`. This pack replaces the old content for the new Class
 - **73 countries and 146 Factle clues:** two individually usable clues per country, rather than an ordered easy-to-hard hint ladder. Each daily Factle selects five different countries and one clue for each. Clues are original short Persian location descriptions; no UNESCO prose is reproduced. Each country carries its own official UNESCO source URL.
 - **73 Teamdle capital pairs:** each country record holds its national capital and an `otherCity` distractor from the same country. Teamdle always presents those two cities in random order. Where a country has multiple capital functions, the field uses the familiar administrative/national answer (Pretoria for South Africa; Sri Jayawardenepura Kotte for Sri Lanka; Kuala Lumpur for Malaysia; Bern for Switzerland).
 - **32 musical chords:** original MIDI configurations combining four chord qualities over eight registers. There are no external audio files or sampled recordings.
-- **Four mini crosswords:** original clues and grids, IDs 1–4, each costing 1,000 coins. Across/down crossings agree, every white cell belongs to a clue and unused cells are black.
+- **Three normal 5×5 mini crosswords:** new IDs 101–103, each costing 1,000 coins. Each has ten entries, nineteen connected white cells, six rotationally symmetric black cells, and every letter checked across and down. All contiguous runs have meaningful Persian answers of at least three letters. The old IDs 1–4 are retained in `crosswords-archive.json` for existing purchases but are not shown in the active library.
 - **Memorydle:** generated from fresh daily seeds; the two number ranges are 0–99 and 100–999, with five targets among fifteen distinct choices.
 
 ## Sources and editorial scope
@@ -19,3 +19,5 @@ Capital names use conventional Persian spellings. This is a deliberately curated
 Run `npm run data:validate` before importing an edited content pack. It checks canonical word uniqueness and alphabet, color format/uniqueness, country IDs, distinct capital/city pairs and source links, musical ranges, crossword boundaries, numbering and complete grid coverage.
 
 For the Gulf city alternatives, see the official [Visit Qatar city guide](https://visitqatar.com/intl-en/about-qatar/cities) for Al Khor and [Bahrain’s Ministry of Housing](https://housing.gov.bh/muharraq-city-development) for Muharraq. City labels use conventional Persian spellings. Multi-capital countries use a distractor that has no competing national-capital role (Johannesburg for South Africa, Kandy for Sri Lanka and George Town for Malaysia).
+
+The optional residence-country suggestions are restored from the existing project’s 195-country list in `residence-countries.json`; users may also type a residence that is not listed. This is separate from the curated game-country pool.

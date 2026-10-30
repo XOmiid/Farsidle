@@ -16,13 +16,14 @@ begin
  end loop;
 end;$$;
 create or replace function public.classic_profile() returns jsonb language plpgsql security definer set search_path='' as $$
-declare v_uid uuid:=classic_private.ensure_player();p classic_private.players%rowtype;results jsonb;streaks jsonb;claim text;
+declare v_uid uuid:=classic_private.ensure_player();p classic_private.players%rowtype;results jsonb;streaks jsonb;claim text;v_birth date;v_country text;
 begin
  perform classic_private.settle_teams();select * into p from classic_private.players where id=v_uid;
  select coalesce(jsonb_agg(jsonb_build_object('game',state->>'game','date',state->>'date','score',state->'score','max',state->'max','won',state->'won') order by updated_at),'[]'::jsonb) into results from (select state,updated_at from classic_private.games where user_id=v_uid and (state->>'finished')::boolean order by updated_at desc limit 120)t;
  select coalesce(jsonb_object_agg(game,jsonb_build_object('date',day,'count',case when day>=(classic_private.game_day()::date-1)::text then count else 0 end)),'{}'::jsonb) into streaks from classic_private.streaks where user_id=v_uid;
  select max(day) into claim from classic_private.coins where user_id=v_uid and source='daily_login';
- return jsonb_build_object('name',p.name,'avatar',p.avatar,'balance',classic_private.balance(v_uid),'claim',claim,'local',false,'streaks',streaks,'results',results);
+ select birth_date,country into v_birth,v_country from public.profiles where id=v_uid;
+ return jsonb_build_object('birthDate',v_birth,'country',v_country,'name',p.name,'avatar',p.avatar,'balance',classic_private.balance(v_uid),'claim',claim,'local',false,'streaks',streaks,'results',results);
 end;$$;
 create or replace function public.classic_update_profile(p_name text,p_avatar text) returns void language plpgsql security definer set search_path='' as $$
 declare v_uid uuid:=classic_private.ensure_player();
@@ -32,6 +33,19 @@ begin
  update public.profiles set username=trim(p_name) where id=v_uid;
  update classic_private.players set name=trim(p_name),avatar=p_avatar where id=v_uid;
  exception when unique_violation then raise exception 'این نام قبلاً انتخاب شده است.';
+end;$$;
+-- Three-argument endpoint adds optional private details; the old two-argument
+-- endpoint remains available so the currently deployed client keeps working.
+create or replace function public.classic_update_profile(p_name text,p_avatar text,p_details jsonb) returns void language plpgsql security definer set search_path='' as $$
+declare v_uid uuid:=classic_private.ensure_player();v_birth date;v_country text;
+begin
+ if p_details is null or jsonb_typeof(p_details)<>'object' then raise exception 'اطلاعات حساب معتبر نیست.';end if;
+ v_birth:=nullif(p_details->>'birthDate','')::date;v_country:=nullif(trim(p_details->>'country'),'');
+ if v_birth is not null and (v_birth<date '1900-01-01' or v_birth>current_date) then raise exception 'تاریخ تولد معتبر نیست.';end if;
+ if v_country is not null and (char_length(v_country)>80 or v_country~'[<>[:cntrl:]]') then raise exception 'نام کشور معتبر نیست.';end if;
+ perform public.classic_update_profile(p_name,p_avatar);
+ update public.profiles set birth_date=v_birth,country=v_country where id=v_uid;
+ exception when invalid_datetime_format or datetime_field_overflow then raise exception 'تاریخ تولد معتبر نیست.';
 end;$$;
 create or replace function public.classic_claim() returns integer language plpgsql security definer set search_path='' as $$
 declare v_uid uuid:=classic_private.ensure_player();v_day text:=classic_private.game_day();n integer;
@@ -66,8 +80,13 @@ revoke execute on function public.classic_get(text,text) from public,anon;
 revoke execute on function public.classic_act(text,jsonb,text) from public,anon;
 revoke execute on function public.classic_profile() from public,anon;
 revoke execute on function public.classic_update_profile(text,text) from public,anon;
+revoke execute on function public.classic_update_profile(text,text,jsonb) from public,anon;
 revoke execute on function public.classic_claim() from public,anon;
 revoke execute on function public.classic_leaderboard(text) from public;
-grant execute on function public.classic_get(text,text),public.classic_act(text,jsonb,text),public.classic_profile(),public.classic_update_profile(text,text),public.classic_claim() to authenticated;
+grant execute on function public.classic_get(text,text),public.classic_act(text,jsonb,text),public.classic_profile(),public.classic_update_profile(text,text),public.classic_update_profile(text,text,jsonb),public.classic_claim() to authenticated;
 grant execute on function public.classic_leaderboard(text) to anon,authenticated;
 -- Content insertion and COMMIT are appended by npm run db:prepare.
+
+-- Birth date and residence are private account details, not public profile columns.
+revoke select on public.profiles from public,anon,authenticated;
+grant select(id,username,avatar,leaderboard_restricted) on public.profiles to anon,authenticated;

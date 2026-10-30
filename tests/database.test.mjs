@@ -55,7 +55,8 @@ test('Supabase upgrade runs in isolated PostgreSQL and enforces access, rewards 
     await t.test('private tables and legacy award endpoint are inaccessible', async () => {
       await db.exec('set role anon');
       // Preserve the legacy site's existing read access during the additive rollout.
-      await db.query('select * from public.profiles');
+      await db.query('select id,username,avatar from public.profiles');
+      await assert.rejects(db.query('select birth_date,country from public.profiles'));
       await assert.rejects(db.query('select * from classic_private.players'));
       await assert.rejects(rpc(db, 'award_coins', [uid, 'fake', 100000, 'today']));
       await assert.rejects(rpc(db, 'classic_profile'));
@@ -346,6 +347,45 @@ test('Supabase upgrade runs in isolated PostgreSQL and enforces access, rewards 
         true,
       );
       await db.query('update public.profiles set leaderboard_restricted=false where id=$1', [uid]);
+    });
+    await t.test(
+      'optional account details can be set and cleared and stay off leaderboards',
+      async () => {
+        await rpc(db, 'classic_update_profile', [
+          'player_one',
+          '◇',
+          { birthDate: '1994-03-21', country: 'ایران' },
+        ]);
+        const saved = await rpc(db, 'classic_profile');
+        assert.equal(saved.birthDate, '1994-03-21');
+        assert.equal(saved.country, 'ایران');
+        await rpc(db, 'classic_update_profile', ['player_one', '◇']);
+        assert.equal((await rpc(db, 'classic_profile')).birthDate, '1994-03-21');
+        await assert.rejects(
+          rpc(db, 'classic_update_profile', [
+            'player_one',
+            '◇',
+            { birthDate: '2999-01-01', country: 'ایران' },
+          ]),
+        );
+        await db.exec('set role anon');
+        const table = await rpc(db, 'classic_leaderboard', ['wordle']);
+        assert(!JSON.stringify(table).includes('1994-03-21'));
+        assert(!JSON.stringify(table).includes('birthDate'));
+        await assert.rejects(rpc(db, 'classic_update_profile', ['player_one', '◇', {}]));
+        await db.exec('reset role');
+        await rpc(db, 'classic_update_profile', [
+          'player_one',
+          '◇',
+          { birthDate: null, country: null },
+        ]);
+        assert.equal((await rpc(db, 'classic_profile')).birthDate, null);
+        assert.equal((await rpc(db, 'classic_profile')).country, null);
+      },
+    );
+    await t.test('the default crossword is the active mini, not a retired puzzle ID', async () => {
+      const initial = await rpc(db, 'classic_get', ['crossword', null]);
+      assert.equal(String(initial.puzzle.id), String(catalog.crosswords[0].id));
     });
     await t.test('a migrated daily claim cannot be paid a second time', async () => {
       const id = '00000000-0000-4000-8000-000000000002';

@@ -149,10 +149,12 @@ function PlaySession({ game, id, paused }) {
   const [state, setState] = useState(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
-    [retry, setRetry] = useState(0);
+    [retry, setRetry] = useState(0),
+    [guestPrompt, setGuestPrompt] = useState(false);
   const lock = useRef(false);
   const currentState = useRef(null);
-  const { day } = useArcade();
+  const { day, player } = useArcade();
+  const guest = !!player?.local;
   useEffect(() => {
     let alive = true;
     getGame(game, id)
@@ -186,6 +188,7 @@ function PlaySession({ game, id, paused }) {
           },
           id,
         );
+        if (next.finished && !currentState.current?.finished && guest) setGuestPrompt(true);
         currentState.current = next;
         setState(next);
         return next;
@@ -197,7 +200,7 @@ function PlaySession({ game, id, paused }) {
         setBusy(false);
       }
     },
-    [game, id],
+    [game, id, guest],
   );
   if (!state)
     return (
@@ -226,6 +229,25 @@ function PlaySession({ game, id, paused }) {
         <p className="game-error" role="alert">
           {error}
         </p>
+      )}
+      {guestPrompt && (
+        <Dialog title="در جدول امتیازها حضور داشته باش" onClose={() => setGuestPrompt(false)}>
+          <p>برای حضور در جدول امتیازها وارد شو یا حساب کاربری بساز.</p>
+          <p>
+            با حساب کاربری می‌توانی نتایج بازی‌های روزانه‌ات را ذخیره کنی و با دیگران رقابت کنی.
+          </p>
+          <div className="guest-auth-actions">
+            <Link className="button" href="/login">
+              ورود به حساب
+            </Link>
+            <Link className="button secondary-button" href="/register">
+              ساخت حساب کاربری
+            </Link>
+          </div>
+          <button className="text-button" onClick={() => setGuestPrompt(false)}>
+            دیدن نتیجه
+          </button>
+        </Dialog>
       )}
       {state.finished ? (
         <Result state={state} />
@@ -777,12 +799,47 @@ function Teamdle({ state, action, busy }) {
     </>
   );
 }
+function MiniBoardPreview({ puzzle }) {
+  return (
+    <div
+      className="crossword-board crossword-preview"
+      role="img"
+      aria-label={'نمای جدول ' + puzzle.title}
+      style={{ gridTemplateColumns: 'repeat(' + puzzle.cols + ', var(--cell, 39px))' }}
+    >
+      {Array.from({ length: puzzle.rows * puzzle.cols }, (_, i) => {
+        const row = Math.floor(i / puzzle.cols),
+          col = i % puzzle.cols;
+        const black = puzzle.blackCells.some(([r, c]) => r === row && c === col);
+        const number = puzzle.slots.find((s) => s.row === row && s.col === col)?.number;
+        return (
+          <span key={i} className={'crossword-cell' + (black ? ' black' : '')}>
+            {!black && number && <small>{fa(number)}</small>}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
 function CrosswordLibrary() {
   return (
     <div className="crossword-catalog">
       {catalog.crosswords.map((c) => (
         <div className="crossword-card" key={c.id}>
-          <GameArt type="grid" />
+          <div className="mini-grid-preview" aria-hidden="true">
+            {Array.from({ length: c.rows * c.cols }, (_, i) => (
+              <i
+                key={i}
+                className={
+                  c.blackCells.some(
+                    ([r, col]) => r === Math.floor(i / c.cols) && col === i % c.cols,
+                  )
+                    ? 'black'
+                    : ''
+                }
+              />
+            ))}
+          </div>
           <div style={{ flex: 1 }}>
             <h2>{c.title}</h2>
             <p>
@@ -867,10 +924,10 @@ function Crossword({ state, action, busy }) {
   if (!p.unlocked)
     return (
       <div className="results">
-        <GameArt type="grid" />
+        <MiniBoardPreview puzzle={p} />
         <h2>{p.title}</h2>
         <p className="center-note">
-          جدول مورد نظر را انتخاب کن.
+          ده سرنخ، یک جدول ۵ × ۵.
           <br />
           با {fa(p.cost)} سکه بازش کن؛ برای همیشه مال توست.
         </p>
@@ -954,6 +1011,7 @@ function Crossword({ state, action, busy }) {
               .map((s) => (
                 <button
                   key={s.number}
+                  className={active?.number === s.number && direction === dir ? 'active' : ''}
                   onClick={() => {
                     setCell(s.row + '_' + s.col);
                     setDirection(dir);
@@ -976,7 +1034,7 @@ function Crossword({ state, action, busy }) {
   );
 }
 function Result({ state }) {
-  const { notify } = useArcade(),
+  const { notify, player } = useArcade(),
     timer = useCountdown();
   const meta = gameById(state.game);
   const share = async () => {
@@ -1030,7 +1088,7 @@ function Result({ state }) {
           </div>
         </div>
       )}
-      {state.reward > 0 && (
+      {state.reward > 0 && (!player?.local || isLocal) && (
         <div className="reward-banner">
           <span className="coin">✦</span>
           {fa(state.reward)} سکه به موجودی اضافه شد.

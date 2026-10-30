@@ -129,11 +129,12 @@ create or replace function public.classic_get(p_game text,p_id text default null
 declare v_uid uuid:=classic_private.ensure_player();v_day text:=classic_private.game_day();v_key text;v_daily_key text; s jsonb;v_index integer;v_team text;v_slot integer;
 begin
  if p_game is null or p_game not in ('wordle','factle','colordle','chordle','memorydle','teamdle','crossword') then raise exception 'بازی پیدا نشد.';end if;
+ if p_game='crossword' and p_id is null then select data#>>'{crosswords,0,id}' into p_id from classic_private.content where singleton;end if;
  perform pg_advisory_xact_lock(hashtextextended(v_uid::text,0));
- v_key:=case when p_game='crossword' then 'crossword:'||coalesce(p_id,'1') else v_day||':'||p_game end;
+ v_key:=case when p_game='crossword' then 'crossword:'||p_id else v_day||':'||p_game end;
  select state into s from classic_private.games where user_id=v_uid and game_key=v_key;
  if s is not null then return classic_private.view_state(s);end if;
- v_daily_key:=case when p_game='crossword' then 'crossword:'||coalesce(p_id,'1') else p_game end;
+ v_daily_key:=case when p_game='crossword' then 'crossword:'||p_id else p_game end;
  perform pg_advisory_xact_lock(hashtextextended(v_day||':'||v_daily_key,0));
  select state into s from classic_private.daily where day=v_day and game=v_daily_key;
  if s is null then s:=classic_private.new_state(p_game,p_id);insert into classic_private.daily values(v_day,v_daily_key,s);end if;
