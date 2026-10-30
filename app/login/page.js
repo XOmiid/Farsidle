@@ -1,4 +1,5 @@
 import { Auth } from '@/components/arcade/Account';
-export default function Page() {
-  return <Auth mode="login" />;
+export default async function Page({ searchParams }) {
+  const query = await searchParams;
+  return <Auth mode="login" returnTo={query?.next} />;
 }

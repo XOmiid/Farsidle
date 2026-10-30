@@ -69,13 +69,17 @@ export default function Home() {
           </div>
         </Link>
       </section>
-      <div className="next-collection">
+      <Link href="/galactic" className="g-home-card">
         <div>
-          <h3>بازی‌های جدید در راه‌اند.</h3>
-          <p>مجموعه‌های بعدی به‌زودی به فارسیدل اضافه می‌شوند.</p>
+          <span className="g-kicker">فوتبال چندنفره · تازه</span>
+          <h2>کهکشانی</h2>
+          <p>تیمت را بساز. با دوستانت برای جام رقابت کن.</p>
+          <span className="g-home-cta">ورود به کهکشانی ←</span>
         </div>
-        <span className="pill">به‌زودی</span>
-      </div>
+        <div className="g-home-emblem" aria-hidden="true">
+          ۱۱<small>۲ تا ۸ نفر</small>
+        </div>
+      </Link>
     </Shell>
   );
 }

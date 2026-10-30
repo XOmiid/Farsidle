@@ -9,6 +9,7 @@ import { fa } from '@/lib/classic/rules.mjs';
 const NAV = [
   { href: '/', name: 'خانه', icon: 'home' },
   { href: '/classic', name: 'کلاسیک', icon: 'collection' },
+  { href: '/galactic', name: 'کهکشانی', icon: 'star' },
   { href: '/leaderboard', name: 'برترین‌ها', icon: 'trophy' },
   { href: '/profile', name: 'پروفایل', icon: 'user' },
 ];
@@ -35,7 +36,15 @@ export default function Shell({ children, back, title, help }) {
           </Link>
           <nav className="desktop-nav" aria-label="منوی اصلی">
             {NAV.map((item) => (
-              <Link key={item.href} href={item.href} className={path === item.href ? 'active' : ''}>
+              <Link
+                key={item.href}
+                href={item.href}
+                className={
+                  path === item.href || (item.href !== '/' && path.startsWith(item.href + '/'))
+                    ? 'active'
+                    : ''
+                }
+              >
                 {item.name}
               </Link>
             ))}

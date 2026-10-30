@@ -59,3 +59,18 @@ test('signup resends and verification keep signup and recovery code types separa
   await verifyAccountCode(client, 'forgot', 'test@example.com', '123456');
   assert.equal(calls[2].type, 'recovery');
 });
+
+import { gameReturnPath } from '../lib/classic/account.mjs';
+test('authentication preserves game invitations and rejects external return URLs', () => {
+  assert.equal(gameReturnPath('/galactic/room/386710A103'), '/galactic/room/386710A103');
+  assert.equal(gameReturnPath('/galactic'), '/galactic');
+  for (const bad of [
+    'https://evil.example',
+    '//evil.example',
+    '/galactic/../profile',
+    '/galactic?next=//evil.example',
+    null,
+    ['/galactic'],
+  ])
+    assert.equal(gameReturnPath(bad), '/classic');
+});

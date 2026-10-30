@@ -1,4 +1,5 @@
 'use client';
+import { gameReturnPath } from '@/lib/classic/account.mjs';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -263,7 +264,9 @@ export default function Profile() {
     </Shell>
   );
 }
-export function Auth({ mode = 'login' }) {
+export function Auth({ mode = 'login', returnTo }) {
+  const destination = gameReturnPath(returnTo);
+  const authSuffix = destination === '/classic' ? '' : '?next=' + encodeURIComponent(destination);
   const router = useRouter(),
     { reload } = useArcade();
   const [email, setEmail] = useState(''),
@@ -324,7 +327,7 @@ export function Auth({ mode = 'login' }) {
         result = await verifyAccountCode(client, mode, email, token);
         if (result.error) throw result.error;
         await reload();
-        router.push(mode === 'forgot' ? '/reset-password' : '/classic');
+        router.push(mode === 'forgot' ? '/reset-password' : destination);
         return;
       }
       if (mode === 'login') result = await client.auth.signInWithPassword({ email, password });
@@ -336,7 +339,7 @@ export function Auth({ mode = 'login' }) {
           email: email.trim(),
           password,
           options: {
-            emailRedirectTo: window.location.origin + '/classic',
+            emailRedirectTo: window.location.origin + destination,
             data: { username: name, birth_date: details.birthDate, country: details.country },
           },
         });
@@ -356,7 +359,7 @@ export function Auth({ mode = 'login' }) {
         setPassword('');
       } else {
         await reload();
-        router.push('/classic');
+        router.push(destination);
       }
     } catch (e) {
       setError(e.code ? authError(e) : e.message);
@@ -399,10 +402,13 @@ export function Auth({ mode = 'login' }) {
           ) : (
             <>
               <div className="auth-tabs">
-                <Link className={mode === 'login' ? 'active' : ''} href="/login">
+                <Link className={mode === 'login' ? 'active' : ''} href={'/login' + authSuffix}>
                   ورود
                 </Link>
-                <Link className={mode === 'register' ? 'active' : ''} href="/register">
+                <Link
+                  className={mode === 'register' ? 'active' : ''}
+                  href={'/register' + authSuffix}
+                >
                   ثبت‌نام
                 </Link>
               </div>

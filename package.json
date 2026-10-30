@@ -11,7 +11,8 @@
     "data:validate": "node scripts/validate-data.mjs",
     "db:prepare": "node scripts/prepare-database.mjs",
     "format": "prettier --write app components lib scripts tests README.md package.json next.config.mjs eslint.config.mjs",
-    "format:check": "prettier --check app components lib scripts tests README.md package.json next.config.mjs eslint.config.mjs"
+    "format:check": "prettier --check app components lib scripts tests README.md package.json next.config.mjs eslint.config.mjs",
+    "db:galactic": "node scripts/prepare-galactic.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.110.5",

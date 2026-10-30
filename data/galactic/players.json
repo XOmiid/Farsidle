@@ -1,0 +1,5768 @@
+[
+  {
+    "id": "alisson-becker",
+    "name": "Alisson Becker",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 89,
+    "pace": 42,
+    "shooting": 30,
+    "passing": 69,
+    "dribbling": 40,
+    "defending": 27,
+    "physical": 83,
+    "stamina": 64,
+    "goalkeeping": 89,
+    "goalkeeperSkills": {
+      "diving": 90,
+      "handling": 87,
+      "kicking": 86,
+      "reflexes": 92,
+      "positioning": 88
+    }
+  },
+  {
+    "id": "giorgi-mamardashvili",
+    "name": "Giorgi Mamardashvili",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 83,
+    "pace": 39,
+    "shooting": 21,
+    "passing": 50,
+    "dribbling": 33,
+    "defending": 21,
+    "physical": 78,
+    "stamina": 60,
+    "goalkeeping": 83,
+    "goalkeeperSkills": {
+      "diving": 83,
+      "handling": 83,
+      "kicking": 79,
+      "reflexes": 85,
+      "positioning": 84
+    }
+  },
+  {
+    "id": "freddie-woodman",
+    "name": "Freddie Woodman",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 72,
+    "pace": 28,
+    "shooting": 10,
+    "passing": 39,
+    "dribbling": 22,
+    "defending": 10,
+    "physical": 67,
+    "stamina": 49,
+    "goalkeeping": 72,
+    "goalkeeperSkills": {
+      "diving": 73,
+      "handling": 70,
+      "kicking": 69,
+      "reflexes": 75,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "virgil-van-dijk",
+    "name": "Virgil van Dijk",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 90,
+    "pace": 83,
+    "shooting": 52,
+    "passing": 81,
+    "dribbling": 71,
+    "defending": 89,
+    "physical": 93,
+    "stamina": 88,
+    "goalkeeping": 17
+  },
+  {
+    "id": "joe-gomez",
+    "name": "Joe Gomez",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 80,
+    "pace": 68,
+    "shooting": 40,
+    "passing": 66,
+    "dribbling": 58,
+    "defending": 79,
+    "physical": 86,
+    "stamina": 77,
+    "goalkeeping": 9
+  },
+  {
+    "id": "jeremy-jacquet",
+    "name": "Jeremy Jacquet",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 66,
+    "shooting": 36,
+    "passing": 67,
+    "dribbling": 57,
+    "defending": 76,
+    "physical": 81,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "milos-kerkez",
+    "name": "Milos Kerkez",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 81,
+    "pace": 87,
+    "shooting": 55,
+    "passing": 74,
+    "dribbling": 76,
+    "defending": 76,
+    "physical": 78,
+    "stamina": 84,
+    "goalkeeping": 10
+  },
+  {
+    "id": "conor-bradley",
+    "name": "Conor Bradley",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "RB"
+    ],
+    "overall": 79,
+    "pace": 85,
+    "shooting": 53,
+    "passing": 72,
+    "dribbling": 74,
+    "defending": 74,
+    "physical": 76,
+    "stamina": 82,
+    "goalkeeping": 8
+  },
+  {
+    "id": "giovanni-leoni",
+    "name": "Giovanni Leoni",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 75,
+    "pace": 64,
+    "shooting": 34,
+    "passing": 65,
+    "dribbling": 55,
+    "defending": 74,
+    "physical": 79,
+    "stamina": 68,
+    "goalkeeping": 8
+  },
+  {
+    "id": "kostas-tsimikas",
+    "name": "Kostas Tsimikas",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 77,
+    "pace": 79,
+    "shooting": 48,
+    "passing": 68,
+    "dribbling": 71,
+    "defending": 72,
+    "physical": 68,
+    "stamina": 75,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jeremie-frimpong",
+    "name": "Jeremie Frimpong",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "RB",
+      "RW"
+    ],
+    "overall": 84,
+    "pace": 88,
+    "shooting": 60,
+    "passing": 76,
+    "dribbling": 82,
+    "defending": 79,
+    "physical": 78,
+    "stamina": 88,
+    "goalkeeping": 11
+  },
+  {
+    "id": "ronald-araujo",
+    "name": "Ronald Araujo",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 75,
+    "shooting": 45,
+    "passing": 76,
+    "dribbling": 66,
+    "defending": 85,
+    "physical": 90,
+    "stamina": 79,
+    "goalkeeping": 16
+  },
+  {
+    "id": "wataru-endo",
+    "name": "Wataru Endo",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "DM"
+    ],
+    "overall": 78,
+    "pace": 66,
+    "shooting": 55,
+    "passing": 75,
+    "dribbling": 70,
+    "defending": 75,
+    "physical": 75,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "florian-wirtz",
+    "name": "Florian Wirtz",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 90,
+    "pace": 88,
+    "shooting": 87,
+    "passing": 91,
+    "dribbling": 96,
+    "defending": 46,
+    "physical": 74,
+    "stamina": 91,
+    "goalkeeping": 17
+  },
+  {
+    "id": "dominik-szoboszlai",
+    "name": "Dominik Szoboszlai",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 85,
+    "pace": 80,
+    "shooting": 73,
+    "passing": 87,
+    "dribbling": 83,
+    "defending": 65,
+    "physical": 80,
+    "stamina": 90,
+    "goalkeeping": 14
+  },
+  {
+    "id": "alexis-mac-allister",
+    "name": "Alexis Mac Allister",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 86,
+    "pace": 78,
+    "shooting": 77,
+    "passing": 90,
+    "dribbling": 85,
+    "defending": 66,
+    "physical": 80,
+    "stamina": 89,
+    "goalkeeping": 12
+  },
+  {
+    "id": "ryan-gravenberch",
+    "name": "Ryan Gravenberch",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 85,
+    "pace": 76,
+    "shooting": 66,
+    "passing": 87,
+    "dribbling": 83,
+    "defending": 82,
+    "physical": 83,
+    "stamina": 88,
+    "goalkeeping": 13
+  },
+  {
+    "id": "trey-nyoni",
+    "name": "Trey Nyoni",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CM"
+    ],
+    "overall": 67,
+    "pace": 63,
+    "shooting": 54,
+    "passing": 73,
+    "dribbling": 67,
+    "defending": 47,
+    "physical": 60,
+    "stamina": 68,
+    "goalkeeping": 8
+  },
+  {
+    "id": "james-mcconnell",
+    "name": "James McConnell",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 68,
+    "pace": 60,
+    "shooting": 59,
+    "passing": 72,
+    "dribbling": 67,
+    "defending": 48,
+    "physical": 62,
+    "stamina": 71,
+    "goalkeeping": 8
+  },
+  {
+    "id": "alexander-isak",
+    "name": "Alexander Isak",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 89,
+    "pace": 88,
+    "shooting": 96,
+    "passing": 72,
+    "dribbling": 84,
+    "defending": 38,
+    "physical": 89,
+    "stamina": 85,
+    "goalkeeping": 16
+  },
+  {
+    "id": "federico-chiesa",
+    "name": "Federico Chiesa",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 81,
+    "pace": 90,
+    "shooting": 78,
+    "passing": 79,
+    "dribbling": 89,
+    "defending": 32,
+    "physical": 62,
+    "stamina": 77,
+    "goalkeeping": 9
+  },
+  {
+    "id": "cody-gakpo",
+    "name": "Cody Gakpo",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "LW",
+      "ST"
+    ],
+    "overall": 84,
+    "pace": 91,
+    "shooting": 83,
+    "passing": 81,
+    "dribbling": 88,
+    "defending": 35,
+    "physical": 69,
+    "stamina": 81,
+    "goalkeeping": 10
+  },
+  {
+    "id": "hugo-ekitike",
+    "name": "Hugo Ekitike",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 84,
+    "pace": 86,
+    "shooting": 88,
+    "passing": 72,
+    "dribbling": 78,
+    "defending": 33,
+    "physical": 85,
+    "stamina": 75,
+    "goalkeeping": 14
+  },
+  {
+    "id": "bradley-barcola",
+    "name": "Bradley Barcola",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 85,
+    "pace": 93,
+    "shooting": 83,
+    "passing": 79,
+    "dribbling": 91,
+    "defending": 36,
+    "physical": 68,
+    "stamina": 85,
+    "goalkeeping": 12
+  },
+  {
+    "id": "rio-ngumoha",
+    "name": "Rio Ngumoha",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 70,
+    "pace": 80,
+    "shooting": 66,
+    "passing": 65,
+    "dribbling": 73,
+    "defending": 21,
+    "physical": 56,
+    "stamina": 69,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jayden-danns",
+    "name": "Jayden Danns",
+    "club": "Liverpool",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 67,
+    "pace": 67,
+    "shooting": 73,
+    "passing": 54,
+    "dribbling": 64,
+    "defending": 16,
+    "physical": 65,
+    "stamina": 59,
+    "goalkeeping": 8
+  },
+  {
+    "id": "emiliano-martinez",
+    "name": "Emiliano Martinez",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 86,
+    "pace": 41,
+    "shooting": 25,
+    "passing": 56,
+    "dribbling": 41,
+    "defending": 24,
+    "physical": 76,
+    "stamina": 60,
+    "goalkeeping": 86,
+    "goalkeeperSkills": {
+      "diving": 87,
+      "handling": 84,
+      "kicking": 83,
+      "reflexes": 89,
+      "positioning": 85
+    }
+  },
+  {
+    "id": "mike-penders",
+    "name": "Mike Penders",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 74,
+    "pace": 32,
+    "shooting": 10,
+    "passing": 42,
+    "dribbling": 28,
+    "defending": 12,
+    "physical": 65,
+    "stamina": 50,
+    "goalkeeping": 74,
+    "goalkeeperSkills": {
+      "diving": 73,
+      "handling": 73,
+      "kicking": 72,
+      "reflexes": 75,
+      "positioning": 74
+    }
+  },
+  {
+    "id": "gabriel-slonina",
+    "name": "Gabriel Slonina",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 70,
+    "pace": 25,
+    "shooting": 9,
+    "passing": 40,
+    "dribbling": 25,
+    "defending": 8,
+    "physical": 60,
+    "stamina": 44,
+    "goalkeeping": 70,
+    "goalkeeperSkills": {
+      "diving": 70,
+      "handling": 70,
+      "kicking": 66,
+      "reflexes": 72,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "wesley-fofana",
+    "name": "Wesley Fofana",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 67,
+    "shooting": 39,
+    "passing": 65,
+    "dribbling": 57,
+    "defending": 78,
+    "physical": 85,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "maxence-lacroix",
+    "name": "Maxence Lacroix",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 66,
+    "shooting": 42,
+    "passing": 65,
+    "dribbling": 61,
+    "defending": 79,
+    "physical": 83,
+    "stamina": 78,
+    "goalkeeping": 8
+  },
+  {
+    "id": "levi-colwill",
+    "name": "Levi Colwill",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CB",
+      "LB"
+    ],
+    "overall": 82,
+    "pace": 68,
+    "shooting": 44,
+    "passing": 67,
+    "dribbling": 63,
+    "defending": 81,
+    "physical": 85,
+    "stamina": 80,
+    "goalkeeping": 9
+  },
+  {
+    "id": "jorrel-hato",
+    "name": "Jorrel Hato",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 81,
+    "shooting": 50,
+    "passing": 70,
+    "dribbling": 73,
+    "defending": 74,
+    "physical": 70,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "reece-james",
+    "name": "Reece James",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "RB",
+      "DM"
+    ],
+    "overall": 84,
+    "pace": 91,
+    "shooting": 57,
+    "passing": 81,
+    "dribbling": 81,
+    "defending": 79,
+    "physical": 79,
+    "stamina": 83,
+    "goalkeeping": 14
+  },
+  {
+    "id": "malo-gusto",
+    "name": "Malo Gusto",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "RB"
+    ],
+    "overall": 81,
+    "pace": 85,
+    "shooting": 57,
+    "passing": 73,
+    "dribbling": 79,
+    "defending": 76,
+    "physical": 75,
+    "stamina": 85,
+    "goalkeeping": 8
+  },
+  {
+    "id": "pep-chavarria",
+    "name": "Pep Chavarria",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 75,
+    "pace": 81,
+    "shooting": 49,
+    "passing": 68,
+    "dribbling": 70,
+    "defending": 70,
+    "physical": 72,
+    "stamina": 78,
+    "goalkeeping": 8
+  },
+  {
+    "id": "aaron-anselmino",
+    "name": "Aaron Anselmino",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 72,
+    "pace": 56,
+    "shooting": 29,
+    "passing": 56,
+    "dribbling": 49,
+    "defending": 71,
+    "physical": 72,
+    "stamina": 64,
+    "goalkeeping": 8
+  },
+  {
+    "id": "josh-acheampong",
+    "name": "Josh Acheampong",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 73,
+    "pace": 58,
+    "shooting": 36,
+    "passing": 61,
+    "dribbling": 52,
+    "defending": 72,
+    "physical": 78,
+    "stamina": 68,
+    "goalkeeping": 8
+  },
+  {
+    "id": "valentin-barco",
+    "name": "Valentin Barco",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "LB"
+    ],
+    "overall": 77,
+    "pace": 71,
+    "shooting": 66,
+    "passing": 82,
+    "dribbling": 80,
+    "defending": 57,
+    "physical": 67,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jordan-henderson",
+    "name": "Jordan Henderson",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 76,
+    "pace": 72,
+    "shooting": 63,
+    "passing": 82,
+    "dribbling": 76,
+    "defending": 56,
+    "physical": 69,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "moises-caicedo",
+    "name": "Moises Caicedo",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 87,
+    "pace": 79,
+    "shooting": 67,
+    "passing": 86,
+    "dribbling": 80,
+    "defending": 84,
+    "physical": 90,
+    "stamina": 93,
+    "goalkeeping": 16
+  },
+  {
+    "id": "romeo-lavia",
+    "name": "Romeo Lavia",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "DM"
+    ],
+    "overall": 79,
+    "pace": 69,
+    "shooting": 61,
+    "passing": 77,
+    "dribbling": 75,
+    "defending": 76,
+    "physical": 79,
+    "stamina": 86,
+    "goalkeeping": 8
+  },
+  {
+    "id": "pedro-neto",
+    "name": "Pedro Neto",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 83,
+    "pace": 93,
+    "shooting": 79,
+    "passing": 78,
+    "dribbling": 86,
+    "defending": 34,
+    "physical": 69,
+    "stamina": 82,
+    "goalkeeping": 12
+  },
+  {
+    "id": "joao-pedro",
+    "name": "Joao Pedro",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "ST",
+      "AM"
+    ],
+    "overall": 84,
+    "pace": 81,
+    "shooting": 86,
+    "passing": 66,
+    "dribbling": 75,
+    "defending": 33,
+    "physical": 81,
+    "stamina": 74,
+    "goalkeeping": 9
+  },
+  {
+    "id": "cole-palmer",
+    "name": "Cole Palmer",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 89,
+    "pace": 81,
+    "shooting": 89,
+    "passing": 91,
+    "dribbling": 92,
+    "defending": 45,
+    "physical": 76,
+    "stamina": 89,
+    "goalkeeping": 18
+  },
+  {
+    "id": "jamie-gittens",
+    "name": "Jamie Gittens",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 81,
+    "pace": 91,
+    "shooting": 77,
+    "passing": 76,
+    "dribbling": 84,
+    "defending": 32,
+    "physical": 67,
+    "stamina": 80,
+    "goalkeeping": 10
+  },
+  {
+    "id": "morgan-rogers",
+    "name": "Morgan Rogers",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 84,
+    "pace": 82,
+    "shooting": 81,
+    "passing": 85,
+    "dribbling": 90,
+    "defending": 40,
+    "physical": 68,
+    "stamina": 85,
+    "goalkeeping": 11
+  },
+  {
+    "id": "danny-welbeck",
+    "name": "Danny Welbeck",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 77,
+    "pace": 74,
+    "shooting": 79,
+    "passing": 59,
+    "dribbling": 68,
+    "defending": 26,
+    "physical": 74,
+    "stamina": 67,
+    "goalkeeping": 8
+  },
+  {
+    "id": "emmanuel-emegha",
+    "name": "Emmanuel Emegha",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 80,
+    "pace": 77,
+    "shooting": 82,
+    "passing": 62,
+    "dribbling": 71,
+    "defending": 29,
+    "physical": 77,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "geovany-quenda",
+    "name": "Geovany Quenda",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "RW",
+      "RB"
+    ],
+    "overall": 79,
+    "pace": 91,
+    "shooting": 73,
+    "passing": 75,
+    "dribbling": 86,
+    "defending": 30,
+    "physical": 61,
+    "stamina": 77,
+    "goalkeeping": 10
+  },
+  {
+    "id": "estevao-willian",
+    "name": "Estevao Willian",
+    "club": "Chelsea",
+    "league": "premier-league",
+    "positions": [
+      "RW"
+    ],
+    "overall": 81,
+    "pace": 93,
+    "shooting": 75,
+    "passing": 77,
+    "dribbling": 88,
+    "defending": 32,
+    "physical": 63,
+    "stamina": 79,
+    "goalkeeping": 12
+  },
+  {
+    "id": "gianluigi-donnarumma",
+    "name": "Gianluigi Donnarumma",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 90,
+    "pace": 42,
+    "shooting": 25,
+    "passing": 49,
+    "dribbling": 39,
+    "defending": 28,
+    "physical": 79,
+    "stamina": 62,
+    "goalkeeping": 90,
+    "goalkeeperSkills": {
+      "diving": 89,
+      "handling": 89,
+      "kicking": 88,
+      "reflexes": 91,
+      "positioning": 90
+    }
+  },
+  {
+    "id": "marcus-bettinelli",
+    "name": "Marcus Bettinelli",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 67,
+    "pace": 19,
+    "shooting": 8,
+    "passing": 32,
+    "dribbling": 16,
+    "defending": 8,
+    "physical": 56,
+    "stamina": 39,
+    "goalkeeping": 67,
+    "goalkeeperSkills": {
+      "diving": 67,
+      "handling": 67,
+      "kicking": 63,
+      "reflexes": 69,
+      "positioning": 68
+    }
+  },
+  {
+    "id": "geronimo-rulli",
+    "name": "Geronimo Rulli",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 33,
+    "shooting": 21,
+    "passing": 49,
+    "dribbling": 31,
+    "defending": 18,
+    "physical": 74,
+    "stamina": 55,
+    "goalkeeping": 80,
+    "goalkeeperSkills": {
+      "diving": 80,
+      "handling": 80,
+      "kicking": 76,
+      "reflexes": 82,
+      "positioning": 81
+    }
+  },
+  {
+    "id": "ruben-dias",
+    "name": "Ruben Dias",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 87,
+    "pace": 74,
+    "shooting": 48,
+    "passing": 76,
+    "dribbling": 70,
+    "defending": 86,
+    "physical": 88,
+    "stamina": 81,
+    "goalkeeping": 15
+  },
+  {
+    "id": "marc-guehi",
+    "name": "Marc Guehi",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 84,
+    "pace": 68,
+    "shooting": 41,
+    "passing": 68,
+    "dribbling": 61,
+    "defending": 83,
+    "physical": 84,
+    "stamina": 76,
+    "goalkeeping": 9
+  },
+  {
+    "id": "rayan-ait-nouri",
+    "name": "Rayan Ait-Nouri",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 82,
+    "pace": 90,
+    "shooting": 54,
+    "passing": 76,
+    "dribbling": 81,
+    "defending": 77,
+    "physical": 75,
+    "stamina": 84,
+    "goalkeeping": 13
+  },
+  {
+    "id": "josko-gvardiol",
+    "name": "Josko Gvardiol",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 94,
+    "shooting": 58,
+    "passing": 80,
+    "dribbling": 85,
+    "defending": 81,
+    "physical": 79,
+    "stamina": 88,
+    "goalkeeping": 17
+  },
+  {
+    "id": "abdukodir-khusanov",
+    "name": "Abdukodir Khusanov",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 78,
+    "pace": 67,
+    "shooting": 37,
+    "passing": 68,
+    "dribbling": 58,
+    "defending": 77,
+    "physical": 82,
+    "stamina": 71,
+    "goalkeeping": 8
+  },
+  {
+    "id": "rico-lewis",
+    "name": "Rico Lewis",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "RB",
+      "CM"
+    ],
+    "overall": 79,
+    "pace": 81,
+    "shooting": 50,
+    "passing": 70,
+    "dribbling": 73,
+    "defending": 74,
+    "physical": 70,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "elliot-anderson",
+    "name": "Elliot Anderson",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 74,
+    "shooting": 73,
+    "passing": 86,
+    "dribbling": 81,
+    "defending": 62,
+    "physical": 76,
+    "stamina": 85,
+    "goalkeeping": 8
+  },
+  {
+    "id": "mateo-kovacic",
+    "name": "Mateo Kovacic",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 82,
+    "pace": 77,
+    "shooting": 70,
+    "passing": 84,
+    "dribbling": 80,
+    "defending": 62,
+    "physical": 77,
+    "stamina": 87,
+    "goalkeeping": 11
+  },
+  {
+    "id": "rayan-cherki",
+    "name": "Rayan Cherki",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 85,
+    "pace": 83,
+    "shooting": 82,
+    "passing": 86,
+    "dribbling": 91,
+    "defending": 41,
+    "physical": 69,
+    "stamina": 86,
+    "goalkeeping": 12
+  },
+  {
+    "id": "enzo-fernandez",
+    "name": "Enzo Fernandez",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 85,
+    "pace": 81,
+    "shooting": 72,
+    "passing": 91,
+    "dribbling": 85,
+    "defending": 65,
+    "physical": 78,
+    "stamina": 86,
+    "goalkeeping": 15
+  },
+  {
+    "id": "matheus-nunes",
+    "name": "Matheus Nunes",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "RB"
+    ],
+    "overall": 80,
+    "pace": 75,
+    "shooting": 68,
+    "passing": 82,
+    "dribbling": 78,
+    "defending": 60,
+    "physical": 75,
+    "stamina": 85,
+    "goalkeeping": 9
+  },
+  {
+    "id": "ayyoub-bouaddi",
+    "name": "Ayyoub Bouaddi",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 78,
+    "pace": 71,
+    "shooting": 68,
+    "passing": 79,
+    "dribbling": 79,
+    "defending": 58,
+    "physical": 70,
+    "stamina": 84,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nico-o-reilly",
+    "name": "Nico O'Reilly",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "LB",
+      "CM"
+    ],
+    "overall": 77,
+    "pace": 83,
+    "shooting": 51,
+    "passing": 70,
+    "dribbling": 72,
+    "defending": 72,
+    "physical": 74,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "antoine-semenyo",
+    "name": "Antoine Semenyo",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 83,
+    "pace": 95,
+    "shooting": 77,
+    "passing": 79,
+    "dribbling": 90,
+    "defending": 34,
+    "physical": 65,
+    "stamina": 81,
+    "goalkeeping": 14
+  },
+  {
+    "id": "phil-foden",
+    "name": "Phil Foden",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 87,
+    "pace": 88,
+    "shooting": 81,
+    "passing": 93,
+    "dribbling": 92,
+    "defending": 43,
+    "physical": 72,
+    "stamina": 83,
+    "goalkeeping": 17
+  },
+  {
+    "id": "iliman-ndiaye",
+    "name": "Iliman Ndiaye",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "LW",
+      "AM"
+    ],
+    "overall": 81,
+    "pace": 92,
+    "shooting": 76,
+    "passing": 80,
+    "dribbling": 86,
+    "defending": 32,
+    "physical": 65,
+    "stamina": 76,
+    "goalkeeping": 11
+  },
+  {
+    "id": "erling-haaland",
+    "name": "Erling Haaland",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 93,
+    "pace": 97,
+    "shooting": 97,
+    "passing": 71,
+    "dribbling": 80,
+    "defending": 42,
+    "physical": 97,
+    "stamina": 88,
+    "goalkeeping": 22
+  },
+  {
+    "id": "jeremy-doku",
+    "name": "Jeremy Doku",
+    "club": "Manchester City",
+    "league": "premier-league",
+    "positions": [
+      "LW",
+      "RW"
+    ],
+    "overall": 84,
+    "pace": 95,
+    "shooting": 74,
+    "passing": 81,
+    "dribbling": 93,
+    "defending": 35,
+    "physical": 69,
+    "stamina": 81,
+    "goalkeeping": 10
+  },
+  {
+    "id": "joan-garcia",
+    "name": "Joan Garcia",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 83,
+    "pace": 39,
+    "shooting": 21,
+    "passing": 50,
+    "dribbling": 33,
+    "defending": 21,
+    "physical": 78,
+    "stamina": 60,
+    "goalkeeping": 83,
+    "goalkeeperSkills": {
+      "diving": 84,
+      "handling": 81,
+      "kicking": 80,
+      "reflexes": 86,
+      "positioning": 82
+    }
+  },
+  {
+    "id": "wojciech-szczesny",
+    "name": "Wojciech Szczesny",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 82,
+    "pace": 40,
+    "shooting": 18,
+    "passing": 50,
+    "dribbling": 36,
+    "defending": 20,
+    "physical": 73,
+    "stamina": 58,
+    "goalkeeping": 82,
+    "goalkeeperSkills": {
+      "diving": 82,
+      "handling": 82,
+      "kicking": 78,
+      "reflexes": 84,
+      "positioning": 83
+    }
+  },
+  {
+    "id": "dominik-livakovic",
+    "name": "Dominik Livakovic",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 34,
+    "shooting": 20,
+    "passing": 46,
+    "dribbling": 33,
+    "defending": 18,
+    "physical": 72,
+    "stamina": 58,
+    "goalkeeping": 80,
+    "goalkeeperSkills": {
+      "diving": 79,
+      "handling": 79,
+      "kicking": 78,
+      "reflexes": 81,
+      "positioning": 80
+    }
+  },
+  {
+    "id": "joao-cancelo",
+    "name": "Joao Cancelo",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "RB",
+      "LB"
+    ],
+    "overall": 82,
+    "pace": 85,
+    "shooting": 59,
+    "passing": 88,
+    "dribbling": 85,
+    "defending": 72,
+    "physical": 78,
+    "stamina": 83,
+    "goalkeeping": 8
+  },
+  {
+    "id": "alejandro-balde",
+    "name": "Alejandro Balde",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 83,
+    "pace": 91,
+    "shooting": 55,
+    "passing": 77,
+    "dribbling": 82,
+    "defending": 78,
+    "physical": 76,
+    "stamina": 85,
+    "goalkeeping": 14
+  },
+  {
+    "id": "pau-cubarsi",
+    "name": "Pau Cubarsi",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 84,
+    "pace": 70,
+    "shooting": 46,
+    "passing": 69,
+    "dribbling": 65,
+    "defending": 83,
+    "physical": 87,
+    "stamina": 82,
+    "goalkeeping": 11
+  },
+  {
+    "id": "andreas-christensen",
+    "name": "Andreas Christensen",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 71,
+    "shooting": 39,
+    "passing": 68,
+    "dribbling": 63,
+    "defending": 80,
+    "physical": 83,
+    "stamina": 77,
+    "goalkeeping": 12
+  },
+  {
+    "id": "gerard-martin",
+    "name": "Gerard Martin",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 85,
+    "shooting": 49,
+    "passing": 71,
+    "dribbling": 76,
+    "defending": 72,
+    "physical": 70,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jules-kounde",
+    "name": "Jules Kounde",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "RB",
+      "CB"
+    ],
+    "overall": 87,
+    "pace": 93,
+    "shooting": 61,
+    "passing": 80,
+    "dribbling": 82,
+    "defending": 82,
+    "physical": 84,
+    "stamina": 90,
+    "goalkeeping": 16
+  },
+  {
+    "id": "eric-garcia",
+    "name": "Eric Garcia",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CB",
+      "DM"
+    ],
+    "overall": 81,
+    "pace": 68,
+    "shooting": 42,
+    "passing": 70,
+    "dribbling": 64,
+    "defending": 80,
+    "physical": 82,
+    "stamina": 75,
+    "goalkeeping": 9
+  },
+  {
+    "id": "gavi",
+    "name": "Gavi",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 84,
+    "pace": 79,
+    "shooting": 72,
+    "passing": 86,
+    "dribbling": 82,
+    "defending": 64,
+    "physical": 79,
+    "stamina": 89,
+    "goalkeeping": 13
+  },
+  {
+    "id": "fermin-lopez",
+    "name": "Fermin Lopez",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 83,
+    "pace": 82,
+    "shooting": 79,
+    "passing": 88,
+    "dribbling": 91,
+    "defending": 39,
+    "physical": 65,
+    "stamina": 80,
+    "goalkeeping": 11
+  },
+  {
+    "id": "pedri",
+    "name": "Pedri",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 90,
+    "pace": 83,
+    "shooting": 80,
+    "passing": 91,
+    "dribbling": 91,
+    "defending": 70,
+    "physical": 82,
+    "stamina": 96,
+    "goalkeeping": 17
+  },
+  {
+    "id": "rodri",
+    "name": "Rodri",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 90,
+    "pace": 67,
+    "shooting": 71,
+    "passing": 95,
+    "dribbling": 88,
+    "defending": 89,
+    "physical": 91,
+    "stamina": 93,
+    "goalkeeping": 18
+  },
+  {
+    "id": "dani-olmo",
+    "name": "Dani Olmo",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 85,
+    "pace": 81,
+    "shooting": 77,
+    "passing": 85,
+    "dribbling": 87,
+    "defending": 41,
+    "physical": 66,
+    "stamina": 80,
+    "goalkeeping": 10
+  },
+  {
+    "id": "frenkie-de-jong",
+    "name": "Frenkie de Jong",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 86,
+    "pace": 81,
+    "shooting": 74,
+    "passing": 88,
+    "dribbling": 84,
+    "defending": 66,
+    "physical": 81,
+    "stamina": 91,
+    "goalkeeping": 15
+  },
+  {
+    "id": "marc-bernal",
+    "name": "Marc Bernal",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "DM"
+    ],
+    "overall": 75,
+    "pace": 63,
+    "shooting": 52,
+    "passing": 72,
+    "dribbling": 67,
+    "defending": 72,
+    "physical": 72,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "gabriel-jesus",
+    "name": "Gabriel Jesus",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "ST"
+    ],
+    "overall": 80,
+    "pace": 83,
+    "shooting": 83,
+    "passing": 65,
+    "dribbling": 76,
+    "defending": 29,
+    "physical": 79,
+    "stamina": 74,
+    "goalkeeping": 11
+  },
+  {
+    "id": "lamine-yamal",
+    "name": "Lamine Yamal",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "RW"
+    ],
+    "overall": 92,
+    "pace": 97,
+    "shooting": 90,
+    "passing": 86,
+    "dribbling": 97,
+    "defending": 43,
+    "physical": 75,
+    "stamina": 92,
+    "goalkeeping": 19
+  },
+  {
+    "id": "raphinha",
+    "name": "Raphinha",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "LW",
+      "RW"
+    ],
+    "overall": 89,
+    "pace": 97,
+    "shooting": 85,
+    "passing": 84,
+    "dribbling": 92,
+    "defending": 40,
+    "physical": 75,
+    "stamina": 88,
+    "goalkeeping": 18
+  },
+  {
+    "id": "karim-adeyemi",
+    "name": "Karim Adeyemi",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "LW",
+      "ST"
+    ],
+    "overall": 83,
+    "pace": 95,
+    "shooting": 77,
+    "passing": 79,
+    "dribbling": 90,
+    "defending": 34,
+    "physical": 65,
+    "stamina": 81,
+    "goalkeeping": 14
+  },
+  {
+    "id": "anthony-gordon",
+    "name": "Anthony Gordon",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "LW"
+    ],
+    "overall": 84,
+    "pace": 90,
+    "shooting": 77,
+    "passing": 77,
+    "dribbling": 86,
+    "defending": 35,
+    "physical": 64,
+    "stamina": 78,
+    "goalkeeping": 9
+  },
+  {
+    "id": "roony-bardghji",
+    "name": "Roony Bardghji",
+    "club": "Barcelona",
+    "league": "laliga",
+    "positions": [
+      "RW"
+    ],
+    "overall": 77,
+    "pace": 88,
+    "shooting": 72,
+    "passing": 76,
+    "dribbling": 82,
+    "defending": 28,
+    "physical": 61,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "thibaut-courtois",
+    "name": "Thibaut Courtois",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 91,
+    "pace": 47,
+    "shooting": 29,
+    "passing": 58,
+    "dribbling": 41,
+    "defending": 29,
+    "physical": 86,
+    "stamina": 68,
+    "goalkeeping": 91,
+    "goalkeeperSkills": {
+      "diving": 91,
+      "handling": 91,
+      "kicking": 87,
+      "reflexes": 93,
+      "positioning": 92
+    }
+  },
+  {
+    "id": "andriy-lunin",
+    "name": "Andriy Lunin",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 34,
+    "shooting": 20,
+    "passing": 46,
+    "dribbling": 33,
+    "defending": 18,
+    "physical": 72,
+    "stamina": 58,
+    "goalkeeping": 80,
+    "goalkeeperSkills": {
+      "diving": 80,
+      "handling": 80,
+      "kicking": 76,
+      "reflexes": 82,
+      "positioning": 81
+    }
+  },
+  {
+    "id": "raul-asencio",
+    "name": "Raul Asencio",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 67,
+    "shooting": 41,
+    "passing": 69,
+    "dribbling": 63,
+    "defending": 79,
+    "physical": 81,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "eder-militao",
+    "name": "Eder Militao",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 85,
+    "pace": 72,
+    "shooting": 46,
+    "passing": 74,
+    "dribbling": 68,
+    "defending": 84,
+    "physical": 86,
+    "stamina": 79,
+    "goalkeeping": 13
+  },
+  {
+    "id": "dean-huijsen",
+    "name": "Dean Huijsen",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 84,
+    "pace": 68,
+    "shooting": 41,
+    "passing": 68,
+    "dribbling": 61,
+    "defending": 83,
+    "physical": 84,
+    "stamina": 76,
+    "goalkeeping": 9
+  },
+  {
+    "id": "trent-alexander-arnold",
+    "name": "Trent Alexander-Arnold",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "RB"
+    ],
+    "overall": 86,
+    "pace": 89,
+    "shooting": 63,
+    "passing": 95,
+    "dribbling": 82,
+    "defending": 73,
+    "physical": 82,
+    "stamina": 87,
+    "goalkeeping": 12
+  },
+  {
+    "id": "ibrahima-konate",
+    "name": "Ibrahima Konate",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 75,
+    "shooting": 45,
+    "passing": 76,
+    "dribbling": 66,
+    "defending": 85,
+    "physical": 90,
+    "stamina": 79,
+    "goalkeeping": 16
+  },
+  {
+    "id": "marc-cucurella",
+    "name": "Marc Cucurella",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 85,
+    "pace": 89,
+    "shooting": 61,
+    "passing": 77,
+    "dribbling": 83,
+    "defending": 80,
+    "physical": 79,
+    "stamina": 89,
+    "goalkeeping": 12
+  },
+  {
+    "id": "alvaro-carreras",
+    "name": "Alvaro Carreras",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 81,
+    "pace": 86,
+    "shooting": 56,
+    "passing": 77,
+    "dribbling": 81,
+    "defending": 76,
+    "physical": 73,
+    "stamina": 81,
+    "goalkeeping": 9
+  },
+  {
+    "id": "antonio-rudiger",
+    "name": "Antonio Rudiger",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 71,
+    "shooting": 49,
+    "passing": 74,
+    "dribbling": 65,
+    "defending": 85,
+    "physical": 91,
+    "stamina": 81,
+    "goalkeeping": 12
+  },
+  {
+    "id": "ferland-mendy",
+    "name": "Ferland Mendy",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 81,
+    "pace": 89,
+    "shooting": 53,
+    "passing": 75,
+    "dribbling": 80,
+    "defending": 76,
+    "physical": 74,
+    "stamina": 83,
+    "goalkeeping": 12
+  },
+  {
+    "id": "denzel-dumfries",
+    "name": "Denzel Dumfries",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "RB"
+    ],
+    "overall": 83,
+    "pace": 87,
+    "shooting": 59,
+    "passing": 75,
+    "dribbling": 81,
+    "defending": 78,
+    "physical": 77,
+    "stamina": 87,
+    "goalkeeping": 10
+  },
+  {
+    "id": "jude-bellingham",
+    "name": "Jude Bellingham",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 92,
+    "pace": 88,
+    "shooting": 88,
+    "passing": 92,
+    "dribbling": 94,
+    "defending": 60,
+    "physical": 83,
+    "stamina": 87,
+    "goalkeeping": 17
+  },
+  {
+    "id": "eduardo-camavinga",
+    "name": "Eduardo Camavinga",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 85,
+    "pace": 77,
+    "shooting": 76,
+    "passing": 89,
+    "dribbling": 84,
+    "defending": 65,
+    "physical": 79,
+    "stamina": 88,
+    "goalkeeping": 11
+  },
+  {
+    "id": "federico-valverde",
+    "name": "Federico Valverde",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CM",
+      "RW"
+    ],
+    "overall": 90,
+    "pace": 96,
+    "shooting": 88,
+    "passing": 92,
+    "dribbling": 88,
+    "defending": 78,
+    "physical": 93,
+    "stamina": 95,
+    "goalkeeping": 19
+  },
+  {
+    "id": "aurelien-tchouameni",
+    "name": "Aurelien Tchouameni",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "DM",
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 74,
+    "shooting": 63,
+    "passing": 83,
+    "dribbling": 78,
+    "defending": 83,
+    "physical": 83,
+    "stamina": 87,
+    "goalkeeping": 11
+  },
+  {
+    "id": "arda-guler",
+    "name": "Arda Guler",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 84,
+    "pace": 86,
+    "shooting": 77,
+    "passing": 87,
+    "dribbling": 91,
+    "defending": 40,
+    "physical": 67,
+    "stamina": 83,
+    "goalkeeping": 15
+  },
+  {
+    "id": "bernardo-silva",
+    "name": "Bernardo Silva",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 86,
+    "pace": 68,
+    "shooting": 77,
+    "passing": 90,
+    "dribbling": 90,
+    "defending": 66,
+    "physical": 74,
+    "stamina": 89,
+    "goalkeeping": 12
+  },
+  {
+    "id": "brahim-diaz",
+    "name": "Brahim Diaz",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 82,
+    "pace": 83,
+    "shooting": 76,
+    "passing": 88,
+    "dribbling": 87,
+    "defending": 38,
+    "physical": 67,
+    "stamina": 78,
+    "goalkeeping": 12
+  },
+  {
+    "id": "vinicius-junior",
+    "name": "Vinicius Junior",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "LW"
+    ],
+    "overall": 92,
+    "pace": 97,
+    "shooting": 85,
+    "passing": 85,
+    "dribbling": 94,
+    "defending": 43,
+    "physical": 65,
+    "stamina": 86,
+    "goalkeeping": 17
+  },
+  {
+    "id": "endrick",
+    "name": "Endrick",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "ST"
+    ],
+    "overall": 80,
+    "pace": 82,
+    "shooting": 84,
+    "passing": 68,
+    "dribbling": 74,
+    "defending": 29,
+    "physical": 81,
+    "stamina": 71,
+    "goalkeeping": 10
+  },
+  {
+    "id": "kylian-mbappe",
+    "name": "Kylian Mbappe",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "ST",
+      "LW"
+    ],
+    "overall": 94,
+    "pace": 97,
+    "shooting": 97,
+    "passing": 78,
+    "dribbling": 86,
+    "defending": 43,
+    "physical": 88,
+    "stamina": 89,
+    "goalkeeping": 23
+  },
+  {
+    "id": "rodrygo",
+    "name": "Rodrygo",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 86,
+    "pace": 92,
+    "shooting": 79,
+    "passing": 79,
+    "dribbling": 88,
+    "defending": 37,
+    "physical": 66,
+    "stamina": 80,
+    "goalkeeping": 11
+  },
+  {
+    "id": "lucas-chevalier",
+    "name": "Lucas Chevalier",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 84,
+    "pace": 42,
+    "shooting": 20,
+    "passing": 52,
+    "dribbling": 38,
+    "defending": 22,
+    "physical": 75,
+    "stamina": 60,
+    "goalkeeping": 84,
+    "goalkeeperSkills": {
+      "diving": 85,
+      "handling": 82,
+      "kicking": 81,
+      "reflexes": 87,
+      "positioning": 83
+    }
+  },
+  {
+    "id": "matvey-safonov",
+    "name": "Matvey Safonov",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 79,
+    "pace": 34,
+    "shooting": 18,
+    "passing": 49,
+    "dribbling": 34,
+    "defending": 17,
+    "physical": 69,
+    "stamina": 53,
+    "goalkeeping": 79,
+    "goalkeeperSkills": {
+      "diving": 80,
+      "handling": 77,
+      "kicking": 76,
+      "reflexes": 82,
+      "positioning": 78
+    }
+  },
+  {
+    "id": "alessandro-longoni",
+    "name": "Alessandro Longoni",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 65,
+    "pace": 23,
+    "shooting": 8,
+    "passing": 33,
+    "dribbling": 19,
+    "defending": 8,
+    "physical": 56,
+    "stamina": 41,
+    "goalkeeping": 65,
+    "goalkeeperSkills": {
+      "diving": 64,
+      "handling": 64,
+      "kicking": 63,
+      "reflexes": 66,
+      "positioning": 65
+    }
+  },
+  {
+    "id": "achraf-hakimi",
+    "name": "Achraf Hakimi",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "RB"
+    ],
+    "overall": 88,
+    "pace": 97,
+    "shooting": 70,
+    "passing": 90,
+    "dribbling": 85,
+    "defending": 83,
+    "physical": 83,
+    "stamina": 87,
+    "goalkeeping": 18
+  },
+  {
+    "id": "lucas-beraldo",
+    "name": "Lucas Beraldo",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 78,
+    "pace": 65,
+    "shooting": 39,
+    "passing": 67,
+    "dribbling": 61,
+    "defending": 77,
+    "physical": 79,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "marquinhos",
+    "name": "Marquinhos",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 74,
+    "shooting": 46,
+    "passing": 72,
+    "dribbling": 64,
+    "defending": 85,
+    "physical": 92,
+    "stamina": 83,
+    "goalkeeping": 15
+  },
+  {
+    "id": "illia-zabarnyi",
+    "name": "Illia Zabarnyi",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 82,
+    "pace": 71,
+    "shooting": 41,
+    "passing": 72,
+    "dribbling": 62,
+    "defending": 81,
+    "physical": 86,
+    "stamina": 75,
+    "goalkeeping": 12
+  },
+  {
+    "id": "lucas-digne",
+    "name": "Lucas Digne",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "LB"
+    ],
+    "overall": 80,
+    "pace": 85,
+    "shooting": 55,
+    "passing": 76,
+    "dribbling": 80,
+    "defending": 75,
+    "physical": 72,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "lucas-hernandez",
+    "name": "Lucas Hernandez",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CB",
+      "LB"
+    ],
+    "overall": 81,
+    "pace": 65,
+    "shooting": 38,
+    "passing": 65,
+    "dribbling": 58,
+    "defending": 80,
+    "physical": 81,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nuno-mendes",
+    "name": "Nuno Mendes",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "LB"
+    ],
+    "overall": 88,
+    "pace": 97,
+    "shooting": 60,
+    "passing": 82,
+    "dribbling": 87,
+    "defending": 83,
+    "physical": 81,
+    "stamina": 90,
+    "goalkeeping": 19
+  },
+  {
+    "id": "willian-pacho",
+    "name": "Willian Pacho",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 85,
+    "pace": 74,
+    "shooting": 44,
+    "passing": 75,
+    "dribbling": 65,
+    "defending": 84,
+    "physical": 89,
+    "stamina": 78,
+    "goalkeeping": 15
+  },
+  {
+    "id": "fabian-ruiz",
+    "name": "Fabian Ruiz",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CM"
+    ],
+    "overall": 86,
+    "pace": 81,
+    "shooting": 74,
+    "passing": 88,
+    "dribbling": 84,
+    "defending": 66,
+    "physical": 81,
+    "stamina": 91,
+    "goalkeeping": 15
+  },
+  {
+    "id": "maghnes-akliouche",
+    "name": "Maghnes Akliouche",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 83,
+    "pace": 84,
+    "shooting": 77,
+    "passing": 89,
+    "dribbling": 88,
+    "defending": 39,
+    "physical": 68,
+    "stamina": 79,
+    "goalkeeping": 13
+  },
+  {
+    "id": "vitinha",
+    "name": "Vitinha",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 90,
+    "pace": 87,
+    "shooting": 76,
+    "passing": 93,
+    "dribbling": 92,
+    "defending": 70,
+    "physical": 81,
+    "stamina": 94,
+    "goalkeeping": 21
+  },
+  {
+    "id": "senny-mayulu",
+    "name": "Senny Mayulu",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 78,
+    "pace": 74,
+    "shooting": 65,
+    "passing": 84,
+    "dribbling": 78,
+    "defending": 58,
+    "physical": 71,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "warren-zaire-emery",
+    "name": "Warren Zaire-Emery",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 83,
+    "pace": 78,
+    "shooting": 71,
+    "passing": 85,
+    "dribbling": 81,
+    "defending": 63,
+    "physical": 78,
+    "stamina": 88,
+    "goalkeeping": 12
+  },
+  {
+    "id": "joao-neves",
+    "name": "Joao Neves",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 88,
+    "pace": 79,
+    "shooting": 73,
+    "passing": 88,
+    "dribbling": 85,
+    "defending": 68,
+    "physical": 77,
+    "stamina": 88,
+    "goalkeeping": 13
+  },
+  {
+    "id": "khvicha-kvaratskhelia",
+    "name": "Khvicha Kvaratskhelia",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "LW"
+    ],
+    "overall": 89,
+    "pace": 97,
+    "shooting": 83,
+    "passing": 85,
+    "dribbling": 96,
+    "defending": 40,
+    "physical": 71,
+    "stamina": 87,
+    "goalkeeping": 20
+  },
+  {
+    "id": "ousmane-dembele",
+    "name": "Ousmane Dembele",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "ST",
+      "RW"
+    ],
+    "overall": 92,
+    "pace": 97,
+    "shooting": 96,
+    "passing": 80,
+    "dribbling": 97,
+    "defending": 41,
+    "physical": 73,
+    "stamina": 83,
+    "goalkeeping": 22
+  },
+  {
+    "id": "desire-doue",
+    "name": "Desire Doue",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "RW",
+      "AM"
+    ],
+    "overall": 87,
+    "pace": 97,
+    "shooting": 82,
+    "passing": 86,
+    "dribbling": 92,
+    "defending": 38,
+    "physical": 71,
+    "stamina": 82,
+    "goalkeeping": 17
+  },
+  {
+    "id": "mika-godts",
+    "name": "Mika Godts",
+    "club": "Paris Saint-Germain",
+    "league": "ligue-1",
+    "positions": [
+      "LW"
+    ],
+    "overall": 79,
+    "pace": 85,
+    "shooting": 72,
+    "passing": 72,
+    "dribbling": 81,
+    "defending": 30,
+    "physical": 59,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "lukas-hradecky",
+    "name": "Lukas Hradecky",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 81,
+    "pace": 38,
+    "shooting": 18,
+    "passing": 52,
+    "dribbling": 33,
+    "defending": 19,
+    "physical": 74,
+    "stamina": 54,
+    "goalkeeping": 81,
+    "goalkeeperSkills": {
+      "diving": 82,
+      "handling": 79,
+      "kicking": 78,
+      "reflexes": 84,
+      "positioning": 80
+    }
+  },
+  {
+    "id": "philipp-kohn",
+    "name": "Philipp Kohn",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 76,
+    "pace": 30,
+    "shooting": 16,
+    "passing": 42,
+    "dribbling": 29,
+    "defending": 14,
+    "physical": 68,
+    "stamina": 54,
+    "goalkeeping": 76,
+    "goalkeeperSkills": {
+      "diving": 75,
+      "handling": 75,
+      "kicking": 74,
+      "reflexes": 77,
+      "positioning": 76
+    }
+  },
+  {
+    "id": "jules-stawiecki",
+    "name": "Jules Stawiecki",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 63,
+    "pace": 21,
+    "shooting": 8,
+    "passing": 31,
+    "dribbling": 17,
+    "defending": 8,
+    "physical": 54,
+    "stamina": 39,
+    "goalkeeping": 63,
+    "goalkeeperSkills": {
+      "diving": 62,
+      "handling": 62,
+      "kicking": 61,
+      "reflexes": 64,
+      "positioning": 63
+    }
+  },
+  {
+    "id": "vanderson",
+    "name": "Vanderson",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "RB"
+    ],
+    "overall": 81,
+    "pace": 87,
+    "shooting": 55,
+    "passing": 74,
+    "dribbling": 76,
+    "defending": 76,
+    "physical": 78,
+    "stamina": 84,
+    "goalkeeping": 10
+  },
+  {
+    "id": "jordan-teze",
+    "name": "Jordan Teze",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 76,
+    "pace": 62,
+    "shooting": 38,
+    "passing": 61,
+    "dribbling": 57,
+    "defending": 75,
+    "physical": 79,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "christian-mawissa",
+    "name": "Christian Mawissa",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB",
+      "LB"
+    ],
+    "overall": 76,
+    "pace": 62,
+    "shooting": 38,
+    "passing": 61,
+    "dribbling": 57,
+    "defending": 75,
+    "physical": 79,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "eric-dier",
+    "name": "Eric Dier",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 78,
+    "pace": 68,
+    "shooting": 36,
+    "passing": 65,
+    "dribbling": 60,
+    "defending": 77,
+    "physical": 80,
+    "stamina": 74,
+    "goalkeeping": 9
+  },
+  {
+    "id": "flavio-nazinho",
+    "name": "Flavio Nazinho",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "LB"
+    ],
+    "overall": 73,
+    "pace": 77,
+    "shooting": 49,
+    "passing": 65,
+    "dribbling": 71,
+    "defending": 68,
+    "physical": 67,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "mohammed-salisu",
+    "name": "Mohammed Salisu",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 78,
+    "pace": 68,
+    "shooting": 36,
+    "passing": 65,
+    "dribbling": 60,
+    "defending": 77,
+    "physical": 80,
+    "stamina": 74,
+    "goalkeeping": 9
+  },
+  {
+    "id": "samuel-nibombe",
+    "name": "Samuel Nibombe",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 64,
+    "pace": 50,
+    "shooting": 26,
+    "passing": 49,
+    "dribbling": 45,
+    "defending": 63,
+    "physical": 67,
+    "stamina": 62,
+    "goalkeeping": 8
+  },
+  {
+    "id": "sadibou-sane",
+    "name": "Sadibou Sane",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 69,
+    "pace": 53,
+    "shooting": 26,
+    "passing": 53,
+    "dribbling": 46,
+    "defending": 68,
+    "physical": 69,
+    "stamina": 61,
+    "goalkeeping": 8
+  },
+  {
+    "id": "denis-zakaria",
+    "name": "Denis Zakaria",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 74,
+    "shooting": 62,
+    "passing": 81,
+    "dribbling": 75,
+    "defending": 79,
+    "physical": 85,
+    "stamina": 88,
+    "goalkeeping": 11
+  },
+  {
+    "id": "lamine-camara",
+    "name": "Lamine Camara",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 80,
+    "pace": 71,
+    "shooting": 65,
+    "passing": 80,
+    "dribbling": 77,
+    "defending": 60,
+    "physical": 69,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "aleksandr-golovin",
+    "name": "Aleksandr Golovin",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 81,
+    "pace": 79,
+    "shooting": 78,
+    "passing": 82,
+    "dribbling": 87,
+    "defending": 37,
+    "physical": 65,
+    "stamina": 82,
+    "goalkeeping": 8
+  },
+  {
+    "id": "stanis-idumbo",
+    "name": "Stanis Idumbo",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 72,
+    "pace": 72,
+    "shooting": 67,
+    "passing": 74,
+    "dribbling": 75,
+    "defending": 28,
+    "physical": 59,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "takumi-minamino",
+    "name": "Takumi Minamino",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 79,
+    "pace": 76,
+    "shooting": 77,
+    "passing": 83,
+    "dribbling": 83,
+    "defending": 35,
+    "physical": 65,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "mamadou-coulibaly",
+    "name": "Mamadou Coulibaly",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CM"
+    ],
+    "overall": 72,
+    "pace": 67,
+    "shooting": 60,
+    "passing": 74,
+    "dribbling": 70,
+    "defending": 52,
+    "physical": 67,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "edan-diop",
+    "name": "Edan Diop",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "RB"
+    ],
+    "overall": 69,
+    "pace": 64,
+    "shooting": 57,
+    "passing": 71,
+    "dribbling": 67,
+    "defending": 49,
+    "physical": 64,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "folarin-balogun",
+    "name": "Folarin Balogun",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "ST"
+    ],
+    "overall": 79,
+    "pace": 78,
+    "shooting": 86,
+    "passing": 62,
+    "dribbling": 74,
+    "defending": 28,
+    "physical": 79,
+    "stamina": 75,
+    "goalkeeping": 8
+  },
+  {
+    "id": "matthis-abline",
+    "name": "Matthis Abline",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "ST"
+    ],
+    "overall": 78,
+    "pace": 76,
+    "shooting": 86,
+    "passing": 64,
+    "dribbling": 71,
+    "defending": 27,
+    "physical": 80,
+    "stamina": 71,
+    "goalkeeping": 8
+  },
+  {
+    "id": "mika-biereth",
+    "name": "Mika Biereth",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "ST"
+    ],
+    "overall": 80,
+    "pace": 78,
+    "shooting": 88,
+    "passing": 66,
+    "dribbling": 73,
+    "defending": 29,
+    "physical": 82,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "paris-brunner",
+    "name": "Paris Brunner",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "ST",
+      "LW"
+    ],
+    "overall": 69,
+    "pace": 69,
+    "shooting": 75,
+    "passing": 56,
+    "dribbling": 66,
+    "defending": 18,
+    "physical": 67,
+    "stamina": 61,
+    "goalkeeping": 8
+  },
+  {
+    "id": "ansu-fati",
+    "name": "Ansu Fati",
+    "club": "Monaco",
+    "league": "ligue-1",
+    "positions": [
+      "LW",
+      "ST"
+    ],
+    "overall": 77,
+    "pace": 86,
+    "shooting": 74,
+    "passing": 75,
+    "dribbling": 85,
+    "defending": 28,
+    "physical": 58,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jeffrey-de-lange",
+    "name": "Jeffrey de Lange",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 74,
+    "pace": 31,
+    "shooting": 11,
+    "passing": 45,
+    "dribbling": 26,
+    "defending": 12,
+    "physical": 67,
+    "stamina": 47,
+    "goalkeeping": 74,
+    "goalkeeperSkills": {
+      "diving": 73,
+      "handling": 73,
+      "kicking": 72,
+      "reflexes": 75,
+      "positioning": 74
+    }
+  },
+  {
+    "id": "jelle-van-neck",
+    "name": "Jelle Van Neck",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 63,
+    "pace": 21,
+    "shooting": 8,
+    "passing": 31,
+    "dribbling": 17,
+    "defending": 8,
+    "physical": 54,
+    "stamina": 39,
+    "goalkeeping": 63,
+    "goalkeeperSkills": {
+      "diving": 63,
+      "handling": 63,
+      "kicking": 59,
+      "reflexes": 65,
+      "positioning": 64
+    }
+  },
+  {
+    "id": "theo-vermot",
+    "name": "Theo Vermot",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "GK"
+    ],
+    "overall": 62,
+    "pace": 15,
+    "shooting": 8,
+    "passing": 31,
+    "dribbling": 13,
+    "defending": 8,
+    "physical": 56,
+    "stamina": 37,
+    "goalkeeping": 62,
+    "goalkeeperSkills": {
+      "diving": 62,
+      "handling": 62,
+      "kicking": 58,
+      "reflexes": 64,
+      "positioning": 63
+    }
+  },
+  {
+    "id": "conrad-jaden-egan-riley",
+    "name": "Conrad Jaden Egan-Riley",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 75,
+    "pace": 59,
+    "shooting": 32,
+    "passing": 59,
+    "dribbling": 52,
+    "defending": 74,
+    "physical": 75,
+    "stamina": 67,
+    "goalkeeping": 8
+  },
+  {
+    "id": "derek-cornelius",
+    "name": "Derek Cornelius",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 74,
+    "pace": 61,
+    "shooting": 35,
+    "passing": 63,
+    "dribbling": 57,
+    "defending": 73,
+    "physical": 75,
+    "stamina": 68,
+    "goalkeeping": 8
+  },
+  {
+    "id": "bamo-meite",
+    "name": "Bamo Meite",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 74,
+    "pace": 59,
+    "shooting": 37,
+    "passing": 62,
+    "dribbling": 53,
+    "defending": 73,
+    "physical": 79,
+    "stamina": 69,
+    "goalkeeping": 8
+  },
+  {
+    "id": "timothy-weah",
+    "name": "Timothy Weah",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "RB",
+      "RW"
+    ],
+    "overall": 78,
+    "pace": 86,
+    "shooting": 50,
+    "passing": 72,
+    "dribbling": 77,
+    "defending": 73,
+    "physical": 71,
+    "stamina": 80,
+    "goalkeeping": 9
+  },
+  {
+    "id": "ulisses-garcia",
+    "name": "Ulisses Garcia",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "LB"
+    ],
+    "overall": 73,
+    "pace": 78,
+    "shooting": 48,
+    "passing": 69,
+    "dribbling": 73,
+    "defending": 68,
+    "physical": 65,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "emerson-palmieri",
+    "name": "Emerson Palmieri",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "LB"
+    ],
+    "overall": 76,
+    "pace": 79,
+    "shooting": 53,
+    "passing": 71,
+    "dribbling": 72,
+    "defending": 71,
+    "physical": 72,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nayef-aguerd",
+    "name": "Nayef Aguerd",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 69,
+    "shooting": 39,
+    "passing": 70,
+    "dribbling": 60,
+    "defending": 79,
+    "physical": 84,
+    "stamina": 73,
+    "goalkeeping": 10
+  },
+  {
+    "id": "tochukwu-nnadi",
+    "name": "Tochukwu Nnadi",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "DM"
+    ],
+    "overall": 72,
+    "pace": 63,
+    "shooting": 53,
+    "passing": 74,
+    "dribbling": 70,
+    "defending": 69,
+    "physical": 70,
+    "stamina": 75,
+    "goalkeeping": 8
+  },
+  {
+    "id": "angel-gomes",
+    "name": "Angel Gomes",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 78,
+    "pace": 74,
+    "shooting": 65,
+    "passing": 84,
+    "dribbling": 78,
+    "defending": 58,
+    "physical": 71,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "himad-abdelli",
+    "name": "Himad Abdelli",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 78,
+    "pace": 76,
+    "shooting": 75,
+    "passing": 79,
+    "dribbling": 84,
+    "defending": 34,
+    "physical": 62,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "geoffrey-kondogbia",
+    "name": "Geoffrey Kondogbia",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "DM",
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 68,
+    "shooting": 58,
+    "passing": 79,
+    "dribbling": 75,
+    "defending": 74,
+    "physical": 75,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "pierre-emile-hojbjerg",
+    "name": "Pierre-Emile Hojbjerg",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 81,
+    "pace": 69,
+    "shooting": 58,
+    "passing": 78,
+    "dribbling": 73,
+    "defending": 78,
+    "physical": 78,
+    "stamina": 82,
+    "goalkeeping": 8
+  },
+  {
+    "id": "amine-harit",
+    "name": "Amine Harit",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 77,
+    "pace": 78,
+    "shooting": 71,
+    "passing": 83,
+    "dribbling": 82,
+    "defending": 33,
+    "physical": 62,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "amine-gouiri",
+    "name": "Amine Gouiri",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "ST",
+      "LW"
+    ],
+    "overall": 81,
+    "pace": 83,
+    "shooting": 85,
+    "passing": 69,
+    "dribbling": 75,
+    "defending": 30,
+    "physical": 82,
+    "stamina": 72,
+    "goalkeeping": 11
+  },
+  {
+    "id": "neal-maupay",
+    "name": "Neal Maupay",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "ST"
+    ],
+    "overall": 73,
+    "pace": 73,
+    "shooting": 79,
+    "passing": 60,
+    "dribbling": 70,
+    "defending": 22,
+    "physical": 71,
+    "stamina": 65,
+    "goalkeeping": 8
+  },
+  {
+    "id": "igor-paixao",
+    "name": "Igor Paixao",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "LW"
+    ],
+    "overall": 82,
+    "pace": 88,
+    "shooting": 75,
+    "passing": 75,
+    "dribbling": 84,
+    "defending": 33,
+    "physical": 62,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "faris-moumbagna",
+    "name": "Faris Moumbagna",
+    "club": "Marseille",
+    "league": "ligue-1",
+    "positions": [
+      "ST"
+    ],
+    "overall": 73,
+    "pace": 72,
+    "shooting": 80,
+    "passing": 56,
+    "dribbling": 68,
+    "defending": 22,
+    "physical": 73,
+    "stamina": 69,
+    "goalkeeping": 8
+  },
+  {
+    "id": "manuel-neuer",
+    "name": "Manuel Neuer",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 85,
+    "pace": 38,
+    "shooting": 26,
+    "passing": 69,
+    "dribbling": 36,
+    "defending": 23,
+    "physical": 79,
+    "stamina": 53,
+    "goalkeeping": 85,
+    "goalkeeperSkills": {
+      "diving": 85,
+      "handling": 85,
+      "kicking": 81,
+      "reflexes": 87,
+      "positioning": 86
+    }
+  },
+  {
+    "id": "sven-ulreich",
+    "name": "Sven Ulreich",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 72,
+    "pace": 25,
+    "shooting": 13,
+    "passing": 41,
+    "dribbling": 23,
+    "defending": 10,
+    "physical": 66,
+    "stamina": 47,
+    "goalkeeping": 72,
+    "goalkeeperSkills": {
+      "diving": 73,
+      "handling": 70,
+      "kicking": 69,
+      "reflexes": 75,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "jonas-urbig",
+    "name": "Jonas Urbig",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 78,
+    "pace": 33,
+    "shooting": 17,
+    "passing": 48,
+    "dribbling": 33,
+    "defending": 16,
+    "physical": 68,
+    "stamina": 52,
+    "goalkeeping": 78,
+    "goalkeeperSkills": {
+      "diving": 77,
+      "handling": 77,
+      "kicking": 76,
+      "reflexes": 79,
+      "positioning": 78
+    }
+  },
+  {
+    "id": "dayot-upamecano",
+    "name": "Dayot Upamecano",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 72,
+    "shooting": 48,
+    "passing": 71,
+    "dribbling": 67,
+    "defending": 85,
+    "physical": 89,
+    "stamina": 84,
+    "goalkeeping": 13
+  },
+  {
+    "id": "kim-min-jae",
+    "name": "Kim Min-jae",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 83,
+    "pace": 69,
+    "shooting": 45,
+    "passing": 68,
+    "dribbling": 64,
+    "defending": 82,
+    "physical": 86,
+    "stamina": 81,
+    "goalkeeping": 10
+  },
+  {
+    "id": "jonathan-tah",
+    "name": "Jonathan Tah",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 76,
+    "shooting": 44,
+    "passing": 73,
+    "dribbling": 68,
+    "defending": 85,
+    "physical": 88,
+    "stamina": 82,
+    "goalkeeping": 17
+  },
+  {
+    "id": "nathaniel-brown",
+    "name": "Nathaniel Brown",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 80,
+    "pace": 83,
+    "shooting": 57,
+    "passing": 75,
+    "dribbling": 76,
+    "defending": 75,
+    "physical": 76,
+    "stamina": 81,
+    "goalkeeping": 8
+  },
+  {
+    "id": "alphonso-davies",
+    "name": "Alphonso Davies",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 84,
+    "pace": 97,
+    "shooting": 56,
+    "passing": 78,
+    "dribbling": 83,
+    "defending": 79,
+    "physical": 77,
+    "stamina": 86,
+    "goalkeeping": 15
+  },
+  {
+    "id": "hiroki-ito",
+    "name": "Hiroki Ito",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CB",
+      "LB"
+    ],
+    "overall": 79,
+    "pace": 66,
+    "shooting": 40,
+    "passing": 68,
+    "dribbling": 62,
+    "defending": 78,
+    "physical": 80,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "sacha-boey",
+    "name": "Sacha Boey",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "RB"
+    ],
+    "overall": 76,
+    "pace": 81,
+    "shooting": 51,
+    "passing": 72,
+    "dribbling": 76,
+    "defending": 71,
+    "physical": 68,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "josip-stanisic",
+    "name": "Josip Stanisic",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "RB",
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 82,
+    "shooting": 51,
+    "passing": 71,
+    "dribbling": 74,
+    "defending": 75,
+    "physical": 71,
+    "stamina": 78,
+    "goalkeeping": 8
+  },
+  {
+    "id": "joshua-kimmich",
+    "name": "Joshua Kimmich",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 89,
+    "pace": 69,
+    "shooting": 72,
+    "passing": 93,
+    "dribbling": 83,
+    "defending": 86,
+    "physical": 86,
+    "stamina": 93,
+    "goalkeeping": 15
+  },
+  {
+    "id": "tom-bischof",
+    "name": "Tom Bischof",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 78,
+    "pace": 75,
+    "shooting": 64,
+    "passing": 81,
+    "dribbling": 80,
+    "defending": 58,
+    "physical": 69,
+    "stamina": 82,
+    "goalkeeping": 9
+  },
+  {
+    "id": "jamal-musiala",
+    "name": "Jamal Musiala",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 91,
+    "pace": 90,
+    "shooting": 87,
+    "passing": 96,
+    "dribbling": 97,
+    "defending": 47,
+    "physical": 68,
+    "stamina": 88,
+    "goalkeeping": 19
+  },
+  {
+    "id": "konrad-laimer",
+    "name": "Konrad Laimer",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "CM",
+      "RB"
+    ],
+    "overall": 82,
+    "pace": 79,
+    "shooting": 68,
+    "passing": 85,
+    "dribbling": 84,
+    "defending": 62,
+    "physical": 73,
+    "stamina": 86,
+    "goalkeeping": 13
+  },
+  {
+    "id": "lennart-karl",
+    "name": "Lennart Karl",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 77,
+    "pace": 79,
+    "shooting": 70,
+    "passing": 80,
+    "dribbling": 84,
+    "defending": 33,
+    "physical": 60,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "aleksandar-pavlovic",
+    "name": "Aleksandar Pavlovic",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 74,
+    "shooting": 62,
+    "passing": 81,
+    "dribbling": 75,
+    "defending": 79,
+    "physical": 85,
+    "stamina": 88,
+    "goalkeeping": 11
+  },
+  {
+    "id": "serge-gnabry",
+    "name": "Serge Gnabry",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 82,
+    "pace": 93,
+    "shooting": 77,
+    "passing": 81,
+    "dribbling": 87,
+    "defending": 33,
+    "physical": 66,
+    "stamina": 77,
+    "goalkeeping": 12
+  },
+  {
+    "id": "harry-kane",
+    "name": "Harry Kane",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "ST"
+    ],
+    "overall": 93,
+    "pace": 72,
+    "shooting": 96,
+    "passing": 90,
+    "dribbling": 93,
+    "defending": 42,
+    "physical": 92,
+    "stamina": 87,
+    "goalkeeping": 24
+  },
+  {
+    "id": "luis-diaz",
+    "name": "Luis Diaz",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "LW"
+    ],
+    "overall": 87,
+    "pace": 97,
+    "shooting": 82,
+    "passing": 86,
+    "dribbling": 92,
+    "defending": 38,
+    "physical": 71,
+    "stamina": 82,
+    "goalkeeping": 17
+  },
+  {
+    "id": "michael-olise",
+    "name": "Michael Olise",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "RW",
+      "AM"
+    ],
+    "overall": 90,
+    "pace": 97,
+    "shooting": 86,
+    "passing": 85,
+    "dribbling": 93,
+    "defending": 41,
+    "physical": 76,
+    "stamina": 89,
+    "goalkeeping": 19
+  },
+  {
+    "id": "ismael-saibari",
+    "name": "Ismael Saibari",
+    "club": "Bayern Munich",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 83,
+    "pace": 84,
+    "shooting": 77,
+    "passing": 89,
+    "dribbling": 88,
+    "defending": 39,
+    "physical": 68,
+    "stamina": 79,
+    "goalkeeping": 13
+  },
+  {
+    "id": "gregor-kobel",
+    "name": "Gregor Kobel",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 88,
+    "pace": 41,
+    "shooting": 29,
+    "passing": 57,
+    "dribbling": 39,
+    "defending": 26,
+    "physical": 82,
+    "stamina": 63,
+    "goalkeeping": 88,
+    "goalkeeperSkills": {
+      "diving": 89,
+      "handling": 86,
+      "kicking": 85,
+      "reflexes": 91,
+      "positioning": 87
+    }
+  },
+  {
+    "id": "patrick-drewes",
+    "name": "Patrick Drewes",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 72,
+    "pace": 26,
+    "shooting": 12,
+    "passing": 38,
+    "dribbling": 25,
+    "defending": 10,
+    "physical": 64,
+    "stamina": 50,
+    "goalkeeping": 72,
+    "goalkeeperSkills": {
+      "diving": 71,
+      "handling": 71,
+      "kicking": 70,
+      "reflexes": 73,
+      "positioning": 72
+    }
+  },
+  {
+    "id": "alexander-meyer",
+    "name": "Alexander Meyer",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 72,
+    "pace": 28,
+    "shooting": 10,
+    "passing": 39,
+    "dribbling": 22,
+    "defending": 10,
+    "physical": 67,
+    "stamina": 49,
+    "goalkeeping": 72,
+    "goalkeeperSkills": {
+      "diving": 72,
+      "handling": 72,
+      "kicking": 68,
+      "reflexes": 74,
+      "positioning": 73
+    }
+  },
+  {
+    "id": "waldemar-anton",
+    "name": "Waldemar Anton",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 69,
+    "shooting": 41,
+    "passing": 67,
+    "dribbling": 59,
+    "defending": 80,
+    "physical": 87,
+    "stamina": 78,
+    "goalkeeping": 10
+  },
+  {
+    "id": "nico-schlotterbeck",
+    "name": "Nico Schlotterbeck",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 75,
+    "shooting": 45,
+    "passing": 83,
+    "dribbling": 66,
+    "defending": 85,
+    "physical": 90,
+    "stamina": 79,
+    "goalkeeping": 16
+  },
+  {
+    "id": "ramy-bensebaini",
+    "name": "Ramy Bensebaini",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 81,
+    "shooting": 50,
+    "passing": 70,
+    "dribbling": 73,
+    "defending": 74,
+    "physical": 70,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "joane-gadou",
+    "name": "Joane Gadou",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 73,
+    "pace": 61,
+    "shooting": 33,
+    "passing": 59,
+    "dribbling": 51,
+    "defending": 72,
+    "physical": 79,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "daniel-svensson",
+    "name": "Daniel Svensson",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "LB",
+      "CM"
+    ],
+    "overall": 79,
+    "pace": 81,
+    "shooting": 50,
+    "passing": 70,
+    "dribbling": 73,
+    "defending": 74,
+    "physical": 70,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "julian-ryerson",
+    "name": "Julian Ryerson",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "RB",
+      "LB"
+    ],
+    "overall": 80,
+    "pace": 87,
+    "shooting": 53,
+    "passing": 77,
+    "dribbling": 77,
+    "defending": 75,
+    "physical": 75,
+    "stamina": 79,
+    "goalkeeping": 10
+  },
+  {
+    "id": "kaua-prates",
+    "name": "Kaua Prates",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "LB"
+    ],
+    "overall": 69,
+    "pace": 72,
+    "shooting": 46,
+    "passing": 64,
+    "dribbling": 65,
+    "defending": 64,
+    "physical": 65,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "filippo-mane",
+    "name": "Filippo Mane",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 66,
+    "pace": 54,
+    "shooting": 26,
+    "passing": 52,
+    "dribbling": 44,
+    "defending": 65,
+    "physical": 72,
+    "stamina": 63,
+    "goalkeeping": 8
+  },
+  {
+    "id": "luca-reggiani",
+    "name": "Luca Reggiani",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 66,
+    "pace": 56,
+    "shooting": 24,
+    "passing": 53,
+    "dribbling": 48,
+    "defending": 65,
+    "physical": 68,
+    "stamina": 62,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jobe-bellingham",
+    "name": "Jobe Bellingham",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 78,
+    "pace": 73,
+    "shooting": 66,
+    "passing": 80,
+    "dribbling": 76,
+    "defending": 58,
+    "physical": 73,
+    "stamina": 83,
+    "goalkeeping": 8
+  },
+  {
+    "id": "felix-nmecha",
+    "name": "Felix Nmecha",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 81,
+    "pace": 77,
+    "shooting": 68,
+    "passing": 87,
+    "dribbling": 81,
+    "defending": 61,
+    "physical": 74,
+    "stamina": 82,
+    "goalkeeping": 11
+  },
+  {
+    "id": "carney-chukwuemeka",
+    "name": "Carney Chukwuemeka",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 77,
+    "pace": 75,
+    "shooting": 74,
+    "passing": 78,
+    "dribbling": 83,
+    "defending": 33,
+    "physical": 61,
+    "stamina": 78,
+    "goalkeeping": 8
+  },
+  {
+    "id": "ethan-nwaneri",
+    "name": "Ethan Nwaneri",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 80,
+    "pace": 80,
+    "shooting": 75,
+    "passing": 82,
+    "dribbling": 83,
+    "defending": 36,
+    "physical": 67,
+    "stamina": 80,
+    "goalkeeping": 9
+  },
+  {
+    "id": "konstantinos-karetsas",
+    "name": "Konstantinos Karetsas",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 78,
+    "pace": 79,
+    "shooting": 72,
+    "passing": 84,
+    "dribbling": 83,
+    "defending": 34,
+    "physical": 63,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "marcel-sabitzer",
+    "name": "Marcel Sabitzer",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 80,
+    "pace": 74,
+    "shooting": 69,
+    "passing": 85,
+    "dribbling": 83,
+    "defending": 60,
+    "physical": 70,
+    "stamina": 82,
+    "goalkeeping": 8
+  },
+  {
+    "id": "emre-can",
+    "name": "Emre Can",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "DM",
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 71,
+    "shooting": 59,
+    "passing": 78,
+    "dribbling": 72,
+    "defending": 76,
+    "physical": 82,
+    "stamina": 85,
+    "goalkeeping": 8
+  },
+  {
+    "id": "joey-veerman",
+    "name": "Joey Veerman",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 79,
+    "shooting": 68,
+    "passing": 85,
+    "dribbling": 84,
+    "defending": 62,
+    "physical": 73,
+    "stamina": 86,
+    "goalkeeping": 13
+  },
+  {
+    "id": "giannis-konstantelias",
+    "name": "Giannis Konstantelias",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 79,
+    "pace": 75,
+    "shooting": 71,
+    "passing": 79,
+    "dribbling": 81,
+    "defending": 35,
+    "physical": 60,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "serhou-guirassy",
+    "name": "Serhou Guirassy",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "ST"
+    ],
+    "overall": 87,
+    "pace": 85,
+    "shooting": 95,
+    "passing": 73,
+    "dribbling": 80,
+    "defending": 36,
+    "physical": 89,
+    "stamina": 80,
+    "goalkeeping": 13
+  },
+  {
+    "id": "maximilian-beier",
+    "name": "Maximilian Beier",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "ST",
+      "LW"
+    ],
+    "overall": 80,
+    "pace": 78,
+    "shooting": 88,
+    "passing": 66,
+    "dribbling": 73,
+    "defending": 29,
+    "physical": 82,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "fabio-silva",
+    "name": "Fabio Silva",
+    "club": "Borussia Dortmund",
+    "league": "bundesliga",
+    "positions": [
+      "ST"
+    ],
+    "overall": 76,
+    "pace": 79,
+    "shooting": 79,
+    "passing": 61,
+    "dribbling": 72,
+    "defending": 25,
+    "physical": 75,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "josep-martinez-riera",
+    "name": "Josep Martinez Riera",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 79,
+    "pace": 31,
+    "shooting": 14,
+    "passing": 44,
+    "dribbling": 28,
+    "defending": 17,
+    "physical": 68,
+    "stamina": 51,
+    "goalkeeping": 79,
+    "goalkeeperSkills": {
+      "diving": 79,
+      "handling": 79,
+      "kicking": 75,
+      "reflexes": 81,
+      "positioning": 80
+    }
+  },
+  {
+    "id": "raffaele-di-gennaro",
+    "name": "Raffaele Di Gennaro",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 65,
+    "pace": 18,
+    "shooting": 8,
+    "passing": 34,
+    "dribbling": 16,
+    "defending": 8,
+    "physical": 59,
+    "stamina": 40,
+    "goalkeeping": 65,
+    "goalkeeperSkills": {
+      "diving": 65,
+      "handling": 65,
+      "kicking": 61,
+      "reflexes": 67,
+      "positioning": 66
+    }
+  },
+  {
+    "id": "ivan-provedel",
+    "name": "Ivan Provedel",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 34,
+    "shooting": 20,
+    "passing": 46,
+    "dribbling": 33,
+    "defending": 18,
+    "physical": 72,
+    "stamina": 58,
+    "goalkeeping": 80,
+    "goalkeeperSkills": {
+      "diving": 79,
+      "handling": 79,
+      "kicking": 78,
+      "reflexes": 81,
+      "positioning": 80
+    }
+  },
+  {
+    "id": "john-stones",
+    "name": "John Stones",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "DM"
+    ],
+    "overall": 82,
+    "pace": 68,
+    "shooting": 44,
+    "passing": 67,
+    "dribbling": 63,
+    "defending": 81,
+    "physical": 85,
+    "stamina": 80,
+    "goalkeeping": 9
+  },
+  {
+    "id": "manuel-akanji",
+    "name": "Manuel Akanji",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 83,
+    "pace": 67,
+    "shooting": 40,
+    "passing": 67,
+    "dribbling": 60,
+    "defending": 82,
+    "physical": 83,
+    "stamina": 75,
+    "goalkeeping": 8
+  },
+  {
+    "id": "benjamin-pavard",
+    "name": "Benjamin Pavard",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 83,
+    "pace": 67,
+    "shooting": 40,
+    "passing": 67,
+    "dribbling": 60,
+    "defending": 82,
+    "physical": 83,
+    "stamina": 75,
+    "goalkeeping": 8
+  },
+  {
+    "id": "carlos-augusto",
+    "name": "Carlos Augusto",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 87,
+    "shooting": 51,
+    "passing": 73,
+    "dribbling": 78,
+    "defending": 74,
+    "physical": 72,
+    "stamina": 81,
+    "goalkeeping": 10
+  },
+  {
+    "id": "yann-aurel-bisseck",
+    "name": "Yann-Aurel Bisseck",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 70,
+    "shooting": 38,
+    "passing": 67,
+    "dribbling": 62,
+    "defending": 79,
+    "physical": 82,
+    "stamina": 76,
+    "goalkeeping": 11
+  },
+  {
+    "id": "federico-dimarco",
+    "name": "Federico Dimarco",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "LB"
+    ],
+    "overall": 87,
+    "pace": 91,
+    "shooting": 74,
+    "passing": 89,
+    "dribbling": 85,
+    "defending": 82,
+    "physical": 81,
+    "stamina": 91,
+    "goalkeeping": 14
+  },
+  {
+    "id": "alessandro-bastoni",
+    "name": "Alessandro Bastoni",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 89,
+    "pace": 75,
+    "shooting": 51,
+    "passing": 84,
+    "dribbling": 70,
+    "defending": 88,
+    "physical": 92,
+    "stamina": 87,
+    "goalkeeping": 16
+  },
+  {
+    "id": "djed-spence",
+    "name": "Djed Spence",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "RB",
+      "LB"
+    ],
+    "overall": 79,
+    "pace": 82,
+    "shooting": 56,
+    "passing": 74,
+    "dribbling": 75,
+    "defending": 74,
+    "physical": 75,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "aleksandar-stankovic",
+    "name": "Aleksandar Stankovic",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "DM"
+    ],
+    "overall": 77,
+    "pace": 70,
+    "shooting": 56,
+    "passing": 80,
+    "dribbling": 72,
+    "defending": 74,
+    "physical": 78,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "piotr-zielinski",
+    "name": "Piotr Zielinski",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 80,
+    "pace": 75,
+    "shooting": 68,
+    "passing": 82,
+    "dribbling": 78,
+    "defending": 60,
+    "physical": 75,
+    "stamina": 85,
+    "goalkeeping": 9
+  },
+  {
+    "id": "petar-sucic",
+    "name": "Petar Sucic",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 79,
+    "pace": 70,
+    "shooting": 64,
+    "passing": 79,
+    "dribbling": 76,
+    "defending": 59,
+    "physical": 68,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "luis-henrique",
+    "name": "Luis Henrique",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "RW",
+      "RB"
+    ],
+    "overall": 78,
+    "pace": 89,
+    "shooting": 73,
+    "passing": 77,
+    "dribbling": 83,
+    "defending": 29,
+    "physical": 62,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "andy-diouf",
+    "name": "Andy Diouf",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 76,
+    "pace": 67,
+    "shooting": 61,
+    "passing": 76,
+    "dribbling": 73,
+    "defending": 56,
+    "physical": 65,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "hakan-calhanoglu",
+    "name": "Hakan Calhanoglu",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 85,
+    "pace": 78,
+    "shooting": 64,
+    "passing": 88,
+    "dribbling": 80,
+    "defending": 82,
+    "physical": 86,
+    "stamina": 87,
+    "goalkeeping": 15
+  },
+  {
+    "id": "curtis-jones",
+    "name": "Curtis Jones",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 81,
+    "pace": 75,
+    "shooting": 70,
+    "passing": 86,
+    "dribbling": 84,
+    "defending": 61,
+    "physical": 71,
+    "stamina": 83,
+    "goalkeeping": 9
+  },
+  {
+    "id": "henrikh-mkhitaryan",
+    "name": "Henrikh Mkhitaryan",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 79,
+    "pace": 73,
+    "shooting": 68,
+    "passing": 84,
+    "dribbling": 82,
+    "defending": 59,
+    "physical": 69,
+    "stamina": 81,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nicolo-barella",
+    "name": "Nicolo Barella",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 88,
+    "pace": 80,
+    "shooting": 79,
+    "passing": 92,
+    "dribbling": 87,
+    "defending": 68,
+    "physical": 82,
+    "stamina": 91,
+    "goalkeeping": 14
+  },
+  {
+    "id": "marcus-thuram",
+    "name": "Marcus Thuram",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 86,
+    "pace": 89,
+    "shooting": 89,
+    "passing": 71,
+    "dribbling": 82,
+    "defending": 35,
+    "physical": 85,
+    "stamina": 80,
+    "goalkeeping": 17
+  },
+  {
+    "id": "lautaro-martinez",
+    "name": "Lautaro Martinez",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 90,
+    "pace": 91,
+    "shooting": 95,
+    "passing": 74,
+    "dribbling": 82,
+    "defending": 39,
+    "physical": 93,
+    "stamina": 85,
+    "goalkeeping": 19
+  },
+  {
+    "id": "ange-yoan-bonny",
+    "name": "Ange-Yoan Bonny",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 78,
+    "pace": 81,
+    "shooting": 81,
+    "passing": 63,
+    "dribbling": 74,
+    "defending": 27,
+    "physical": 77,
+    "stamina": 72,
+    "goalkeeping": 9
+  },
+  {
+    "id": "francesco-pio-esposito",
+    "name": "Francesco Pio Esposito",
+    "club": "Inter",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 78,
+    "pace": 81,
+    "shooting": 81,
+    "passing": 63,
+    "dribbling": 74,
+    "defending": 27,
+    "physical": 77,
+    "stamina": 72,
+    "goalkeeping": 9
+  },
+  {
+    "id": "kamil-grabara",
+    "name": "Kamil Grabara",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 34,
+    "shooting": 20,
+    "passing": 46,
+    "dribbling": 33,
+    "defending": 18,
+    "physical": 72,
+    "stamina": 58,
+    "goalkeeping": 80,
+    "goalkeeperSkills": {
+      "diving": 81,
+      "handling": 78,
+      "kicking": 77,
+      "reflexes": 83,
+      "positioning": 79
+    }
+  },
+  {
+    "id": "carlo-pinsoglio",
+    "name": "Carlo Pinsoglio",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 64,
+    "pace": 16,
+    "shooting": 8,
+    "passing": 29,
+    "dribbling": 13,
+    "defending": 8,
+    "physical": 53,
+    "stamina": 36,
+    "goalkeeping": 64,
+    "goalkeeperSkills": {
+      "diving": 64,
+      "handling": 64,
+      "kicking": 60,
+      "reflexes": 66,
+      "positioning": 65
+    }
+  },
+  {
+    "id": "guglielmo-vicario",
+    "name": "Guglielmo Vicario",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 83,
+    "pace": 41,
+    "shooting": 19,
+    "passing": 51,
+    "dribbling": 37,
+    "defending": 21,
+    "physical": 74,
+    "stamina": 59,
+    "goalkeeping": 83,
+    "goalkeeperSkills": {
+      "diving": 84,
+      "handling": 81,
+      "kicking": 80,
+      "reflexes": 86,
+      "positioning": 82
+    }
+  },
+  {
+    "id": "norberto-neto",
+    "name": "Norberto Neto",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 75,
+    "pace": 27,
+    "shooting": 10,
+    "passing": 40,
+    "dribbling": 24,
+    "defending": 13,
+    "physical": 64,
+    "stamina": 47,
+    "goalkeeping": 75,
+    "goalkeeperSkills": {
+      "diving": 74,
+      "handling": 74,
+      "kicking": 73,
+      "reflexes": 76,
+      "positioning": 75
+    }
+  },
+  {
+    "id": "mehmet-zeki-celik",
+    "name": "Mehmet Zeki Celik",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "RB"
+    ],
+    "overall": 76,
+    "pace": 84,
+    "shooting": 48,
+    "passing": 70,
+    "dribbling": 75,
+    "defending": 71,
+    "physical": 69,
+    "stamina": 78,
+    "goalkeeping": 8
+  },
+  {
+    "id": "gleison-bremer",
+    "name": "Gleison Bremer",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 86,
+    "pace": 70,
+    "shooting": 43,
+    "passing": 70,
+    "dribbling": 63,
+    "defending": 85,
+    "physical": 86,
+    "stamina": 78,
+    "goalkeeping": 11
+  },
+  {
+    "id": "federico-gatti",
+    "name": "Federico Gatti",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 67,
+    "shooting": 41,
+    "passing": 69,
+    "dribbling": 63,
+    "defending": 79,
+    "physical": 81,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "lloyd-kelly",
+    "name": "Lloyd Kelly",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "LB"
+    ],
+    "overall": 78,
+    "pace": 67,
+    "shooting": 37,
+    "passing": 68,
+    "dribbling": 58,
+    "defending": 77,
+    "physical": 82,
+    "stamina": 71,
+    "goalkeeping": 8
+  },
+  {
+    "id": "pierre-kalulu",
+    "name": "Pierre Kalulu",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 82,
+    "pace": 72,
+    "shooting": 40,
+    "passing": 69,
+    "dribbling": 64,
+    "defending": 81,
+    "physical": 84,
+    "stamina": 78,
+    "goalkeeping": 13
+  },
+  {
+    "id": "andrea-cambiaso",
+    "name": "Andrea Cambiaso",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "LB",
+      "RB"
+    ],
+    "overall": 82,
+    "pace": 89,
+    "shooting": 55,
+    "passing": 79,
+    "dribbling": 79,
+    "defending": 77,
+    "physical": 77,
+    "stamina": 81,
+    "goalkeeping": 12
+  },
+  {
+    "id": "daniele-rugani",
+    "name": "Daniele Rugani",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 75,
+    "pace": 63,
+    "shooting": 35,
+    "passing": 61,
+    "dribbling": 53,
+    "defending": 74,
+    "physical": 81,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jhon-lucumi",
+    "name": "Jhon Lucumi",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 69,
+    "shooting": 39,
+    "passing": 70,
+    "dribbling": 60,
+    "defending": 79,
+    "physical": 84,
+    "stamina": 73,
+    "goalkeeping": 10
+  },
+  {
+    "id": "juan-david-cabal",
+    "name": "Juan David Cabal",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 75,
+    "pace": 79,
+    "shooting": 51,
+    "passing": 67,
+    "dribbling": 73,
+    "defending": 70,
+    "physical": 69,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "manuel-locatelli",
+    "name": "Manuel Locatelli",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 76,
+    "shooting": 60,
+    "passing": 82,
+    "dribbling": 79,
+    "defending": 79,
+    "physical": 81,
+    "stamina": 87,
+    "goalkeeping": 13
+  },
+  {
+    "id": "teun-koopmeiners",
+    "name": "Teun Koopmeiners",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 82,
+    "pace": 74,
+    "shooting": 73,
+    "passing": 86,
+    "dribbling": 81,
+    "defending": 62,
+    "physical": 76,
+    "stamina": 85,
+    "goalkeeping": 8
+  },
+  {
+    "id": "douglas-luiz",
+    "name": "Douglas Luiz",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 80,
+    "pace": 77,
+    "shooting": 66,
+    "passing": 83,
+    "dribbling": 82,
+    "defending": 60,
+    "physical": 71,
+    "stamina": 84,
+    "goalkeeping": 11
+  },
+  {
+    "id": "khephren-thuram",
+    "name": "Khephren Thuram",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 83,
+    "pace": 77,
+    "shooting": 72,
+    "passing": 88,
+    "dribbling": 86,
+    "defending": 63,
+    "physical": 73,
+    "stamina": 85,
+    "goalkeeping": 11
+  },
+  {
+    "id": "weston-mckennie",
+    "name": "Weston McKennie",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "RB"
+    ],
+    "overall": 80,
+    "pace": 74,
+    "shooting": 69,
+    "passing": 85,
+    "dribbling": 83,
+    "defending": 60,
+    "physical": 70,
+    "stamina": 82,
+    "goalkeeping": 8
+  },
+  {
+    "id": "pape-matar-sarr",
+    "name": "Pape Matar Sarr",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 80,
+    "pace": 72,
+    "shooting": 71,
+    "passing": 84,
+    "dribbling": 79,
+    "defending": 60,
+    "physical": 74,
+    "stamina": 83,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nicolas-gonzalez",
+    "name": "Nicolas Gonzalez",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 80,
+    "pace": 87,
+    "shooting": 82,
+    "passing": 77,
+    "dribbling": 84,
+    "defending": 31,
+    "physical": 65,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "francisco-conceicao",
+    "name": "Francisco Conceicao",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "RW"
+    ],
+    "overall": 82,
+    "pace": 93,
+    "shooting": 77,
+    "passing": 81,
+    "dribbling": 87,
+    "defending": 33,
+    "physical": 66,
+    "stamina": 77,
+    "goalkeeping": 12
+  },
+  {
+    "id": "randal-kolo-muani",
+    "name": "Randal Kolo Muani",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 81,
+    "pace": 81,
+    "shooting": 87,
+    "passing": 68,
+    "dribbling": 78,
+    "defending": 30,
+    "physical": 79,
+    "stamina": 73,
+    "goalkeeping": 9
+  },
+  {
+    "id": "kenan-yildiz",
+    "name": "Kenan Yildiz",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "LW",
+      "AM"
+    ],
+    "overall": 85,
+    "pace": 95,
+    "shooting": 81,
+    "passing": 80,
+    "dribbling": 88,
+    "defending": 36,
+    "physical": 71,
+    "stamina": 84,
+    "goalkeeping": 14
+  },
+  {
+    "id": "edon-zhegrova",
+    "name": "Edon Zhegrova",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "RW"
+    ],
+    "overall": 80,
+    "pace": 86,
+    "shooting": 73,
+    "passing": 73,
+    "dribbling": 82,
+    "defending": 31,
+    "physical": 60,
+    "stamina": 74,
+    "goalkeeping": 8
+  },
+  {
+    "id": "jeremie-boga",
+    "name": "Jeremie Boga",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "LW"
+    ],
+    "overall": 77,
+    "pace": 86,
+    "shooting": 74,
+    "passing": 75,
+    "dribbling": 85,
+    "defending": 28,
+    "physical": 58,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "arkadiusz-milik",
+    "name": "Arkadiusz Milik",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 75,
+    "pace": 76,
+    "shooting": 80,
+    "passing": 59,
+    "dribbling": 67,
+    "defending": 24,
+    "physical": 78,
+    "stamina": 70,
+    "goalkeeping": 8
+  },
+  {
+    "id": "nick-woltemade",
+    "name": "Nick Woltemade",
+    "club": "Juventus",
+    "league": "serie-a",
+    "positions": [
+      "ST",
+      "AM"
+    ],
+    "overall": 83,
+    "pace": 80,
+    "shooting": 85,
+    "passing": 65,
+    "dribbling": 74,
+    "defending": 32,
+    "physical": 80,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "lorenzo-torriani",
+    "name": "Lorenzo Torriani",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 68,
+    "pace": 20,
+    "shooting": 8,
+    "passing": 33,
+    "dribbling": 17,
+    "defending": 8,
+    "physical": 57,
+    "stamina": 40,
+    "goalkeeping": 68,
+    "goalkeeperSkills": {
+      "diving": 67,
+      "handling": 67,
+      "kicking": 66,
+      "reflexes": 69,
+      "positioning": 68
+    }
+  },
+  {
+    "id": "mike-maignan",
+    "name": "Mike Maignan",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 88,
+    "pace": 43,
+    "shooting": 27,
+    "passing": 70,
+    "dribbling": 43,
+    "defending": 26,
+    "physical": 78,
+    "stamina": 62,
+    "goalkeeping": 88,
+    "goalkeeperSkills": {
+      "diving": 89,
+      "handling": 86,
+      "kicking": 85,
+      "reflexes": 91,
+      "positioning": 87
+    }
+  },
+  {
+    "id": "pietro-terracciano",
+    "name": "Pietro Terracciano",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "GK"
+    ],
+    "overall": 72,
+    "pace": 25,
+    "shooting": 13,
+    "passing": 41,
+    "dribbling": 23,
+    "defending": 10,
+    "physical": 66,
+    "stamina": 47,
+    "goalkeeping": 72,
+    "goalkeeperSkills": {
+      "diving": 73,
+      "handling": 70,
+      "kicking": 69,
+      "reflexes": 75,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "davide-bartesaghi",
+    "name": "Davide Bartesaghi",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "LB",
+      "CB"
+    ],
+    "overall": 76,
+    "pace": 81,
+    "shooting": 51,
+    "passing": 72,
+    "dribbling": 76,
+    "defending": 71,
+    "physical": 68,
+    "stamina": 76,
+    "goalkeeping": 8
+  },
+  {
+    "id": "fikayo-tomori",
+    "name": "Fikayo Tomori",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 67,
+    "shooting": 43,
+    "passing": 66,
+    "dribbling": 62,
+    "defending": 80,
+    "physical": 84,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "filippo-terracciano",
+    "name": "Filippo Terracciano",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "RB",
+      "LB"
+    ],
+    "overall": 73,
+    "pace": 77,
+    "shooting": 49,
+    "passing": 65,
+    "dribbling": 71,
+    "defending": 68,
+    "physical": 67,
+    "stamina": 77,
+    "goalkeeping": 8
+  },
+  {
+    "id": "koni-de-winter",
+    "name": "Koni De Winter",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 79,
+    "pace": 63,
+    "shooting": 36,
+    "passing": 63,
+    "dribbling": 56,
+    "defending": 78,
+    "physical": 79,
+    "stamina": 71,
+    "goalkeeping": 8
+  },
+  {
+    "id": "mario-gila",
+    "name": "Mario Gila",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CB"
+    ],
+    "overall": 80,
+    "pace": 64,
+    "shooting": 37,
+    "passing": 64,
+    "dribbling": 57,
+    "defending": 79,
+    "physical": 80,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "christian-comotto",
+    "name": "Christian Comotto",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 65,
+    "pace": 57,
+    "shooting": 56,
+    "passing": 69,
+    "dribbling": 64,
+    "defending": 45,
+    "physical": 59,
+    "stamina": 68,
+    "goalkeeping": 8
+  },
+  {
+    "id": "christian-pulisic",
+    "name": "Christian Pulisic",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "RW",
+      "AM"
+    ],
+    "overall": 85,
+    "pace": 91,
+    "shooting": 78,
+    "passing": 78,
+    "dribbling": 87,
+    "defending": 36,
+    "physical": 65,
+    "stamina": 79,
+    "goalkeeping": 10
+  },
+  {
+    "id": "diego-moreira",
+    "name": "Diego Moreira",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "LW",
+      "LB"
+    ],
+    "overall": 78,
+    "pace": 84,
+    "shooting": 71,
+    "passing": 71,
+    "dribbling": 80,
+    "defending": 29,
+    "physical": 58,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "luka-modric",
+    "name": "Luka Modric",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CM"
+    ],
+    "overall": 84,
+    "pace": 63,
+    "shooting": 72,
+    "passing": 93,
+    "dribbling": 82,
+    "defending": 64,
+    "physical": 69,
+    "stamina": 73,
+    "goalkeeping": 13
+  },
+  {
+    "id": "omari-hutchinson",
+    "name": "Omari Hutchinson",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "AM",
+      "RW"
+    ],
+    "overall": 79,
+    "pace": 79,
+    "shooting": 74,
+    "passing": 81,
+    "dribbling": 82,
+    "defending": 35,
+    "physical": 66,
+    "stamina": 79,
+    "goalkeeping": 8
+  },
+  {
+    "id": "ruben-loftus-cheek",
+    "name": "Ruben Loftus-Cheek",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 78,
+    "pace": 72,
+    "shooting": 67,
+    "passing": 83,
+    "dribbling": 81,
+    "defending": 58,
+    "physical": 68,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "alexis-saelemaekers",
+    "name": "Alexis Saelemaekers",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "RW",
+      "RB"
+    ],
+    "overall": 78,
+    "pace": 89,
+    "shooting": 73,
+    "passing": 77,
+    "dribbling": 83,
+    "defending": 29,
+    "physical": 62,
+    "stamina": 73,
+    "goalkeeping": 8
+  },
+  {
+    "id": "yunus-musah",
+    "name": "Yunus Musah",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "RB"
+    ],
+    "overall": 77,
+    "pace": 69,
+    "shooting": 68,
+    "passing": 81,
+    "dribbling": 76,
+    "defending": 57,
+    "physical": 71,
+    "stamina": 80,
+    "goalkeeping": 8
+  },
+  {
+    "id": "francesco-camarda",
+    "name": "Francesco Camarda",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 70,
+    "pace": 68,
+    "shooting": 78,
+    "passing": 56,
+    "dribbling": 63,
+    "defending": 19,
+    "physical": 72,
+    "stamina": 63,
+    "goalkeeping": 8
+  },
+  {
+    "id": "goncalo-ramos",
+    "name": "Goncalo Ramos",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "ST"
+    ],
+    "overall": 82,
+    "pace": 79,
+    "shooting": 84,
+    "passing": 64,
+    "dribbling": 73,
+    "defending": 31,
+    "physical": 79,
+    "stamina": 72,
+    "goalkeeping": 8
+  },
+  {
+    "id": "samuel-chukwueze",
+    "name": "Samuel Chukwueze",
+    "club": "AC Milan",
+    "league": "serie-a",
+    "positions": [
+      "RW"
+    ],
+    "overall": 78,
+    "pace": 88,
+    "shooting": 74,
+    "passing": 73,
+    "dribbling": 81,
+    "defending": 29,
+    "physical": 64,
+    "stamina": 77,
+    "goalkeeping": 8
+  }
+]
