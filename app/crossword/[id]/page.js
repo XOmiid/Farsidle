@@ -1,10 +1,5 @@
-import CrosswordPlayer from "@/components/crossword/CrosswordPlayer";
-
-export const metadata = {
-  title: "مینی جدول",
-};
-
-export default async function CrosswordPlayerPage({ params }) {
+import { redirect } from 'next/navigation';
+export default async function Page({ params }) {
   const { id } = await params;
-  return <CrosswordPlayer id={id} />;
+  redirect('/classic/crossword?id=' + encodeURIComponent(id));
 }
