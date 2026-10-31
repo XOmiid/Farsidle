@@ -3,25 +3,13 @@ import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Shell from '@/components/arcade/Shell';
+import Draft from './Draft';
 import { Icon } from '@/components/arcade/Art';
 import { useArcade } from '@/components/arcade/Provider';
 import { fa } from '@/lib/classic/rules.mjs';
-import {
-  positionFit,
-  effectiveRating,
-  matchClock,
-  minuteLabel,
-  snakeTurn,
-} from '@/lib/galactic/rules.mjs';
+import { matchClock, minuteLabel } from '@/lib/galactic/rules.mjs';
 import { call, watch } from '@/lib/galactic/gateway';
 import { Access, Pitch, useNow, phaseLabel } from './Common';
-const leagues = {
-  'premier-league': 'انگلستان',
-  laliga: 'اسپانیا',
-  'ligue-1': 'فرانسه',
-  'serie-a': 'ایتالیا',
-  bundesliga: 'آلمان',
-};
 export default function Room({ code }) {
   const { player, notify } = useArcade(),
     router = useRouter(),
@@ -230,11 +218,16 @@ export default function Room({ code }) {
                                   {m.self ? ' · شما' : ''}
                                 </small>
                                 <small>
-                                  {m.formation
-                                    ? catalog.config.formations[m.formation]?.name +
-                                      ' · ' +
-                                      catalog.config.tactics[m.tactic]?.name
-                                    : 'در حال انتخاب آرایش'}
+                                  {m.formation ? (
+                                    <>
+                                      <bdi dir="ltr">
+                                        {catalog.config.formations[m.formation]?.name}
+                                      </bdi>{' '}
+                                      · {catalog.config.tactics[m.tactic]?.name}
+                                    </>
+                                  ) : (
+                                    'در حال انتخاب آرایش'
+                                  )}
                                 </small>
                               </span>
                               <span className={m.ready ? 'g-ready' : 'g-muted'}>
@@ -303,7 +296,7 @@ export default function Room({ code }) {
                   />
                 )}
                 <p className="g-rating-note">
-                  امتیازهای اختصاصی فارسیدل · {fa(catalog.players.length)} بازیکن · پنج لیگ اروپایی
+                  مدل اختصاصی فارسیدل · {fa(catalog.players.length)} بازیکن · پنج لیگ اروپایی
                 </p>
               </>
             )}
@@ -340,7 +333,7 @@ function Setup({ self, config, busy, action }) {
       </label>
       <label>
         ۱. آرایش تیم
-        <select value={formation} onChange={(e) => setFormation(e.target.value)}>
+        <select dir="ltr" value={formation} onChange={(e) => setFormation(e.target.value)}>
           {Object.entries(config.formations).map(([id, f]) => (
             <option key={id} value={id}>
               {f.name}
@@ -348,6 +341,7 @@ function Setup({ self, config, busy, action }) {
           ))}
         </select>
       </label>
+      <p className="g-formation-description">{config.formations[formation].description}</p>
       <Pitch compact formation={formation} config={config} />
       <label>
         ۲. تاکتیک
@@ -377,246 +371,52 @@ function Setup({ self, config, busy, action }) {
     </form>
   );
 }
-function Draft({ room, catalog, self, now, busy, action }) {
-  const [slot, setSlot] = useState(''),
-    [query, setQuery] = useState(''),
-    [league, setLeague] = useState(''),
-    [role, setRole] = useState(''),
-    [limit, setLimit] = useState(40),
-    [view, setView] = useState(self.id);
-  const config = catalog.config,
-    slots = config.formations[self.formation].slots,
-    open = slots.filter((s) => !self.players.some((p) => p.slot === s.id)),
-    selected = open.find((s) => s.id === slot) || open[0],
-    mine = room.turn === self.id,
-    turn = room.members.find((m) => m.id === room.turn),
-    taken = new Set(room.picks.map((p) => p.player)),
-    viewTeam = room.members.find((m) => m.id === view) || self;
-  const seconds = Math.min(
-    60,
-    Math.min(60, Math.max(0, Math.ceil((new Date(room.pickDeadline).getTime() - now) / 1000))),
-  );
-  const needle = query.toLocaleLowerCase().trim();
-  const pool = catalog.players
-    .filter(
-      (p) =>
-        !taken.has(p.id) &&
-        (!league || p.league === league) &&
-        (!role || p.positions.includes(role)) &&
-        (!needle || (p.name + ' ' + p.club).toLocaleLowerCase().includes(needle)),
-    )
-    .sort((a, b) =>
-      selected
-        ? effectiveRating(b, selected.role, config.adjacency) -
-            effectiveRating(a, selected.role, config.adjacency) || a.name.localeCompare(b.name)
-        : b.overall - a.overall,
-    );
-  return (
-    <>
-      <section className={'g-turn' + (mine ? ' my-turn' : '')} aria-live="polite">
-        <div>
-          <span className="g-kicker">
-            انتخاب {fa(room.pickNumber + 1)} از {fa(room.members.length * 11)}
-          </span>
-          <h2>{mine ? 'نوبت انتخاب توست' : 'نوبت ' + turn?.name}</h2>
-          <p>
-            {mine
-              ? 'یک جایگاه خالی را مشخص کن، سپس بازیکن را انتخاب کن.'
-              : 'فهرست را بررسی کن؛ نوبتت می‌رسد.'}
-          </p>
-        </div>
-        <div className="g-pick-clock" aria-label={'زمان باقی‌مانده ' + fa(seconds) + ' ثانیه'}>
-          <b>{fa(seconds)}</b>
-          <small>ثانیه</small>
-        </div>
-      </section>
-      <div className="g-draft-order" aria-label="ترتیب انتخاب‌های بعدی">
-        {Array.from(
-          { length: Math.min(room.members.length + 2, room.members.length * 11 - room.pickNumber) },
-          (_, i) => {
-            const id = snakeTurn(room.draftOrder, room.pickNumber + i),
-              m = room.members.find((m) => m.id === id);
-            return (
-              <span key={i} className={i === 0 ? 'current' : ''}>
-                {fa(room.pickNumber + i + 1)}. {m.name}
-              </span>
-            );
-          },
-        )}
-      </div>
-      <div className="g-draft-grid">
-        <section className="g-panel g-pool">
-          <h2>بازیکنان آزاد</h2>
-          <label>
-            جایگاه انتخاب
-            <select
-              value={selected?.id || ''}
-              disabled={!open.length}
-              onChange={(e) => setSlot(e.target.value)}
-            >
-              {open.map((s) => (
-                <option key={s.id} value={s.id}>
-                  {config.roles[s.role]} · {s.id}
-                </option>
-              ))}
-            </select>
-          </label>
-          <div className="g-filters">
-            <input
-              aria-label="جست‌وجوی بازیکن یا باشگاه"
-              placeholder="نام بازیکن یا باشگاه…"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setLimit(40);
-              }}
-            />
-            <select
-              aria-label="لیگ"
-              value={league}
-              onChange={(e) => {
-                setLeague(e.target.value);
-                setLimit(40);
-              }}
-            >
-              <option value="">همهٔ لیگ‌ها</option>
-              {Object.entries(leagues).map(([id, name]) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </select>
-            <select
-              aria-label="پست اصلی بازیکن"
-              value={role}
-              onChange={(e) => {
-                setRole(e.target.value);
-                setLimit(40);
-              }}
-            >
-              <option value="">همهٔ پست‌ها</option>
-              {Object.entries(config.roles).map(([id, name]) => (
-                <option key={id} value={id}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <p className="g-muted">
-            امتیاز سبز: عملکرد در جایگاه انتخابی. افت پست به‌صورت درصد نمایش داده می‌شود.
-          </p>
-          <div className="g-player-list">
-            {pool.slice(0, limit).map((p) => {
-              const fit = selected ? positionFit(p.positions, selected.role, config.adjacency) : 1,
-                effective = selected
-                  ? effectiveRating(p, selected.role, config.adjacency)
-                  : p.overall;
-              return (
-                <div className="g-player-row" key={p.id}>
-                  <div className="g-overall">
-                    <b>{fa(p.overall)}</b>
-                    <small>امتیاز</small>
-                  </div>
-                  <div className="g-player-copy">
-                    <b dir="auto">{p.name}</b>
-                    <small dir="auto">{p.club}</small>
-                    <span dir="ltr">{p.positions.join(' / ')}</span>
-                    {fit < 1 && (
-                      <small className="g-fit">افت پست: {fa(Math.round((1 - fit) * 100))}٪</small>
-                    )}
-                  </div>
-                  <div className="g-effective">
-                    <b>{fa(effective)}</b>
-                    <small>عملکرد</small>
-                  </div>
-                  <button
-                    className="g-pick-button"
-                    disabled={!mine || busy || !selected}
-                    onClick={() =>
-                      action({
-                        type: 'pick',
-                        pickNumber: room.pickNumber,
-                        player: p.id,
-                        slot: selected.id,
-                      })
-                    }
-                    aria-label={'انتخاب ' + p.name}
-                  >
-                    انتخاب
-                  </button>
-                </div>
-              );
-            })}
-            {!pool.length && <p className="g-muted">بازیکنی با این فیلترها باقی نمانده است.</p>}
-          </div>
-          {pool.length > limit && (
-            <button className="g-text-button g-full" onClick={() => setLimit((n) => n + 40)}>
-              نمایش بیشتر ({fa(pool.length - limit)})
-            </button>
-          )}
-        </section>
-        <aside className="g-draft-aside">
-          <details className="g-panel" open>
-            <summary>تیم‌ها و چیدمان</summary>
-            <label>
-              نمایش تیم
-              <select value={viewTeam.id} onChange={(e) => setView(e.target.value)}>
-                {room.members.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.teamName} · {fa(m.players.length)} / ۱۱
-                  </option>
-                ))}
-              </select>
-            </label>
-            <Pitch
-              formation={viewTeam.formation}
-              players={viewTeam.players}
-              config={config}
-              selected={viewTeam.self ? selected?.id : null}
-              onSelect={viewTeam.self ? setSlot : null}
-            />
-            <p className="g-muted">
-              {config.tactics[viewTeam.tactic].name} · {config.formations[viewTeam.formation].name}
-            </p>
-          </details>
-          <details className="g-panel">
-            <summary>انتخاب‌های اخیر</summary>
-            <ol className="g-history">
-              {room.picks
-                .slice(-12)
-                .reverse()
-                .map((p) => {
-                  const footballer = catalog.players.find((x) => x.id === p.player),
-                    m = room.members.find((x) => x.id === p.member);
-                  return (
-                    <li key={p.number}>
-                      <b dir="auto">{footballer.name}</b>
-                      <small>
-                        {m.teamName}
-                        {p.automatic ? ' · خودکار' : ''}
-                      </small>
-                    </li>
-                  );
-                })}
-            </ol>
-          </details>
-          <p className="g-muted">
-            با پایان زمان، انتخاب مناسب به‌صورت خودکار انجام می‌شود. پس از کامل شدن تیم‌ها، مسابقات
-            شروع می‌شوند.
-          </p>
-        </aside>
-      </div>
-    </>
-  );
-}
-function Tournament({ room, catalog, now }) {
-  const [side, setSide] = useState('home'),
-    match = room.currentMatch,
+export function Tournament({ room, catalog, now }) {
+  const [selectedSide, setSide] = useState(null),
+    [viewMatch, setViewMatch] = useState(null),
+    match = room.liveMatches?.find((m) => m.id === viewMatch) || room.currentMatch,
+    side = selectedSide || (match?.away.id === room.self ? 'away' : 'home'),
     champion = room.members.find((m) => m.id === room.winner),
     current = match?.[side],
     events = match?.events || [],
     last = events.at(-1),
     paused = match && now < match.playback.pausedUntil;
+  const otherGoals = (room.liveMatches || [])
+    .filter((m) => m.id !== match?.id)
+    .flatMap((m) =>
+      m.events
+        .filter((e) => e.kind === 'goal')
+        .map((e) => ({
+          ...e,
+          other: true,
+          key: m.id + ':' + e.atMs,
+          when: new Date(m.startedAt).getTime() + e.atMs,
+          text:
+            'در بازی «' +
+            m.home.teamName +
+            '» و «' +
+            m.away.teamName +
+            '»: ' +
+            (e.side === 0 ? m.home.teamName : m.away.teamName) +
+            ' گل زد. نتیجه: ' +
+            m.home.teamName +
+            ' ' +
+            fa(e.homeScore) +
+            '، ' +
+            m.away.teamName +
+            ' ' +
+            fa(e.awayScore),
+        })),
+    )
+    .sort((a, b) => a.when - b.when);
+  const feed = [
+    ...events.map((e) => ({
+      ...e,
+      key: match.id + ':' + e.atMs,
+      when: new Date(match.startedAt).getTime() + e.atMs,
+    })),
+    ...otherGoals,
+  ].sort((a, b) => b.when - a.when);
   const member = (id) => room.members.find((m) => m.id === id)?.teamName || 'در انتظار برنده';
   const finalRound = Math.max(...room.matches.map((m) => m.round));
   return (
@@ -636,6 +436,51 @@ function Tournament({ room, catalog, now }) {
           </Link>
         </section>
       )}
+      {!!room.matches.length && (
+        <section className="g-panel g-other-scores">
+          <div className="g-section-title">
+            <h2>بازی‌های هم‌زمان</h2>
+            <span>مرحلهٔ {fa(room.currentRound || 1)}</span>
+          </div>
+          <div className="g-live-score-grid">
+            {room.matches
+              .filter((m) => m.round === (room.currentRound || 1))
+              .map((m) => (
+                <button
+                  key={m.id}
+                  disabled={!['live', 'finished'].includes(m.status)}
+                  onClick={() => {
+                    setViewMatch(m.id);
+                    setSide(null);
+                  }}
+                  className={m.id === match?.id ? 'selected' : ''}
+                >
+                  <span className="g-team-blue">
+                    {m.home ? member(m.home) : 'استراحت'}{' '}
+                    <b>{m.homeScore === null ? '—' : fa(m.homeScore)}</b>
+                  </span>
+                  <span className="g-team-red">
+                    {m.away ? member(m.away) : 'استراحت'}{' '}
+                    <b>{m.awayScore === null ? '—' : fa(m.awayScore)}</b>
+                  </span>
+                  <small>
+                    {m.status === 'live'
+                      ? 'در حال پخش'
+                      : m.status === 'finished'
+                        ? 'پایان'
+                        : m.status === 'bye'
+                          ? 'استراحت'
+                          : 'در انتظار شروع'}
+                  </small>
+                </button>
+              ))}
+          </div>
+          <p className="g-muted">
+            برای تماشای یک مسابقه، روی نتیجهٔ آن بزن. صعود مرحلهٔ بعد پس از پایان همهٔ بازی‌های این
+            مرحله انجام می‌شود.
+          </p>
+        </section>
+      )}
       {match ? (
         <section className="g-match">
           <div className="g-match-top">
@@ -651,7 +496,7 @@ function Tournament({ room, catalog, now }) {
             </span>
           </div>
           <div className="g-scoreboard">
-            <div>
+            <div className="g-team-blue">
               <b>{match.home.teamName}</b>
               <small>{match.home.name}</small>
             </div>
@@ -671,7 +516,7 @@ function Tournament({ room, catalog, now }) {
               <span>:</span>
               <span className="g-score-value">{fa(match.awayScore)}</span>
             </strong>
-            <div>
+            <div className="g-team-red">
               <b>{match.away.teamName}</b>
               <small>{match.away.name}</small>
             </div>
@@ -700,26 +545,43 @@ function Tournament({ room, catalog, now }) {
               {match.away.teamName}
             </button>
           </div>
+          {!!otherGoals.length && (
+            <p className="g-other-goal-notice" role="status">
+              خبر از بازی دیگر: {otherGoals.at(-1).text}
+            </p>
+          )}
           <div className="g-match-field">
             <Pitch
               formation={current.formation}
               players={current.players}
               config={catalog.config}
+              teamColor={side === 'home' ? 'blue' : 'red'}
+              sentOff={side === 'home' ? match.sentOffHome || [] : match.sentOffAway || []}
             />
             {last && paused && (
               <div
-                className={'g-incident' + (last.kind === 'goal' ? ' goal' : '')}
+                className={
+                  'g-incident' +
+                  (last.side === 0 ? ' attacking-blue' : last.side === 1 ? ' attacking-red' : '') +
+                  (last.kind === 'goal' ? ' goal' : '')
+                }
                 role="status"
                 key={match.id + ':' + last.atMs}
               >
                 <span>
-                  {last.kind === 'goal'
-                    ? 'گل!'
-                    : last.kind === 'penalty'
-                      ? 'پنالتی'
-                      : last.kind === 'final'
-                        ? 'پایان مسابقه'
-                        : 'گزارش بازی'}
+                  {{
+                    goal: 'گل!',
+                    build_up: 'حمله در حال شکل‌گیری',
+                    action: 'ادامهٔ حمله',
+                    penalty_kick: 'پنالتی',
+                    free_kick: 'ضربهٔ آزاد',
+                    yellow_card: 'کارت زرد',
+                    red_card: 'اخراج',
+                    woodwork: 'تیر دروازه',
+                    shootout_setup: 'پنالتی پایان مسابقه',
+                    shootout_kick: 'نتیجهٔ ضربه',
+                    final: 'پایان مسابقه',
+                  }[last.kind] || 'گزارش بازی'}
                 </span>
                 <p>{last.text}</p>
               </div>
@@ -727,14 +589,50 @@ function Tournament({ room, catalog, now }) {
           </div>
           <div className="g-match-stats">
             <span>تاکتیک: {catalog.config.tactics[current.tactic].name}</span>
-            <span>قدرت تیم: {fa(match.stats?.[side]?.overall)}</span>
-            <span>مالکیت برآوردی: {fa(match.stats?.[side + 'Possession'])}٪</span>
+            <span>
+              آرایش: <b dir="ltr">{catalog.config.formations[current.formation].name}</b>
+            </span>
+          </div>
+          <div className="g-statistics" aria-label="آمار تا این لحظهٔ مسابقه">
+            <h3>آمار تا این لحظه</h3>
+            {[
+              ['possession', 'مالکیت توپ'],
+              ['shots', 'شوت'],
+              ['onTarget', 'شوت در چارچوب'],
+              ['passes', 'پاس'],
+              ['passesCompleted', 'پاس موفق'],
+              ['corners', 'کرنر'],
+              ['fouls', 'خطا'],
+              ['yellowCards', 'کارت زرد'],
+              ['redCards', 'کارت قرمز'],
+              ['offsides', 'آفساید'],
+              ['penalties', 'پنالتی در جریان بازی'],
+            ].map(([key, label]) => (
+              <div key={key}>
+                <b className="g-team-blue">
+                  {fa(match.stats?.home?.[key] ?? 0)}
+                  {key === 'possession' ? '٪' : ''}
+                </b>
+                <span>{label}</span>
+                <b className="g-team-red">
+                  {fa(match.stats?.away?.[key] ?? 0)}
+                  {key === 'possession' ? '٪' : ''}
+                </b>
+              </div>
+            ))}
           </div>
           <details className="g-commentary" open>
             <summary>گزارش مسابقه</summary>
             <ol aria-label="گزارش اتفاق‌های بازی">
-              {[...events].reverse().map((e) => (
-                <li key={e.atMs} className={e.kind === 'goal' ? 'goal' : ''}>
+              {feed.map((e) => (
+                <li
+                  key={e.key}
+                  className={
+                    (e.side === 0 ? ' attacking-blue' : e.side === 1 ? ' attacking-red' : '') +
+                    (e.other ? ' other-goal' : '') +
+                    (e.kind === 'goal' ? ' goal' : '')
+                  }
+                >
                   <b>{fa(e.minute)}′</b>
                   <span>{e.text}</span>
                 </li>
@@ -746,15 +644,25 @@ function Tournament({ room, catalog, now }) {
         <section className="g-panel g-wait">
           <h2>تیم‌ها کامل شدند</h2>
           <p>
-            اولین مسابقه تا {fa(Math.max(0, Math.ceil((new Date(room.nextMatchAt) - now) / 1000)))}{' '}
-            ثانیهٔ دیگر شروع می‌شود.
+            بازی‌های مرحله تا{' '}
+            {fa(Math.max(0, Math.ceil((new Date(room.nextMatchAt) - now) / 1000)))} ثانیهٔ دیگر شروع
+            می‌شود.
           </p>
         </section>
       )}
       {room.phase === 'tournament' && match?.status === 'finished' && (
         <p className="g-next-match" role="status">
-          مسابقهٔ بعدی تا {fa(Math.max(0, Math.ceil((new Date(room.nextMatchAt) - now) / 1000)))}{' '}
-          ثانیهٔ دیگر شروع می‌شود. همه در همین اتاق بمانید.
+          {room.nextMatchAt ? (
+            <>
+              مرحلهٔ بعد تا {fa(Math.max(0, Math.ceil((new Date(room.nextMatchAt) - now) / 1000)))}{' '}
+              ثانیهٔ دیگر شروع می‌شود.
+            </>
+          ) : (
+            <>
+              این مسابقه تمام شده؛ منتظر پایان دیگر بازی‌های این مرحله هستیم. می‌توانی آن‌ها را از
+              تابلوی بالا تماشا کنی.
+            </>
+          )}
         </p>
       )}
       <section className="g-panel">

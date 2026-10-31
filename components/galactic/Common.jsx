@@ -29,7 +29,16 @@ export function Access({ returnTo = '/galactic' }) {
     </section>
   );
 }
-export function Pitch({ formation, players = [], selected, onSelect, config, compact = false }) {
+export function Pitch({
+  formation,
+  players = [],
+  selected,
+  onSelect,
+  config,
+  compact = false,
+  teamColor,
+  sentOff = [],
+}) {
   const slots = config.formations[formation]?.slots || [];
   return (
     <div className={'g-pitch' + (compact ? ' g-pitch-compact' : '')} aria-label="چیدمان تیم">
@@ -40,23 +49,57 @@ export function Pitch({ formation, players = [], selected, onSelect, config, com
       {slots.map((s) => {
         const p = players.find((p) => p.slot === s.id),
           label = p ? p.name : config.roles[s.role];
+        const gaps = slots
+          .filter((other) => other.id !== s.id && Math.abs(other.y - s.y) <= 5)
+          .map((other) => Math.abs(other.x - s.x));
+        const style = {
+          left: s.x + '%',
+          top: s.y + '%',
+          width: Math.min(24, ...gaps.map((gap) => gap * 0.92)) + '%',
+        };
         const content = (
           <>
-            <span className={'g-shirt' + (p?.fit < 1 ? ' g-penalty' : '')}>
-              {p ? fa(p.effective) : s.role}
+            <span
+              className={
+                'g-shirt' +
+                (teamColor ? ' shirt-' + teamColor : '') +
+                (p && sentOff.includes(p.id) ? ' sent-off' : '')
+              }
+            >
+              {s.role}
             </span>
             <span className="g-player-name" dir="auto">
               {label}
             </span>
-            {p?.fit < 1 && <small className="g-fit">−{fa(Math.round((1 - p.fit) * 100))}٪</small>}
+            {p && (
+              <span
+                className={'g-chemistry-dot chemistry-' + (p.chemistry?.level || 'blue')}
+                aria-label={
+                  'هماهنگی: ' + (chemistryLabels[p.chemistry?.level] || chemistryLabels.blue)
+                }
+                title={
+                  (p.chemistry?.links || [])
+                    .map((link) => link.name + ': ' + link.label)
+                    .join('؛ ') ||
+                  chemistryLabels[p.chemistry?.level] ||
+                  chemistryLabels.blue
+                }
+              />
+            )}
+            {p && sentOff.includes(p.id) && <small className="g-dismissed">اخراج</small>}
+            {p?.fit < 1 && <small className="g-fit">پست غیرتخصصی</small>}
           </>
         );
         return onSelect ? (
           <button
             key={s.id}
             type="button"
-            className={'g-position' + (selected === s.id ? ' selected' : '')}
-            style={{ left: s.x + '%', top: s.y + '%' }}
+            className={
+              'g-position' +
+              (selected === s.id ? ' selected' : '') +
+              (p && sentOff.includes(p.id) ? ' is-sent-off' : '')
+            }
+            style={style}
             onClick={() => onSelect(s.id)}
             aria-pressed={selected === s.id}
             aria-label={config.roles[s.role] + ': ' + label}
@@ -64,7 +107,11 @@ export function Pitch({ formation, players = [], selected, onSelect, config, com
             {content}
           </button>
         ) : (
-          <div key={s.id} className="g-position" style={{ left: s.x + '%', top: s.y + '%' }}>
+          <div
+            key={s.id}
+            className={'g-position' + (p && sentOff.includes(p.id) ? ' is-sent-off' : '')}
+            style={style}
+          >
             {content}
           </div>
         );
@@ -78,3 +125,17 @@ export const phaseLabel = {
   tournament: 'مسابقات',
   finished: 'پایان مسابقات',
 };
+
+export const chemistryLabels = { green: 'عالی', blue: 'مناسب', yellow: 'ضعیف', red: 'ناسازگار' };
+export function ChemistryLegend() {
+  return (
+    <div className="g-chemistry-legend" aria-label="راهنمای هماهنگی ترکیب">
+      {Object.entries(chemistryLabels).map(([level, label]) => (
+        <span key={level}>
+          <i className={'g-chemistry-dot chemistry-' + level} />
+          {label}
+        </span>
+      ))}
+    </div>
+  );
+}

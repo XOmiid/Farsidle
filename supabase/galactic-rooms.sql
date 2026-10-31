@@ -31,7 +31,7 @@ begin
  if player_id is null then raise exception 'بازیکن کافی برای تکمیل تیم وجود ندارد.';end if;
  perform galactic_private.do_pick(p_room,who,player_id,slot_id,true,p_at);
 end;$$;
-create or replace function galactic_private.advance(p_room uuid,p_now timestamptz)returns boolean language plpgsql set search_path='' as $$
+create or replace function galactic_private.advance_v1(p_room uuid,p_now timestamptz)returns boolean language plpgsql set search_path='' as $$
 declare r galactic_private.rooms%rowtype;m galactic_private.matches%rowtype;s1 galactic_private.matches%rowtype;s2 galactic_private.matches%rowtype;w galactic_private.matches%rowtype;changed boolean:=false;iteration int;
 begin
  for iteration in 1..128 loop
@@ -62,6 +62,36 @@ begin
  if changed then update galactic_private.rooms set version=version+1,updated_at=p_now where id=p_room;perform galactic_private.notify_room(p_room);end if;
  return changed;
 end;$$;
+create or replace function galactic_private.advance(p_room uuid,p_now timestamptz)returns boolean language plpgsql set search_path='' as $$
+declare r galactic_private.rooms%rowtype;m galactic_private.matches%rowtype;w galactic_private.matches%rowtype;s1 galactic_private.matches%rowtype;s2 galactic_private.matches%rowtype;changed boolean:=false;iteration int;v_round int;v_start timestamptz;v_engine int;
+begin
+ select coalesce((d.config->>'engineVersion')::int,1)into v_engine from galactic_private.rooms rr join galactic_private.datasets d on d.version=rr.dataset_version where rr.id=p_room;
+ if v_engine<2 then return galactic_private.advance_v1(p_room,p_now);end if;
+ for iteration in 1..128 loop
+  select * into r from galactic_private.rooms where id=p_room;
+  if r.phase='draft'then
+   if r.pick_deadline<=p_now then perform galactic_private.auto_pick(p_room,r.pick_deadline);changed:=true;continue;end if;exit;
+  elsif r.phase='tournament'then
+   for m in select * from galactic_private.matches where room_id=p_room and status='live'and ends_at<=p_now loop update galactic_private.matches set status='finished'where id=m.id;changed:=true;end loop;
+   for w in select * from galactic_private.matches where room_id=p_room and status='waiting'order by round,slot loop
+    select * into s1 from galactic_private.matches where id=w.source_home;select * into s2 from galactic_private.matches where id=w.source_away;
+    if s1.status in('finished','bye')and s2.status in('finished','bye')then update galactic_private.matches set home_id=s1.winner_id,away_id=s2.winner_id,status=case when s1.winner_id is null or s2.winner_id is null then 'bye'else 'ready'end,winner_id=case when s1.winner_id is null or s2.winner_id is null then coalesce(s1.winner_id,s2.winner_id)end where id=w.id;changed:=true;end if;
+   end loop;
+   if not exists(select 1 from galactic_private.matches where room_id=p_room and status not in('finished','bye'))then
+    select * into m from galactic_private.matches where room_id=p_room order by round desc,slot limit 1;update galactic_private.rooms set phase='finished',winner=m.winner_id,next_match_at=null where id=p_room;changed:=true;exit;
+   end if;
+   if exists(select 1 from galactic_private.matches where room_id=p_room and status='live')then exit;end if;
+   select min(round)into v_round from galactic_private.matches where room_id=p_room and status='ready';
+   v_start:=r.next_match_at;
+   if v_start is null then select max(ends_at)+interval '10 seconds'into v_start from galactic_private.matches where room_id=p_room and status='finished';update galactic_private.rooms set next_match_at=v_start where id=p_room;changed:=true;end if;
+   if v_start<=p_now and v_round is not null then
+    for m in select * from galactic_private.matches where room_id=p_room and status='ready'and round=v_round order by slot loop perform galactic_private.make_match(m.id,v_start);end loop;
+    changed:=true;continue;
+   end if;exit;
+  else exit;end if;
+ end loop;
+ if changed then update galactic_private.rooms set version=version+1,updated_at=p_now where id=p_room;perform galactic_private.notify_room(p_room);end if;return changed;
+end;$$;
 create or replace function galactic_private.match_view(p_match uuid,p_now timestamptz)returns jsonb language plpgsql stable set search_path='' as $$
 declare m galactic_private.matches%rowtype;hm galactic_private.members%rowtype;am galactic_private.members%rowtype;elapsed bigint;events jsonb;last_event jsonb;next_event jsonb;start_ms bigint;playback jsonb;
 begin
@@ -72,23 +102,29 @@ begin
  last_event:=events->(jsonb_array_length(events)-1);
  select e into next_event from jsonb_array_elements(m.timeline)with ordinality q(e,i)where (e->>'atMs')::bigint>elapsed order by i limit 1;
  playback:=jsonb_build_object('minute',coalesce((last_event->>'minute')::int,0),'anchorAt',start_ms+coalesce((last_event->>'untilMs')::bigint,0),'pausedUntil',start_ms+coalesce((last_event->>'untilMs')::bigint,0),'nextMinute',coalesce((next_event->>'minute')::int,(last_event->>'minute')::int,0),'minuteMs',2000);
- return jsonb_build_object('id',m.id,'round',m.round,'slot',m.slot,'status',m.status,'startedAt',m.started_at,'endsAt',case when m.status='finished'then m.ends_at end,'home',jsonb_build_object('id',hm.id,'name',hm.name,'teamName',hm.team_name,'formation',hm.formation,'tactic',hm.tactic,'players',galactic_private.lineup(m.room_id,hm.id)),'away',jsonb_build_object('id',am.id,'name',am.name,'teamName',am.team_name,'formation',am.formation,'tactic',am.tactic,'players',galactic_private.lineup(m.room_id,am.id)),'homeScore',coalesce((last_event->>'homeScore')::int,0),'awayScore',coalesce((last_event->>'awayScore')::int,0),'penalties',case when last_event->>'penaltyHome'is not null then jsonb_build_object('home',last_event->'penaltyHome','away',last_event->'penaltyAway')end,'winner',case when m.status='finished'then m.winner_id end,'events',events,'playback',playback,'stats',m.stats);
+ return jsonb_build_object('id',m.id,'round',m.round,'slot',m.slot,'status',m.status,'startedAt',m.started_at,'endsAt',case when m.status='finished'then m.ends_at end,'home',jsonb_build_object('id',hm.id,'name',hm.name,'teamName',hm.team_name,'formation',hm.formation,'tactic',hm.tactic,'color','blue','players',galactic_private.public_lineup(m.room_id,hm.id)),'away',jsonb_build_object('id',am.id,'name',am.name,'teamName',am.team_name,'formation',am.formation,'tactic',am.tactic,'color','red','players',galactic_private.public_lineup(m.room_id,am.id)),'homeScore',coalesce((last_event->>'homeScore')::int,0),'awayScore',coalesce((last_event->>'awayScore')::int,0),'penalties',case when last_event->>'penaltyHome'is not null then jsonb_build_object('home',last_event->'penaltyHome','away',last_event->'penaltyAway')end,'winner',case when m.status='finished'then m.winner_id end,'events',events,'playback',playback,'stats',coalesce(last_event->'stats',jsonb_build_object('home',jsonb_build_object('possession',m.stats->'homePossession'),'away',jsonb_build_object('possession',m.stats->'awayPossession'))),'sentOffHome',coalesce(last_event->'sentOffHome','[]'),'sentOffAway',coalesce(last_event->'sentOffAway','[]'));
 end;$$;
 create or replace function galactic_private.room_view(p_room uuid,p_uid uuid,p_now timestamptz)returns jsonb language plpgsql stable set search_path='' as $$
-declare r galactic_private.rooms%rowtype;members jsonb;picks jsonb;matches jsonb;self_id uuid;
+declare r galactic_private.rooms%rowtype;members jsonb;picks jsonb;matches jsonb:='[]';live_views jsonb:='[]';self_id uuid;current_id uuid;round_no int;m galactic_private.matches%rowtype;v jsonb;
 begin
  select * into r from galactic_private.rooms where id=p_room;select id into self_id from galactic_private.members where room_id=p_room and user_id=p_uid;
  if self_id is null then raise exception 'عضو این اتاق نیستی.'using errcode='42501';end if;
- select coalesce(jsonb_agg(jsonb_build_object('id',m.id,'name',m.name,'teamName',m.team_name,'formation',m.formation,'tactic',m.tactic,'ready',m.ready,'host',m.user_id=r.host_id,'self',m.user_id=p_uid,'online',m.last_seen>p_now-interval '20 seconds','players',galactic_private.lineup(p_room,m.id))order by m.joined_at,m.id),'[]')into members from galactic_private.members m where m.room_id=p_room;
+ select coalesce(jsonb_agg(jsonb_build_object('id',mm.id,'name',mm.name,'teamName',mm.team_name,'formation',mm.formation,'tactic',mm.tactic,'ready',mm.ready,'host',mm.user_id=r.host_id,'self',mm.user_id=p_uid,'online',mm.last_seen>p_now-interval '20 seconds','players',galactic_private.public_lineup(p_room,mm.id))order by mm.joined_at,mm.id),'[]')into members from galactic_private.members mm where mm.room_id=p_room;
  select coalesce(jsonb_agg(jsonb_build_object('number',pk.number,'member',pk.member_id,'player',pk.player_id,'slot',pk.slot_id,'automatic',pk.automatic,'at',pk.picked_at)order by pk.number),'[]')into picks from galactic_private.picks pk where pk.room_id=p_room;
- select coalesce(jsonb_agg(jsonb_build_object('id',m.id,'round',m.round,'slot',m.slot,'home',m.home_id,'away',m.away_id,'status',m.status,'winner',case when m.status in('finished','bye')then m.winner_id end,'homeScore',case when m.status='finished'then m.home_score end,'awayScore',case when m.status='finished'then m.away_score end,'penalties',case when m.status='finished'then m.penalties end)order by m.round,m.slot),'[]')into matches from galactic_private.matches m where m.room_id=p_room;
- return jsonb_build_object('id',r.id,'code',r.code,'title',r.title,'public',r.public,'capacity',r.capacity,'phase',r.phase,'version',r.version,'datasetVersion',r.dataset_version,'self',self_id,'host',r.host_id=p_uid,'members',members,'picks',picks,'draftOrder',r.draft_order,'pickNumber',r.pick_number,'turn',case when r.phase='draft'then galactic_private.turn_member(r)end,'pickDeadline',r.pick_deadline,'nextMatchAt',r.next_match_at,'matches',matches,'currentMatch',galactic_private.match_view(r.active_match,p_now),'winner',r.winner,'serverNow',floor(extract(epoch from p_now)*1000));
+ select coalesce(min(round)filter(where status='live'),max(round)filter(where status='finished'),min(round)filter(where status='ready'),1)into round_no from galactic_private.matches where room_id=p_room;
+ select id into current_id from galactic_private.matches where room_id=p_room and status in('live','finished')order by (home_id=self_id or away_id=self_id)desc,round desc,(status='live')desc,slot limit 1;
+ for m in select * from galactic_private.matches where room_id=p_room order by round,slot loop
+  v:=null;if m.status in('live','finished')then v:=galactic_private.match_view(m.id,p_now);end if;
+  if m.round=round_no and v is not null then live_views:=live_views||jsonb_build_array(v);end if;
+  matches:=matches||jsonb_build_array(jsonb_build_object('id',m.id,'round',m.round,'slot',m.slot,'home',m.home_id,'away',m.away_id,'status',m.status,'winner',case when m.status in('finished','bye')then m.winner_id end,'homeScore',v->'homeScore','awayScore',v->'awayScore','penalties',v->'penalties'));
+ end loop;
+ return jsonb_build_object('id',r.id,'code',r.code,'title',r.title,'public',r.public,'capacity',r.capacity,'phase',r.phase,'version',r.version,'datasetVersion',r.dataset_version,'self',self_id,'host',r.host_id=p_uid,'members',members,'picks',picks,'draftOrder',r.draft_order,'pickNumber',r.pick_number,'turn',case when r.phase='draft'then galactic_private.turn_member(r)end,'pickDeadline',r.pick_deadline,'nextMatchAt',r.next_match_at,'matches',matches,'currentRound',round_no,'liveMatches',live_views,'currentMatch',galactic_private.match_view(current_id,p_now),'winner',r.winner,'serverNow',floor(extract(epoch from p_now)*1000));
 end;$$;
 create or replace function public.galactic_catalog(p_version text default null)returns jsonb language plpgsql security definer set search_path='' as $$
 declare u uuid:=galactic_private.require_user();d galactic_private.datasets%rowtype;
 begin
  select * into d from galactic_private.datasets where case when p_version is null then active else version=p_version end limit 1;if d.version is null then raise exception 'فهرست بازیکنان هنوز آماده نیست.';end if;
- return jsonb_build_object('version',d.version,'players',d.players,'config',d.config,'sources',d.sources);
+ return jsonb_build_object('version',d.version,'players',(select jsonb_agg(galactic_private.public_player(p))from jsonb_array_elements(d.players)p),'config',d.config,'sources',d.sources);
 end;$$;
 create or replace function public.galactic_lobbies()returns jsonb language plpgsql security definer set search_path='' as $$
 declare u uuid:=galactic_private.require_user();rooms jsonb;mine jsonb;

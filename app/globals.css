@@ -3166,9 +3166,6 @@ body {
   outline: 3px solid #e8c77e;
   outline-offset: 3px;
 }
-.g-position .g-penalty {
-  background: #e1bc86;
-}
 .g-player-name {
   font-size: 9px;
   line-height: 1.5;
@@ -3270,14 +3267,6 @@ body {
   gap: 20px;
   align-items: start;
 }
-.g-filters {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.g-filters input {
-  grid-column: 1/-1;
-}
 .g-player-list {
   max-height: 700px;
   overflow-y: auto;
@@ -3290,26 +3279,6 @@ body {
   border-bottom: 1px solid var(--g-line);
   padding: 13px 0;
   min-width: 0;
-}
-.g-overall {
-  text-align: center;
-  border: 1px solid #b99e6155;
-  background: #d7bc800d;
-  border-radius: 7px;
-  min-width: 37px;
-  padding: 6px 3px;
-  color: #d8bc7e;
-}
-.g-overall b,
-.g-effective b {
-  display: block;
-  font-size: 20px;
-  line-height: 1.2;
-}
-.g-overall small,
-.g-effective small {
-  font-size: 8px;
-  line-height: 1.4;
 }
 .g-player-copy {
   display: flex;
@@ -3328,11 +3297,6 @@ body {
 .g-player-copy > span {
   color: #a8b9cb;
   font-size: 10px;
-}
-.g-effective {
-  text-align: center;
-  color: #a7d5b5;
-  min-width: 33px;
 }
 .g-pick-button {
   border: 1px solid #cdb17488;
@@ -3729,10 +3693,6 @@ body {
     padding: 21px 18px;
     border-radius: 15px;
   }
-  .g-draft-aside {
-    display: flex;
-    flex-direction: column;
-  }
   .g-room-header h1 {
     font-size: 24px;
   }
@@ -3766,12 +3726,6 @@ body {
   .g-pick-button {
     padding: 8px;
     font-size: 10px;
-  }
-  .g-pool {
-    order: 0;
-  }
-  .g-draft-aside {
-    order: 1;
   }
   .g-player-list {
     max-height: 510px;
@@ -3865,4 +3819,307 @@ body {
 .g-scoreboard strong .g-score-value {
   font: inherit;
   color: inherit;
+}
+/* Formation-first drafting, chemistry and simultaneous match coverage. */
+.g-lineup-caption {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #b6c9e1;
+  margin: 20px 0 8px;
+}
+.g-lineup-caption b {
+  color: #e6edf7;
+}
+.g-lineup-caption [dir='ltr'] {
+  unicode-bidi: isolate;
+  font-family: inherit;
+}
+.g-formation-draft {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
+.g-formation-draft > .g-panel > .g-pitch {
+  max-width: 460px;
+}
+.g-chemistry-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid #ffffff50;
+}
+.chemistry-green {
+  background: #7ad698;
+}
+.chemistry-blue {
+  background: #75afff;
+}
+.chemistry-yellow {
+  background: #f0ca67;
+}
+.chemistry-red {
+  background: #ef7985;
+}
+.g-position > .g-chemistry-dot {
+  position: absolute;
+  top: 0;
+  left: calc(50% + 10px);
+  box-shadow: 0 0 0 3px #1d3040;
+}
+.g-chemistry-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 10px;
+  color: #b9cadd;
+  margin: 18px 0;
+}
+.g-chemistry-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.g-chemistry-preview {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 10px;
+  margin-top: 5px;
+}
+.chemistry-text-green {
+  color: #a7dfb7;
+}
+.chemistry-text-blue {
+  color: #a8c9f8;
+}
+.chemistry-text-yellow {
+  color: #f0d495;
+}
+.chemistry-text-red {
+  color: #f2a2ab;
+}
+.g-player-traits {
+  color: #d9c79e !important;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.g-search-dialog {
+  padding: 2px 0;
+}
+.g-search-dialog .g-player-list {
+  max-height: 48vh;
+}
+.g-search-dialog .g-player-copy b {
+  font-size: 14px;
+}
+.g-search-dialog .g-player-copy {
+  gap: 7px;
+}
+.g-search-dialog .g-player-copy small {
+  line-height: 1.7;
+  font-size: 11px;
+}
+.g-search-dialog .g-player-row {
+  align-items: flex-start;
+  padding: 18px 0;
+}
+.g-search-dialog .g-pick-button {
+  flex-shrink: 0;
+}
+.g-manual {
+  padding: 5px 0;
+  color: #ccd8e7;
+  font-size: 13px;
+}
+.g-manual p {
+  line-height: 2.1;
+}
+.g-shirt.shirt-blue {
+  background: #326bc0;
+  border-color: #8ab5f5;
+  color: #fff;
+}
+.g-shirt.shirt-red {
+  background: #b94050;
+  border-color: #efa3ad;
+  color: #fff;
+}
+.g-shirt.sent-off {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+.g-position.is-sent-off .g-player-name {
+  text-decoration: line-through;
+  color: #f6a0aa;
+}
+.g-dismissed {
+  color: #ffa5af;
+  font-size: 8px;
+  background: #502c35;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.g-team-blue {
+  color: #99bffd !important;
+}
+.g-team-red {
+  color: #f0a1aa !important;
+}
+.g-incident.attacking-blue,
+.g-commentary li.attacking-blue {
+  background: #223f69ed;
+  border-color: #699ee4;
+  color: #e6f0ff;
+}
+.g-incident.attacking-red,
+.g-commentary li.attacking-red {
+  background: #652f3ced;
+  border-color: #e28c9c;
+  color: #fff0f3;
+}
+.g-commentary li.attacking-blue,
+.g-commentary li.attacking-red {
+  border-right-width: 3px;
+  border-right-style: solid;
+  border-radius: 7px;
+  margin-bottom: 8px;
+  padding: 12px;
+}
+.g-commentary li.attacking-blue > b,
+.g-commentary li.attacking-red > b {
+  color: inherit;
+}
+.g-commentary li.other-goal {
+  border-style: dashed;
+  font-size: 11px;
+}
+.g-other-scores {
+  position: relative;
+  padding: 20px;
+}
+.g-other-scores h2 {
+  font-size: 18px;
+}
+.g-live-score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.g-live-score-grid > button {
+  background: #152335;
+  border: 1px solid #ffffff2b;
+  color: #d2dfee;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: right;
+  opacity: 1 !important;
+  cursor: pointer;
+}
+.g-live-score-grid > button:disabled {
+  cursor: default;
+}
+.g-live-score-grid > button.selected {
+  border-color: #d7bc80;
+  box-shadow: 0 0 0 1px #d7bc8044;
+}
+.g-live-score-grid > button > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  padding: 5px 0;
+}
+.g-live-score-grid b {
+  font-size: 17px;
+}
+.g-live-score-grid small {
+  display: block;
+  text-align: center;
+  font-size: 9px;
+  color: #98aecb;
+  margin-top: 8px;
+}
+.g-statistics {
+  max-width: 500px;
+  margin: 24px auto;
+  padding: 20px 0;
+  border-top: 1px solid #ffffff22;
+}
+.g-statistics h3 {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+.g-statistics > div {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1fr;
+  gap: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ffffff12;
+  padding: 9px;
+  font-size: 12px;
+}
+.g-statistics > div > span {
+  color: #aec2db;
+}
+.galactic select[dir='ltr'] {
+  text-align: left;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+.g-formation-description {
+  font-size: 12px;
+  color: #acc0d8;
+  line-height: 1.9;
+}
+.g-other-goal-notice {
+  border: 1px solid #7186a6;
+  border-radius: 10px;
+  background: #283b54;
+  color: #dce9fc;
+  padding: 13px 16px;
+  font-size: 12px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+@media (max-width: 700px) {
+  .g-formation-draft {
+    grid-template-columns: 1fr;
+  }
+  .g-live-score-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .g-live-score-grid > button {
+    padding: 10px;
+  }
+  .g-live-score-grid > button > span {
+    font-size: 10px;
+  }
+  .g-search-dialog .g-player-copy b {
+    font-size: 13px;
+  }
+  .g-other-scores {
+    padding: 18px 14px;
+  }
+  .g-other-scores h2 {
+    font-size: 16px;
+  }
+  .g-formation-draft .g-player-name {
+    font-size: 10px;
+  }
+  .g-chemistry-legend {
+    gap: 12px;
+  }
+  .g-statistics > div {
+    font-size: 11px;
+  }
+  .g-statistics > div > span {
+    font-size: 10px;
+  }
 }

@@ -22,7 +22,16 @@
       "kicking": 86,
       "reflexes": 92,
       "positioning": 88
-    }
+    },
+    "heading": 22,
+    "jumping": 68,
+    "crossing": 45,
+    "longShots": 35,
+    "composure": 68,
+    "freeKicks": 35,
+    "penalties": 33,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "giorgi-mamardashvili",
@@ -47,7 +56,16 @@
       "kicking": 79,
       "reflexes": 85,
       "positioning": 84
-    }
+    },
+    "heading": 21,
+    "jumping": 68,
+    "crossing": 35,
+    "longShots": 28,
+    "composure": 63,
+    "freeKicks": 26,
+    "penalties": 29,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "freddie-woodman",
@@ -72,7 +90,16 @@
       "kicking": 69,
       "reflexes": 75,
       "positioning": 71
-    }
+    },
+    "heading": 15,
+    "jumping": 52,
+    "crossing": 19,
+    "longShots": 15,
+    "composure": 47,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "virgil-van-dijk",
@@ -90,7 +117,18 @@
     "defending": 89,
     "physical": 93,
     "stamina": 88,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heading": 93,
+    "jumping": 89,
+    "crossing": 64,
+    "longShots": 55,
+    "composure": 78,
+    "freeKicks": 53,
+    "penalties": 53,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "joe-gomez",
@@ -109,7 +147,18 @@
     "defending": 79,
     "physical": 86,
     "stamina": 77,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 93,
+    "jumping": 82,
+    "crossing": 52,
+    "longShots": 44,
+    "composure": 68,
+    "freeKicks": 42,
+    "penalties": 44,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "jeremy-jacquet",
@@ -127,7 +176,18 @@
     "defending": 76,
     "physical": 81,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 75,
+    "crossing": 50,
+    "longShots": 39,
+    "composure": 63,
+    "freeKicks": 37,
+    "penalties": 36,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "milos-kerkez",
@@ -145,7 +205,16 @@
     "defending": 76,
     "physical": 78,
     "stamina": 84,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 61,
+    "jumping": 78,
+    "crossing": 84,
+    "longShots": 53,
+    "composure": 70,
+    "freeKicks": 49,
+    "penalties": 51,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "conor-bradley",
@@ -163,7 +232,16 @@
     "defending": 74,
     "physical": 76,
     "stamina": 82,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 60,
+    "jumping": 77,
+    "crossing": 83,
+    "longShots": 52,
+    "composure": 69,
+    "freeKicks": 48,
+    "penalties": 50,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "giovanni-leoni",
@@ -181,7 +259,18 @@
     "defending": 74,
     "physical": 79,
     "stamina": 68,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 89,
+    "jumping": 78,
+    "crossing": 52,
+    "longShots": 42,
+    "composure": 66,
+    "freeKicks": 40,
+    "penalties": 40,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "kostas-tsimikas",
@@ -199,7 +288,16 @@
     "defending": 72,
     "physical": 68,
     "stamina": 75,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 55,
+    "jumping": 71,
+    "crossing": 80,
+    "longShots": 48,
+    "composure": 66,
+    "freeKicks": 44,
+    "penalties": 47,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "jeremie-frimpong",
@@ -218,7 +316,19 @@
     "defending": 79,
     "physical": 78,
     "stamina": 88,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 65,
+    "jumping": 80,
+    "crossing": 89,
+    "longShots": 59,
+    "composure": 75,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "ronald-araujo",
@@ -236,7 +346,18 @@
     "defending": 85,
     "physical": 90,
     "stamina": 79,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 94,
+    "jumping": 83,
+    "crossing": 58,
+    "longShots": 47,
+    "composure": 71,
+    "freeKicks": 45,
+    "penalties": 44,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "wataru-endo",
@@ -254,7 +375,16 @@
     "defending": 75,
     "physical": 75,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 66,
+    "jumping": 76,
+    "crossing": 64,
+    "longShots": 69,
+    "composure": 76,
+    "freeKicks": 56,
+    "penalties": 59,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "florian-wirtz",
@@ -273,7 +403,23 @@
     "defending": 46,
     "physical": 74,
     "stamina": 91,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 177,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/florian-wirtz",
+    "verifiedOn": "2026-10-31",
+    "heading": 61,
+    "jumping": 77,
+    "crossing": 78,
+    "longShots": 91,
+    "composure": 88,
+    "freeKicks": 75,
+    "penalties": 81,
+    "discipline": 68,
+    "tags": [
+      "شوت‌زن از دور",
+      "سرعتی",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "dominik-szoboszlai",
@@ -292,7 +438,19 @@
     "defending": 65,
     "physical": 80,
     "stamina": 90,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 74,
+    "jumping": 83,
+    "crossing": 76,
+    "longShots": 84,
+    "composure": 86,
+    "freeKicks": 70,
+    "penalties": 75,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "alexis-mac-allister",
@@ -311,7 +469,19 @@
     "defending": 66,
     "physical": 80,
     "stamina": 89,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 76,
+    "jumping": 83,
+    "crossing": 79,
+    "longShots": 89,
+    "composure": 89,
+    "freeKicks": 75,
+    "penalties": 79,
+    "discipline": 74,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "ryan-gravenberch",
@@ -330,7 +500,18 @@
     "defending": 82,
     "physical": 83,
     "stamina": 88,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 69,
+    "jumping": 80,
+    "crossing": 72,
+    "longShots": 75,
+    "composure": 80,
+    "freeKicks": 62,
+    "penalties": 64,
+    "discipline": 69,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "trey-nyoni",
@@ -348,7 +529,16 @@
     "defending": 47,
     "physical": 60,
     "stamina": 68,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 50,
+    "jumping": 59,
+    "crossing": 56,
+    "longShots": 62,
+    "composure": 63,
+    "freeKicks": 49,
+    "penalties": 50,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "james-mcconnell",
@@ -367,7 +557,16 @@
     "defending": 48,
     "physical": 62,
     "stamina": 71,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 56,
+    "jumping": 63,
+    "crossing": 59,
+    "longShots": 69,
+    "composure": 69,
+    "freeKicks": 55,
+    "penalties": 59,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "alexander-isak",
@@ -385,7 +584,20 @@
     "defending": 38,
     "physical": 89,
     "stamina": 85,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 97,
+    "jumping": 89,
+    "crossing": 63,
+    "longShots": 86,
+    "composure": 86,
+    "freeKicks": 73,
+    "penalties": 90,
+    "discipline": 70,
+    "tags": [
+      "سرزن",
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "federico-chiesa",
@@ -404,7 +616,20 @@
     "defending": 32,
     "physical": 62,
     "stamina": 77,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 52,
+    "jumping": 74,
+    "crossing": 96,
+    "longShots": 76,
+    "composure": 82,
+    "freeKicks": 68,
+    "penalties": 77,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "cody-gakpo",
@@ -423,7 +648,19 @@
     "defending": 35,
     "physical": 69,
     "stamina": 81,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 76,
+    "crossing": 94,
+    "longShots": 78,
+    "composure": 82,
+    "freeKicks": 69,
+    "penalties": 78,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "hugo-ekitike",
@@ -441,7 +678,21 @@
     "defending": 33,
     "physical": 85,
     "stamina": 75,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heightCm": 190,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/hugo-ekitike",
+    "verifiedOn": "2026-10-31",
+    "heading": 95,
+    "jumping": 84,
+    "crossing": 60,
+    "longShots": 79,
+    "composure": 81,
+    "freeKicks": 68,
+    "penalties": 82,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "bradley-barcola",
@@ -459,7 +710,20 @@
     "defending": 36,
     "physical": 68,
     "stamina": 85,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 59,
+    "jumping": 81,
+    "crossing": 97,
+    "longShots": 82,
+    "composure": 87,
+    "freeKicks": 73,
+    "penalties": 84,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "rio-ngumoha",
@@ -477,7 +741,16 @@
     "defending": 21,
     "physical": 56,
     "stamina": 69,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 40,
+    "jumping": 63,
+    "crossing": 79,
+    "longShots": 61,
+    "composure": 67,
+    "freeKicks": 53,
+    "penalties": 61,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "jayden-danns",
@@ -495,7 +768,16 @@
     "defending": 16,
     "physical": 65,
     "stamina": 59,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 74,
+    "jumping": 62,
+    "crossing": 40,
+    "longShots": 60,
+    "composure": 61,
+    "freeKicks": 48,
+    "penalties": 63,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "emiliano-martinez",
@@ -520,7 +802,16 @@
       "kicking": 83,
       "reflexes": 89,
       "positioning": 85
-    }
+    },
+    "heading": 17,
+    "jumping": 63,
+    "crossing": 37,
+    "longShots": 28,
+    "composure": 62,
+    "freeKicks": 26,
+    "penalties": 27,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "mike-penders",
@@ -545,7 +836,16 @@
       "kicking": 72,
       "reflexes": 75,
       "positioning": 74
-    }
+    },
+    "heading": 15,
+    "jumping": 55,
+    "crossing": 26,
+    "longShots": 16,
+    "composure": 52,
+    "freeKicks": 15,
+    "penalties": 16,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "gabriel-slonina",
@@ -570,7 +870,16 @@
       "kicking": 66,
       "reflexes": 72,
       "positioning": 71
-    }
+    },
+    "heading": 15,
+    "jumping": 46,
+    "crossing": 20,
+    "longShots": 15,
+    "composure": 45,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "wesley-fofana",
@@ -588,7 +897,18 @@
     "defending": 78,
     "physical": 85,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 75,
+    "crossing": 45,
+    "longShots": 38,
+    "composure": 62,
+    "freeKicks": 35,
+    "penalties": 36,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "maxence-lacroix",
@@ -606,7 +926,18 @@
     "defending": 79,
     "physical": 83,
     "stamina": 78,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 91,
+    "jumping": 78,
+    "crossing": 52,
+    "longShots": 45,
+    "composure": 68,
+    "freeKicks": 41,
+    "penalties": 44,
+    "discipline": 71,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "levi-colwill",
@@ -625,7 +956,18 @@
     "defending": 81,
     "physical": 85,
     "stamina": 80,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 96,
+    "jumping": 83,
+    "crossing": 57,
+    "longShots": 50,
+    "composure": 73,
+    "freeKicks": 46,
+    "penalties": 50,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "jorrel-hato",
@@ -644,7 +986,16 @@
     "defending": 74,
     "physical": 70,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 57,
+    "jumping": 73,
+    "crossing": 82,
+    "longShots": 50,
+    "composure": 68,
+    "freeKicks": 46,
+    "penalties": 49,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "reece-james",
@@ -663,7 +1014,19 @@
     "defending": 79,
     "physical": 79,
     "stamina": 83,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 61,
+    "jumping": 79,
+    "crossing": 89,
+    "longShots": 55,
+    "composure": 72,
+    "freeKicks": 52,
+    "penalties": 52,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "malo-gusto",
@@ -681,7 +1044,18 @@
     "defending": 76,
     "physical": 75,
     "stamina": 85,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 61,
+    "jumping": 76,
+    "crossing": 85,
+    "longShots": 55,
+    "composure": 71,
+    "freeKicks": 50,
+    "penalties": 54,
+    "discipline": 68,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "pep-chavarria",
@@ -699,7 +1073,16 @@
     "defending": 70,
     "physical": 72,
     "stamina": 78,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 79,
+    "longShots": 48,
+    "composure": 65,
+    "freeKicks": 44,
+    "penalties": 46,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "aaron-anselmino",
@@ -717,7 +1100,16 @@
     "defending": 71,
     "physical": 72,
     "stamina": 64,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 77,
+    "jumping": 64,
+    "crossing": 39,
+    "longShots": 30,
+    "composure": 55,
+    "freeKicks": 27,
+    "penalties": 28,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "josh-acheampong",
@@ -736,7 +1128,18 @@
     "defending": 72,
     "physical": 78,
     "stamina": 68,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 83,
+    "jumping": 70,
+    "crossing": 44,
+    "longShots": 37,
+    "composure": 60,
+    "freeKicks": 34,
+    "penalties": 36,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "valentin-barco",
@@ -755,7 +1158,16 @@
     "defending": 57,
     "physical": 67,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 70,
+    "crossing": 70,
+    "longShots": 77,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 66,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "jordan-henderson",
@@ -774,7 +1186,16 @@
     "defending": 56,
     "physical": 69,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 57,
+    "jumping": 66,
+    "crossing": 63,
+    "longShots": 69,
+    "composure": 70,
+    "freeKicks": 56,
+    "penalties": 56,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "moises-caicedo",
@@ -793,7 +1214,16 @@
     "defending": 84,
     "physical": 90,
     "stamina": 93,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 70,
+    "jumping": 82,
+    "crossing": 67,
+    "longShots": 73,
+    "composure": 78,
+    "freeKicks": 60,
+    "penalties": 61,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "romeo-lavia",
@@ -811,7 +1241,16 @@
     "defending": 76,
     "physical": 79,
     "stamina": 86,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 67,
+    "jumping": 76,
+    "crossing": 64,
+    "longShots": 71,
+    "composure": 75,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "pedro-neto",
@@ -830,7 +1269,19 @@
     "defending": 34,
     "physical": 69,
     "stamina": 82,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 50,
+    "jumping": 73,
+    "crossing": 89,
+    "longShots": 71,
+    "composure": 77,
+    "freeKicks": 63,
+    "penalties": 71,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "joao-pedro",
@@ -849,7 +1300,18 @@
     "defending": 33,
     "physical": 81,
     "stamina": 74,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 95,
+    "jumping": 83,
+    "crossing": 58,
+    "longShots": 79,
+    "composure": 82,
+    "freeKicks": 67,
+    "penalties": 83,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "cole-palmer",
@@ -868,7 +1330,20 @@
     "defending": 45,
     "physical": 76,
     "stamina": 89,
-    "goalkeeping": 18
+    "goalkeeping": 18,
+    "heading": 60,
+    "jumping": 74,
+    "crossing": 74,
+    "longShots": 90,
+    "composure": 86,
+    "freeKicks": 74,
+    "penalties": 80,
+    "discipline": 66,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "jamie-gittens",
@@ -886,7 +1361,19 @@
     "defending": 32,
     "physical": 67,
     "stamina": 80,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 77,
+    "crossing": 93,
+    "longShots": 75,
+    "composure": 81,
+    "freeKicks": 67,
+    "penalties": 76,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "morgan-rogers",
@@ -905,7 +1392,19 @@
     "defending": 40,
     "physical": 68,
     "stamina": 85,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 56,
+    "jumping": 72,
+    "crossing": 73,
+    "longShots": 86,
+    "composure": 82,
+    "freeKicks": 70,
+    "penalties": 76,
+    "discipline": 69,
+    "tags": [
+      "شوت‌زن از دور",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "danny-welbeck",
@@ -923,7 +1422,18 @@
     "defending": 26,
     "physical": 74,
     "stamina": 67,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 88,
+    "jumping": 76,
+    "crossing": 51,
+    "longShots": 72,
+    "composure": 75,
+    "freeKicks": 60,
+    "penalties": 76,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "emmanuel-emegha",
@@ -941,7 +1451,18 @@
     "defending": 29,
     "physical": 77,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 74,
+    "crossing": 49,
+    "longShots": 70,
+    "composure": 73,
+    "freeKicks": 58,
+    "penalties": 73,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "geovany-quenda",
@@ -960,7 +1481,19 @@
     "defending": 30,
     "physical": 61,
     "stamina": 77,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 70,
+    "crossing": 89,
+    "longShots": 68,
+    "composure": 74,
+    "freeKicks": 60,
+    "penalties": 67,
+    "discipline": 68,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "estevao-willian",
@@ -978,7 +1511,19 @@
     "defending": 32,
     "physical": 63,
     "stamina": 79,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 46,
+    "jumping": 70,
+    "crossing": 90,
+    "longShots": 68,
+    "composure": 76,
+    "freeKicks": 61,
+    "penalties": 68,
+    "discipline": 67,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "gianluigi-donnarumma",
@@ -1003,7 +1548,16 @@
       "kicking": 88,
       "reflexes": 91,
       "positioning": 90
-    }
+    },
+    "heading": 22,
+    "jumping": 68,
+    "crossing": 34,
+    "longShots": 29,
+    "composure": 66,
+    "freeKicks": 26,
+    "penalties": 31,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "marcus-bettinelli",
@@ -1028,7 +1582,16 @@
       "kicking": 63,
       "reflexes": 69,
       "positioning": 68
-    }
+    },
+    "heading": 15,
+    "jumping": 39,
+    "crossing": 15,
+    "longShots": 15,
+    "composure": 40,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "geronimo-rulli",
@@ -1053,7 +1616,16 @@
       "kicking": 76,
       "reflexes": 82,
       "positioning": 81
-    }
+    },
+    "heading": 17,
+    "jumping": 63,
+    "crossing": 33,
+    "longShots": 27,
+    "composure": 60,
+    "freeKicks": 25,
+    "penalties": 28,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "ruben-dias",
@@ -1071,7 +1643,18 @@
     "defending": 86,
     "physical": 88,
     "stamina": 81,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 95,
+    "jumping": 82,
+    "crossing": 60,
+    "longShots": 50,
+    "composure": 74,
+    "freeKicks": 48,
+    "penalties": 48,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "marc-guehi",
@@ -1089,7 +1672,18 @@
     "defending": 83,
     "physical": 84,
     "stamina": 76,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 95,
+    "jumping": 82,
+    "crossing": 57,
+    "longShots": 48,
+    "composure": 73,
+    "freeKicks": 45,
+    "penalties": 47,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "rayan-ait-nouri",
@@ -1107,7 +1701,19 @@
     "defending": 77,
     "physical": 75,
     "stamina": 84,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 60,
+    "jumping": 78,
+    "crossing": 88,
+    "longShots": 54,
+    "composure": 72,
+    "freeKicks": 50,
+    "penalties": 52,
+    "discipline": 68,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "josko-gvardiol",
@@ -1126,7 +1732,19 @@
     "defending": 81,
     "physical": 79,
     "stamina": 88,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heading": 70,
+    "jumping": 88,
+    "crossing": 97,
+    "longShots": 64,
+    "composure": 82,
+    "freeKicks": 60,
+    "penalties": 63,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "abdukodir-khusanov",
@@ -1144,7 +1762,18 @@
     "defending": 77,
     "physical": 82,
     "stamina": 71,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 88,
+    "jumping": 77,
+    "crossing": 52,
+    "longShots": 41,
+    "composure": 65,
+    "freeKicks": 39,
+    "penalties": 39,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "rico-lewis",
@@ -1163,7 +1792,16 @@
     "defending": 74,
     "physical": 70,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 54,
+    "jumping": 70,
+    "crossing": 79,
+    "longShots": 47,
+    "composure": 66,
+    "freeKicks": 43,
+    "penalties": 45,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "elliot-anderson",
@@ -1181,7 +1819,16 @@
     "defending": 62,
     "physical": 76,
     "stamina": 85,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 70,
+    "jumping": 77,
+    "crossing": 73,
+    "longShots": 83,
+    "composure": 83,
+    "freeKicks": 69,
+    "penalties": 73,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "mateo-kovacic",
@@ -1200,7 +1847,16 @@
     "defending": 62,
     "physical": 77,
     "stamina": 87,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 66,
+    "jumping": 75,
+    "crossing": 68,
+    "longShots": 76,
+    "composure": 78,
+    "freeKicks": 62,
+    "penalties": 66,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "rayan-cherki",
@@ -1219,7 +1875,19 @@
     "defending": 41,
     "physical": 69,
     "stamina": 86,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 62,
+    "jumping": 78,
+    "crossing": 79,
+    "longShots": 92,
+    "composure": 88,
+    "freeKicks": 76,
+    "penalties": 83,
+    "discipline": 74,
+    "tags": [
+      "شوت‌زن از دور",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "enzo-fernandez",
@@ -1238,7 +1906,18 @@
     "defending": 65,
     "physical": 78,
     "stamina": 86,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 71,
+    "jumping": 80,
+    "crossing": 77,
+    "longShots": 83,
+    "composure": 84,
+    "freeKicks": 70,
+    "penalties": 71,
+    "discipline": 71,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "matheus-nunes",
@@ -1257,7 +1936,16 @@
     "defending": 60,
     "physical": 75,
     "stamina": 85,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 67,
+    "jumping": 76,
+    "crossing": 69,
+    "longShots": 78,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 67,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "ayyoub-bouaddi",
@@ -1276,7 +1964,16 @@
     "defending": 58,
     "physical": 70,
     "stamina": 84,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 70,
+    "crossing": 66,
+    "longShots": 76,
+    "composure": 76,
+    "freeKicks": 61,
+    "penalties": 66,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "nico-o-reilly",
@@ -1295,7 +1992,18 @@
     "defending": 72,
     "physical": 74,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 80,
+    "crossing": 86,
+    "longShots": 55,
+    "composure": 72,
+    "freeKicks": 51,
+    "penalties": 54,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "antoine-semenyo",
@@ -1314,7 +2022,20 @@
     "defending": 34,
     "physical": 65,
     "stamina": 81,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 51,
+    "jumping": 76,
+    "crossing": 95,
+    "longShots": 74,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 74,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "phil-foden",
@@ -1333,7 +2054,23 @@
     "defending": 43,
     "physical": 72,
     "stamina": 83,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 171,
+    "heightSourceUrl": "https://www.englandfootball.com/england/mens-senior-team/squad/phil-foden",
+    "verifiedOn": "2026-10-31",
+    "heading": 38,
+    "jumping": 78,
+    "crossing": 80,
+    "longShots": 87,
+    "composure": 87,
+    "freeKicks": 74,
+    "penalties": 78,
+    "discipline": 70,
+    "tags": [
+      "شوت‌زن از دور",
+      "سرعتی",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "iliman-ndiaye",
@@ -1352,7 +2089,19 @@
     "defending": 32,
     "physical": 65,
     "stamina": 76,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 48,
+    "jumping": 71,
+    "crossing": 91,
+    "longShots": 70,
+    "composure": 76,
+    "freeKicks": 63,
+    "penalties": 69,
+    "discipline": 67,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "erling-haaland",
@@ -1370,7 +2119,23 @@
     "defending": 42,
     "physical": 97,
     "stamina": 88,
-    "goalkeeping": 22
+    "goalkeeping": 22,
+    "heightCm": 195,
+    "heightSourceUrl": "https://www.premierleague.com/en/news/4054531",
+    "verifiedOn": "2026-10-31",
+    "heading": 93,
+    "jumping": 87,
+    "crossing": 43,
+    "longShots": 90,
+    "composure": 92,
+    "freeKicks": 76,
+    "penalties": 88,
+    "discipline": 73,
+    "tags": [
+      "سرزن",
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "jeremy-doku",
@@ -1389,7 +2154,22 @@
     "defending": 35,
     "physical": 69,
     "stamina": 81,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heightCm": 173,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/jeremy-doku",
+    "verifiedOn": "2026-10-31",
+    "heading": 34,
+    "jumping": 79,
+    "crossing": 75,
+    "longShots": 73,
+    "composure": 82,
+    "freeKicks": 66,
+    "penalties": 73,
+    "discipline": 71,
+    "tags": [
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "joan-garcia",
@@ -1414,7 +2194,16 @@
       "kicking": 80,
       "reflexes": 86,
       "positioning": 82
-    }
+    },
+    "heading": 19,
+    "jumping": 66,
+    "crossing": 33,
+    "longShots": 26,
+    "composure": 61,
+    "freeKicks": 24,
+    "penalties": 27,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "wojciech-szczesny",
@@ -1439,7 +2228,16 @@
       "kicking": 78,
       "reflexes": 84,
       "positioning": 83
-    }
+    },
+    "heading": 17,
+    "jumping": 65,
+    "crossing": 36,
+    "longShots": 26,
+    "composure": 62,
+    "freeKicks": 24,
+    "penalties": 27,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "dominik-livakovic",
@@ -1464,7 +2262,16 @@
       "kicking": 78,
       "reflexes": 81,
       "positioning": 80
-    }
+    },
+    "heading": 15,
+    "jumping": 58,
+    "crossing": 27,
+    "longShots": 22,
+    "composure": 56,
+    "freeKicks": 19,
+    "penalties": 22,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "joao-cancelo",
@@ -1483,7 +2290,19 @@
     "defending": 72,
     "physical": 78,
     "stamina": 83,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 69,
+    "jumping": 84,
+    "crossing": 97,
+    "longShots": 66,
+    "composure": 82,
+    "freeKicks": 64,
+    "penalties": 64,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "alejandro-balde",
@@ -1501,7 +2320,19 @@
     "defending": 78,
     "physical": 76,
     "stamina": 85,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 67,
+    "jumping": 85,
+    "crossing": 95,
+    "longShots": 60,
+    "composure": 78,
+    "freeKicks": 57,
+    "penalties": 60,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "pau-cubarsi",
@@ -1519,7 +2350,18 @@
     "defending": 83,
     "physical": 87,
     "stamina": 82,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 95,
+    "jumping": 82,
+    "crossing": 56,
+    "longShots": 49,
+    "composure": 72,
+    "freeKicks": 45,
+    "penalties": 48,
+    "discipline": 71,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "andreas-christensen",
@@ -1537,7 +2379,18 @@
     "defending": 80,
     "physical": 83,
     "stamina": 77,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 87,
+    "jumping": 77,
+    "crossing": 51,
+    "longShots": 40,
+    "composure": 65,
+    "freeKicks": 38,
+    "penalties": 38,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "gerard-martin",
@@ -1556,7 +2409,16 @@
     "defending": 72,
     "physical": 70,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 55,
+    "jumping": 73,
+    "crossing": 83,
+    "longShots": 48,
+    "composure": 66,
+    "freeKicks": 45,
+    "penalties": 46,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "jules-kounde",
@@ -1575,7 +2437,19 @@
     "defending": 82,
     "physical": 84,
     "stamina": 90,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 74,
+    "jumping": 91,
+    "crossing": 97,
+    "longShots": 66,
+    "composure": 83,
+    "freeKicks": 62,
+    "penalties": 65,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "eric-garcia",
@@ -1594,7 +2468,18 @@
     "defending": 80,
     "physical": 82,
     "stamina": 75,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 89,
+    "jumping": 76,
+    "crossing": 54,
+    "longShots": 44,
+    "composure": 68,
+    "freeKicks": 42,
+    "penalties": 42,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "gavi",
@@ -1612,7 +2497,16 @@
     "defending": 64,
     "physical": 79,
     "stamina": 89,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 71,
+    "jumping": 80,
+    "crossing": 73,
+    "longShots": 82,
+    "composure": 82,
+    "freeKicks": 67,
+    "penalties": 71,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "fermin-lopez",
@@ -1631,7 +2525,20 @@
     "defending": 39,
     "physical": 65,
     "stamina": 80,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 59,
+    "jumping": 75,
+    "crossing": 80,
+    "longShots": 90,
+    "composure": 87,
+    "freeKicks": 75,
+    "penalties": 81,
+    "discipline": 74,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "pedri",
@@ -1649,7 +2556,20 @@
     "defending": 70,
     "physical": 82,
     "stamina": 96,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heading": 78,
+    "jumping": 85,
+    "crossing": 81,
+    "longShots": 91,
+    "composure": 91,
+    "freeKicks": 76,
+    "penalties": 81,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "rodri",
@@ -1668,7 +2588,18 @@
     "defending": 89,
     "physical": 91,
     "stamina": 93,
-    "goalkeeping": 18
+    "goalkeeping": 18,
+    "heading": 73,
+    "jumping": 79,
+    "crossing": 76,
+    "longShots": 78,
+    "composure": 82,
+    "freeKicks": 66,
+    "penalties": 65,
+    "discipline": 66,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "dani-olmo",
@@ -1687,7 +2618,18 @@
     "defending": 41,
     "physical": 66,
     "stamina": 80,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 57,
+    "jumping": 73,
+    "crossing": 75,
+    "longShots": 86,
+    "composure": 85,
+    "freeKicks": 71,
+    "penalties": 77,
+    "discipline": 72,
+    "tags": [
+      "شوت‌زن از دور"
+    ]
   },
   {
     "id": "frenkie-de-jong",
@@ -1706,7 +2648,19 @@
     "defending": 66,
     "physical": 81,
     "stamina": 91,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 75,
+    "jumping": 84,
+    "crossing": 77,
+    "longShots": 86,
+    "composure": 86,
+    "freeKicks": 71,
+    "penalties": 75,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "marc-bernal",
@@ -1724,7 +2678,16 @@
     "defending": 72,
     "physical": 72,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 55,
+    "jumping": 65,
+    "crossing": 53,
+    "longShots": 58,
+    "composure": 64,
+    "freeKicks": 45,
+    "penalties": 46,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "gabriel-jesus",
@@ -1742,7 +2705,18 @@
     "defending": 29,
     "physical": 79,
     "stamina": 74,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 93,
+    "jumping": 83,
+    "crossing": 59,
+    "longShots": 78,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 81,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "lamine-yamal",
@@ -1760,7 +2734,20 @@
     "defending": 43,
     "physical": 75,
     "stamina": 92,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heading": 38,
+    "jumping": 84,
+    "crossing": 89,
+    "longShots": 86,
+    "composure": 91,
+    "freeKicks": 77,
+    "penalties": 87,
+    "discipline": 71,
+    "tags": [
+      "ارسال‌کننده",
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "raphinha",
@@ -1779,7 +2766,20 @@
     "defending": 40,
     "physical": 75,
     "stamina": 88,
-    "goalkeeping": 18
+    "goalkeeping": 18,
+    "heading": 62,
+    "jumping": 85,
+    "crossing": 97,
+    "longShots": 83,
+    "composure": 89,
+    "freeKicks": 75,
+    "penalties": 84,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "karim-adeyemi",
@@ -1798,7 +2798,23 @@
     "defending": 34,
     "physical": 65,
     "stamina": 81,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heightCm": 180,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/karim-adeyemi",
+    "verifiedOn": "2026-10-31",
+    "heading": 53,
+    "jumping": 78,
+    "crossing": 97,
+    "longShots": 76,
+    "composure": 82,
+    "freeKicks": 68,
+    "penalties": 76,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "anthony-gordon",
@@ -1816,7 +2832,19 @@
     "defending": 35,
     "physical": 64,
     "stamina": 78,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 49,
+    "jumping": 71,
+    "crossing": 90,
+    "longShots": 71,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 71,
+    "discipline": 68,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "roony-bardghji",
@@ -1834,7 +2862,19 @@
     "defending": 28,
     "physical": 61,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 50,
+    "jumping": 73,
+    "crossing": 93,
+    "longShots": 72,
+    "composure": 78,
+    "freeKicks": 65,
+    "penalties": 72,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "thibaut-courtois",
@@ -1859,7 +2899,19 @@
       "kicking": 87,
       "reflexes": 93,
       "positioning": 92
-    }
+    },
+    "heightCm": 200,
+    "heightSourceUrl": "https://www.premierleague.com/en/news/4054531",
+    "verifiedOn": "2026-10-31",
+    "heading": 21,
+    "jumping": 68,
+    "crossing": 35,
+    "longShots": 28,
+    "composure": 63,
+    "freeKicks": 26,
+    "penalties": 28,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "andriy-lunin",
@@ -1884,7 +2936,16 @@
       "kicking": 76,
       "reflexes": 82,
       "positioning": 81
-    }
+    },
+    "heading": 17,
+    "jumping": 63,
+    "crossing": 32,
+    "longShots": 26,
+    "composure": 60,
+    "freeKicks": 24,
+    "penalties": 28,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "raul-asencio",
@@ -1902,7 +2963,18 @@
     "defending": 79,
     "physical": 81,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 91,
+    "jumping": 78,
+    "crossing": 56,
+    "longShots": 46,
+    "composure": 70,
+    "freeKicks": 44,
+    "penalties": 45,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "eder-militao",
@@ -1920,7 +2992,18 @@
     "defending": 84,
     "physical": 86,
     "stamina": 79,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 97,
+    "jumping": 85,
+    "crossing": 63,
+    "longShots": 53,
+    "composure": 76,
+    "freeKicks": 51,
+    "penalties": 52,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "dean-huijsen",
@@ -1938,7 +3021,18 @@
     "defending": 83,
     "physical": 84,
     "stamina": 76,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 89,
+    "jumping": 76,
+    "crossing": 51,
+    "longShots": 42,
+    "composure": 67,
+    "freeKicks": 39,
+    "penalties": 40,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "trent-alexander-arnold",
@@ -1956,7 +3050,20 @@
     "defending": 73,
     "physical": 82,
     "stamina": 87,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 68,
+    "jumping": 83,
+    "crossing": 94,
+    "longShots": 66,
+    "composure": 82,
+    "freeKicks": 89,
+    "penalties": 62,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "ضربهٔ ایستگاهی",
+      "سرعتی"
+    ]
   },
   {
     "id": "ibrahima-konate",
@@ -1974,7 +3081,18 @@
     "defending": 85,
     "physical": 90,
     "stamina": 79,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 97,
+    "jumping": 86,
+    "crossing": 60,
+    "longShots": 50,
+    "composure": 74,
+    "freeKicks": 48,
+    "penalties": 48,
+    "discipline": 71,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "marc-cucurella",
@@ -1992,7 +3110,19 @@
     "defending": 80,
     "physical": 79,
     "stamina": 89,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 66,
+    "jumping": 82,
+    "crossing": 90,
+    "longShots": 60,
+    "composure": 76,
+    "freeKicks": 55,
+    "penalties": 59,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "alvaro-carreras",
@@ -2010,7 +3140,18 @@
     "defending": 76,
     "physical": 73,
     "stamina": 81,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 62,
+    "jumping": 78,
+    "crossing": 90,
+    "longShots": 57,
+    "composure": 74,
+    "freeKicks": 53,
+    "penalties": 56,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "antonio-rudiger",
@@ -2028,7 +3169,18 @@
     "defending": 85,
     "physical": 91,
     "stamina": 81,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 97,
+    "jumping": 87,
+    "crossing": 61,
+    "longShots": 54,
+    "composure": 77,
+    "freeKicks": 51,
+    "penalties": 54,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "ferland-mendy",
@@ -2046,7 +3198,19 @@
     "defending": 76,
     "physical": 74,
     "stamina": 83,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 60,
+    "jumping": 78,
+    "crossing": 88,
+    "longShots": 54,
+    "composure": 72,
+    "freeKicks": 50,
+    "penalties": 52,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "denzel-dumfries",
@@ -2064,7 +3228,18 @@
     "defending": 78,
     "physical": 77,
     "stamina": 87,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 61,
+    "jumping": 76,
+    "crossing": 85,
+    "longShots": 55,
+    "composure": 71,
+    "freeKicks": 50,
+    "penalties": 53,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "jude-bellingham",
@@ -2083,7 +3258,23 @@
     "defending": 60,
     "physical": 83,
     "stamina": 87,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 186,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/squad/jude-bellingham",
+    "verifiedOn": "2026-10-31",
+    "heading": 80,
+    "jumping": 83,
+    "crossing": 83,
+    "longShots": 97,
+    "composure": 94,
+    "freeKicks": 81,
+    "penalties": 88,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "سرعتی",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "eduardo-camavinga",
@@ -2102,7 +3293,18 @@
     "defending": 65,
     "physical": 79,
     "stamina": 88,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 68,
+    "jumping": 75,
+    "crossing": 71,
+    "longShots": 81,
+    "composure": 81,
+    "freeKicks": 67,
+    "penalties": 70,
+    "discipline": 67,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "federico-valverde",
@@ -2121,7 +3323,20 @@
     "defending": 78,
     "physical": 93,
     "stamina": 95,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heading": 83,
+    "jumping": 94,
+    "crossing": 78,
+    "longShots": 94,
+    "composure": 90,
+    "freeKicks": 78,
+    "penalties": 84,
+    "discipline": 70,
+    "tags": [
+      "سرزن",
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "aurelien-tchouameni",
@@ -2140,7 +3355,16 @@
     "defending": 83,
     "physical": 83,
     "stamina": 87,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 67,
+    "jumping": 77,
+    "crossing": 65,
+    "longShots": 70,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 59,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "arda-guler",
@@ -2159,7 +3383,19 @@
     "defending": 40,
     "physical": 67,
     "stamina": 83,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 51,
+    "jumping": 70,
+    "crossing": 71,
+    "longShots": 80,
+    "composure": 79,
+    "freeKicks": 66,
+    "penalties": 69,
+    "discipline": 66,
+    "tags": [
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "bernardo-silva",
@@ -2178,7 +3414,20 @@
     "defending": 66,
     "physical": 74,
     "stamina": 89,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 72,
+    "jumping": 75,
+    "crossing": 80,
+    "longShots": 88,
+    "composure": 88,
+    "freeKicks": 74,
+    "penalties": 78,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "brahim-diaz",
@@ -2197,7 +3446,22 @@
     "defending": 38,
     "physical": 67,
     "stamina": 78,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heightCm": 170,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/first-team/players/brahim-diaz",
+    "verifiedOn": "2026-10-31",
+    "heading": 56,
+    "jumping": 74,
+    "crossing": 76,
+    "longShots": 85,
+    "composure": 83,
+    "freeKicks": 70,
+    "penalties": 74,
+    "discipline": 71,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "vinicius-junior",
@@ -2215,7 +3479,23 @@
     "defending": 43,
     "physical": 65,
     "stamina": 86,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 176,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/first-team/players/vinicius-paixao-de-oliveira-junior",
+    "verifiedOn": "2026-10-31",
+    "heading": 51,
+    "jumping": 72,
+    "crossing": 96,
+    "longShots": 77,
+    "composure": 84,
+    "freeKicks": 69,
+    "penalties": 77,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "endrick",
@@ -2233,7 +3513,21 @@
     "defending": 29,
     "physical": 81,
     "stamina": 71,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heightCm": 173,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/first-team/players/endrick-felipe-moreira-de-sousa",
+    "verifiedOn": "2026-10-31",
+    "heading": 88,
+    "jumping": 77,
+    "crossing": 53,
+    "longShots": 72,
+    "composure": 74,
+    "freeKicks": 61,
+    "penalties": 74,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "kylian-mbappe",
@@ -2252,7 +3546,22 @@
     "defending": 43,
     "physical": 88,
     "stamina": 89,
-    "goalkeeping": 23
+    "goalkeeping": 23,
+    "heightCm": 178,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/squad/kylian-mbappe",
+    "verifiedOn": "2026-10-31",
+    "heading": 60,
+    "jumping": 78,
+    "crossing": 67,
+    "longShots": 87,
+    "composure": 90,
+    "freeKicks": 75,
+    "penalties": 88,
+    "discipline": 69,
+    "tags": [
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "rodrygo",
@@ -2271,7 +3580,22 @@
     "defending": 37,
     "physical": 66,
     "stamina": 80,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heightCm": 174,
+    "heightSourceUrl": "https://www.realmadrid.com/en-US/football/first-team/players/rodrygo-goes",
+    "verifiedOn": "2026-10-31",
+    "heading": 55,
+    "jumping": 77,
+    "crossing": 96,
+    "longShots": 77,
+    "composure": 84,
+    "freeKicks": 69,
+    "penalties": 78,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "lucas-chevalier",
@@ -2296,7 +3620,16 @@
       "kicking": 81,
       "reflexes": 87,
       "positioning": 83
-    }
+    },
+    "heading": 15,
+    "jumping": 61,
+    "crossing": 32,
+    "longShots": 22,
+    "composure": 58,
+    "freeKicks": 20,
+    "penalties": 22,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "matvey-safonov",
@@ -2321,7 +3654,16 @@
       "kicking": 76,
       "reflexes": 82,
       "positioning": 78
-    }
+    },
+    "heading": 15,
+    "jumping": 55,
+    "crossing": 29,
+    "longShots": 20,
+    "composure": 54,
+    "freeKicks": 18,
+    "penalties": 19,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "alessandro-longoni",
@@ -2346,7 +3688,16 @@
       "kicking": 63,
       "reflexes": 66,
       "positioning": 65
-    }
+    },
+    "heading": 15,
+    "jumping": 40,
+    "crossing": 15,
+    "longShots": 15,
+    "composure": 39,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "achraf-hakimi",
@@ -2364,7 +3715,20 @@
     "defending": 83,
     "physical": 83,
     "stamina": 87,
-    "goalkeeping": 18
+    "goalkeeping": 18,
+    "heading": 68,
+    "jumping": 84,
+    "crossing": 96,
+    "longShots": 67,
+    "composure": 80,
+    "freeKicks": 63,
+    "penalties": 64,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "lucas-beraldo",
@@ -2382,7 +3746,18 @@
     "defending": 77,
     "physical": 79,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 89,
+    "jumping": 76,
+    "crossing": 54,
+    "longShots": 44,
+    "composure": 68,
+    "freeKicks": 42,
+    "penalties": 43,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "marquinhos",
@@ -2400,7 +3775,18 @@
     "defending": 85,
     "physical": 92,
     "stamina": 83,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 93,
+    "jumping": 82,
+    "crossing": 52,
+    "longShots": 44,
+    "composure": 68,
+    "freeKicks": 42,
+    "penalties": 42,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "illia-zabarnyi",
@@ -2418,7 +3804,18 @@
     "defending": 81,
     "physical": 86,
     "stamina": 75,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 88,
+    "jumping": 77,
+    "crossing": 52,
+    "longShots": 41,
+    "composure": 65,
+    "freeKicks": 39,
+    "penalties": 38,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "lucas-digne",
@@ -2436,7 +3833,18 @@
     "defending": 75,
     "physical": 72,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 62,
+    "jumping": 78,
+    "crossing": 90,
+    "longShots": 57,
+    "composure": 74,
+    "freeKicks": 53,
+    "penalties": 56,
+    "discipline": 71,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "lucas-hernandez",
@@ -2455,7 +3863,18 @@
     "defending": 80,
     "physical": 81,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 73,
+    "crossing": 48,
+    "longShots": 39,
+    "composure": 64,
+    "freeKicks": 36,
+    "penalties": 37,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "nuno-mendes",
@@ -2473,7 +3892,19 @@
     "defending": 83,
     "physical": 81,
     "stamina": 90,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heading": 71,
+    "jumping": 90,
+    "crossing": 97,
+    "longShots": 64,
+    "composure": 82,
+    "freeKicks": 61,
+    "penalties": 63,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "willian-pacho",
@@ -2491,7 +3922,18 @@
     "defending": 84,
     "physical": 89,
     "stamina": 78,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 95,
+    "jumping": 84,
+    "crossing": 58,
+    "longShots": 48,
+    "composure": 72,
+    "freeKicks": 46,
+    "penalties": 46,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "fabian-ruiz",
@@ -2509,7 +3951,18 @@
     "defending": 66,
     "physical": 81,
     "stamina": 91,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 69,
+    "jumping": 78,
+    "crossing": 71,
+    "longShots": 80,
+    "composure": 80,
+    "freeKicks": 65,
+    "penalties": 68,
+    "discipline": 67,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "maghnes-akliouche",
@@ -2528,7 +3981,19 @@
     "defending": 39,
     "physical": 68,
     "stamina": 79,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 59,
+    "jumping": 77,
+    "crossing": 79,
+    "longShots": 88,
+    "composure": 86,
+    "freeKicks": 73,
+    "penalties": 78,
+    "discipline": 73,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "vitinha",
@@ -2547,7 +4012,20 @@
     "defending": 70,
     "physical": 81,
     "stamina": 94,
-    "goalkeeping": 21
+    "goalkeeping": 21,
+    "heading": 74,
+    "jumping": 84,
+    "crossing": 81,
+    "longShots": 86,
+    "composure": 88,
+    "freeKicks": 73,
+    "penalties": 75,
+    "discipline": 71,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "senny-mayulu",
@@ -2566,7 +4044,16 @@
     "defending": 58,
     "physical": 71,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 67,
+    "jumping": 76,
+    "crossing": 73,
+    "longShots": 79,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 68,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "warren-zaire-emery",
@@ -2585,7 +4072,18 @@
     "defending": 63,
     "physical": 78,
     "stamina": 88,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 73,
+    "jumping": 82,
+    "crossing": 75,
+    "longShots": 84,
+    "composure": 84,
+    "freeKicks": 69,
+    "penalties": 74,
+    "discipline": 74,
+    "tags": [
+      "شوت‌زن از دور"
+    ]
   },
   {
     "id": "joao-neves",
@@ -2604,7 +4102,18 @@
     "defending": 68,
     "physical": 77,
     "stamina": 88,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 68,
+    "jumping": 76,
+    "crossing": 72,
+    "longShots": 80,
+    "composure": 82,
+    "freeKicks": 66,
+    "penalties": 69,
+    "discipline": 68,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "khvicha-kvaratskhelia",
@@ -2622,7 +4131,20 @@
     "defending": 40,
     "physical": 71,
     "stamina": 87,
-    "goalkeeping": 20
+    "goalkeeping": 20,
+    "heading": 60,
+    "jumping": 83,
+    "crossing": 97,
+    "longShots": 82,
+    "composure": 90,
+    "freeKicks": 75,
+    "penalties": 83,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "ousmane-dembele",
@@ -2641,7 +4163,20 @@
     "defending": 41,
     "physical": 73,
     "stamina": 83,
-    "goalkeeping": 22
+    "goalkeeping": 22,
+    "heading": 40,
+    "jumping": 80,
+    "crossing": 86,
+    "longShots": 87,
+    "composure": 89,
+    "freeKicks": 76,
+    "penalties": 90,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "شوت‌زن از دور",
+      "سرعتی"
+    ]
   },
   {
     "id": "desire-doue",
@@ -2660,7 +4195,20 @@
     "defending": 38,
     "physical": 71,
     "stamina": 82,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heading": 54,
+    "jumping": 78,
+    "crossing": 97,
+    "longShots": 77,
+    "composure": 84,
+    "freeKicks": 70,
+    "penalties": 76,
+    "discipline": 68,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "mika-godts",
@@ -2678,7 +4226,16 @@
     "defending": 30,
     "physical": 59,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 43,
+    "jumping": 65,
+    "crossing": 84,
+    "longShots": 65,
+    "composure": 72,
+    "freeKicks": 57,
+    "penalties": 65,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "lukas-hradecky",
@@ -2703,7 +4260,16 @@
       "kicking": 78,
       "reflexes": 84,
       "positioning": 80
-    }
+    },
+    "heading": 15,
+    "jumping": 61,
+    "crossing": 32,
+    "longShots": 22,
+    "composure": 58,
+    "freeKicks": 21,
+    "penalties": 22,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "philipp-kohn",
@@ -2728,7 +4294,16 @@
       "kicking": 74,
       "reflexes": 77,
       "positioning": 76
-    }
+    },
+    "heading": 15,
+    "jumping": 51,
+    "crossing": 20,
+    "longShots": 15,
+    "composure": 48,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "jules-stawiecki",
@@ -2753,7 +4328,16 @@
       "kicking": 61,
       "reflexes": 64,
       "positioning": 63
-    }
+    },
+    "heading": 15,
+    "jumping": 39,
+    "crossing": 15,
+    "longShots": 15,
+    "composure": 38,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "vanderson",
@@ -2771,7 +4355,18 @@
     "defending": 76,
     "physical": 78,
     "stamina": 84,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 63,
+    "jumping": 80,
+    "crossing": 86,
+    "longShots": 55,
+    "composure": 72,
+    "freeKicks": 51,
+    "penalties": 53,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "jordan-teze",
@@ -2790,7 +4385,18 @@
     "defending": 75,
     "physical": 79,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 90,
+    "jumping": 77,
+    "crossing": 51,
+    "longShots": 44,
+    "composure": 67,
+    "freeKicks": 40,
+    "penalties": 44,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "christian-mawissa",
@@ -2809,7 +4415,18 @@
     "defending": 75,
     "physical": 79,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 88,
+    "jumping": 75,
+    "crossing": 49,
+    "longShots": 42,
+    "composure": 65,
+    "freeKicks": 38,
+    "penalties": 41,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "eric-dier",
@@ -2827,7 +4444,18 @@
     "defending": 77,
     "physical": 80,
     "stamina": 74,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 85,
+    "jumping": 75,
+    "crossing": 49,
+    "longShots": 38,
+    "composure": 63,
+    "freeKicks": 36,
+    "penalties": 36,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "flavio-nazinho",
@@ -2845,7 +4473,16 @@
     "defending": 68,
     "physical": 67,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 58,
+    "jumping": 74,
+    "crossing": 82,
+    "longShots": 52,
+    "composure": 68,
+    "freeKicks": 47,
+    "penalties": 52,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "mohammed-salisu",
@@ -2863,7 +4500,18 @@
     "defending": 77,
     "physical": 80,
     "stamina": 74,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 83,
+    "jumping": 73,
+    "crossing": 47,
+    "longShots": 36,
+    "composure": 61,
+    "freeKicks": 34,
+    "penalties": 34,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "samuel-nibombe",
@@ -2881,7 +4529,16 @@
     "defending": 63,
     "physical": 67,
     "stamina": 62,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 77,
+    "jumping": 64,
+    "crossing": 38,
+    "longShots": 31,
+    "composure": 54,
+    "freeKicks": 27,
+    "penalties": 31,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "sadibou-sane",
@@ -2899,7 +4556,16 @@
     "defending": 68,
     "physical": 69,
     "stamina": 61,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 72,
+    "jumping": 59,
+    "crossing": 34,
+    "longShots": 25,
+    "composure": 50,
+    "freeKicks": 22,
+    "penalties": 23,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "denis-zakaria",
@@ -2918,7 +4584,16 @@
     "defending": 79,
     "physical": 85,
     "stamina": 88,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 68,
+    "jumping": 80,
+    "crossing": 65,
+    "longShots": 71,
+    "composure": 76,
+    "freeKicks": 58,
+    "penalties": 60,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "lamine-camara",
@@ -2937,7 +4612,16 @@
     "defending": 60,
     "physical": 69,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 60,
+    "jumping": 68,
+    "crossing": 64,
+    "longShots": 72,
+    "composure": 74,
+    "freeKicks": 58,
+    "penalties": 61,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "aleksandr-golovin",
@@ -2956,7 +4640,18 @@
     "defending": 37,
     "physical": 65,
     "stamina": 82,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 58,
+    "jumping": 74,
+    "crossing": 75,
+    "longShots": 88,
+    "composure": 84,
+    "freeKicks": 72,
+    "penalties": 79,
+    "discipline": 74,
+    "tags": [
+      "شوت‌زن از دور"
+    ]
   },
   {
     "id": "stanis-idumbo",
@@ -2975,7 +4670,16 @@
     "defending": 28,
     "physical": 59,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 43,
+    "jumping": 61,
+    "crossing": 58,
+    "longShots": 71,
+    "composure": 68,
+    "freeKicks": 55,
+    "penalties": 60,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "takumi-minamino",
@@ -2994,7 +4698,21 @@
     "defending": 35,
     "physical": 65,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 172,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/takumi-minamino",
+    "verifiedOn": "2026-10-31",
+    "heading": 53,
+    "jumping": 69,
+    "crossing": 70,
+    "longShots": 84,
+    "composure": 80,
+    "freeKicks": 68,
+    "penalties": 74,
+    "discipline": 70,
+    "tags": [
+      "شوت‌زن از دور"
+    ]
   },
   {
     "id": "mamadou-coulibaly",
@@ -3012,7 +4730,16 @@
     "defending": 52,
     "physical": 67,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 59,
+    "jumping": 68,
+    "crossing": 61,
+    "longShots": 70,
+    "composure": 70,
+    "freeKicks": 55,
+    "penalties": 59,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "edan-diop",
@@ -3031,7 +4758,16 @@
     "defending": 49,
     "physical": 64,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 51,
+    "jumping": 60,
+    "crossing": 53,
+    "longShots": 62,
+    "composure": 62,
+    "freeKicks": 47,
+    "penalties": 50,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "folarin-balogun",
@@ -3049,7 +4785,18 @@
     "defending": 28,
     "physical": 79,
     "stamina": 75,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 87,
+    "jumping": 75,
+    "crossing": 49,
+    "longShots": 72,
+    "composure": 72,
+    "freeKicks": 59,
+    "penalties": 75,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "matthis-abline",
@@ -3067,7 +4814,18 @@
     "defending": 27,
     "physical": 80,
     "stamina": 71,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 94,
+    "jumping": 82,
+    "crossing": 56,
+    "longShots": 80,
+    "composure": 80,
+    "freeKicks": 67,
+    "penalties": 84,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "mika-biereth",
@@ -3085,7 +4843,21 @@
     "defending": 29,
     "physical": 82,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 187,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/mika-biereth",
+    "verifiedOn": "2026-10-31",
+    "heading": 92,
+    "jumping": 80,
+    "crossing": 54,
+    "longShots": 78,
+    "composure": 78,
+    "freeKicks": 65,
+    "penalties": 81,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "paris-brunner",
@@ -3104,7 +4876,16 @@
     "defending": 18,
     "physical": 67,
     "stamina": 61,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 81,
+    "jumping": 69,
+    "crossing": 48,
+    "longShots": 67,
+    "composure": 68,
+    "freeKicks": 55,
+    "penalties": 71,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "ansu-fati",
@@ -3123,7 +4904,18 @@
     "defending": 28,
     "physical": 58,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 49,
+    "jumping": 71,
+    "crossing": 94,
+    "longShots": 73,
+    "composure": 79,
+    "freeKicks": 65,
+    "penalties": 74,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "jeffrey-de-lange",
@@ -3148,7 +4940,16 @@
       "kicking": 72,
       "reflexes": 75,
       "positioning": 74
-    }
+    },
+    "heading": 15,
+    "jumping": 54,
+    "crossing": 25,
+    "longShots": 16,
+    "composure": 51,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "jelle-van-neck",
@@ -3173,7 +4974,16 @@
       "kicking": 59,
       "reflexes": 65,
       "positioning": 64
-    }
+    },
+    "heading": 15,
+    "jumping": 45,
+    "crossing": 16,
+    "longShots": 15,
+    "composure": 44,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "theo-vermot",
@@ -3198,7 +5008,16 @@
       "kicking": 58,
       "reflexes": 64,
       "positioning": 63
-    }
+    },
+    "heading": 15,
+    "jumping": 46,
+    "crossing": 16,
+    "longShots": 15,
+    "composure": 45,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "conrad-jaden-egan-riley",
@@ -3216,7 +5035,18 @@
     "defending": 74,
     "physical": 75,
     "stamina": 67,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 85,
+    "jumping": 72,
+    "crossing": 47,
+    "longShots": 38,
+    "composure": 63,
+    "freeKicks": 35,
+    "penalties": 37,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "derek-cornelius",
@@ -3234,7 +5064,18 @@
     "defending": 73,
     "physical": 75,
     "stamina": 68,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 83,
+    "jumping": 70,
+    "crossing": 48,
+    "longShots": 38,
+    "composure": 62,
+    "freeKicks": 36,
+    "penalties": 36,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "bamo-meite",
@@ -3252,7 +5093,18 @@
     "defending": 73,
     "physical": 79,
     "stamina": 69,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 84,
+    "jumping": 71,
+    "crossing": 45,
+    "longShots": 38,
+    "composure": 61,
+    "freeKicks": 35,
+    "penalties": 37,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "timothy-weah",
@@ -3271,7 +5123,18 @@
     "defending": 73,
     "physical": 71,
     "stamina": 80,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 58,
+    "jumping": 76,
+    "crossing": 86,
+    "longShots": 52,
+    "composure": 70,
+    "freeKicks": 48,
+    "penalties": 50,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "ulisses-garcia",
@@ -3289,7 +5152,16 @@
     "defending": 68,
     "physical": 65,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 50,
+    "jumping": 66,
+    "crossing": 78,
+    "longShots": 45,
+    "composure": 62,
+    "freeKicks": 41,
+    "penalties": 43,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "emerson-palmieri",
@@ -3307,7 +5179,16 @@
     "defending": 71,
     "physical": 72,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 59,
+    "jumping": 74,
+    "crossing": 83,
+    "longShots": 54,
+    "composure": 69,
+    "freeKicks": 49,
+    "penalties": 52,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "nayef-aguerd",
@@ -3325,7 +5206,18 @@
     "defending": 79,
     "physical": 84,
     "stamina": 73,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 94,
+    "jumping": 83,
+    "crossing": 58,
+    "longShots": 47,
+    "composure": 71,
+    "freeKicks": 45,
+    "penalties": 45,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "tochukwu-nnadi",
@@ -3343,7 +5235,16 @@
     "defending": 69,
     "physical": 70,
     "stamina": 75,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 58,
+    "jumping": 69,
+    "crossing": 61,
+    "longShots": 64,
+    "composure": 69,
+    "freeKicks": 51,
+    "penalties": 53,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "angel-gomes",
@@ -3362,7 +5263,16 @@
     "defending": 58,
     "physical": 71,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 65,
+    "jumping": 74,
+    "crossing": 71,
+    "longShots": 77,
+    "composure": 78,
+    "freeKicks": 64,
+    "penalties": 66,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "himad-abdelli",
@@ -3381,7 +5291,16 @@
     "defending": 34,
     "physical": 62,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 50,
+    "jumping": 66,
+    "crossing": 67,
+    "longShots": 80,
+    "composure": 76,
+    "freeKicks": 64,
+    "penalties": 70,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "geoffrey-kondogbia",
@@ -3400,7 +5319,16 @@
     "defending": 74,
     "physical": 75,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 60,
+    "jumping": 71,
+    "crossing": 63,
+    "longShots": 66,
+    "composure": 71,
+    "freeKicks": 53,
+    "penalties": 55,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "pierre-emile-hojbjerg",
@@ -3419,7 +5347,16 @@
     "defending": 78,
     "physical": 78,
     "stamina": 82,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 66,
+    "jumping": 76,
+    "crossing": 64,
+    "longShots": 69,
+    "composure": 76,
+    "freeKicks": 56,
+    "penalties": 59,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "amine-harit",
@@ -3438,7 +5375,16 @@
     "defending": 33,
     "physical": 62,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 48,
+    "jumping": 66,
+    "crossing": 68,
+    "longShots": 77,
+    "composure": 75,
+    "freeKicks": 62,
+    "penalties": 66,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "amine-gouiri",
@@ -3457,7 +5403,18 @@
     "defending": 30,
     "physical": 82,
     "stamina": 72,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 91,
+    "jumping": 80,
+    "crossing": 56,
+    "longShots": 75,
+    "composure": 77,
+    "freeKicks": 64,
+    "penalties": 77,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "neal-maupay",
@@ -3475,7 +5432,16 @@
     "defending": 22,
     "physical": 71,
     "stamina": 65,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 80,
+    "jumping": 68,
+    "crossing": 46,
+    "longShots": 66,
+    "composure": 67,
+    "freeKicks": 54,
+    "penalties": 69,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "igor-paixao",
@@ -3493,7 +5459,19 @@
     "defending": 33,
     "physical": 62,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 46,
+    "jumping": 68,
+    "crossing": 87,
+    "longShots": 68,
+    "composure": 76,
+    "freeKicks": 60,
+    "penalties": 68,
+    "discipline": 67,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "faris-moumbagna",
@@ -3511,7 +5489,18 @@
     "defending": 22,
     "physical": 73,
     "stamina": 69,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 84,
+    "jumping": 72,
+    "crossing": 46,
+    "longShots": 69,
+    "composure": 70,
+    "freeKicks": 56,
+    "penalties": 73,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "manuel-neuer",
@@ -3536,7 +5525,19 @@
       "kicking": 81,
       "reflexes": 87,
       "positioning": 86
-    }
+    },
+    "heightCm": 193,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/manuel-neuer",
+    "verifiedOn": "2026-10-31",
+    "heading": 20,
+    "jumping": 66,
+    "crossing": 45,
+    "longShots": 34,
+    "composure": 67,
+    "freeKicks": 34,
+    "penalties": 31,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "sven-ulreich",
@@ -3561,7 +5562,19 @@
       "kicking": 69,
       "reflexes": 75,
       "positioning": 71
-    }
+    },
+    "heightCm": 192,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/sven-ulreich",
+    "verifiedOn": "2026-10-31",
+    "heading": 15,
+    "jumping": 52,
+    "crossing": 22,
+    "longShots": 16,
+    "composure": 50,
+    "freeKicks": 15,
+    "penalties": 16,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "jonas-urbig",
@@ -3586,7 +5599,19 @@
       "kicking": 76,
       "reflexes": 79,
       "positioning": 78
-    }
+    },
+    "heightCm": 189,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/jonas-urbig",
+    "verifiedOn": "2026-10-31",
+    "heading": 15,
+    "jumping": 54,
+    "crossing": 28,
+    "longShots": 19,
+    "composure": 53,
+    "freeKicks": 17,
+    "penalties": 18,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "dayot-upamecano",
@@ -3604,7 +5629,21 @@
     "defending": 85,
     "physical": 89,
     "stamina": 84,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heightCm": 186,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/dayot-upamecano",
+    "verifiedOn": "2026-10-31",
+    "heading": 94,
+    "jumping": 81,
+    "crossing": 55,
+    "longShots": 48,
+    "composure": 71,
+    "freeKicks": 44,
+    "penalties": 47,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "kim-min-jae",
@@ -3622,7 +5661,21 @@
     "defending": 82,
     "physical": 86,
     "stamina": 81,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heightCm": 190,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/minjae-kim",
+    "verifiedOn": "2026-10-31",
+    "heading": 95,
+    "jumping": 82,
+    "crossing": 56,
+    "longShots": 49,
+    "composure": 72,
+    "freeKicks": 45,
+    "penalties": 48,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "jonathan-tah",
@@ -3640,7 +5693,21 @@
     "defending": 85,
     "physical": 88,
     "stamina": 82,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 195,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/jonathan-tah",
+    "verifiedOn": "2026-10-31",
+    "heading": 97,
+    "jumping": 87,
+    "crossing": 61,
+    "longShots": 50,
+    "composure": 75,
+    "freeKicks": 48,
+    "penalties": 49,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "nathaniel-brown",
@@ -3658,7 +5725,18 @@
     "defending": 75,
     "physical": 76,
     "stamina": 81,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 62,
+    "jumping": 77,
+    "crossing": 86,
+    "longShots": 56,
+    "composure": 72,
+    "freeKicks": 52,
+    "penalties": 55,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "alphonso-davies",
@@ -3676,7 +5754,19 @@
     "defending": 79,
     "physical": 77,
     "stamina": 86,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 68,
+    "jumping": 88,
+    "crossing": 96,
+    "longShots": 62,
+    "composure": 80,
+    "freeKicks": 58,
+    "penalties": 61,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "hiroki-ito",
@@ -3695,7 +5785,18 @@
     "defending": 78,
     "physical": 80,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 91,
+    "jumping": 78,
+    "crossing": 56,
+    "longShots": 46,
+    "composure": 70,
+    "freeKicks": 44,
+    "penalties": 45,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "sacha-boey",
@@ -3713,7 +5814,16 @@
     "defending": 71,
     "physical": 68,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 54,
+    "jumping": 70,
+    "crossing": 82,
+    "longShots": 49,
+    "composure": 66,
+    "freeKicks": 45,
+    "penalties": 47,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "josip-stanisic",
@@ -3732,7 +5842,18 @@
     "defending": 75,
     "physical": 71,
     "stamina": 78,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 61,
+    "jumping": 77,
+    "crossing": 86,
+    "longShots": 54,
+    "composure": 72,
+    "freeKicks": 50,
+    "penalties": 53,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "joshua-kimmich",
@@ -3751,7 +5872,19 @@
     "defending": 86,
     "physical": 86,
     "stamina": 93,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 73,
+    "jumping": 79,
+    "crossing": 88,
+    "longShots": 81,
+    "composure": 85,
+    "freeKicks": 81,
+    "penalties": 70,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "tom-bischof",
@@ -3770,7 +5903,16 @@
     "defending": 58,
     "physical": 69,
     "stamina": 82,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 64,
+    "jumping": 74,
+    "crossing": 71,
+    "longShots": 76,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 66,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "jamal-musiala",
@@ -3789,7 +5931,23 @@
     "defending": 47,
     "physical": 68,
     "stamina": 88,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heightCm": 186,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/jamal-musiala",
+    "verifiedOn": "2026-10-31",
+    "heading": 43,
+    "jumping": 61,
+    "crossing": 86,
+    "longShots": 77,
+    "composure": 94,
+    "freeKicks": 82,
+    "penalties": 87,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "konrad-laimer",
@@ -3808,7 +5966,16 @@
     "defending": 62,
     "physical": 73,
     "stamina": 86,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 65,
+    "jumping": 75,
+    "crossing": 72,
+    "longShots": 77,
+    "composure": 79,
+    "freeKicks": 64,
+    "penalties": 66,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "lennart-karl",
@@ -3827,7 +5994,19 @@
     "defending": 33,
     "physical": 60,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 168,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/lennart-karl",
+    "verifiedOn": "2026-10-31",
+    "heading": 48,
+    "jumping": 67,
+    "crossing": 68,
+    "longShots": 78,
+    "composure": 76,
+    "freeKicks": 62,
+    "penalties": 67,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "aleksandar-pavlovic",
@@ -3846,7 +6025,16 @@
     "defending": 79,
     "physical": 85,
     "stamina": 88,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 72,
+    "jumping": 84,
+    "crossing": 69,
+    "longShots": 75,
+    "composure": 80,
+    "freeKicks": 62,
+    "penalties": 65,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "serge-gnabry",
@@ -3865,7 +6053,22 @@
     "defending": 33,
     "physical": 66,
     "stamina": 77,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heightCm": 176,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/serge-gnabry",
+    "verifiedOn": "2026-10-31",
+    "heading": 52,
+    "jumping": 76,
+    "crossing": 96,
+    "longShots": 75,
+    "composure": 82,
+    "freeKicks": 68,
+    "penalties": 75,
+    "discipline": 71,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "harry-kane",
@@ -3883,7 +6086,23 @@
     "defending": 42,
     "physical": 92,
     "stamina": 87,
-    "goalkeeping": 24
+    "goalkeeping": 24,
+    "heightCm": 188,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/harry-kane",
+    "verifiedOn": "2026-10-31",
+    "heading": 88,
+    "jumping": 76,
+    "crossing": 70,
+    "longShots": 90,
+    "composure": 90,
+    "freeKicks": 78,
+    "penalties": 95,
+    "discipline": 67,
+    "tags": [
+      "سرزن",
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "luis-diaz",
@@ -3901,7 +6120,23 @@
     "defending": 38,
     "physical": 71,
     "stamina": 82,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heightCm": 180,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/luis-diaz",
+    "verifiedOn": "2026-10-31",
+    "heading": 60,
+    "jumping": 84,
+    "crossing": 97,
+    "longShots": 83,
+    "composure": 90,
+    "freeKicks": 76,
+    "penalties": 84,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "michael-olise",
@@ -3920,7 +6155,23 @@
     "defending": 41,
     "physical": 76,
     "stamina": 89,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heightCm": 180,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/michael-olise",
+    "verifiedOn": "2026-10-31",
+    "heading": 60,
+    "jumping": 82,
+    "crossing": 97,
+    "longShots": 81,
+    "composure": 87,
+    "freeKicks": 73,
+    "penalties": 81,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی",
+      "دریبل‌زن"
+    ]
   },
   {
     "id": "ismael-saibari",
@@ -3939,7 +6190,22 @@
     "defending": 39,
     "physical": 68,
     "stamina": 79,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heightCm": 185,
+    "heightSourceUrl": "https://fcbayern.com/en/teams/first-team/ismael-saibari",
+    "verifiedOn": "2026-10-31",
+    "heading": 57,
+    "jumping": 75,
+    "crossing": 77,
+    "longShots": 86,
+    "composure": 84,
+    "freeKicks": 71,
+    "penalties": 75,
+    "discipline": 71,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "gregor-kobel",
@@ -3964,7 +6230,19 @@
       "kicking": 85,
       "reflexes": 91,
       "positioning": 87
-    }
+    },
+    "heightCm": 195,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/gregor-kobel",
+    "verifiedOn": "2026-10-31",
+    "heading": 18,
+    "jumping": 64,
+    "crossing": 34,
+    "longShots": 28,
+    "composure": 62,
+    "freeKicks": 26,
+    "penalties": 28,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "patrick-drewes",
@@ -3989,7 +6267,16 @@
       "kicking": 70,
       "reflexes": 73,
       "positioning": 72
-    }
+    },
+    "heading": 15,
+    "jumping": 53,
+    "crossing": 22,
+    "longShots": 16,
+    "composure": 50,
+    "freeKicks": 15,
+    "penalties": 18,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "alexander-meyer",
@@ -4014,7 +6301,16 @@
       "kicking": 68,
       "reflexes": 74,
       "positioning": 73
-    }
+    },
+    "heading": 15,
+    "jumping": 50,
+    "crossing": 17,
+    "longShots": 15,
+    "composure": 45,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "waldemar-anton",
@@ -4032,7 +6328,21 @@
     "defending": 80,
     "physical": 87,
     "stamina": 78,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heightCm": 189,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/waldemar-anton",
+    "verifiedOn": "2026-10-31",
+    "heading": 92,
+    "jumping": 81,
+    "crossing": 51,
+    "longShots": 44,
+    "composure": 68,
+    "freeKicks": 41,
+    "penalties": 42,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "nico-schlotterbeck",
@@ -4050,7 +6360,21 @@
     "defending": 85,
     "physical": 90,
     "stamina": 79,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heightCm": 191,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/nico-schlotterbeck",
+    "verifiedOn": "2026-10-31",
+    "heading": 95,
+    "jumping": 84,
+    "crossing": 63,
+    "longShots": 50,
+    "composure": 74,
+    "freeKicks": 49,
+    "penalties": 46,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "ramy-bensebaini",
@@ -4069,7 +6393,16 @@
     "defending": 74,
     "physical": 70,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 54,
+    "jumping": 70,
+    "crossing": 79,
+    "longShots": 47,
+    "composure": 66,
+    "freeKicks": 43,
+    "penalties": 45,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "joane-gadou",
@@ -4087,7 +6420,18 @@
     "defending": 72,
     "physical": 79,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 87,
+    "jumping": 76,
+    "crossing": 46,
+    "longShots": 38,
+    "composure": 62,
+    "freeKicks": 36,
+    "penalties": 38,
+    "discipline": 73,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "daniel-svensson",
@@ -4106,7 +6450,18 @@
     "defending": 74,
     "physical": 70,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 60,
+    "jumping": 76,
+    "crossing": 85,
+    "longShots": 53,
+    "composure": 72,
+    "freeKicks": 49,
+    "penalties": 52,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "julian-ryerson",
@@ -4125,7 +6480,18 @@
     "defending": 75,
     "physical": 75,
     "stamina": 79,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 62,
+    "jumping": 80,
+    "crossing": 90,
+    "longShots": 56,
+    "composure": 74,
+    "freeKicks": 53,
+    "penalties": 54,
+    "discipline": 71,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "kaua-prates",
@@ -4143,7 +6509,16 @@
     "defending": 64,
     "physical": 65,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 56,
+    "jumping": 71,
+    "crossing": 80,
+    "longShots": 50,
+    "composure": 66,
+    "freeKicks": 46,
+    "penalties": 50,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "filippo-mane",
@@ -4161,7 +6536,19 @@
     "defending": 65,
     "physical": 72,
     "stamina": 63,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 188,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/filippo-mane",
+    "verifiedOn": "2026-10-31",
+    "heading": 78,
+    "jumping": 67,
+    "crossing": 37,
+    "longShots": 30,
+    "composure": 54,
+    "freeKicks": 27,
+    "penalties": 29,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "luca-reggiani",
@@ -4179,7 +6566,19 @@
     "defending": 65,
     "physical": 68,
     "stamina": 62,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 194,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/luca-reggiani",
+    "verifiedOn": "2026-10-31",
+    "heading": 77,
+    "jumping": 67,
+    "crossing": 41,
+    "longShots": 30,
+    "composure": 55,
+    "freeKicks": 28,
+    "penalties": 29,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "jobe-bellingham",
@@ -4197,7 +6596,16 @@
     "defending": 58,
     "physical": 73,
     "stamina": 83,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 72,
+    "crossing": 65,
+    "longShots": 74,
+    "composure": 74,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "felix-nmecha",
@@ -4216,7 +6624,18 @@
     "defending": 61,
     "physical": 74,
     "stamina": 82,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 63,
+    "jumping": 72,
+    "crossing": 69,
+    "longShots": 75,
+    "composure": 76,
+    "freeKicks": 62,
+    "penalties": 63,
+    "discipline": 67,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "carney-chukwuemeka",
@@ -4235,7 +6654,19 @@
     "defending": 33,
     "physical": 61,
     "stamina": 78,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 187,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/carney-chukwuemeka",
+    "verifiedOn": "2026-10-31",
+    "heading": 48,
+    "jumping": 64,
+    "crossing": 65,
+    "longShots": 78,
+    "composure": 74,
+    "freeKicks": 62,
+    "penalties": 68,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "ethan-nwaneri",
@@ -4254,7 +6685,16 @@
     "defending": 36,
     "physical": 67,
     "stamina": 80,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 52,
+    "jumping": 70,
+    "crossing": 67,
+    "longShots": 80,
+    "composure": 77,
+    "freeKicks": 64,
+    "penalties": 69,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "konstantinos-karetsas",
@@ -4273,7 +6713,19 @@
     "defending": 34,
     "physical": 63,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 171,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/konstantinos-karetsas",
+    "verifiedOn": "2026-10-31",
+    "heading": 47,
+    "jumping": 65,
+    "crossing": 67,
+    "longShots": 76,
+    "composure": 74,
+    "freeKicks": 61,
+    "penalties": 64,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "marcel-sabitzer",
@@ -4291,7 +6743,16 @@
     "defending": 60,
     "physical": 70,
     "stamina": 82,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 61,
+    "jumping": 68,
+    "crossing": 68,
+    "longShots": 75,
+    "composure": 76,
+    "freeKicks": 61,
+    "penalties": 63,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "emre-can",
@@ -4310,7 +6771,16 @@
     "defending": 76,
     "physical": 82,
     "stamina": 85,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 66,
+    "jumping": 77,
+    "crossing": 62,
+    "longShots": 68,
+    "composure": 73,
+    "freeKicks": 55,
+    "penalties": 57,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "joey-veerman",
@@ -4328,7 +6798,16 @@
     "defending": 62,
     "physical": 73,
     "stamina": 86,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 62,
+    "jumping": 72,
+    "crossing": 69,
+    "longShots": 74,
+    "composure": 76,
+    "freeKicks": 61,
+    "penalties": 63,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "giannis-konstantelias",
@@ -4347,7 +6826,19 @@
     "defending": 35,
     "physical": 60,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 176,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/giannis-konstantelias",
+    "verifiedOn": "2026-10-31",
+    "heading": 52,
+    "jumping": 68,
+    "crossing": 70,
+    "longShots": 81,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 72,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "serhou-guirassy",
@@ -4365,7 +6856,22 @@
     "defending": 36,
     "physical": 89,
     "stamina": 80,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heightCm": 187,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/serhou-guirassy",
+    "verifiedOn": "2026-10-31",
+    "heading": 97,
+    "jumping": 87,
+    "crossing": 61,
+    "longShots": 84,
+    "composure": 84,
+    "freeKicks": 72,
+    "penalties": 88,
+    "discipline": 69,
+    "tags": [
+      "سرزن",
+      "شوت‌زن از دور"
+    ]
   },
   {
     "id": "maximilian-beier",
@@ -4384,7 +6890,21 @@
     "defending": 29,
     "physical": 82,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 183,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/maximilian-beier",
+    "verifiedOn": "2026-10-31",
+    "heading": 90,
+    "jumping": 78,
+    "crossing": 52,
+    "longShots": 76,
+    "composure": 76,
+    "freeKicks": 63,
+    "penalties": 79,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "fabio-silva",
@@ -4402,7 +6922,21 @@
     "defending": 25,
     "physical": 75,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 185,
+    "heightSourceUrl": "https://www.bundesliga.com/en/bundesliga/player/fabio-silva",
+    "verifiedOn": "2026-10-31",
+    "heading": 82,
+    "jumping": 72,
+    "crossing": 48,
+    "longShots": 66,
+    "composure": 69,
+    "freeKicks": 55,
+    "penalties": 69,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "josep-martinez-riera",
@@ -4427,7 +6961,16 @@
       "kicking": 75,
       "reflexes": 81,
       "positioning": 80
-    }
+    },
+    "heading": 15,
+    "jumping": 52,
+    "crossing": 22,
+    "longShots": 15,
+    "composure": 51,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "raffaele-di-gennaro",
@@ -4452,7 +6995,16 @@
       "kicking": 61,
       "reflexes": 67,
       "positioning": 66
-    }
+    },
+    "heading": 15,
+    "jumping": 43,
+    "crossing": 15,
+    "longShots": 15,
+    "composure": 41,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "ivan-provedel",
@@ -4477,7 +7029,16 @@
       "kicking": 78,
       "reflexes": 81,
       "positioning": 80
-    }
+    },
+    "heading": 16,
+    "jumping": 62,
+    "crossing": 31,
+    "longShots": 26,
+    "composure": 60,
+    "freeKicks": 23,
+    "penalties": 27,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "john-stones",
@@ -4496,7 +7057,18 @@
     "defending": 81,
     "physical": 85,
     "stamina": 80,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 91,
+    "jumping": 78,
+    "crossing": 52,
+    "longShots": 45,
+    "composure": 68,
+    "freeKicks": 41,
+    "penalties": 44,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "manuel-akanji",
@@ -4515,7 +7087,18 @@
     "defending": 82,
     "physical": 83,
     "stamina": 75,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 89,
+    "jumping": 76,
+    "crossing": 51,
+    "longShots": 42,
+    "composure": 67,
+    "freeKicks": 39,
+    "penalties": 40,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "benjamin-pavard",
@@ -4534,7 +7117,18 @@
     "defending": 82,
     "physical": 83,
     "stamina": 75,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 92,
+    "jumping": 79,
+    "crossing": 54,
+    "longShots": 45,
+    "composure": 70,
+    "freeKicks": 42,
+    "penalties": 44,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "carlos-augusto",
@@ -4553,7 +7147,18 @@
     "defending": 74,
     "physical": 72,
     "stamina": 81,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 62,
+    "jumping": 80,
+    "crossing": 90,
+    "longShots": 56,
+    "composure": 74,
+    "freeKicks": 52,
+    "penalties": 55,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "yann-aurel-bisseck",
@@ -4571,7 +7176,18 @@
     "defending": 79,
     "physical": 82,
     "stamina": 76,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 88,
+    "jumping": 78,
+    "crossing": 52,
+    "longShots": 41,
+    "composure": 66,
+    "freeKicks": 39,
+    "penalties": 40,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "federico-dimarco",
@@ -4589,7 +7205,20 @@
     "defending": 82,
     "physical": 81,
     "stamina": 91,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 71,
+    "jumping": 84,
+    "crossing": 91,
+    "longShots": 73,
+    "composure": 83,
+    "freeKicks": 84,
+    "penalties": 71,
+    "discipline": 69,
+    "tags": [
+      "ارسال‌کننده",
+      "ضربهٔ ایستگاهی",
+      "سرعتی"
+    ]
   },
   {
     "id": "alessandro-bastoni",
@@ -4607,7 +7236,18 @@
     "defending": 88,
     "physical": 92,
     "stamina": 87,
-    "goalkeeping": 16
+    "goalkeeping": 16,
+    "heading": 96,
+    "jumping": 83,
+    "crossing": 63,
+    "longShots": 52,
+    "composure": 75,
+    "freeKicks": 51,
+    "penalties": 49,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "djed-spence",
@@ -4626,7 +7266,18 @@
     "defending": 74,
     "physical": 75,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 64,
+    "jumping": 79,
+    "crossing": 88,
+    "longShots": 58,
+    "composure": 74,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "aleksandar-stankovic",
@@ -4644,7 +7295,16 @@
     "defending": 74,
     "physical": 78,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 75,
+    "crossing": 64,
+    "longShots": 67,
+    "composure": 72,
+    "freeKicks": 55,
+    "penalties": 55,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "piotr-zielinski",
@@ -4663,7 +7323,16 @@
     "defending": 60,
     "physical": 75,
     "stamina": 85,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 66,
+    "jumping": 75,
+    "crossing": 68,
+    "longShots": 76,
+    "composure": 78,
+    "freeKicks": 62,
+    "penalties": 66,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "petar-sucic",
@@ -4682,7 +7351,16 @@
     "defending": 59,
     "physical": 68,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 71,
+    "crossing": 67,
+    "longShots": 75,
+    "composure": 77,
+    "freeKicks": 61,
+    "penalties": 65,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "luis-henrique",
@@ -4701,7 +7379,19 @@
     "defending": 29,
     "physical": 62,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 52,
+    "jumping": 75,
+    "crossing": 95,
+    "longShots": 74,
+    "composure": 80,
+    "freeKicks": 67,
+    "penalties": 74,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "andy-diouf",
@@ -4719,7 +7409,16 @@
     "defending": 56,
     "physical": 65,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 61,
+    "jumping": 69,
+    "crossing": 65,
+    "longShots": 73,
+    "composure": 75,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "hakan-calhanoglu",
@@ -4738,7 +7437,18 @@
     "defending": 82,
     "physical": 86,
     "stamina": 87,
-    "goalkeeping": 15
+    "goalkeeping": 15,
+    "heading": 74,
+    "jumping": 86,
+    "crossing": 75,
+    "longShots": 78,
+    "composure": 84,
+    "freeKicks": 66,
+    "penalties": 67,
+    "discipline": 73,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "curtis-jones",
@@ -4756,7 +7466,16 @@
     "defending": 61,
     "physical": 71,
     "stamina": 83,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 62,
+    "jumping": 69,
+    "crossing": 69,
+    "longShots": 76,
+    "composure": 76,
+    "freeKicks": 62,
+    "penalties": 64,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "henrikh-mkhitaryan",
@@ -4775,7 +7494,16 @@
     "defending": 59,
     "physical": 69,
     "stamina": 81,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 59,
+    "jumping": 66,
+    "crossing": 66,
+    "longShots": 73,
+    "composure": 74,
+    "freeKicks": 59,
+    "penalties": 61,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "nicolo-barella",
@@ -4793,7 +7521,19 @@
     "defending": 68,
     "physical": 82,
     "stamina": 91,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 74,
+    "jumping": 81,
+    "crossing": 77,
+    "longShots": 87,
+    "composure": 87,
+    "freeKicks": 73,
+    "penalties": 77,
+    "discipline": 70,
+    "tags": [
+      "شوت‌زن از دور",
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "marcus-thuram",
@@ -4811,7 +7551,19 @@
     "defending": 35,
     "physical": 85,
     "stamina": 80,
-    "goalkeeping": 17
+    "goalkeeping": 17,
+    "heading": 93,
+    "jumping": 83,
+    "crossing": 59,
+    "longShots": 78,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 80,
+    "discipline": 67,
+    "tags": [
+      "سرزن",
+      "سرعتی"
+    ]
   },
   {
     "id": "lautaro-martinez",
@@ -4829,7 +7581,23 @@
     "defending": 39,
     "physical": 93,
     "stamina": 85,
-    "goalkeeping": 19
+    "goalkeeping": 19,
+    "heightCm": 174,
+    "heightSourceUrl": "https://www.inter.it/en/news/2018-07-4-lautaro-martinez-is-a-nerazzurri-player",
+    "heightSourcePublished": "2018-07-04",
+    "verifiedOn": "2026-10-31",
+    "heading": 86,
+    "jumping": 86,
+    "crossing": 60,
+    "longShots": 82,
+    "composure": 83,
+    "freeKicks": 70,
+    "penalties": 80,
+    "discipline": 66,
+    "tags": [
+      "سرزن",
+      "سرعتی"
+    ]
   },
   {
     "id": "ange-yoan-bonny",
@@ -4847,7 +7615,18 @@
     "defending": 27,
     "physical": 77,
     "stamina": 72,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 92,
+    "jumping": 82,
+    "crossing": 58,
+    "longShots": 76,
+    "composure": 79,
+    "freeKicks": 65,
+    "penalties": 81,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "francesco-pio-esposito",
@@ -4865,7 +7644,18 @@
     "defending": 27,
     "physical": 77,
     "stamina": 72,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heading": 87,
+    "jumping": 77,
+    "crossing": 53,
+    "longShots": 72,
+    "composure": 74,
+    "freeKicks": 60,
+    "penalties": 75,
+    "discipline": 69,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "kamil-grabara",
@@ -4890,7 +7680,16 @@
       "kicking": 77,
       "reflexes": 83,
       "positioning": 79
-    }
+    },
+    "heading": 17,
+    "jumping": 63,
+    "crossing": 32,
+    "longShots": 26,
+    "composure": 60,
+    "freeKicks": 24,
+    "penalties": 28,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "carlo-pinsoglio",
@@ -4915,7 +7714,16 @@
       "kicking": 60,
       "reflexes": 66,
       "positioning": 65
-    }
+    },
+    "heading": 15,
+    "jumping": 44,
+    "crossing": 15,
+    "longShots": 15,
+    "composure": 45,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "guglielmo-vicario",
@@ -4940,7 +7748,16 @@
       "kicking": 80,
       "reflexes": 86,
       "positioning": 82
-    }
+    },
+    "heading": 15,
+    "jumping": 63,
+    "crossing": 34,
+    "longShots": 24,
+    "composure": 60,
+    "freeKicks": 22,
+    "penalties": 24,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "norberto-neto",
@@ -4965,7 +7782,16 @@
       "kicking": 73,
       "reflexes": 76,
       "positioning": 75
-    }
+    },
+    "heading": 15,
+    "jumping": 52,
+    "crossing": 22,
+    "longShots": 15,
+    "composure": 51,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "mehmet-zeki-celik",
@@ -4983,7 +7809,16 @@
     "defending": 71,
     "physical": 69,
     "stamina": 78,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 52,
+    "jumping": 70,
+    "crossing": 80,
+    "longShots": 46,
+    "composure": 64,
+    "freeKicks": 42,
+    "penalties": 43,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "gleison-bremer",
@@ -5001,7 +7836,18 @@
     "defending": 85,
     "physical": 86,
     "stamina": 78,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 91,
+    "jumping": 78,
+    "crossing": 53,
+    "longShots": 44,
+    "composure": 69,
+    "freeKicks": 41,
+    "penalties": 42,
+    "discipline": 68,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "federico-gatti",
@@ -5019,7 +7865,18 @@
     "defending": 79,
     "physical": 81,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 73,
+    "crossing": 51,
+    "longShots": 41,
+    "composure": 64,
+    "freeKicks": 39,
+    "penalties": 39,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "lloyd-kelly",
@@ -5038,7 +7895,18 @@
     "defending": 77,
     "physical": 82,
     "stamina": 71,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 92,
+    "jumping": 81,
+    "crossing": 56,
+    "longShots": 45,
+    "composure": 69,
+    "freeKicks": 43,
+    "penalties": 43,
+    "discipline": 74,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "pierre-kalulu",
@@ -5057,7 +7925,18 @@
     "defending": 81,
     "physical": 84,
     "stamina": 78,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 92,
+    "jumping": 82,
+    "crossing": 56,
+    "longShots": 45,
+    "composure": 70,
+    "freeKicks": 43,
+    "penalties": 44,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "andrea-cambiaso",
@@ -5076,7 +7955,19 @@
     "defending": 77,
     "physical": 77,
     "stamina": 81,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 63,
+    "jumping": 81,
+    "crossing": 91,
+    "longShots": 57,
+    "composure": 74,
+    "freeKicks": 54,
+    "penalties": 55,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "daniele-rugani",
@@ -5094,7 +7985,18 @@
     "defending": 74,
     "physical": 81,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 86,
+    "jumping": 75,
+    "crossing": 45,
+    "longShots": 38,
+    "composure": 62,
+    "freeKicks": 35,
+    "penalties": 36,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "jhon-lucumi",
@@ -5112,7 +8014,18 @@
     "defending": 79,
     "physical": 84,
     "stamina": 73,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heading": 86,
+    "jumping": 75,
+    "crossing": 50,
+    "longShots": 39,
+    "composure": 63,
+    "freeKicks": 37,
+    "penalties": 36,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "juan-david-cabal",
@@ -5131,7 +8044,16 @@
     "defending": 70,
     "physical": 69,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 60,
+    "jumping": 76,
+    "crossing": 84,
+    "longShots": 54,
+    "composure": 70,
+    "freeKicks": 49,
+    "penalties": 54,
+    "discipline": 73,
+    "tags": []
   },
   {
     "id": "manuel-locatelli",
@@ -5150,7 +8072,16 @@
     "defending": 79,
     "physical": 81,
     "stamina": 87,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 67,
+    "jumping": 79,
+    "crossing": 68,
+    "longShots": 70,
+    "composure": 76,
+    "freeKicks": 58,
+    "penalties": 59,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "teun-koopmeiners",
@@ -5169,7 +8100,16 @@
     "defending": 62,
     "physical": 76,
     "stamina": 85,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 65,
+    "jumping": 72,
+    "crossing": 68,
+    "longShots": 78,
+    "composure": 78,
+    "freeKicks": 64,
+    "penalties": 67,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "douglas-luiz",
@@ -5188,7 +8128,16 @@
     "defending": 60,
     "physical": 71,
     "stamina": 84,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 59,
+    "jumping": 69,
+    "crossing": 66,
+    "longShots": 71,
+    "composure": 73,
+    "freeKicks": 58,
+    "penalties": 59,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "khephren-thuram",
@@ -5206,7 +8155,18 @@
     "defending": 63,
     "physical": 73,
     "stamina": 85,
-    "goalkeeping": 11
+    "goalkeeping": 11,
+    "heading": 64,
+    "jumping": 71,
+    "crossing": 71,
+    "longShots": 78,
+    "composure": 78,
+    "freeKicks": 64,
+    "penalties": 66,
+    "discipline": 67,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "weston-mckennie",
@@ -5225,7 +8185,16 @@
     "defending": 60,
     "physical": 70,
     "stamina": 82,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 70,
+    "crossing": 70,
+    "longShots": 77,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 66,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "pape-matar-sarr",
@@ -5244,7 +8213,16 @@
     "defending": 60,
     "physical": 74,
     "stamina": 83,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 62,
+    "jumping": 69,
+    "crossing": 65,
+    "longShots": 75,
+    "composure": 75,
+    "freeKicks": 61,
+    "penalties": 64,
+    "discipline": 66,
+    "tags": []
   },
   {
     "id": "nicolas-gonzalez",
@@ -5263,7 +8241,21 @@
     "defending": 31,
     "physical": 65,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 180,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/nicolas-gonzalez",
+    "verifiedOn": "2026-10-31",
+    "heading": 49,
+    "jumping": 70,
+    "crossing": 88,
+    "longShots": 74,
+    "composure": 77,
+    "freeKicks": 65,
+    "penalties": 74,
+    "discipline": 67,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "francisco-conceicao",
@@ -5281,7 +8273,19 @@
     "defending": 33,
     "physical": 66,
     "stamina": 77,
-    "goalkeeping": 12
+    "goalkeeping": 12,
+    "heading": 54,
+    "jumping": 77,
+    "crossing": 97,
+    "longShots": 76,
+    "composure": 82,
+    "freeKicks": 69,
+    "penalties": 76,
+    "discipline": 72,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "randal-kolo-muani",
@@ -5299,7 +8303,21 @@
     "defending": 30,
     "physical": 79,
     "stamina": 73,
-    "goalkeeping": 9
+    "goalkeeping": 9,
+    "heightCm": 187,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/randal-kolo-muani",
+    "verifiedOn": "2026-10-31",
+    "heading": 89,
+    "jumping": 77,
+    "crossing": 56,
+    "longShots": 75,
+    "composure": 76,
+    "freeKicks": 63,
+    "penalties": 78,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "kenan-yildiz",
@@ -5318,7 +8336,19 @@
     "defending": 36,
     "physical": 71,
     "stamina": 84,
-    "goalkeeping": 14
+    "goalkeeping": 14,
+    "heading": 56,
+    "jumping": 79,
+    "crossing": 95,
+    "longShots": 77,
+    "composure": 83,
+    "freeKicks": 69,
+    "penalties": 77,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "edon-zhegrova",
@@ -5336,7 +8366,18 @@
     "defending": 31,
     "physical": 60,
     "stamina": 74,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 51,
+    "jumping": 73,
+    "crossing": 92,
+    "longShots": 73,
+    "composure": 80,
+    "freeKicks": 65,
+    "penalties": 74,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "jeremie-boga",
@@ -5354,7 +8395,18 @@
     "defending": 28,
     "physical": 58,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 49,
+    "jumping": 71,
+    "crossing": 94,
+    "longShots": 73,
+    "composure": 79,
+    "freeKicks": 65,
+    "penalties": 74,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "arkadiusz-milik",
@@ -5372,7 +8424,18 @@
     "defending": 24,
     "physical": 78,
     "stamina": 70,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 88,
+    "jumping": 77,
+    "crossing": 49,
+    "longShots": 71,
+    "composure": 72,
+    "freeKicks": 59,
+    "penalties": 74,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "nick-woltemade",
@@ -5391,7 +8454,21 @@
     "defending": 32,
     "physical": 80,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heightCm": 198,
+    "heightSourceUrl": "https://www.premierleague.com/en/news/4054531",
+    "verifiedOn": "2026-10-31",
+    "heading": 89,
+    "jumping": 77,
+    "crossing": 52,
+    "longShots": 73,
+    "composure": 76,
+    "freeKicks": 61,
+    "penalties": 76,
+    "discipline": 67,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "lorenzo-torriani",
@@ -5416,7 +8493,16 @@
       "kicking": 66,
       "reflexes": 69,
       "positioning": 68
-    }
+    },
+    "heading": 15,
+    "jumping": 46,
+    "crossing": 16,
+    "longShots": 15,
+    "composure": 46,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "mike-maignan",
@@ -5441,7 +8527,16 @@
       "kicking": 85,
       "reflexes": 91,
       "positioning": 87
-    }
+    },
+    "heading": 20,
+    "jumping": 66,
+    "crossing": 48,
+    "longShots": 34,
+    "composure": 68,
+    "freeKicks": 34,
+    "penalties": 31,
+    "discipline": 70,
+    "tags": []
   },
   {
     "id": "pietro-terracciano",
@@ -5466,7 +8561,16 @@
       "kicking": 69,
       "reflexes": 75,
       "positioning": 71
-    }
+    },
+    "heading": 15,
+    "jumping": 50,
+    "crossing": 20,
+    "longShots": 15,
+    "composure": 48,
+    "freeKicks": 15,
+    "penalties": 15,
+    "discipline": 68,
+    "tags": []
   },
   {
     "id": "davide-bartesaghi",
@@ -5485,7 +8589,16 @@
     "defending": 71,
     "physical": 68,
     "stamina": 76,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 56,
+    "jumping": 72,
+    "crossing": 84,
+    "longShots": 51,
+    "composure": 68,
+    "freeKicks": 47,
+    "penalties": 49,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "fikayo-tomori",
@@ -5503,7 +8616,18 @@
     "defending": 80,
     "physical": 84,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 92,
+    "jumping": 79,
+    "crossing": 53,
+    "longShots": 46,
+    "composure": 69,
+    "freeKicks": 42,
+    "penalties": 45,
+    "discipline": 71,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "filippo-terracciano",
@@ -5522,7 +8646,16 @@
     "defending": 68,
     "physical": 67,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 52,
+    "jumping": 68,
+    "crossing": 76,
+    "longShots": 46,
+    "composure": 62,
+    "freeKicks": 41,
+    "penalties": 45,
+    "discipline": 67,
+    "tags": []
   },
   {
     "id": "koni-de-winter",
@@ -5541,7 +8674,18 @@
     "defending": 78,
     "physical": 79,
     "stamina": 71,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 88,
+    "jumping": 75,
+    "crossing": 50,
+    "longShots": 41,
+    "composure": 66,
+    "freeKicks": 38,
+    "penalties": 40,
+    "discipline": 72,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "mario-gila",
@@ -5559,7 +8703,18 @@
     "defending": 79,
     "physical": 80,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 83,
+    "jumping": 70,
+    "crossing": 45,
+    "longShots": 36,
+    "composure": 61,
+    "freeKicks": 33,
+    "penalties": 34,
+    "discipline": 66,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "christian-comotto",
@@ -5577,7 +8732,16 @@
     "defending": 45,
     "physical": 59,
     "stamina": 68,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 53,
+    "jumping": 60,
+    "crossing": 56,
+    "longShots": 66,
+    "composure": 66,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 72,
+    "tags": []
   },
   {
     "id": "christian-pulisic",
@@ -5596,7 +8760,22 @@
     "defending": 36,
     "physical": 65,
     "stamina": 79,
-    "goalkeeping": 10
+    "goalkeeping": 10,
+    "heightCm": 178,
+    "heightSourceUrl": "https://www.bundesliga.com/en/player/christian-pulisic",
+    "verifiedOn": "2026-10-31",
+    "heading": 56,
+    "jumping": 78,
+    "crossing": 97,
+    "longShots": 78,
+    "composure": 86,
+    "freeKicks": 70,
+    "penalties": 80,
+    "discipline": 74,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "diego-moreira",
@@ -5615,7 +8794,18 @@
     "defending": 29,
     "physical": 58,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 45,
+    "jumping": 67,
+    "crossing": 86,
+    "longShots": 67,
+    "composure": 74,
+    "freeKicks": 59,
+    "penalties": 68,
+    "discipline": 70,
+    "tags": [
+      "ارسال‌کننده"
+    ]
   },
   {
     "id": "luka-modric",
@@ -5633,7 +8823,18 @@
     "defending": 64,
     "physical": 69,
     "stamina": 73,
-    "goalkeeping": 13
+    "goalkeeping": 13,
+    "heading": 62,
+    "jumping": 64,
+    "crossing": 73,
+    "longShots": 79,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 67,
+    "discipline": 67,
+    "tags": [
+      "بازی‌ساز"
+    ]
   },
   {
     "id": "omari-hutchinson",
@@ -5652,7 +8853,16 @@
     "defending": 35,
     "physical": 66,
     "stamina": 79,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 52,
+    "jumping": 70,
+    "crossing": 67,
+    "longShots": 80,
+    "composure": 77,
+    "freeKicks": 64,
+    "penalties": 70,
+    "discipline": 69,
+    "tags": []
   },
   {
     "id": "ruben-loftus-cheek",
@@ -5671,7 +8881,16 @@
     "defending": 58,
     "physical": 68,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 63,
+    "jumping": 70,
+    "crossing": 70,
+    "longShots": 77,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 66,
+    "discipline": 71,
+    "tags": []
   },
   {
     "id": "alexis-saelemaekers",
@@ -5690,7 +8909,19 @@
     "defending": 29,
     "physical": 62,
     "stamina": 73,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 44,
+    "jumping": 67,
+    "crossing": 87,
+    "longShots": 66,
+    "composure": 72,
+    "freeKicks": 59,
+    "penalties": 65,
+    "discipline": 66,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
   },
   {
     "id": "yunus-musah",
@@ -5709,7 +8940,16 @@
     "defending": 57,
     "physical": 71,
     "stamina": 80,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 67,
+    "jumping": 74,
+    "crossing": 70,
+    "longShots": 80,
+    "composure": 80,
+    "freeKicks": 66,
+    "penalties": 70,
+    "discipline": 74,
+    "tags": []
   },
   {
     "id": "francesco-camarda",
@@ -5727,7 +8967,18 @@
     "defending": 19,
     "physical": 72,
     "stamina": 63,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 84,
+    "jumping": 72,
+    "crossing": 46,
+    "longShots": 70,
+    "composure": 70,
+    "freeKicks": 57,
+    "penalties": 73,
+    "discipline": 71,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "goncalo-ramos",
@@ -5745,7 +8996,18 @@
     "defending": 31,
     "physical": 79,
     "stamina": 72,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 91,
+    "jumping": 79,
+    "crossing": 54,
+    "longShots": 75,
+    "composure": 78,
+    "freeKicks": 63,
+    "penalties": 79,
+    "discipline": 70,
+    "tags": [
+      "سرزن"
+    ]
   },
   {
     "id": "samuel-chukwueze",
@@ -5763,6 +9025,53 @@
     "defending": 29,
     "physical": 64,
     "stamina": 77,
-    "goalkeeping": 8
+    "goalkeeping": 8,
+    "heading": 52,
+    "jumping": 75,
+    "crossing": 91,
+    "longShots": 73,
+    "composure": 79,
+    "freeKicks": 65,
+    "penalties": 74,
+    "discipline": 73,
+    "tags": [
+      "ارسال‌کننده",
+      "سرعتی"
+    ]
+  },
+  {
+    "id": "kevin-de-bruyne",
+    "name": "Kevin De Bruyne",
+    "club": "Napoli",
+    "league": "serie-a",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 86,
+    "pace": 62,
+    "shooting": 85,
+    "passing": 94,
+    "dribbling": 84,
+    "defending": 60,
+    "physical": 70,
+    "stamina": 70,
+    "goalkeeping": 12,
+    "heightCm": 181,
+    "heightSourceUrl": "https://en.legaseriea.it/players/kevin-de-bruyne",
+    "verifiedOn": "2026-10-31",
+    "heading": 67,
+    "jumping": 64,
+    "crossing": 95,
+    "longShots": 91,
+    "composure": 85,
+    "freeKicks": 89,
+    "penalties": 78,
+    "discipline": 67,
+    "tags": [
+      "ارسال‌کننده",
+      "شوت‌زن از دور",
+      "ضربهٔ ایستگاهی"
+    ]
   }
 ]

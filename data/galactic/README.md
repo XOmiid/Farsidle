@@ -2,7 +2,7 @@
 
 Created 2026-10-30. File: `players.json`.
 
-298 real male players selected from 13 official men's first-team squad pages across the five requested leagues. This is a deliberately selected starter pool, NOT a complete league database. The roster is a snapshot of the public pages accessed on 2026-10-30; those pages can change and several explicitly label 2026/27. Do not present this as a permanent live transfer feed or as independently audited registration data. Loaned-out sections were excluded where shown. Club names are editorial display names.
+The original v1 pool contained 298 real male players selected from 13 official men's first-team squad pages across the five requested leagues. Version 2 has 299 players after adding Kevin De Bruyne from Napoli. This is a deliberately selected starter pool, NOT a complete league database. The roster is a snapshot of the public pages accessed on 2026-10-30; those pages can change and several explicitly label 2026/27. Do not present this as a permanent live transfer feed or as independently audited registration data. Loaned-out sections were excluded where shown. Club names are editorial display names.
 
 ## Primary roster sources accessed
 
@@ -68,3 +68,14 @@ The 298 unique records comfortably exceed 8 × 11 picks and include adequate goa
 Public source visibility is not a blanket commercial data license. This starter pack includes minimal factual identity/club information plus original numeric gameplay estimates, with no copied EA ratings or visual assets. Provider contracts and paid subscriptions are not required or used for this local prototype. If later using EA values or a full automated external feed, inspect its reuse terms separately.
 
 Freeze a roster/version snapshot when a room starts; later content edits should not change active tournaments. This recommendation protects gameplay consistency, not currentness guarantees.
+
+
+## Version 2: tactical and physical traits
+
+The current pool has 299 players; Kevin De Bruyne (Napoli, Serie A) was added from the official Napoli announcement and Serie A profile. Names remain English. Numeric ability values are hidden from the game UI and authenticated public player/lineup responses. The server retains them for individual skill comparisons rather than comparing an overall team rating.
+
+45 players have source-verified heights as of 2026-10-31, with URLs on each record. Unknown heights remain absent: the engine uses neutral internal reach alongside editorial heading and jumping, never an invented factual height. `traits-sources.md` records primary sources and limitations. Heading, jumping, crossing, long shots, free kicks, penalties, composure and discipline are original gameplay estimates, not measured official statistics or personality claims. Discipline starts from a neutral gameplay baseline with small seeded variation.
+
+Crossing combines delivery quality, position fit, chemistry, attacking heading/jumping/reach and the defending player's aerial ability. Physical height contributes only part of reach: it does not define heading skill. Long-shot tactics trade conversion probability for more completed shooting opportunities; central attacks meet resistance from a low block; counters use pace against the defensive line. Formation numbers and midfield/defensive occupancy change control and coverage. Pressing increases fatigue and booking risk. Red cards remove the player from later actions and the shootout, with no suspension in later tournament matches.
+
+Chemistry is a disclosed game rule: nearby same-club links improve coordination; listed club rivalries reduce it. The Kevin De Bruyne/Thibaut Courtois pair has a fictional penalty requested for gameplay. It is not an assertion about their real private lives. Green/blue/yellow/red indicate coordination, not actual emotions. Chemistry has a bounded effect, while tactical matchups, skill, position, fatigue and chance remain important.
