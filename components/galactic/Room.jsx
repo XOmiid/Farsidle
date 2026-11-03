@@ -6,10 +6,11 @@ import Shell from '@/components/arcade/Shell';
 import Draft from './Draft';
 import Halftime from './Halftime';
 import Roles from './Roles';
+import { matchRatings, teamIncidents } from '@/lib/galactic/performance.mjs';
 import { Icon } from '@/components/arcade/Art';
 import { useArcade } from '@/components/arcade/Provider';
 import { fa } from '@/lib/classic/rules.mjs';
-import { matchClock, minuteLabel } from '@/lib/galactic/rules.mjs';
+import { matchClock, footballMinuteLabel } from '@/lib/galactic/rules.mjs';
 import { call, watch } from '@/lib/galactic/gateway';
 import { Access, Pitch, useNow, phaseLabel } from './Common';
 export default function Room({ code }) {
@@ -98,6 +99,13 @@ export default function Room({ code }) {
       const next = await call('act', { p_code: code, p_action: data });
       if (next.left) router.push('/galactic');
       else accept(next);
+      if (data.type === 'halftime' && (next.halftime?.saved || !next.halftime)) {
+        requestAnimationFrame(() =>
+          document
+            .querySelector('.g-match')
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+        );
+      }
     } catch (e) {
       setError(e.message);
     } finally {
@@ -579,6 +587,7 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
             <div className="g-team-blue">
               <b>{match.home.teamName}</b>
               <small>{match.home.name}</small>
+              <MatchIncidents events={events} side={0} />
             </div>
             <strong
               className="g-score-pair"
@@ -599,6 +608,7 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
             <div className="g-team-red">
               <b>{match.away.teamName}</b>
               <small>{match.away.name}</small>
+              <MatchIncidents events={events} side={1} />
             </div>
           </div>
           {match.penalties && (
@@ -612,7 +622,9 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
             </p>
           )}
           <div className={'g-match-clock' + (paused ? ' paused' : '')}>
-            <b dir="ltr">{minuteLabel(matchClock(match.playback, now))}</b>
+            <b dir="ltr">
+              {footballMinuteLabel(matchClock(match.playback, now), match.playback.stoppageBase)}
+            </b>
             <small>
               {match.status === 'finished'
                 ? 'پایان'
@@ -644,35 +656,59 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
               teamColor={side === 'home' ? 'blue' : 'red'}
               sentOff={side === 'home' ? match.sentOffHome || [] : match.sentOffAway || []}
             />
-            {last && paused && (
-              <div
-                className={
-                  'g-incident' +
-                  (last.side === 0 ? ' attacking-blue' : last.side === 1 ? ' attacking-red' : '') +
-                  (last.kind === 'goal' ? ' goal' : '')
-                }
-                role="status"
-                key={match.id + ':' + last.atMs}
-              >
-                <span>
-                  {{
-                    goal: 'گل!',
-                    build_up: 'حمله در حال شکل‌گیری',
-                    action: 'ادامهٔ حمله',
-                    penalty_kick: 'پنالتی',
-                    free_kick: 'ضربهٔ آزاد',
-                    yellow_card: 'کارت زرد',
-                    red_card: 'اخراج',
-                    woodwork: 'تیر دروازه',
-                    shootout_setup: 'پنالتی پایان مسابقه',
-                    shootout_kick: 'نتیجهٔ ضربه',
-                    final: 'پایان مسابقه',
-                  }[last.kind] || 'گزارش بازی'}
-                </span>
-                <p>{last.text}</p>
-              </div>
-            )}
           </div>
+          {last && (
+            <div
+              className={
+                'g-incident' +
+                (last.side === 0 ? ' attacking-blue' : last.side === 1 ? ' attacking-red' : '') +
+                (last.kind === 'goal' ? ' goal' : '')
+              }
+              role="status"
+              key={match.id + ':' + last.atMs}
+            >
+              <span>
+                {{
+                  goal: 'گل!',
+                  build_up: 'حمله در حال شکل‌گیری',
+                  action: 'ادامهٔ حمله',
+                  penalty_kick: 'پنالتی',
+                  free_kick: 'ضربهٔ آزاد',
+                  yellow_card: 'کارت زرد',
+                  red_card: 'اخراج',
+                  woodwork: 'تیر دروازه',
+                  shootout_setup: 'پنالتی پایان مسابقه',
+                  shootout_kick: 'نتیجهٔ ضربه',
+                  final: 'پایان مسابقه',
+                  keeper_rush: 'تک‌به‌تک با دروازه‌بان',
+                  stoppage_time: 'وقت‌های تلف‌شده',
+                }[last.kind] || 'گزارش بازی'}
+              </span>
+              <p>{last.text}</p>
+            </div>
+          )}
+          <details className="g-performance">
+            <summary>امتیاز عملکرد بازیکنان · {current.teamName}</summary>
+            <p>شروع از 6.5؛ بر پایهٔ عملکرد همین بازی. این امتیاز، قدرت بازیکن نیست.</p>
+            {matchRatings(
+              [
+                ...new Map(
+                  [...(current.ratingPlayers || []), ...current.players].map((p) => [p.id, p]),
+                ).values(),
+              ],
+              events,
+              side === 'home' ? 0 : 1,
+            ).map((p) => (
+              <div key={p.id}>
+                <span dir="ltr">{p.name}</span>
+                <b dir="ltr">{p.rating}</b>
+                <small>
+                  {p.goals ? fa(p.goals) + ' گل ' : ''}
+                  {p.assists ? fa(p.assists) + ' پاس گل' : ''}
+                </small>
+              </div>
+            ))}
+          </details>
           {current.roles && (
             <p className="g-role-summary">
               {[
@@ -735,7 +771,12 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
                     (e.kind === 'goal' ? ' goal' : '')
                   }
                 >
-                  <b>{fa(e.minute)}′</b>
+                  <b dir="ltr">
+                    {e.stoppageBase
+                      ? fa(e.stoppageBase) + '+' + fa(e.minute - e.stoppageBase)
+                      : fa(e.minute)}
+                    ′
+                  </b>
                   <span>{e.text}</span>
                 </li>
               ))}
@@ -829,5 +870,23 @@ export function Tournament({ room, catalog, now, busy = false, action }) {
         </div>
       </details>
     </>
+  );
+}
+
+function MatchIncidents({ events, side }) {
+  return (
+    <ul className="g-team-incidents">
+      {teamIncidents(events, side).map((e) => (
+        <li key={e.atMs}>
+          <span
+            aria-label={e.kind === 'goal' ? 'گل' : e.kind === 'red_card' ? 'کارت قرمز' : 'کارت زرد'}
+          >
+            {e.kind === 'goal' ? '⚽' : e.kind === 'red_card' ? '🟥' : '🟨'}
+          </span>{' '}
+          <span dir="ltr">{e.actor.name}</span>{' '}
+          <time dir="ltr">{footballMinuteLabel(e.minute, e.stoppageBase)}</time>
+        </li>
+      ))}
+    </ul>
   );
 }

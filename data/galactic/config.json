@@ -1,5 +1,5 @@
 {
-  "version": "galactic-v4",
+  "version": "galactic-v6",
   "roles": {
     "GK": "دروازه‌بان",
     "CB": "دفاع وسط",
@@ -1071,10 +1071,10 @@
     }
   },
   "pickSeconds": 60,
-  "matchMinuteMs": 2000,
+  "matchMinuteMs": 800,
   "eventHoldMs": 7000,
   "interMatchMs": 10000,
-  "engineVersion": 4,
+  "engineVersion": 6,
   "sequenceHoldMs": 16000,
   "chemistry": {
     "rivals": [
@@ -1277,5 +1277,8 @@
     "super-lig": "ترکیه",
     "mls": "آمریکا و کانادا",
     "brasileirao": "برزیل"
-  }
+  },
+  "highlightCount": 10,
+  "commentaryMinMs": 8000,
+  "commentaryMaxMs": 12000
 }

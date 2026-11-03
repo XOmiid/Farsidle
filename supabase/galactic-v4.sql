@@ -349,6 +349,7 @@ declare
  raw jsonb:='[]';seq jsonb;timeline jsonb:='[]';e jsonb;creator jsonb;shooter jsonb;defender jsonb;fouler jsonb;seed text;i int;j int;idx int;minute int;last_play int:=0;prev_min int:=0;hs int:=0;aws int:=0;hp int:=0;ap int:=0;ht int:=0;ataken int:=0;side int;path text;tactic text;opp_tactic text;wing text;kind text;txt text;team_name text;target_name text;chance numeric;on_prob numeric;goal_prob numeric;share numeric;hcontrol numeric:=0;total_control numeric:=0;delta int;attempts int;complete int;pass_chance numeric;pos_h int;actor_fit numeric;def_fit numeric;progress boolean;on_target boolean;goal boolean;red boolean;yellow boolean;second_yellow boolean;extra boolean:=false;half boolean:=false;stats jsonb:=galactic_private.empty_stats();keeper_skill numeric;attack_power numeric;def_power numeric;aerial_diff numeric;winner uuid;penalties jsonb;off_ms bigint:=0;hold int;seq_hold int;v3 boolean;play_minutes int[];vars jsonb;overturned boolean;home_state jsonb;away_state jsonb;role_pid text;corner_play boolean;
 begin
  select * into m from galactic_private.matches where id=p_match;select * into r from galactic_private.rooms where id=m.room_id;select config into cfg from galactic_private.datasets where version=r.dataset_version;
+ if coalesce((cfg->>'engineVersion')::int,1)>=5 then perform galactic_private.simulate_v5(p_match,p_start,p_second);return;end if;
  v3:=coalesce((cfg->>'engineVersion')::int,1)>=3;
 
  select * into hm from galactic_private.members where id=m.home_id;select * into am from galactic_private.members where id=m.away_id;
@@ -578,7 +579,7 @@ begin
  f:=mem.formation;
  if p_context<>'draft'then
   select * into mm from galactic_private.matches where id=p_context::uuid and room_id=p_room and(mem.id=home_id or mem.id=away_id);
-  if mm.id is null or mm.stage<>'first'or clock_timestamp()<mm.halftime_at or clock_timestamp()>=mm.halftime_until then raise exception 'زمان تغییرات بین دو نیمه نیست.';end if;
+  if mm.id is null or(case when mm.home_id=mem.id then mm.home_saved else mm.away_saved end)or mm.stage<>'first'or clock_timestamp()<mm.halftime_at or clock_timestamp()>=mm.halftime_until then raise exception 'زمان تغییرات بین دو نیمه نیست.';end if;
   f:=case when mem.id=mm.home_id then mm.home_setup else mm.away_setup end->>'formation';v_round:=mm.round;
  elsif r.phase<>'draft'then raise exception 'زمان انتخاب بازیکن نیست.';end if;
  if p_context<>'draft'and p_formation is not null and(d.config->'formations')?p_formation then f:=p_formation;end if;
@@ -673,7 +674,7 @@ begin
  return galactic_private.room_view(rid,u,clock_timestamp());
 end;$$;
 create or replace function public.galactic_act(p_code text,p_action jsonb)returns jsonb language plpgsql security definer set search_path='' as $$
-declare u uuid:=galactic_private.require_user();r galactic_private.rooms%rowtype;mem galactic_private.members%rowtype;d galactic_private.datasets%rowtype;stamp timestamptz:=clock_timestamp();kind text:=p_action->>'type';mm galactic_private.matches%rowtype;s jsonb;initial jsonb;submitted jsonb;lineup jsonb;f text;t text;context text;slot text;pid text;opts jsonb;sent jsonb;roles jsonb;v_count int;is_home boolean;other_id uuid;
+declare u uuid:=galactic_private.require_user();r galactic_private.rooms%rowtype;mem galactic_private.members%rowtype;d galactic_private.datasets%rowtype;stamp timestamptz:=clock_timestamp();kind text:=p_action->>'type';mm galactic_private.matches%rowtype;s jsonb;initial jsonb;submitted jsonb;lineup jsonb;f text;t text;context text;slot text;pid text;opts jsonb;sent jsonb;v_roles jsonb;v_count int;is_home boolean;other_id uuid;
 begin
  select * into r from galactic_private.rooms where code=upper(trim(p_code))for update;
  if r.id is null then raise exception 'اتاق پیدا نشد.';end if;select * into mem from galactic_private.members where room_id=r.id and user_id=u;
@@ -685,10 +686,11 @@ begin
   opts:=galactic_private.offer(r.id,mem.id,context,slot,kind='reroll',p_action->>'formation');
  elsif kind='roles'then
   if r.phase not in('draft','tournament')or exists(select 1 from galactic_private.matches where room_id=r.id and status='live')then raise exception 'مسئولیت‌ها را پیش از شروع بازی یا در پنجرهٔ بین دو نیمه تغییر بده.';end if;
-  roles:=galactic_private.checked_roles(galactic_private.lineup(r.id,mem.id),p_action->'roles');update galactic_private.members set roles=galactic_act.roles where id=mem.id;
+  v_roles:=galactic_private.checked_roles(galactic_private.lineup(r.id,mem.id),p_action->'roles');update galactic_private.members set roles=v_roles where id=mem.id;
  elsif kind='halftime'then
   select * into mm from galactic_private.matches where id=(p_action->>'match')::uuid and room_id=r.id and(mem.id=home_id or mem.id=away_id);
   if mm.id is null or mm.stage<>'first'or stamp<mm.halftime_at or stamp>=mm.halftime_until then raise exception 'زمان دو دقیقه‌ای بین دو نیمه تمام شده یا هنوز شروع نشده است.';end if;
+  if coalesce((d.config->>'engineVersion')::int,1)>=5 and(case when mm.home_id=mem.id then mm.home_saved else mm.away_saved end)then raise exception 'تغییرات ذخیره و قفل شده‌اند؛ منتظر ادامهٔ بازی باش.';end if;
   is_home:=mem.id=mm.home_id;s:=case when is_home then mm.home_setup else mm.away_setup end;initial:=case when is_home then mm.initial_home else mm.initial_away end;sent:=case when is_home then mm.sim_state->'rh'else mm.sim_state->'ra'end;
   f:=p_action->>'formation';t:=p_action->>'tactic';submitted:=p_action->'players';
   if not(d.config->'formations')?coalesce(f,'')or not(d.config->'tactics')?coalesce(t,'')or jsonb_typeof(submitted)is distinct from 'array'or jsonb_array_length(submitted)<>11 then raise exception 'ترکیب باید یازده جایگاه معتبر داشته باشد.';end if;
@@ -700,11 +702,19 @@ begin
   if exists(select 1 from jsonb_array_elements(submitted)p where not exists(select 1 from jsonb_array_elements(initial->'players')ip where ip->>'id'=p->>'id')and(exists(select 1 from galactic_private.picks pk where pk.room_id=r.id and pk.player_id=p->>'id')or exists(select 1 from galactic_private.reserves z where z.room_id=r.id and z.round=mm.round and z.member_id<>mem.id and z.player_id=p->>'id')))then raise exception 'این بازیکن در اختیار تیم دیگری است.';end if;
   if r.selection='draft'and exists(select 1 from jsonb_array_elements(submitted)p where not exists(select 1 from jsonb_array_elements(initial->'players')ip where ip->>'id'=p->>'id')and not exists(select 1 from galactic_private.offers o where o.room_id=r.id and o.member_id=mem.id and o.context=mm.id::text and o.players?(p->>'id')))then raise exception 'تعویض در حالت درفت فقط از پیشنهادهای ذخیره‌شده مجاز است.';end if;
   select jsonb_agg(dp||sp||jsonb_build_object('slot',sp->>'id','id',dp->>'id','fit',galactic_private.fit(dp->'positions',sp->>'role',d.config),'joinedMinute',case when exists(select 1 from jsonb_array_elements(initial->'players')ip where ip->>'id'=dp->>'id')then 0 else 45 end)order by ord)into lineup from jsonb_array_elements(submitted)p join jsonb_array_elements(d.players)dp on dp->>'id'=p->>'id'join jsonb_array_elements(d.config#>array['formations',f,'slots'])with ordinality q(sp,ord)on sp->>'id'=p->>'slot';
-  roles:=galactic_private.checked_roles(lineup,p_action->'roles',sent);lineup:=galactic_private.decorate(lineup,d.config,roles);
-  s:=jsonb_build_object('formation',f,'tactic',t,'roles',roles,'players',lineup);
+  v_roles:=galactic_private.checked_roles(lineup,p_action->'roles',sent);lineup:=galactic_private.decorate(lineup,d.config,v_roles);
+  s:=jsonb_build_object('formation',f,'tactic',t,'roles',v_roles,'players',lineup);
   delete from galactic_private.reserves where match_id=mm.id and member_id=mem.id;
   insert into galactic_private.reserves select r.id,mm.round,mm.id,mem.id,p->>'id'from jsonb_array_elements(lineup)p where not exists(select 1 from jsonb_array_elements(initial->'players')ip where ip->>'id'=p->>'id');
   if is_home then update galactic_private.matches set home_setup=s where id=mm.id;else update galactic_private.matches set away_setup=s where id=mm.id;end if;
+  if coalesce((d.config->>'engineVersion')::int,1)>=5 then
+   if is_home then update galactic_private.matches set home_saved=true where id=mm.id;else update galactic_private.matches set away_saved=true where id=mm.id;end if;
+   select * into mm from galactic_private.matches where id=mm.id;
+   if mm.home_saved and mm.away_saved then
+    update galactic_private.matches set halftime_until=stamp,ends_at=stamp,timeline=jsonb_set(timeline,array[(jsonb_array_length(timeline)-1)::text,'untilMs'],to_jsonb(floor(extract(epoch from(stamp-started_at))*1000)::bigint))where id=mm.id;
+    perform galactic_private.advance(r.id,stamp);
+   end if;
+  end if;
  else
   if kind='pick'and r.selection='draft'then
    pid:=p_action->>'player';slot:=p_action->>'slot';opts:=galactic_private.offer(r.id,mem.id,'draft',slot,false);
@@ -718,6 +728,7 @@ create or replace function galactic_private.match_view(p_match uuid,p_now timest
 declare v jsonb;m galactic_private.matches%rowtype;h jsonb;a jsonb;
 begin
  v:=galactic_private.match_view_v3(p_match,p_now);if v is null then return null;end if;select * into m from galactic_private.matches where id=p_match;if m.stage is null then return v;end if;
+ if coalesce((m.stats->>'engine')::int,0)>=5 then v:=jsonb_set(v,'{playback}',(v->'playback')||jsonb_build_object('minuteMs',800,'stoppageBase',(v->'events'->-1)->'stoppageBase'));end if;
  h:=case when m.stage='first'then m.initial_home else m.home_setup end;a:=case when m.stage='first'then m.initial_away else m.away_setup end;
  return v||jsonb_build_object('home',(v->'home')||galactic_private.public_setup(h),'away',(v->'away')||galactic_private.public_setup(a),'halftime',m.stage='first'and p_now>=m.halftime_at and p_now<m.halftime_until,'halftimeUntil',case when p_now>=m.halftime_at then m.halftime_until end);
 end;$$;
@@ -726,7 +737,7 @@ declare v jsonb;r galactic_private.rooms%rowtype;mid uuid;mm galactic_private.ma
 begin
  v:=galactic_private.room_view_v3(p_room,p_uid,p_now);select * into r from galactic_private.rooms where id=p_room;mid:=(v->>'self')::uuid;
  select * into mm from galactic_private.matches where room_id=p_room and status='live'and(home_id=mid or away_id=mid)order by round desc limit 1;
- if mm.stage='first'and p_now>=mm.halftime_at and p_now<mm.halftime_until then own:=jsonb_build_object('match',mm.id,'until',mm.halftime_until,'setup',galactic_private.public_setup(case when mm.home_id=mid then mm.home_setup else mm.away_setup end),'initial',galactic_private.public_setup(case when mm.home_id=mid then mm.initial_home else mm.initial_away end),'sentOff',case when mm.home_id=mid then mm.sim_state->'rh'else mm.sim_state->'ra'end);end if;
+ if mm.stage='first'and p_now>=mm.halftime_at and p_now<mm.halftime_until then own:=jsonb_build_object('match',mm.id,'until',mm.halftime_until,'saved',case when mm.home_id=mid then mm.home_saved else mm.away_saved end,'setup',galactic_private.public_setup(case when mm.home_id=mid then mm.home_setup else mm.away_setup end),'initial',galactic_private.public_setup(case when mm.home_id=mid then mm.initial_home else mm.initial_away end),'sentOff',case when mm.home_id=mid then mm.sim_state->'rh'else mm.sim_state->'ra'end);end if;
  select coalesce(jsonb_agg(jsonb_build_object('context',context,'slot',slot,'players',players,'rerolled',rerolled)),'[]')into offers from galactic_private.offers where room_id=p_room and member_id=mid;
  select jsonb_agg(p||jsonb_build_object('roles',m.roles))into members from jsonb_array_elements(v->'members')p join galactic_private.members m on m.id=(p->>'id')::uuid;
  return v||jsonb_build_object('competition',r.competition,'selection',r.selection,'members',members,'standings',case when r.competition='league'then galactic_private.standings(p_room)else '[]'::jsonb end,'offers',offers,'rerolls',(select rerolls from galactic_private.members where id=mid),'halftime',own,'unavailable',(select coalesce(jsonb_agg(player_id),'[]')from galactic_private.reserves where room_id=p_room and round=mm.round and member_id<>mid));

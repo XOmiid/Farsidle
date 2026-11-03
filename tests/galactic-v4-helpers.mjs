@@ -4,7 +4,7 @@ export const ids = Array.from(
   { length: 8 },
   (_, i) => '00000000-0000-4000-8000-' + String(i + 1).padStart(12, '0'),
 );
-export async function setup() {
+export async function setup({ engineVersion = 4 } = {}) {
   const db = await PGlite.create();
   await db.exec(
     "create role anon;create role authenticated;create schema auth;create table auth.users(id uuid primary key);create function auth.uid()returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth to anon,authenticated;grant execute on function auth.uid()to anon,authenticated;create table public.profiles(id uuid primary key,username text);",
@@ -13,7 +13,7 @@ export async function setup() {
     await db.query('insert into auth.users values($1)', [ids[i]]);
     await db.query('insert into profiles values($1,$2)', [ids[i], 'manager_' + i]);
   }
-  for (const file of ['schema', 'engine', 'rooms', 'v4'])
+  for (const file of ['schema', 'engine', 'rooms', 'v4', 'v5', 'v6'])
     await db.exec(
       await readFile(new URL('../supabase/galactic-' + file + '.sql', import.meta.url), 'utf8'),
     );
@@ -23,6 +23,8 @@ export async function setup() {
     config = JSON.parse(
       await readFile(new URL('../data/galactic/config.json', import.meta.url), 'utf8'),
     );
+  config.engineVersion = engineVersion;
+  config.version = 'galactic-v' + engineVersion;
   await db.query(
     'insert into galactic_private.datasets(version,players,config,active)values($1,$2,$3,true)',
     [config.version, players, config],

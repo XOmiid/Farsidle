@@ -4213,3 +4213,92 @@ body {
   font-size: 11px;
   color: #b8bbc1;
 }
+
+.g-halftime-countdown {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  padding: 10px 12px;
+  margin: -6px -6px 14px;
+  border: 1px solid #d7b77960;
+  border-radius: 10px;
+  background: #202733f5;
+}
+.g-halftime-countdown b,
+.g-halftime-wait > span {
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  color: #e8ce94;
+}
+.g-halftime-wait {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.g-halftime-wait > span {
+  margin-inline-start: auto;
+}
+.g-halftime-wait p {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+/* Keep match narration readable in the document flow on every screen size. */
+.g-match > .g-incident {
+  position: relative;
+  inset: auto;
+  transform: none;
+  width: auto;
+  min-height: 145px;
+  margin: 14px 0;
+  animation: none;
+}
+.g-match > .g-incident p {
+  font-size: 1rem;
+  line-height: 1.95;
+}
+.g-team-incidents {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+.g-team-incidents li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 5px 0;
+}
+.g-team-incidents time {
+  opacity: 0.75;
+}
+.g-performance {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.g-performance summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.g-performance p {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+.g-performance > div {
+  display: grid;
+  grid-template-columns: 1fr 40px 70px;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid #ffffff14;
+  font-size: 0.8rem;
+}
+.g-performance > div b {
+  color: #88dfbd;
+  text-align: center;
+}

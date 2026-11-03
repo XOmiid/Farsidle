@@ -19,7 +19,7 @@ const quote = (value) => {
   if (json.includes('$galactic$')) throw new Error('Unsafe content delimiter');
   return '$galactic$' + json + '$galactic$::jsonb';
 };
-const files = ['schema', 'engine', 'rooms', 'v4', 'realtime'];
+const files = ['schema', 'engine', 'rooms', 'v4', 'v5', 'v6', 'realtime'];
 const seed = `update galactic_private.datasets set active=false where active and version<>'${config.version}';
 insert into galactic_private.datasets(version,players,config,sources,active)values('${config.version}',${quote(players)},${quote(config)},${quote(sources)},true)on conflict(version)do nothing;
 update galactic_private.datasets set active=true where version='${config.version}';

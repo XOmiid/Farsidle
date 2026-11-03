@@ -107,11 +107,24 @@ export default function Halftime({ room, catalog, now, busy, action }) {
     setSlot(null);
   }
   const seconds = Math.max(0, Math.ceil((new Date(half.until) - now) / 1000));
+  const countdown = fa(Math.floor(seconds / 60)) + ':' + fa(seconds % 60).padStart(2, '۰');
+  if (half.saved)
+    return (
+      <section className="g-panel g-halftime-wait" role="status">
+        <b>تغییرات ذخیره و قفل شد</b>
+        <span dir="ltr" aria-label="زمان باقی‌ماندهٔ بین دو نیمه">
+          {countdown}
+        </span>
+        <p>منتظر ذخیرهٔ تیم مقابل هستیم؛ پس از آمادگی هر دو تیم، بازی فوراً ادامه پیدا می‌کند.</p>
+      </section>
+    );
   return (
     <section className="g-panel g-halftime">
-      <div className="g-section-title">
+      <div className="g-section-title g-halftime-countdown">
         <h2>بین دو نیمه</h2>
-        <b>{fa(seconds)} ثانیه</b>
+        <b dir="ltr" aria-label="زمان باقی‌ماندهٔ بین دو نیمه">
+          {countdown}
+        </b>
       </div>
       <p>
         آرایش و تاکتیک را تغییر بده. برای جابه‌جایی، بازیکن را بگیر و روی جایگاه دیگر بکش؛ برای
@@ -170,10 +183,11 @@ export default function Halftime({ room, catalog, now, busy, action }) {
           })
         }
       >
-        ذخیرهٔ تغییرات نیمهٔ دوم
+        ذخیره و بازگشت به بازی
       </button>
       <p className="g-muted">
-        آخرین تغییرات ذخیره‌شده در پایان مهلت اعمال می‌شود. بدون ذخیره، ترکیب قبلی ادامه می‌دهد.
+        با ذخیره، تغییرات قفل می‌شود و به بازی برمی‌گردی. اگر هر دو تیم ذخیره کنند، نیمهٔ دوم
+        بلافاصله شروع می‌شود. پس از پایان دو دقیقه، ترکیب ذخیره‌نشده به حالت قبلی ادامه می‌دهد.
       </p>
       {target && (
         <Dialog title={'تعویض ' + cfg.roles[target.role]} onClose={() => setSlot(null)}>
