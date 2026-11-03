@@ -76,6 +76,7 @@ begin
    if letter is not null and not (p->'rounds'->idx->'choices')@>jsonb_build_array(letter) then raise exception 'یکی از دو گزینه را انتخاب کن.';end if;
    correct:=coalesce(letter=country->>'capital' and now_ms-(p#>>array['startedAt',idx::text])::bigint<=6000,false);
    score:=score+case when correct then 1 else 0 end;history:=history||jsonb_build_array(jsonb_build_object('correct',correct,'answer',country->>'capital','name',country->>'name'));
+   if idx<3 then p:=jsonb_set(p,'{startedAt}',(p->'startedAt')||jsonb_build_object((idx+1)::text,now_ms));end if;
    if idx=3 then done:=true;won:=score>=3;update classic_private.teams set score=score_value.n from (select score::integer as n) score_value where day=v_day and user_id=v_uid;end if;
   else raise exception 'درخواست معتبر نیست.';end if;
  elsif p_game='crossword' then

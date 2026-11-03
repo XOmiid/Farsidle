@@ -79,3 +79,18 @@ The current pool has 299 players; Kevin De Bruyne (Napoli, Serie A) was added fr
 Crossing combines delivery quality, position fit, chemistry, attacking heading/jumping/reach and the defending player's aerial ability. Physical height contributes only part of reach: it does not define heading skill. Long-shot tactics trade conversion probability for more completed shooting opportunities; central attacks meet resistance from a low block; counters use pace against the defensive line. Formation numbers and midfield/defensive occupancy change control and coverage. Pressing increases fatigue and booking risk. Red cards remove the player from later actions and the shootout, with no suspension in later tournament matches.
 
 Chemistry is a disclosed game rule: nearby same-club links improve coordination; listed club rivalries reduce it. The Kevin De Bruyne/Thibaut Courtois pair has a fictional penalty requested for gameplay. It is not an assertion about their real private lives. Green/blue/yellow/red indicate coordination, not actual emotions. Chemistry has a bounded effect, while tactical matchups, skill, position, fatigue and chance remain important.
+
+## Version 3 expansion — 2026-11-03
+
+644 players across 34 clubs. Includes curated playable selections of 15–26 players per Premier League club (all 20 clubs listed in the official 2026/27 league directory), plus Atletico Madrid, AS Roma, Lazio and a fuller Napoli selection. Existing AC Milan, Inter, Juventus, Bayern Munich and Borussia Dortmund selections remain. This is a curated pool, not a complete registration list. Club membership was checked against these public first-team sources; precise tactical roles and all numerical abilities remain original editorial game values, not official scouting data. Existing player identities/skills are retained; verified transfers update their club rather than duplicating the player.
+
+Additional roster sources accessed 2026-11-03:
+- https://www.premierleague.com/en/news/4725682 (all 20 clubs; 2026/27 published list)
+- https://en.atleticodemadrid.com/jugadores-primer-equipo
+- https://www.asroma.com/en/men/players-and-staff
+- https://www.sslazio.it/en/team/lazio/squadra
+- https://sscnapoli.it/en/team-2025-2026/ (official destination of /en/team/; season label retained here)
+
+New players have role-based editorial skills with small deterministic variation; ratings are hidden in the draft, and random suggestions are uniformly sampled from available specialists, not ranked by rating. Unknown heights remain absent.
+
+V3 engine: 18 independent regulation opportunity times sampled from minutes 1–90 and sorted; six extra-time times from 91–120. Duplicated minutes intentionally allow clustered action. Total regulation pace stays about eight minutes, with 16 seconds per sequence shared among its stages. Match seeds make the timeline identical for all viewers. Events include cutbacks, dribbling duels, blocked shots, goalkeeper claims/sweeps, playable corners, parried shots/rebounds and occasional offside reviews with possible disallowed goals. Stats and scores reveal only as each scene happens. Old saved timelines remain unchanged, and v1/v2 rooms keep their prior generation behavior.

@@ -10,8 +10,8 @@ if (
   throw new Error('Invalid player pool/version');
 const sources = {
   ratings: 'Farsidle editorial gameplay traits; not EA or official ratings',
-  rosterAsOf: '2026-10-30',
-  traitsUpdated: '2026-10-31',
+  rosterAsOf: '2026-11-03',
+  traitsUpdated: '2026-11-03',
   notes: await read('data/galactic/README.md'),
 };
 const quote = (value) => {

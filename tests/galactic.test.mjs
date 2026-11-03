@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { PGlite } from '@electric-sql/pglite';
 import {
   snakeTurn,
+  draftSuggestions,
   positionFit,
   matchClock,
   bracketOrder,
@@ -75,6 +76,24 @@ test('real-player custom-rated pool supports eight unique XIs', () => {
     assert(!/[۰-۹]/.test(f.name));
   }
   assert(players.length >= 88);
+  const clubs = new Set(players.map((p) => p.club));
+  for (const club of [
+    'Atletico Madrid',
+    'AC Milan',
+    'Inter',
+    'AS Roma',
+    'Lazio',
+    'Napoli',
+    'Juventus',
+    'Borussia Dortmund',
+    'Bayern Munich',
+  ])
+    assert(clubs.has(club), club);
+  assert.equal(
+    new Set(players.filter((p) => p.league === 'premier-league').map((p) => p.club)).size,
+    20,
+  );
+
   assert.equal(new Set(players.map((p) => p.id)).size, players.length);
   assert.equal(new Set(players.map((p) => p.league)).size, 5);
   assert(players.filter((p) => p.positions.includes('GK')).length >= 8);
@@ -431,7 +450,10 @@ test('authoritative rooms, permissions, draft, byes and simultaneous tournament'
         let homeWins = 0,
           extra = 0,
           penalties = 0;
-        const kinds = new Set();
+        const kinds = new Set(),
+          minutes = new Set(),
+          gaps = new Set(),
+          openings = new Set();
         for (let i = 0; i < 40; i++) {
           await db.query('update galactic_private.rooms set seed=$2 where id=$1', [
             m.room_id,
@@ -444,7 +466,25 @@ test('authoritative rooms, permissions, draft, byes and simultaneous tournament'
               [m.id],
             )
           ).rows[0];
-          for (const e of x.timeline) kinds.add(e.kind);
+          let previous = 0;
+          for (const e of x.timeline) {
+            kinds.add(e.kind);
+            if (e.kind === 'build_up' && e.minute <= 90) {
+              minutes.add(e.minute);
+              gaps.add(e.minute - previous);
+              previous = e.minute;
+              openings.add(e.text);
+            }
+            for (const side of ['home', 'away']) {
+              assert(e.stats[side].shots >= 0);
+              assert(e.stats[side].onTarget <= e.stats[side].shots);
+            }
+            if (e.kind === 'disallowed_goal') {
+              const before = x.timeline[x.timeline.indexOf(e) - 1];
+              assert.equal(e.homeScore, before.homeScore);
+              assert.equal(e.awayScore, before.awayScore);
+            }
+          }
           if (x.winner_id === m.home_id) homeWins++;
           if (x.timeline.some((e) => e.kind === 'extra_start')) extra++;
           if (x.penalties) penalties++;
@@ -458,6 +498,10 @@ test('authoritative rooms, permissions, draft, byes and simultaneous tournament'
           }
           assert(x.winner_id);
         }
+        assert(minutes.has(89), 'late opportunities include minute 89');
+        assert(minutes.has(90), 'opportunities can happen in the final minute');
+        assert(gaps.size > 10, 'event spacing is irregular');
+        assert(openings.size > 25, 'commentary varies');
         assert(homeWins >= 10 && homeWins <= 30, 'neutral home wins ' + homeWins);
         assert(extra > 0);
         assert(penalties > 0);
@@ -470,6 +514,13 @@ test('authoritative rooms, permissions, draft, byes and simultaneous tournament'
           'penalty_kick',
           'woodwork',
           'offside',
+          'keeper_sweep',
+          'keeper_claim',
+          'blocked_shot',
+          'corner_delivery',
+          'rebound',
+          'var_review',
+          'disallowed_goal',
         ])
           assert(kinds.has(kind), 'missing event ' + kind);
         const homeIds = new Set(
@@ -515,4 +566,39 @@ test('authoritative rooms, permissions, draft, byes and simultaneous tournament'
   } finally {
     await db.close();
   }
+});
+
+test('draft suggestions sample five available specialists without favoring ratings', () => {
+  const pool = Array.from({ length: 12 }, (_, i) => ({
+    id: String(i),
+    positions: ['RB'],
+    overall: 99 - i,
+  }));
+  pool.push({ id: 'wrong-role', positions: ['ST'], overall: 99 });
+  const picks = [{ player: '0' }, { player: '1' }];
+  const sample = draftSuggestions(pool, picks, 'RB', () => 0);
+  assert.equal(sample.length, 5);
+  assert.equal(new Set(sample).size, 5);
+  assert(sample.every((id) => id !== '0' && id !== '1' && id !== 'wrong-role'));
+  assert.deepEqual(
+    sample,
+    draftSuggestions(
+      pool.map((p) => ({ ...p, overall: 1 })),
+      picks,
+      'RB',
+      () => 0,
+    ),
+  );
+  assert.notDeepEqual(
+    sample,
+    draftSuggestions(pool, picks, 'RB', () => 0.999),
+  );
+  assert.deepEqual(
+    draftSuggestions(
+      pool,
+      pool.map((p) => ({ player: p.id })),
+      'RB',
+    ),
+    [],
+  );
 });

@@ -77,7 +77,7 @@ Every page has a live clock labeled «به وقت ایران», using the `Asia/
 
 ## Galactic multiplayer — کهکشانی
 
-The new mode lives at `/galactic`, separately from Classic. Player names remain in English; interface and original match commentary are Persian. The current pool contains 299 real players across the five requested European leagues. Ratings are explicitly custom Farsidle estimates, not EA ratings. Source notes and limitations are recorded in `data/galactic/README.md`.
+The new mode lives at `/galactic`, separately from Classic. Player names remain in English; interface and original match commentary are Persian. The current pool contains 644 real players across the five requested European leagues. Ratings are explicitly custom Farsidle estimates, not EA ratings. Source notes and limitations are recorded in `data/galactic/README.md`.
 
 Accounts are required. Rooms hold 2–8 humans, with public listings or private invitation codes. Managers choose a formation and tactic before a randomized snake draft. Every footballer is unique in a room. Each pick has a server-enforced 60-second deadline and an automatic choice that fills vacant positions. Out-of-position selections show a performance penalty. Setups lock when the draft starts; each completed team has exactly eleven players. A frozen dataset version prevents later player edits from changing an existing room.
 
@@ -95,6 +95,16 @@ The draft is formation-first: click an empty position, search an English player 
 
 The server generates staged build-up, action and outcome commentary. Scores, cards and statistics reveal only at their event times. Blue and red shirts match the attacking commentary backgrounds. A manager sees their own fixture by default; a live scoreboard permits switching to another current-round match. Goal news from other fixtures joins the commentary. The next round waits for all extra time and shootouts. Live statistics include possession, shots, on-target shots, passes, completed passes, corners, fouls, cards, offsides and in-game penalties.
 
-Frozen v1 games retain their original simulation; unstarted lobbies move to the new dataset and require readiness again. New games use version 2. The initial traits are an editorial model, not a complete football-data feed: only 45 factual heights are verified, and unknowns remain absent. Source notes are in `data/galactic/traits-sources.md`.
+Frozen v1 games retain their original simulation; unstarted lobbies move to the new dataset and require readiness again. Version 2 introduced this baseline; new games now use version 3. The initial traits are an editorial model, not a complete football-data feed: only 45 factual heights are verified, and unknowns remain absent. Source notes are in `data/galactic/traits-sources.md`.
 
 Version 2 was checked with complete isolated PostgreSQL tournaments, simultaneous-round and legacy-version tests, tactical/chemistry/discipline checks, hidden-statistic checks and native browser checks at 320px, 390px and desktop widths. A live four-person Supabase fixture confirmed parallel kickoffs, round barriers and hidden future statistics, then rolled back completely; no new QA accounts or rooms remain. Temporary UI review routes and fixtures were removed before the final build.
+
+## November 2026 game refresh
+
+Factle uses 146 rewritten clues across 73 countries, with food, customs, sport, film/music and nature replacing repeated heritage-site clues. Existing daily attempts retain their saved content. Teamdle needs one start: each of its four questions begins automatically after the previous answer or timeout, with its own six-second window.
+
+Galactic v3 has 644 curated players across 34 clubs, including all 20 Premier League clubs and Atletico Madrid, AC Milan, Inter, AS Roma, Lazio, Napoli, Juventus, Borussia Dortmund and Bayern Munich. Clicking a position shows five random available specialists, with refresh, club/league filters and English-name search. Ratings remain hidden; disabling the position filter allows an out-of-position pick with the existing penalty.
+
+Regulation opportunities are sampled across minutes 1–90, allowing clusters, quiet spells and late events, while keeping approximately eight-minute matches. Commentary has multiple variants for each attacking route, plus cutbacks, dribbling duels, goalkeeper claims/sweeps, blocked shots, playable corners, parries/rebounds and offside reviews. New incidents change stats and outcomes, with build-up before each result. Existing skill, tactic, fatigue, aerial, chemistry and discipline factors continue to apply. Active/finished rooms keep their frozen versions and saved timelines; lobby rooms move to v3 and must ready again.
+
+Verified with 52 passing tests, lint, formatting, a production build, a rolled-back live Supabase simulation, and mobile player-picker checks at 320px and 390px. No QA account or room was created; temporary preview files were removed before the production build. No Git commit or push was made.

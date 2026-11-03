@@ -150,3 +150,21 @@ test('Iran clock uses Tehran time rather than the browser timezone', () => {
   assert.equal(iranTime('2026-10-30T21:00:00Z'), '۰۰:۳۰:۰۰');
   assert.equal(iranTime('2026-06-30T00:00:00Z'), '۰۳:۳۰:۰۰');
 });
+
+test('Teamdle plays all four rounds after one start, preserving each six-second deadline', () => {
+  let s = createGame('teamdle', day, catalog, now);
+  s = applyAction(s, { type: 'start' }, catalog, now);
+  for (let i = 0; i < 4; i++) {
+    const answerAt = now + (i + 1) * 2000;
+    assert.equal(s.puzzle.startedAt[i], now + i * 2000);
+    s = applyAction(
+      s,
+      { type: 'capital', answer: s.secret.countries[i].capital },
+      catalog,
+      answerAt,
+    );
+  }
+  assert.equal(s.history.length, 4);
+  assert.equal(s.score, 4);
+  assert.equal(s.finished, true);
+});

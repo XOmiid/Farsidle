@@ -734,11 +734,13 @@ function Teamdle({ state, action, busy }) {
     left = started ? remaining(started, 6000, now) : 6000;
   const sent = useRef(false);
   useEffect(() => {
-    if (started && left === 0 && !sent.current && !busy) {
+    if (!started && index > 0 && !sent.current && !busy) {
+      action({ type: 'start' });
+    } else if (started && left === 0 && !sent.current && !busy) {
       sent.current = true;
       action({ type: 'capital', answer: null });
     }
-  }, [left, started, action, busy]);
+  }, [left, started, action, busy, index]);
   return (
     <>
       <Progress index={index} total={4} score={state.score} max={4} />
@@ -751,15 +753,15 @@ function Teamdle({ state, action, busy }) {
       {!started ? (
         <>
           <div className="fact-card">
-            <p>سؤال {fa(index + 1)} آماده است.</p>
+            <p>چهار کشور، پشت سر هم؛ برای هر پاسخ شش ثانیه وقت داری.</p>
           </div>
-          <p className="center-note">با شروع سؤال، شش ثانیه وقت داری.</p>
+          <p className="center-note">با یک بار شروع، هر چهار سؤال پشت سر هم نمایش داده می‌شوند.</p>
           <button
             className="button full-button"
             disabled={busy}
             onClick={() => action({ type: 'start' })}
           >
-            شروع سؤال
+            شروع بازی
           </button>
         </>
       ) : (

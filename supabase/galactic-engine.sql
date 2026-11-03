@@ -158,24 +158,38 @@ $$;
 create or replace function galactic_private.empty_stats()returns jsonb language sql immutable set search_path='' as $$select jsonb_build_object('home',v,'away',v)from(select jsonb_build_object('possession',50,'shots',0,'onTarget',0,'passes',0,'passesCompleted',0,'corners',0,'fouls',0,'yellowCards',0,'redCards',0,'offsides',0,'penalties',0)as v)s$$;
 create or replace function galactic_private.stat_add(s jsonb,side int,k text,n int default 1)returns jsonb language sql immutable set search_path='' as $$select jsonb_set(s,array[case when side=0 then 'home'else 'away'end,k],to_jsonb(coalesce((s#>>array[case when side=0 then 'home'else 'away'end,k])::int,0)+n))$$;
 create or replace function galactic_private.scene(minute int,kind text,txt text,side int,hs int,ascore int,stats jsonb,rh jsonb,ra jsonb)returns jsonb language sql immutable set search_path='' as $$select jsonb_build_object('minute',minute,'kind',kind,'text',txt,'side',side,'homeScore',hs,'awayScore',ascore,'stats',stats,'sentOffHome',rh,'sentOffAway',ra)$$;
+-- Match-private deterministic phrase selection. Player names remain English.
+create or replace function galactic_private.commentary(cfg jsonb,seed text,n int,kind text,path text,vars jsonb)returns text language plpgsql immutable set search_path='' as $$
+declare lines jsonb;txt text;k text;v text;
+begin
+ lines:=coalesce(cfg#>array['commentary',kind,path],cfg#>array['commentary',kind,'default']);
+ if lines is null or jsonb_array_length(lines)=0 then return null;end if;
+ txt:=lines->>(floor(galactic_private.random_value(seed,n)*jsonb_array_length(lines))::int);
+ for k,v in select key,value from jsonb_each_text(vars)loop txt:=replace(txt,'{'||k||'}',v);end loop;
+ return txt;
+end;$$;
 create or replace function galactic_private.make_match(p_match uuid,p_start timestamptz)returns void language plpgsql set search_path='' as $$
 <<simulation>>
 declare
  m galactic_private.matches%rowtype;r galactic_private.rooms%rowtype;cfg jsonb;hm galactic_private.members%rowtype;am galactic_private.members%rowtype;hl jsonb;al jsonb;h jsonb;a jsonb;attackers jsonb;defenders jsonb;ar jsonb;dr jsonb;rh jsonb:='[]';ra jsonb:='[]';yellows jsonb:='{}';
- raw jsonb:='[]';seq jsonb;timeline jsonb:='[]';e jsonb;creator jsonb;shooter jsonb;defender jsonb;fouler jsonb;seed text;i int;j int;idx int;minute int;last_play int:=0;prev_min int:=0;hs int:=0;aws int:=0;hp int:=0;ap int:=0;ht int:=0;ataken int:=0;side int;path text;tactic text;opp_tactic text;wing text;kind text;txt text;team_name text;target_name text;chance numeric;on_prob numeric;goal_prob numeric;share numeric;hcontrol numeric:=0;total_control numeric:=0;delta int;attempts int;complete int;pass_chance numeric;pos_h int;actor_fit numeric;def_fit numeric;progress boolean;on_target boolean;goal boolean;red boolean;yellow boolean;second_yellow boolean;extra boolean:=false;half boolean:=false;stats jsonb:=galactic_private.empty_stats();keeper_skill numeric;attack_power numeric;def_power numeric;aerial_diff numeric;winner uuid;penalties jsonb;off_ms bigint:=0;hold int;seq_hold int;
+ raw jsonb:='[]';seq jsonb;timeline jsonb:='[]';e jsonb;creator jsonb;shooter jsonb;defender jsonb;fouler jsonb;seed text;i int;j int;idx int;minute int;last_play int:=0;prev_min int:=0;hs int:=0;aws int:=0;hp int:=0;ap int:=0;ht int:=0;ataken int:=0;side int;path text;tactic text;opp_tactic text;wing text;kind text;txt text;team_name text;target_name text;chance numeric;on_prob numeric;goal_prob numeric;share numeric;hcontrol numeric:=0;total_control numeric:=0;delta int;attempts int;complete int;pass_chance numeric;pos_h int;actor_fit numeric;def_fit numeric;progress boolean;on_target boolean;goal boolean;red boolean;yellow boolean;second_yellow boolean;extra boolean:=false;half boolean:=false;stats jsonb:=galactic_private.empty_stats();keeper_skill numeric;attack_power numeric;def_power numeric;aerial_diff numeric;winner uuid;penalties jsonb;off_ms bigint:=0;hold int;seq_hold int;v3 boolean;play_minutes int[];vars jsonb;overturned boolean;
 begin
  select * into m from galactic_private.matches where id=p_match;select * into r from galactic_private.rooms where id=m.room_id;select config into cfg from galactic_private.datasets where version=r.dataset_version;
+ v3:=coalesce((cfg->>'engineVersion')::int,1)>=3;
  if coalesce((cfg->>'engineVersion')::int,1)<2 then perform galactic_private.make_match_v1(p_match,p_start);return;end if;
  select * into hm from galactic_private.members where id=m.home_id;select * into am from galactic_private.members where id=m.away_id;
  hl:=galactic_private.lineup(r.id,hm.id);al:=galactic_private.lineup(r.id,am.id);seed:=r.seed||':v2:'||m.round||':'||m.slot;
  raw:=raw||jsonb_build_array(galactic_private.scene(0,'kickoff','بازی «'||hm.team_name||'» با پیراهن آبی و «'||am.team_name||'» با پیراهن قرمز آغاز شد.',null,hs,aws,stats,rh,ra));
+ -- Independent draws, sorted chronologically: clustered chances, quiet spells and late drama.
+ select array_agg(n order by n)into play_minutes from(select 1+floor(galactic_private.random_value(seed,8000+g)*90)::int n from generate_series(1,18)g)q;
+ select play_minutes||array_agg(n order by n)into play_minutes from(select 91+floor(galactic_private.random_value(seed,8100+g)*30)::int n from generate_series(1,6)g)q;
  for i in 1..24 loop
   if i=19 then
    raw:=raw||jsonb_build_array(galactic_private.scene(90,'full_time',case when hs=aws then 'سوت پایان نود دقیقه؛ بازی مساوی است و به وقت اضافه می‌رود.'else 'سوت پایان نود دقیقه به صدا درآمد.'end,null,hs,aws,stats,rh,ra));
    if hs<>aws then exit;end if;extra:=true;
    raw:=raw||jsonb_build_array(galactic_private.scene(90,'extra_start','وقت اضافه آغاز می‌شود؛ خستگی حالا اهمیت بیشتری دارد.',null,hs,aws,stats,rh,ra));
   end if;
-  minute:=case when i<=18 then floor(i*90.0/19)::int else 90+(i-18)*4 end;idx:=i*100;
+  minute:=case when v3 then play_minutes[i] when i<=18 then floor(i*90.0/19)::int else 90+(i-18)*4 end;idx:=i*100;
   if not half and minute>=45 then raw:=raw||jsonb_build_array(galactic_private.scene(45,'halftime','پایان نیمهٔ اول؛ دو تیم برای نیمهٔ دوم آماده می‌شوند.',null,hs,aws,stats,rh,ra));half:=true;end if;
   h:=galactic_private.profile(hl,cfg,hm.tactic,rh,minute);a:=galactic_private.profile(al,cfg,am.tactic,ra,minute);
   share:=least(.78,greatest(.22,.5+((h->>'midfield')::numeric-(a->>'midfield')::numeric)/180));
@@ -194,13 +208,19 @@ begin
   side:=case when galactic_private.random_value(seed,idx+1)<chance then 0 else 1 end;
   if side=0 then attackers:=hl;defenders:=al;ar:=rh;dr:=ra;tactic:=hm.tactic;opp_tactic:=am.tactic;team_name:=hm.team_name;attack_power:=(h->>'attack')::numeric;def_power:=(a->>'defence')::numeric;keeper_skill:=(a->>'goalkeeping')::numeric;else attackers:=al;defenders:=hl;ar:=ra;dr:=rh;tactic:=am.tactic;opp_tactic:=hm.tactic;team_name:=am.team_name;attack_power:=(a->>'attack')::numeric;def_power:=(h->>'defence')::numeric;keeper_skill:=(h->>'goalkeeping')::numeric;end if;
   path:=case tactic when 'wide'then 'cross'when 'central'then 'central'when 'long_shots'then 'long'when 'counter'then 'through'when 'direct'then 'direct'when 'possession'then 'central'else(array['cross','central','through','long'])[1+floor(galactic_private.random_value(seed,idx+2)*4)::int]end;
+  if v3 and galactic_private.random_value(seed,idx+80)<.3 then path:=(array['cross','central','through','long','dribble','cutback'])[1+floor(galactic_private.random_value(seed,idx+81)*6)::int];end if;
   creator:=galactic_private.choose_actor(attackers,case when path='cross'then 'cross'else 'creator'end,seed,idx+10,ar);
   shooter:=galactic_private.choose_actor(attackers,case when path='long'then 'long'else 'shooter'end,seed,idx+20,ar);
   defender:=galactic_private.choose_actor(defenders,'defender',seed,idx+30,dr);
   wing:=case when creator->>'role'in('RW','RB')then 'راست'else 'چپ'end;target_name:=shooter->>'name';
   txt:=case path when 'cross'then '«'||team_name||'» از سمت '||wing||' پیش می‌آید؛ فضای خطرناکی کنار محوطه باز شده است.'when 'long'then '«'||team_name||'» پشت محوطه توپ را می‌چرخاند؛ شاید فرصت شوت از دور فراهم شود.'when 'through'then '«'||team_name||'» توپ را پس گرفته؛ پشت دفاع حریف فضای خالی دیده می‌شود.'when 'direct'then '«'||team_name||'» بازی را سریع به جلو می‌برد؛ یک پاس بلند به سمت خط حمله.'else '«'||team_name||'» به مرکز دفاع نزدیک می‌شود؛ چند پاس کوتاه و حرکت بین خطوط.'end;
+  vars:=jsonb_build_object('team',team_name,'creator',creator->>'name','target',target_name,'defender',defender->>'name','wing',wing);
+  if v3 then txt:=coalesce(galactic_private.commentary(cfg,seed,idx+82,'build_up',path,vars),txt);end if;
   seq:=jsonb_build_array(galactic_private.scene(minute,'build_up',txt,side,hs,aws,stats,rh,ra));
-  if galactic_private.random_value(seed,idx+3)<.19 then
+  if v3 and galactic_private.random_value(seed,idx+83)<.09 then
+   seq:=seq||jsonb_build_array(galactic_private.scene(minute,'movement',target_name||' برای رسیدن به پاس عمقی سرعت می‌گیرد؛ دروازه‌بان هم جلو آمده است.',side,hs,aws,stats,rh,ra));
+   seq:=seq||jsonb_build_array(galactic_private.scene(minute,'keeper_sweep','پاس پشت دفاع می‌افتد؛ دروازه‌بان از محوطه بیرون می‌آید و پیش از '||target_name||' توپ را دور می‌کند.',side,hs,aws,stats,rh,ra));progress:=false;
+  elsif galactic_private.random_value(seed,idx+3)<.19 then
    -- The foul, referee decision, kick and outcome are separate reveals.
    fouler:=defender;stats:=galactic_private.stat_add(stats,1-side,'fouls');
    seq:=seq||jsonb_build_array(galactic_private.scene(minute,'foul',(fouler->>'name')||' برای متوقف کردن حرکت وارد می‌شود؛ بازیکن روی زمین است و داور سوت می‌زند.',side,hs,aws,stats,rh,ra));
@@ -224,16 +244,30 @@ begin
   else
    actor_fit:=coalesce((creator->>'fit')::numeric,1)*coalesce((creator#>>'{chemistry,factor}')::numeric,1);def_fit:=coalesce((defender->>'fit')::numeric,1)*coalesce((defender#>>'{chemistry,factor}')::numeric,1);
    chance:=least(.96,greatest(.32,.78+(galactic_private.skill(creator,case when path='cross'then 'crossing'else 'passing'end)*actor_fit-galactic_private.skill(defender,'defending')*def_fit)/250));
+   if path='dribble'then chance:=least(.92,greatest(.25,.65+(galactic_private.skill(shooter,'dribbling')*coalesce((shooter->>'fit')::numeric,1)-galactic_private.skill(defender,'defending')*def_fit)/180));end if;
+   if path='cutback'then chance:=chance-.04;end if;
    if path='long'then chance:=.95;end if;if path='through'then chance:=chance+(galactic_private.skill(shooter,'pace')-galactic_private.skill(defender,'pace'))/400;end if;
    if opp_tactic='low_block'and path='central'then chance:=chance-.12;end if;
    progress:=galactic_private.random_value(seed,idx+8)<chance;
    txt:=case path when 'cross'then (creator->>'name')||' از کناره عبور می‌کند و توپ را به محوطه می‌فرستد؛ '||target_name||' برای ضربهٔ سر آماده می‌شود.'when 'long'then target_name||' پشت محوطه صاحب توپ می‌شود، سرش را بالا می‌آورد و برای شوت آماده می‌شود.'when 'through'then (creator->>'name')||' توپ را به فضای پشت دفاع می‌فرستد؛ '||target_name||' با سرعت به سمت توپ می‌رود.'when 'direct'then target_name||' با مدافع برای توپ بلند درگیر می‌شود و تلاش می‌کند آن را کنترل کند.'else (creator->>'name')||' پاس رو به جلو را می‌فرستد؛ '||target_name||' بین مدافعان برای کنترل توپ حرکت می‌کند.'end;
+   if v3 then txt:=coalesce(galactic_private.commentary(cfg,seed,idx+84,'action',path,vars),txt);end if;
    seq:=seq||jsonb_build_array(galactic_private.scene(minute,'action',txt,side,hs,aws,stats,rh,ra));
    if not progress then
     kind:='interception';txt:=(defender->>'name')||' زودتر به توپ می‌رسد و حمله را قطع می‌کند.';
     if path='cross'and galactic_private.random_value(seed,idx+9)<.45 then kind:='corner';stats:=galactic_private.stat_add(stats,side,'corners');txt:=(defender->>'name')||' ارسال را دفع می‌کند؛ توپ به کرنر می‌رود.';end if;
+    if v3 and kind='interception'then txt:=coalesce(galactic_private.commentary(cfg,seed,idx+85,kind,path,vars),txt);end if;
     seq:=seq||jsonb_build_array(galactic_private.scene(minute,kind,txt,side,hs,aws,stats,rh,ra));
+    if v3 and kind='corner'and galactic_private.random_value(seed,idx+86)<.65 then
+     seq:=seq||jsonb_build_array(galactic_private.scene(minute,'corner_setup',(creator->>'name')||' برای زدن کرنر می‌رود؛ مدافعان یارهایشان را زیر نظر دارند.',side,hs,aws,stats,rh,ra));
+     seq:=seq||jsonb_build_array(galactic_private.scene(minute,'corner_delivery','توپ به داخل محوطه می‌پیچد؛ '||target_name||' برای ضربهٔ سر از میان مدافعان جلو می‌آید.',side,hs,aws,stats,rh,ra));path:='cross';progress:=true;
+    end if;
    end if;
+  end if;
+  if v3 and progress and path='cross'and galactic_private.random_value(seed,idx+87)<.12 then
+   seq:=seq||jsonb_build_array(galactic_private.scene(minute,'keeper_claim','دروازه‌بان از خط جدا می‌شود و ارسال را بالاتر از سر '||target_name||' می‌گیرد؛ خطر رفع شد.',side,hs,aws,stats,rh,ra));progress:=false;
+  elsif v3 and progress and path not in('penalty_kick','free_kick')and galactic_private.random_value(seed,idx+88)<.12 then
+   stats:=galactic_private.stat_add(stats,side,'shots');
+   seq:=seq||jsonb_build_array(galactic_private.scene(minute,'blocked_shot',target_name||' ضربه می‌زند؛ '||(defender->>'name')||' خودش را جلوی توپ می‌اندازد و شوت را بلوکه می‌کند.',side,hs,aws,stats,rh,ra));progress:=false;
   end if;
   if progress then
    actor_fit:=coalesce((shooter->>'fit')::numeric,1)*coalesce((shooter#>>'{chemistry,factor}')::numeric,1);
@@ -250,10 +284,25 @@ begin
    on_prob:=least(.94,greatest(.15,on_prob));goal_prob:=least(.9,greatest(.05,goal_prob));
    on_target:=galactic_private.random_value(seed,idx+50)<on_prob;goal:=on_target and galactic_private.random_value(seed,idx+51)<goal_prob;
    stats:=galactic_private.stat_add(stats,side,'shots');if on_target then stats:=galactic_private.stat_add(stats,side,'onTarget');end if;
-   if goal then kind:='goal';if side=0 then hs:=hs+1;else aws:=aws+1;end if;txt:=case path when 'cross'then target_name||' با ضربهٔ سر می‌زند... گل! توپ درون دروازه است!'when 'penalty_kick'then target_name||' به توپ ضربه می‌زند... گل! پنالتی تبدیل به گل شد.'when 'free_kick'then target_name||' از روی دیوار دفاعی می‌زند... گل! ضربهٔ آزاد به تور می‌رسد.'when 'long'then target_name||' از راه دور شوت می‌زند... گل! یک ضربهٔ تماشایی!'else target_name||' ضربه را می‌زند... گل! توپ به تور دروازه می‌رسد!'end;
+   if v3 and on_target and not goal and path<>'penalty_kick'and galactic_private.random_value(seed,idx+89)<.17 then
+    seq:=seq||jsonb_build_array(galactic_private.scene(minute,'parry',target_name||' می‌زند... دروازه‌بان توپ را برمی‌گرداند اما آن را نگرفته است!',side,hs,aws,stats,rh,ra));
+    seq:=seq||jsonb_build_array(galactic_private.scene(minute,'rebound',target_name||' برای توپ برگشتی هجوم می‌برد؛ مدافع هم به سمت توپ می‌دود.',side,hs,aws,stats,rh,ra));
+    on_target:=galactic_private.random_value(seed,idx+90)<least(.88,greatest(.3,.60+(galactic_private.skill(shooter,'composure')*actor_fit-70)/250));
+    goal:=on_target and galactic_private.random_value(seed,idx+91)<least(.8,greatest(.1,.42+(galactic_private.skill(shooter,'shooting')*actor_fit-keeper_skill)/250));
+    stats:=galactic_private.stat_add(stats,side,'shots');if on_target then stats:=galactic_private.stat_add(stats,side,'onTarget');end if;
+   end if;
+   overturned:=false;
+   if v3 and goal and path<>'penalty_kick'and galactic_private.random_value(seed,idx+92)<.14 then
+    seq:=seq||jsonb_build_array(galactic_private.scene(minute,'var_review','توپ از دروازه‌بان عبور می‌کند؛ کمک‌داور هنوز تأیید نکرده و صحنه در حال بررسی است...',side,hs,aws,stats,rh,ra));
+    overturned:=galactic_private.random_value(seed,idx+93)<.35;
+    if overturned then goal:=false;stats:=galactic_private.stat_add(galactic_private.stat_add(galactic_private.stat_add(stats,side,'offsides'),side,'shots',-1),side,'onTarget',-1);end if;
+   end if;
+   if overturned then kind:='disallowed_goal';txt:='تصمیم نهایی: آفساید! گلِ '||target_name||' پذیرفته نشد؛ امتیاز تغییری نمی‌کند.';
+   elsif goal then kind:='goal';if side=0 then hs:=hs+1;else aws:=aws+1;end if;txt:=case path when 'cross'then target_name||' با ضربهٔ سر می‌زند... گل! توپ درون دروازه است!'when 'penalty_kick'then target_name||' به توپ ضربه می‌زند... گل! پنالتی تبدیل به گل شد.'when 'free_kick'then target_name||' از روی دیوار دفاعی می‌زند... گل! ضربهٔ آزاد به تور می‌رسد.'when 'long'then target_name||' از راه دور شوت می‌زند... گل! یک ضربهٔ تماشایی!'else target_name||' ضربه را می‌زند... گل! توپ به تور دروازه می‌رسد!'end;
    elsif on_target then kind:='save';txt:=target_name||case when path='cross'then ' با ضربهٔ سر می‌زند... دروازه‌بان توپ را مهار می‌کند!'else ' ضربه می‌زند... دروازه‌بان با واکنش به‌موقع مانع گل می‌شود!'end;
    elsif galactic_private.random_value(seed,idx+52)<.23 then kind:='woodwork';txt:=target_name||case when path='cross'then ' با ضربهٔ سر می‌زند... اوه! توپ به تیر دروازه می‌خورد و برمی‌گردد!'else ' شوت می‌زند... اوه! توپ به تیر دروازه برخورد می‌کند!'end;
    else kind:='miss';txt:=target_name||case when path='penalty_kick'then ' به توپ ضربه می‌زند... پنالتی بیرون می‌رود! چه فرصتی از دست رفت.'when path='cross'then ' برای ضربهٔ سر بلند می‌شود... توپ از بالای دروازه عبور می‌کند.'else ' ضربه می‌زند... توپ از کنار دروازه می‌گذرد.'end;end if;
+   if v3 and path not in('penalty_kick','free_kick')then txt:=coalesce(galactic_private.commentary(cfg,seed,idx+94,kind,path,vars),txt);end if;
    seq:=seq||jsonb_build_array(galactic_private.scene(minute,kind,txt,side,hs,aws,stats,rh,ra));
   end if;
   seq_hold:=16000/jsonb_array_length(seq);
@@ -281,6 +330,6 @@ begin
   off_ms:=off_ms+greatest(0,(e->>'minute')::int-prev_min)*2000;hold:=coalesce((e->>'holdMs')::int,case when e->>'kind'='halftime'then 8000 else 5000 end);
   timeline:=timeline||jsonb_build_array((e-'holdMs')||jsonb_build_object('atMs',off_ms,'untilMs',off_ms+hold));off_ms:=off_ms+hold;prev_min:=(e->>'minute')::int;
  end loop;
- update galactic_private.matches set status='live',started_at=p_start,ends_at=p_start+off_ms*interval '1 millisecond',timeline=simulation.timeline,home_score=hs,away_score=aws,winner_id=winner,penalties=simulation.penalties,stats=simulation.stats||jsonb_build_object('engine',2)where id=p_match;
+ update galactic_private.matches set status='live',started_at=p_start,ends_at=p_start+off_ms*interval '1 millisecond',timeline=simulation.timeline,home_score=hs,away_score=aws,winner_id=winner,penalties=simulation.penalties,stats=simulation.stats||jsonb_build_object('engine',case when v3 then 3 else 2 end)where id=p_match;
  update galactic_private.rooms set active_match=p_match,next_match_at=null where id=r.id;
 end;$$;

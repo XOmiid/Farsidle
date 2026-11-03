@@ -190,7 +190,7 @@ test('Supabase upgrade runs in isolated PostgreSQL and enforces access, rewards 
       assert.equal(result.score, 0);
       assert.equal(result.history.length, 1);
       for (let i = 1; i < 4; i++) {
-        await rpc(db, 'classic_act', ['teamdle', { type: 'start' }, null]);
+        assert((await raw(db, 'teamdle')).puzzle.startedAt[i], 'next round started automatically');
         await rpc(db, 'classic_act', [
           'teamdle',
           { type: 'capital', answer: s.secret.countries[i].capital },

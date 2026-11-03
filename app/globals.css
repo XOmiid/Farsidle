@@ -4123,3 +4123,16 @@ body {
     font-size: 10px;
   }
 }
+
+.g-search-dialog label:has(input[type='checkbox']) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.g-search-dialog input[type='checkbox'] {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}

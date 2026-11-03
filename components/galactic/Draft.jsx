@@ -2,7 +2,12 @@
 import { useState } from 'react';
 import { Dialog } from '@/components/arcade/Shell';
 import { fa } from '@/lib/classic/rules.mjs';
-import { positionFit, snakeTurn, playerChemistry } from '@/lib/galactic/rules.mjs';
+import {
+  positionFit,
+  snakeTurn,
+  playerChemistry,
+  draftSuggestions,
+} from '@/lib/galactic/rules.mjs';
 import { Pitch, ChemistryLegend, chemistryLabels } from './Common';
 import Manual from './Manual';
 const leagues = {
@@ -16,6 +21,9 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
   const [slotId, setSlot] = useState(null),
     [query, setQuery] = useState(''),
     [league, setLeague] = useState(''),
+    [club, setClub] = useState(''),
+    [specialist, setSpecialist] = useState(true),
+    [suggestions, setSuggestions] = useState([]),
     [view, setView] = useState(self.id),
     [help, setHelp] = useState(false);
   const config = catalog.config,
@@ -29,21 +37,36 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
       Math.max(0, Math.ceil((new Date(room.pickDeadline).getTime() - now) / 1000)),
     ),
     needle = query.trim().toLowerCase();
-  const results = needle
-    ? catalog.players
-        .filter(
-          (p) =>
-            (!league || p.league === league) &&
-            (p.name + ' ' + p.club).toLowerCase().includes(needle),
-        )
-        .sort((a, b) => a.name.localeCompare(b.name))
-    : [];
+  const clubs = [
+    ...new Set(catalog.players.filter((p) => !league || p.league === league).map((p) => p.club)),
+  ].sort();
+  const available = catalog.players.filter((p) => !room.picks.some((pick) => pick.player === p.id));
+  const browsing = !!(needle || club || league || !specialist);
+  const results = (
+    browsing
+      ? available
+      : suggestions.map((id) => available.find((p) => p.id === id)).filter(Boolean)
+  )
+    .filter(
+      (p) =>
+        (!league || p.league === league) &&
+        (!club || p.club === club) &&
+        (!specialist || !slot || p.positions.includes(slot.role)) &&
+        (!needle || (p.name + ' ' + p.club).toLowerCase().includes(needle)),
+    )
+    .sort((a, b) => (browsing ? a.name.localeCompare(b.name) : 0));
+  function randomSuggestions(role) {
+    setSuggestions(draftSuggestions(catalog.players, room.picks, role));
+  }
   const occupied = slot && self.players.some((p) => p.slot === slot.id);
   function open(id) {
     if (self.players.some((p) => p.slot === id)) return;
     setSlot(id);
     setQuery('');
     setLeague('');
+    setClub('');
+    setSpecialist(true);
+    randomSuggestions(slots.find((s) => s.id === id).role);
   }
   return (
     <>
@@ -169,7 +192,13 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
             </label>
             <label>
               لیگ
-              <select value={league} onChange={(e) => setLeague(e.target.value)}>
+              <select
+                value={league}
+                onChange={(e) => {
+                  setLeague(e.target.value);
+                  setClub('');
+                }}
+              >
                 <option value="">همهٔ لیگ‌ها</option>
                 {Object.entries(leagues).map(([id, name]) => (
                   <option key={id} value={id}>
@@ -178,10 +207,37 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
                 ))}
               </select>
             </label>
-            {!needle ? (
-              <p className="g-muted">برای دیدن نتیجه، نام بازیکن یا باشگاه را بنویس.</p>
-            ) : !results.length ? (
-              <p className="g-muted">بازیکنی با این نام در فهرست فعلی پیدا نشد.</p>
+            <label>
+              باشگاه
+              <select aria-label="باشگاه" value={club} onChange={(e) => setClub(e.target.value)}>
+                <option value="">همهٔ باشگاه‌ها</option>
+                {clubs.map((name) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={specialist}
+                onChange={(e) => setSpecialist(e.target.checked)}
+              />
+              فقط بازیکنان همین پست
+            </label>
+            {!browsing && (
+              <div className="g-section-title">
+                <p className="g-muted">پنج پیشنهاد تصادفی از بازیکنان آزاد این پست</p>
+                <button className="g-text-button" onClick={() => randomSuggestions(slot.role)}>
+                  پیشنهادهای تازه
+                </button>
+              </div>
+            )}
+            {!results.length ? (
+              <p className="g-muted">
+                بازیکن آزادی با این فیلترها پیدا نشد؛ باشگاه یا پست را تغییر بده.
+              </p>
             ) : (
               <div className="g-player-list">
                 {results.slice(0, 40).map((p) => {
