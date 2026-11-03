@@ -94,3 +94,29 @@ Additional roster sources accessed 2026-11-03:
 New players have role-based editorial skills with small deterministic variation; ratings are hidden in the draft, and random suggestions are uniformly sampled from available specialists, not ranked by rating. Unknown heights remain absent.
 
 V3 engine: 18 independent regulation opportunity times sampled from minutes 1–90 and sorted; six extra-time times from 91–120. Duplicated minutes intentionally allow clustered action. Total regulation pace stays about eight minutes, with 16 seconds per sequence shared among its stages. Match seeds make the timeline identical for all viewers. Events include cutbacks, dribbling duels, blocked shots, goalkeeper claims/sweeps, playable corners, parried shots/rebounds and occasional offside reviews with possible disallowed goals. Stats and scores reveal only as each scene happens. Old saved timelines remain unchanged, and v1/v2 rooms keep their prior generation behavior.
+
+## Version 4 — competition choices and match management (2026-11-03)
+
+728 curated players across 42 clubs and nine leagues. Added MLS, Saudi Pro League, Turkish Super Lig and Brazil's Serie A selections, including Lionel Messi, Cristiano Ronaldo, Victor Osimhen, Neymar, Luis Suarez, Son Heung-Min and Antoine Griezmann. Additional missing first-team players were checked against the existing source sheets, including Ousmane Diomande at Nottingham Forest and Marc Pubill's CB/RB roles. This is still a curated pool, not a promise of every registered player in nine full leagues. All numeric abilities and exact tactical roles are original editorial gameplay values; factual unknown heights remain absent.
+
+Refreshed/expanded primary sources:
+- https://www.premierleague.com/en/news/4725682 and https://www.premierleague.com/en/clubs/17/nottingham-forest/squad
+- https://www.atleticodemadrid.com/jugadores/marc-pubill-pages-2026-2027
+- https://www.realmadrid.com/en-US/football/first-team/players/yan-diomande (current 2026/27 page takes precedence over Leipzig's older signing/training reports)
+- https://www.galatasaray.org/en/pl/squad/48
+- https://www.spl.com.sa/en/teams/al-nassr/squad
+- https://www.spl.com.sa/en/teams/al-ahli/squad
+- https://www.spl.com.sa/en/teams/al-hilal/squad
+- https://www.mlssoccer.com/players/lionel-messi/
+- https://www.mlssoccer.com/players/luis-suarez/stats/
+- https://www.mlssoccer.com/players/son-heung-min/
+- https://www.mlssoccer.com/players/antoine-griezmann/
+- https://www.santosfc.com.br/santos-fc-e-neymar-jr-renovam-contrato-ate-o-fim-de-2026/
+
+Draft offers are generated and persisted on the server, not selected by the browser. For each XI, four slot bands center on good players and seven on average players, rotated per manager. Available specialists within the band are uniformly shuffled. One re-roll during the initial draft and one fresh credit per match can improve a slot; reopening, switching tabs and automatic replacements do not reset credits. A re-roll that cannot offer a higher-rated option is rejected without consuming its credit. Numerical ratings remain hidden.
+
+Cup retains knockout extra time and penalties. League uses a single round robin with concurrent fixtures by round, odd-team rest rounds, 3/1/0 points, then GD, GF and mini-table head-to-head points among tied teams. Completely tied teams share a rank; no arbitrary champion is selected. League draws end at 90 minutes.
+
+V4 simulates the first half only, stores the exact first-half state privately, pauses for 120 seconds, then simulates the second half from the saved match-local setup. Managers may change formation, tactic and captain/penalty/free-kick responsibilities, swap positions, and replace up to five starters from the undrafted pool. Incoming players are reserved across the current round to prevent duplicate use. Sent-off players cannot be substituted or act later. Substitutes start their own stamina clock at minute 45. Original room XIs and responsibilities return for the next match.
+
+Weighted event participation replaces the striker-only priority: wings and midfielders contribute to finishing, while CBs and other advancing players contest corners. Tactics change route frequencies, possession, passing, chance construction and fatigue. Each corner and foul counted in stats has a narrated award/whistle. Commentary includes first-touch mistakes, misplaced passes, overlap play, cutbacks and varied outcomes. Captain status contributes a small 2.5% factor to that player's profile; set-piece assignments override automatic selections when the chosen player remains on the pitch.

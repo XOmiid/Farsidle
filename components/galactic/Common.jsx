@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fa } from '@/lib/classic/rules.mjs';
 export function useNow() {
   const [now, setNow] = useState(0);
@@ -34,11 +34,14 @@ export function Pitch({
   players = [],
   selected,
   onSelect,
+  onSwap,
   config,
   compact = false,
   teamColor,
   sentOff = [],
 }) {
+  const drag = useRef(null),
+    suppressClick = useRef(false);
   const slots = config.formations[formation]?.slots || [];
   return (
     <div className={'g-pitch' + (compact ? ' g-pitch-compact' : '')} aria-label="چیدمان تیم">
@@ -53,6 +56,7 @@ export function Pitch({
           .filter((other) => other.id !== s.id && Math.abs(other.y - s.y) <= 5)
           .map((other) => Math.abs(other.x - s.x));
         const style = {
+          touchAction: onSwap ? 'none' : undefined,
           left: s.x + '%',
           top: s.y + '%',
           width: Math.min(24, ...gaps.map((gap) => gap * 0.92)) + '%',
@@ -67,6 +71,11 @@ export function Pitch({
               }
             >
               {s.role}
+              {p?.captain && (
+                <small className="g-captain" aria-label="کاپیتان تیم">
+                  C
+                </small>
+              )}
             </span>
             <span className="g-player-name" dir="auto">
               {label}
@@ -100,7 +109,52 @@ export function Pitch({
               (p && sentOff.includes(p.id) ? ' is-sent-off' : '')
             }
             style={style}
-            onClick={() => onSelect(s.id)}
+            data-slot={s.id}
+            onPointerDown={
+              onSwap
+                ? (e) => {
+                    if (sentOff.includes(p?.id)) return;
+                    drag.current = { slot: s.id, x: e.clientX, y: e.clientY };
+                    e.currentTarget.setPointerCapture(e.pointerId);
+                  }
+                : undefined
+            }
+            onPointerMove={
+              onSwap
+                ? (e) => {
+                    if (
+                      drag.current &&
+                      Math.hypot(e.clientX - drag.current.x, e.clientY - drag.current.y) > 8
+                    )
+                      suppressClick.current = true;
+                  }
+                : undefined
+            }
+            onPointerUp={
+              onSwap
+                ? (e) => {
+                    const from = drag.current;
+                    const target = document
+                      .elementFromPoint(e.clientX, e.clientY)
+                      ?.closest('[data-slot]')?.dataset.slot;
+                    if (from && suppressClick.current && target && target !== from.slot)
+                      onSwap(from.slot, target);
+                    drag.current = null;
+                  }
+                : undefined
+            }
+            onPointerCancel={() => {
+              drag.current = null;
+              suppressClick.current = false;
+            }}
+            onClick={() => {
+              if (suppressClick.current) {
+                suppressClick.current = false;
+                return;
+              }
+              onSelect(s.id);
+            }}
+
             aria-pressed={selected === s.id}
             aria-label={config.roles[s.role] + ': ' + label}
           >

@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Shell from '@/components/arcade/Shell';
 import Draft from './Draft';
+import Halftime from './Halftime';
+import Roles from './Roles';
 import { Icon } from '@/components/arcade/Art';
 import { useArcade } from '@/components/arcade/Provider';
 import { fa } from '@/lib/classic/rules.mjs';
@@ -152,7 +154,8 @@ export default function Room({ code }) {
             <header className="g-room-header">
               <div>
                 <span className="g-kicker">
-                  {phaseLabel[room.phase]} · {room.public ? 'عمومی' : 'خصوصی'}
+                  {phaseLabel[room.phase]} · {room.competition === 'league' ? 'لیگ' : 'جام'} ·{' '}
+                  {room.selection === 'draft' ? 'درفت' : 'عادی'} · {room.public ? 'عمومی' : 'خصوصی'}
                 </span>
                 <h1>{room.title}</h1>
               </div>
@@ -293,10 +296,12 @@ export default function Room({ code }) {
                     room={room}
                     catalog={catalog}
                     now={stale ? room.serverNow : serverNow}
+                    busy={busy || stale}
+                    action={action}
                   />
                 )}
                 <p className="g-rating-note">
-                  مدل اختصاصی فارسیدل · {fa(catalog.players.length)} بازیکن · پنج لیگ اروپایی
+                  مدل اختصاصی فارسیدل · {fa(catalog.players.length)} بازیکن · لیگ‌های منتخب جهان
                 </p>
               </>
             )}
@@ -367,11 +372,11 @@ function Setup({ self, config, busy, action }) {
           لغو آمادگی
         </button>
       )}
-      <p className="g-muted">بعد از شروع انتخاب‌ها، آرایش و تاکتیک قابل تغییر نیست.</p>
+      <p className="g-muted">آرایش و تاکتیک تا پنجرهٔ دو دقیقه‌ای بین دو نیمه قفل می‌شوند.</p>
     </form>
   );
 }
-export function Tournament({ room, catalog, now }) {
+export function Tournament({ room, catalog, now, busy = false, action }) {
   const [selectedSide, setSide] = useState(null),
     [viewMatch, setViewMatch] = useState(null),
     match = room.liveMatches?.find((m) => m.id === viewMatch) || room.currentMatch,
@@ -421,9 +426,82 @@ export function Tournament({ room, catalog, now }) {
   const finalRound = Math.max(...room.matches.map((m) => m.round));
   return (
     <>
+      {room.halftime && action && (
+        <Halftime
+          key={room.halftime.match + JSON.stringify(room.halftime.setup)}
+          room={room}
+          catalog={catalog}
+          now={now}
+          busy={busy}
+          action={action}
+        />
+      )}
+      {action &&
+        room.phase === 'tournament' &&
+        !room.liveMatches?.some((m) => m.status === 'live') && (
+          <Roles
+            players={room.members.find((m) => m.id === room.self)?.players || []}
+            value={room.members.find((m) => m.id === room.self)?.roles}
+            busy={busy}
+            onSave={(roles) => action({ type: 'roles', roles })}
+          />
+        )}
+      {room.competition === 'league' && (
+        <section className="g-panel">
+          <h2>جدول لیگ</h2>
+          <p className="g-muted">
+            امتیاز، تفاضل گل، گل زده، سپس امتیاز بازی‌های رودررو بین تیم‌های برابر. تساوی کامل،
+            رتبهٔ مشترک دارد.
+          </p>
+          <div className="g-table-scroll">
+            <table className="g-league-table">
+              <thead>
+                <tr>
+                  {[
+                    'رتبه',
+                    'تیم',
+                    'بازی',
+                    'برد',
+                    'تساوی',
+                    'باخت',
+                    'زده',
+                    'خورده',
+                    'تفاضل',
+                    'امتیاز',
+                  ].map((t) => (
+                    <th key={t}>{t}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {room.standings?.map((t) => (
+                  <tr key={t.id} className={t.id === room.self ? 'self' : ''}>
+                    <td>{fa(t.position)}</td>
+                    <th>{t.team_name}</th>
+                    {['played', 'won', 'drawn', 'lost', 'gf', 'ga', 'gd', 'points'].map((k) => (
+                      <td key={k}>{fa(t[k])}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+      {room.phase === 'finished' && room.competition === 'league' && !champion && (
+        <section className="g-champion">
+          <h2>پایان لیگ؛ رتبهٔ نخست مشترک</h2>
+          <p>
+            {room.standings
+              ?.filter((t) => t.position === 1)
+              .map((t) => t.team_name)
+              .join(' · ')}
+          </p>
+        </section>
+      )}
       {champion && (
         <section className="g-champion">
-          <span className="g-kicker">قهرمان جام</span>
+          <span className="g-kicker">قهرمان رقابت</span>
           <span className="g-cup" aria-hidden="true">
             <Icon name="trophy" size={46} />
           </span>
@@ -432,7 +510,7 @@ export function Tournament({ room, catalog, now }) {
             {champion.name} · پایان رقابت {fa(room.members.length)} تیم
           </p>
           <Link className="button ink-button" href="/galactic">
-            یک جام دیگر
+            رقابت تازه
           </Link>
         </section>
       )}
@@ -485,11 +563,13 @@ export function Tournament({ room, catalog, now }) {
         <section className="g-match">
           <div className="g-match-top">
             <span className="g-kicker">
-              {match.round === finalRound
-                ? 'فینال'
-                : finalRound - match.round === 1
-                  ? 'نیمه‌نهایی'
-                  : 'یک‌چهارم نهایی'}
+              {room.competition === 'league'
+                ? 'هفتهٔ ' + fa(match.round)
+                : match.round === finalRound
+                  ? 'فینال'
+                  : finalRound - match.round === 1
+                    ? 'نیمه‌نهایی'
+                    : 'یک‌چهارم نهایی'}
             </span>
             <span className="g-live-indicator">
               {match.status === 'live' ? 'در حال پخش مشترک' : 'پایان مسابقه'}
@@ -534,7 +614,13 @@ export function Tournament({ room, catalog, now }) {
           <div className={'g-match-clock' + (paused ? ' paused' : '')}>
             <b dir="ltr">{minuteLabel(matchClock(match.playback, now))}</b>
             <small>
-              {match.status === 'finished' ? 'پایان' : paused ? 'گزارش لحظه' : 'زمان مسابقه'}
+              {match.status === 'finished'
+                ? 'پایان'
+                : match.halftime
+                  ? 'بین دو نیمه؛ تغییرات تیم'
+                  : paused
+                    ? 'گزارش لحظه'
+                    : 'زمان مسابقه'}
             </small>
           </div>
           <div className="g-team-tabs">
@@ -587,6 +673,22 @@ export function Tournament({ room, catalog, now }) {
               </div>
             )}
           </div>
+          {current.roles && (
+            <p className="g-role-summary">
+              {[
+                ['captain', 'کاپیتان'],
+                ['penalty', 'پنالتی'],
+                ['freeKick', 'ضربهٔ آزاد'],
+              ].map(([key, label]) => (
+                <span key={key}>
+                  {label}:{' '}
+                  <b dir="ltr">
+                    {current.players.find((p) => p.id === current.roles[key])?.name || 'خودکار'}
+                  </b>
+                </span>
+              ))}
+            </p>
+          )}
           <div className="g-match-stats">
             <span>تاکتیک: {catalog.config.tactics[current.tactic].name}</span>
             <span>
@@ -671,11 +773,13 @@ export function Tournament({ room, catalog, now }) {
           {Array.from({ length: finalRound }, (_, i) => i + 1).map((round) => (
             <div className="g-bracket-round" key={round}>
               <h3>
-                {round === finalRound
-                  ? 'فینال'
-                  : finalRound - round === 1
-                    ? 'نیمه‌نهایی'
-                    : 'یک‌چهارم نهایی'}
+                {room.competition === 'league'
+                  ? 'هفتهٔ ' + fa(round)
+                  : round === finalRound
+                    ? 'فینال'
+                    : finalRound - round === 1
+                      ? 'نیمه‌نهایی'
+                      : 'یک‌چهارم نهایی'}
               </h3>
               {room.matches
                 .filter((m) => m.round === round)
@@ -711,7 +815,7 @@ export function Tournament({ room, catalog, now }) {
         </div>
       </section>
       <details className="g-panel">
-        <summary>تیم‌های این جام</summary>
+        <summary>تیم‌های رقابت</summary>
         <div className="g-final-teams">
           {room.members.map((m) => (
             <div key={m.id}>

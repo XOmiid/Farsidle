@@ -10,6 +10,7 @@ import {
 } from '@/lib/galactic/rules.mjs';
 import { Pitch, ChemistryLegend, chemistryLabels } from './Common';
 import Manual from './Manual';
+import Roles from './Roles';
 const leagues = {
   'premier-league': 'انگلستان',
   laliga: 'اسپانیا',
@@ -41,32 +42,42 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
     ...new Set(catalog.players.filter((p) => !league || p.league === league).map((p) => p.club)),
   ].sort();
   const available = catalog.players.filter((p) => !room.picks.some((pick) => pick.player === p.id));
+  const limited = room.selection === 'draft';
+  const offer = room.offers?.find((o) => o.context === 'draft' && o.slot === slotId);
+  const usedReroll =
+    room.rerolls?.draft || room.offers?.some((o) => o.context === 'draft' && o.rerolled);
   const browsing = !!(needle || club || league || !specialist);
   const results = (
-    browsing
-      ? available
-      : suggestions.map((id) => available.find((p) => p.id === id)).filter(Boolean)
+    limited
+      ? (offer?.players || []).map((id) => available.find((p) => p.id === id)).filter(Boolean)
+      : browsing
+        ? available
+        : suggestions.map((id) => available.find((p) => p.id === id)).filter(Boolean)
   )
     .filter(
       (p) =>
         (!league || p.league === league) &&
         (!club || p.club === club) &&
         (!specialist || !slot || p.positions.includes(slot.role)) &&
-        (!needle || (p.name + ' ' + p.club).toLowerCase().includes(needle)),
+        (!needle ||
+          (p.name + ' ' + p.club + ' ' + (p.aliases || []).join(' '))
+            .toLowerCase()
+            .includes(needle)),
     )
     .sort((a, b) => (browsing ? a.name.localeCompare(b.name) : 0));
   function randomSuggestions(role) {
     setSuggestions(draftSuggestions(catalog.players, room.picks, role));
   }
   const occupied = slot && self.players.some((p) => p.slot === slot.id);
-  function open(id) {
+  async function open(id) {
     if (self.players.some((p) => p.slot === id)) return;
     setSlot(id);
     setQuery('');
     setLeague('');
     setClub('');
     setSpecialist(true);
-    randomSuggestions(slots.find((s) => s.id === id).role);
+    if (limited) await action({ type: 'offers', slot: id });
+    else randomSuggestions(slots.find((s) => s.id === id).role);
   }
   return (
     <>
@@ -76,7 +87,7 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
             انتخاب {fa(room.pickNumber + 1)} از {fa(room.members.length * 11)}
           </span>
           <h2>{mine ? 'نوبت انتخاب توست' : 'نوبت ' + turn?.name}</h2>
-          <p>روی جایگاه خالی در ترکیب خودت بزن و نام بازیکن را جست‌وجو کن.</p>
+          <p>روی جایگاه خالی در ترکیب خودت بزن و بازیکن انتخاب کن.</p>
         </div>
         <div className="g-pick-clock" aria-label={'زمان باقی‌مانده ' + fa(seconds) + ' ثانیه'}>
           <b>{fa(seconds)}</b>
@@ -118,6 +129,13 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
             onSelect={open}
           />
           <ChemistryLegend />
+          <Roles
+            key={JSON.stringify(self.roles)}
+            players={self.players}
+            value={self.roles}
+            busy={busy}
+            onSave={(roles) => action({ type: 'roles', roles })}
+          />
           <p className="g-muted">
             {config.tactics[self.tactic].name} · {config.tactics[self.tactic].description}
           </p>
@@ -179,54 +197,77 @@ export default function Draft({ room, catalog, self, now, busy, action }) {
       {slot && (
         <Dialog title={'انتخاب ' + config.roles[slot.role]} onClose={() => setSlot(null)}>
           <div className="galactic g-search-dialog">
-            <label>
-              نام بازیکن
-              <input
-                autoComplete="off"
-                aria-label="نام بازیکن"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search player name…"
-                dir="ltr"
-              />
-            </label>
-            <label>
-              لیگ
-              <select
-                value={league}
-                onChange={(e) => {
-                  setLeague(e.target.value);
-                  setClub('');
-                }}
-              >
-                <option value="">همهٔ لیگ‌ها</option>
-                {Object.entries(leagues).map(([id, name]) => (
-                  <option key={id} value={id}>
-                    {name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              باشگاه
-              <select aria-label="باشگاه" value={club} onChange={(e) => setClub(e.target.value)}>
-                <option value="">همهٔ باشگاه‌ها</option>
-                {clubs.map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={specialist}
-                onChange={(e) => setSpecialist(e.target.checked)}
-              />
-              فقط بازیکنان همین پست
-            </label>
-            {!browsing && (
+            {!limited && (
+              <>
+                <label>
+                  نام بازیکن
+                  <input
+                    autoComplete="off"
+                    aria-label="نام بازیکن"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search player name…"
+                    dir="ltr"
+                  />
+                </label>
+                <label>
+                  لیگ
+                  <select
+                    value={league}
+                    onChange={(e) => {
+                      setLeague(e.target.value);
+                      setClub('');
+                    }}
+                  >
+                    <option value="">همهٔ لیگ‌ها</option>
+                    {Object.entries(config.leagues || leagues).map(([id, name]) => (
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  باشگاه
+                  <select
+                    aria-label="باشگاه"
+                    value={club}
+                    onChange={(e) => setClub(e.target.value)}
+                  >
+                    <option value="">همهٔ باشگاه‌ها</option>
+                    {clubs.map((name) => (
+                      <option key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={specialist}
+                    onChange={(e) => setSpecialist(e.target.checked)}
+                  />
+                  فقط بازیکنان همین پست
+                </label>
+              </>
+            )}
+            {limited && (
+              <div>
+                <p className="g-muted">
+                  فقط از پیشنهادهای ذخیره‌شدهٔ این جایگاه انتخاب کن. کیفیت جایگاه‌ها ترکیبی از
+                  بازیکنان خوب و متوسط است.
+                </p>
+                <button
+                  className="button secondary-button"
+                  disabled={busy || usedReroll || !offer}
+                  onClick={() => action({ type: 'reroll', slot: slot.id })}
+                >
+                  {usedReroll ? 'ری‌رول استفاده شد' : 'ری‌رول؛ پیشنهادهای قوی‌تر (یک بار)'}
+                </button>
+              </div>
+            )}
+            {!limited && !browsing && (
               <div className="g-section-title">
                 <p className="g-muted">پنج پیشنهاد تصادفی از بازیکنان آزاد این پست</p>
                 <button className="g-text-button" onClick={() => randomSuggestions(slot.role)}>

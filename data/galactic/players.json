@@ -6671,8 +6671,8 @@
   {
     "id": "ethan-nwaneri",
     "name": "Ethan Nwaneri",
-    "club": "Borussia Dortmund",
-    "league": "bundesliga",
+    "club": "Arsenal",
+    "league": "premier-league",
     "positions": [
       "AM",
       "RW"
@@ -17029,6 +17029,7 @@
     "club": "Atletico Madrid",
     "league": "laliga",
     "positions": [
+      "CB",
       "RB"
     ],
     "overall": 77,
@@ -17050,6 +17051,10 @@
     "discipline": 70,
     "tags": [
       "بازی در کناره"
+    ],
+    "aliases": [
+      "Pubil",
+      "Pubill"
     ]
   },
   {
@@ -19410,6 +19415,2547 @@
     "discipline": 71,
     "tags": [
       "بازی در کناره"
+    ]
+  },
+  {
+    "id": "ousmane-diomande",
+    "name": "Ousmane Diomande",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 82,
+    "pace": 67,
+    "shooting": 49,
+    "passing": 70,
+    "dribbling": 55,
+    "defending": 81,
+    "physical": 83,
+    "stamina": 83,
+    "goalkeeping": 10,
+    "heading": 81,
+    "jumping": 73,
+    "crossing": 36,
+    "longShots": 31,
+    "composure": 76,
+    "freeKicks": 36,
+    "penalties": 36,
+    "discipline": 72,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "john-victor",
+    "name": "John Victor",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 77,
+    "pace": 40,
+    "shooting": 25,
+    "passing": 57,
+    "dribbling": 27,
+    "defending": 28,
+    "physical": 78,
+    "stamina": 57,
+    "goalkeeping": 75,
+    "heading": 23,
+    "jumping": 67,
+    "crossing": 30,
+    "longShots": 25,
+    "composure": 70,
+    "freeKicks": 30,
+    "penalties": 30,
+    "discipline": 68,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 75,
+      "handling": 77,
+      "kicking": 74,
+      "reflexes": 74,
+      "positioning": 78
+    }
+  },
+  {
+    "id": "jair-cunha",
+    "name": "Jair Cunha",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 64,
+    "shooting": 45,
+    "passing": 63,
+    "dribbling": 52,
+    "defending": 77,
+    "physical": 78,
+    "stamina": 77,
+    "goalkeeping": 10,
+    "heading": 78,
+    "jumping": 70,
+    "crossing": 33,
+    "longShots": 28,
+    "composure": 73,
+    "freeKicks": 33,
+    "penalties": 33,
+    "discipline": 74,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "james-mcatee",
+    "name": "James McAtee",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 77,
+    "pace": 72,
+    "shooting": 76,
+    "passing": 80,
+    "dribbling": 76,
+    "defending": 48,
+    "physical": 67,
+    "stamina": 78,
+    "goalkeeping": 10,
+    "heading": 49,
+    "jumping": 66,
+    "crossing": 58,
+    "longShots": 73,
+    "composure": 69,
+    "freeKicks": 66,
+    "penalties": 54,
+    "discipline": 70,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "arnaud-kalimuendo",
+    "name": "Arnaud Kalimuendo",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 79,
+    "pace": 79,
+    "shooting": 80,
+    "passing": 75,
+    "dribbling": 71,
+    "defending": 27,
+    "physical": 79,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 81,
+    "jumping": 73,
+    "crossing": 65,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 78,
+    "discipline": 74,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "luca-netz",
+    "name": "Luca Netz",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 77,
+    "pace": 73,
+    "shooting": 59,
+    "passing": 73,
+    "dribbling": 70,
+    "defending": 81,
+    "physical": 74,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 50,
+    "jumping": 67,
+    "crossing": 76,
+    "longShots": 60,
+    "composure": 70,
+    "freeKicks": 51,
+    "penalties": 55,
+    "discipline": 70,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "nicolo-savona",
+    "name": "Nicolo Savona",
+    "club": "Nottingham Forest",
+    "league": "premier-league",
+    "positions": [
+      "RB",
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 75,
+    "shooting": 59,
+    "passing": 75,
+    "dribbling": 70,
+    "defending": 78,
+    "physical": 74,
+    "stamina": 77,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 78,
+    "longShots": 62,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 70,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "cristhian-mosquera",
+    "name": "Cristhian Mosquera",
+    "club": "Arsenal",
+    "league": "premier-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 68,
+    "shooting": 41,
+    "passing": 68,
+    "dribbling": 55,
+    "defending": 80,
+    "physical": 81,
+    "stamina": 78,
+    "goalkeeping": 10,
+    "heading": 82,
+    "jumping": 74,
+    "crossing": 37,
+    "longShots": 32,
+    "composure": 77,
+    "freeKicks": 37,
+    "penalties": 37,
+    "discipline": 73,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "mikel-merino",
+    "name": "Mikel Merino",
+    "club": "Arsenal",
+    "league": "premier-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 83,
+    "pace": 75,
+    "shooting": 73,
+    "passing": 88,
+    "dribbling": 74,
+    "defending": 70,
+    "physical": 83,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 58,
+    "jumping": 75,
+    "crossing": 67,
+    "longShots": 82,
+    "composure": 78,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 69,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "myles-lewis-skelly",
+    "name": "Myles Lewis-Skelly",
+    "club": "Arsenal",
+    "league": "premier-league",
+    "positions": [
+      "LB",
+      "CM"
+    ],
+    "overall": 79,
+    "pace": 74,
+    "shooting": 57,
+    "passing": 73,
+    "dribbling": 70,
+    "defending": 82,
+    "physical": 79,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 77,
+    "longShots": 61,
+    "composure": 71,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 69,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "salvi-esquivel",
+    "name": "Salvi Esquivel",
+    "club": "Atletico Madrid",
+    "league": "laliga",
+    "positions": [
+      "GK"
+    ],
+    "overall": 69,
+    "pace": 34,
+    "shooting": 20,
+    "passing": 55,
+    "dribbling": 21,
+    "defending": 21,
+    "physical": 70,
+    "stamina": 50,
+    "goalkeeping": 69,
+    "heading": 20,
+    "jumping": 61,
+    "crossing": 24,
+    "longShots": 20,
+    "composure": 64,
+    "freeKicks": 24,
+    "penalties": 24,
+    "discipline": 68,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 69,
+      "handling": 68,
+      "kicking": 72,
+      "reflexes": 68,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "obed-vargas",
+    "name": "Obed Vargas",
+    "club": "Atletico Madrid",
+    "league": "laliga",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 75,
+    "pace": 66,
+    "shooting": 53,
+    "passing": 67,
+    "dribbling": 64,
+    "defending": 77,
+    "physical": 79,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 53,
+    "jumping": 70,
+    "crossing": 62,
+    "longShots": 63,
+    "composure": 73,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 72,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "rodrigo-mendoza",
+    "name": "Rodrigo Mendoza",
+    "club": "Atletico Madrid",
+    "league": "laliga",
+    "positions": [
+      "CM"
+    ],
+    "overall": 75,
+    "pace": 69,
+    "shooting": 67,
+    "passing": 80,
+    "dribbling": 65,
+    "defending": 63,
+    "physical": 72,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 61,
+    "longShots": 76,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 67,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "diego-martinez",
+    "name": "Diego Martinez",
+    "club": "Atletico Madrid",
+    "league": "laliga",
+    "positions": [
+      "CB"
+    ],
+    "overall": 68,
+    "pace": 54,
+    "shooting": 35,
+    "passing": 57,
+    "dribbling": 47,
+    "defending": 67,
+    "physical": 74,
+    "stamina": 67,
+    "goalkeeping": 10,
+    "heading": 68,
+    "jumping": 60,
+    "crossing": 23,
+    "longShots": 20,
+    "composure": 63,
+    "freeKicks": 23,
+    "penalties": 23,
+    "discipline": 70,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "arnau-ortiz",
+    "name": "Arnau Ortiz",
+    "club": "Atletico Madrid",
+    "league": "laliga",
+    "positions": [
+      "LW"
+    ],
+    "overall": 72,
+    "pace": 76,
+    "shooting": 71,
+    "passing": 65,
+    "dribbling": 71,
+    "defending": 20,
+    "physical": 65,
+    "stamina": 73,
+    "goalkeeping": 10,
+    "heading": 48,
+    "jumping": 65,
+    "crossing": 74,
+    "longShots": 58,
+    "composure": 68,
+    "freeKicks": 49,
+    "penalties": 53,
+    "discipline": 71,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "yan-diomande",
+    "name": "Yan Diomande",
+    "club": "Real Madrid",
+    "league": "laliga",
+    "positions": [
+      "LW",
+      "RW"
+    ],
+    "overall": 82,
+    "pace": 93,
+    "shooting": 82,
+    "passing": 79,
+    "dribbling": 88,
+    "defending": 34,
+    "physical": 77,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 73,
+    "crossing": 79,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 69,
+    "tags": [
+      "سرعتی",
+      "دریبل‌زن"
+    ]
+  },
+  {
+    "id": "ugurcan-cakir",
+    "name": "Ugurcan Cakir",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "GK"
+    ],
+    "overall": 82,
+    "pace": 44,
+    "shooting": 32,
+    "passing": 64,
+    "dribbling": 34,
+    "defending": 31,
+    "physical": 85,
+    "stamina": 61,
+    "goalkeeping": 79,
+    "heading": 27,
+    "jumping": 71,
+    "crossing": 34,
+    "longShots": 29,
+    "composure": 74,
+    "freeKicks": 34,
+    "penalties": 34,
+    "discipline": 70,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 79,
+      "handling": 84,
+      "kicking": 81,
+      "reflexes": 81,
+      "positioning": 81
+    }
+  },
+  {
+    "id": "gunay-guvenc",
+    "name": "Gunay Guvenc",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "GK"
+    ],
+    "overall": 73,
+    "pace": 37,
+    "shooting": 20,
+    "passing": 53,
+    "dribbling": 29,
+    "defending": 21,
+    "physical": 76,
+    "stamina": 56,
+    "goalkeeping": 72,
+    "heading": 20,
+    "jumping": 64,
+    "crossing": 27,
+    "longShots": 22,
+    "composure": 67,
+    "freeKicks": 27,
+    "penalties": 27,
+    "discipline": 73,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 72,
+      "handling": 70,
+      "kicking": 70,
+      "reflexes": 76,
+      "positioning": 71
+    }
+  },
+  {
+    "id": "jankat-yilmaz",
+    "name": "Jankat Yilmaz",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "GK"
+    ],
+    "overall": 67,
+    "pace": 32,
+    "shooting": 20,
+    "passing": 49,
+    "dribbling": 23,
+    "defending": 20,
+    "physical": 67,
+    "stamina": 49,
+    "goalkeeping": 67,
+    "heading": 20,
+    "jumping": 59,
+    "crossing": 22,
+    "longShots": 20,
+    "composure": 62,
+    "freeKicks": 22,
+    "penalties": 22,
+    "discipline": 69,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 67,
+      "handling": 67,
+      "kicking": 66,
+      "reflexes": 70,
+      "positioning": 67
+    }
+  },
+  {
+    "id": "el-chadaille-bitshiabu",
+    "name": "El Chadaille Bitshiabu",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CB"
+    ],
+    "overall": 77,
+    "pace": 60,
+    "shooting": 41,
+    "passing": 66,
+    "dribbling": 53,
+    "defending": 77,
+    "physical": 82,
+    "stamina": 77,
+    "goalkeeping": 10,
+    "heading": 74,
+    "jumping": 66,
+    "crossing": 29,
+    "longShots": 24,
+    "composure": 69,
+    "freeKicks": 29,
+    "penalties": 29,
+    "discipline": 73,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "ismail-jakobs",
+    "name": "Ismail Jakobs",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "LB"
+    ],
+    "overall": 77,
+    "pace": 75,
+    "shooting": 56,
+    "passing": 74,
+    "dribbling": 71,
+    "defending": 81,
+    "physical": 80,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 78,
+    "longShots": 62,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 68,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "davinson-sanchez",
+    "name": "Davinson Sanchez",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 68,
+    "shooting": 47,
+    "passing": 65,
+    "dribbling": 55,
+    "defending": 83,
+    "physical": 82,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 82,
+    "jumping": 74,
+    "crossing": 37,
+    "longShots": 32,
+    "composure": 77,
+    "freeKicks": 37,
+    "penalties": 37,
+    "discipline": 66,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "eren-elmali",
+    "name": "Eren Elmali",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "LB"
+    ],
+    "overall": 76,
+    "pace": 74,
+    "shooting": 54,
+    "passing": 73,
+    "dribbling": 68,
+    "defending": 74,
+    "physical": 78,
+    "stamina": 80,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 77,
+    "longShots": 61,
+    "composure": 71,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 70,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "kaan-ayhan",
+    "name": "Kaan Ayhan",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CB",
+      "DM",
+      "RB"
+    ],
+    "overall": 77,
+    "pace": 66,
+    "shooting": 45,
+    "passing": 63,
+    "dribbling": 51,
+    "defending": 80,
+    "physical": 83,
+    "stamina": 77,
+    "goalkeeping": 10,
+    "heading": 80,
+    "jumping": 72,
+    "crossing": 35,
+    "longShots": 30,
+    "composure": 75,
+    "freeKicks": 35,
+    "penalties": 35,
+    "discipline": 73,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "abdulkerim-bardakci",
+    "name": "Abdulkerim Bardakci",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CB"
+    ],
+    "overall": 79,
+    "pace": 64,
+    "shooting": 45,
+    "passing": 68,
+    "dribbling": 54,
+    "defending": 78,
+    "physical": 85,
+    "stamina": 78,
+    "goalkeeping": 10,
+    "heading": 78,
+    "jumping": 70,
+    "crossing": 33,
+    "longShots": 28,
+    "composure": 73,
+    "freeKicks": 33,
+    "penalties": 33,
+    "discipline": 74,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "kazimcan-karatas",
+    "name": "Kazimcan Karatas",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "LB"
+    ],
+    "overall": 71,
+    "pace": 68,
+    "shooting": 49,
+    "passing": 69,
+    "dribbling": 61,
+    "defending": 75,
+    "physical": 74,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 62,
+    "crossing": 71,
+    "longShots": 55,
+    "composure": 65,
+    "freeKicks": 46,
+    "penalties": 50,
+    "discipline": 69,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "wilfried-singo",
+    "name": "Wilfried Singo",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "RB",
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 76,
+    "shooting": 64,
+    "passing": 76,
+    "dribbling": 76,
+    "defending": 85,
+    "physical": 82,
+    "stamina": 85,
+    "goalkeeping": 10,
+    "heading": 53,
+    "jumping": 70,
+    "crossing": 79,
+    "longShots": 63,
+    "composure": 73,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 72,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "arda-unyay",
+    "name": "Arda Unyay",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CB"
+    ],
+    "overall": 68,
+    "pace": 57,
+    "shooting": 31,
+    "passing": 54,
+    "dribbling": 47,
+    "defending": 71,
+    "physical": 70,
+    "stamina": 63,
+    "goalkeeping": 10,
+    "heading": 71,
+    "jumping": 63,
+    "crossing": 26,
+    "longShots": 21,
+    "composure": 66,
+    "freeKicks": 26,
+    "penalties": 26,
+    "discipline": 66,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "eyup-aydin",
+    "name": "Eyup Aydin",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "DM"
+    ],
+    "overall": 69,
+    "pace": 60,
+    "shooting": 52,
+    "passing": 63,
+    "dribbling": 60,
+    "defending": 69,
+    "physical": 70,
+    "stamina": 69,
+    "goalkeeping": 10,
+    "heading": 47,
+    "jumping": 64,
+    "crossing": 56,
+    "longShots": 57,
+    "composure": 67,
+    "freeKicks": 48,
+    "penalties": 52,
+    "discipline": 73,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "gabriel-sara",
+    "name": "Gabriel Sara",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 82,
+    "pace": 71,
+    "shooting": 69,
+    "passing": 84,
+    "dribbling": 75,
+    "defending": 67,
+    "physical": 80,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 71,
+    "crossing": 63,
+    "longShots": 78,
+    "composure": 74,
+    "freeKicks": 55,
+    "penalties": 59,
+    "discipline": 70,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "lesley-ugochukwu",
+    "name": "Lesley Ugochukwu",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "DM"
+    ],
+    "overall": 77,
+    "pace": 62,
+    "shooting": 55,
+    "passing": 69,
+    "dribbling": 66,
+    "defending": 80,
+    "physical": 82,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 49,
+    "jumping": 66,
+    "crossing": 58,
+    "longShots": 59,
+    "composure": 69,
+    "freeKicks": 50,
+    "penalties": 54,
+    "discipline": 69,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "ilkay-gundogan",
+    "name": "Ilkay Gundogan",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 83,
+    "pace": 75,
+    "shooting": 76,
+    "passing": 84,
+    "dribbling": 73,
+    "defending": 69,
+    "physical": 84,
+    "stamina": 85,
+    "goalkeeping": 10,
+    "heading": 58,
+    "jumping": 75,
+    "crossing": 67,
+    "longShots": 82,
+    "composure": 78,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 69,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "lucas-torreira",
+    "name": "Lucas Torreira",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 82,
+    "pace": 72,
+    "shooting": 61,
+    "passing": 75,
+    "dribbling": 71,
+    "defending": 83,
+    "physical": 84,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 59,
+    "jumping": 76,
+    "crossing": 68,
+    "longShots": 69,
+    "composure": 79,
+    "freeKicks": 60,
+    "penalties": 64,
+    "discipline": 71,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "renato-nhaga",
+    "name": "Renato Nhaga",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "CM"
+    ],
+    "overall": 69,
+    "pace": 63,
+    "shooting": 61,
+    "passing": 73,
+    "dribbling": 63,
+    "defending": 54,
+    "physical": 69,
+    "stamina": 68,
+    "goalkeeping": 10,
+    "heading": 46,
+    "jumping": 63,
+    "crossing": 55,
+    "longShots": 70,
+    "composure": 66,
+    "freeKicks": 47,
+    "penalties": 51,
+    "discipline": 67,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "aleksey-batrakov",
+    "name": "Aleksey Batrakov",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "AM"
+    ],
+    "overall": 79,
+    "pace": 77,
+    "shooting": 78,
+    "passing": 79,
+    "dribbling": 79,
+    "defending": 52,
+    "physical": 75,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 71,
+    "crossing": 63,
+    "longShots": 78,
+    "composure": 74,
+    "freeKicks": 71,
+    "penalties": 59,
+    "discipline": 73,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "mario-lemina",
+    "name": "Mario Lemina",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 79,
+    "pace": 64,
+    "shooting": 63,
+    "passing": 76,
+    "dribbling": 71,
+    "defending": 77,
+    "physical": 79,
+    "stamina": 80,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 60,
+    "longShots": 61,
+    "composure": 71,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 70,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "roland-sallai",
+    "name": "Roland Sallai",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "RW",
+      "RB"
+    ],
+    "overall": 78,
+    "pace": 79,
+    "shooting": 73,
+    "passing": 73,
+    "dribbling": 81,
+    "defending": 30,
+    "physical": 69,
+    "stamina": 73,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 77,
+    "longShots": 61,
+    "composure": 71,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 71,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "leroy-sane",
+    "name": "Leroy Sane",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "RW",
+      "LW"
+    ],
+    "overall": 84,
+    "pace": 84,
+    "shooting": 79,
+    "passing": 77,
+    "dribbling": 89,
+    "defending": 31,
+    "physical": 77,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 82,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 69,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "yunus-akgun",
+    "name": "Yunus Akgun",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "RW",
+      "AM"
+    ],
+    "overall": 80,
+    "pace": 84,
+    "shooting": 80,
+    "passing": 74,
+    "dribbling": 84,
+    "defending": 31,
+    "physical": 76,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 82,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 72,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "rafael-leao",
+    "name": "Rafael Leao",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "LW"
+    ],
+    "overall": 86,
+    "pace": 91,
+    "shooting": 85,
+    "passing": 80,
+    "dribbling": 88,
+    "defending": 37,
+    "physical": 77,
+    "stamina": 85,
+    "goalkeeping": 10,
+    "heading": 63,
+    "jumping": 80,
+    "crossing": 89,
+    "longShots": 73,
+    "composure": 83,
+    "freeKicks": 64,
+    "penalties": 68,
+    "discipline": 72,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "victor-osimhen",
+    "name": "Victor Osimhen",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "ST"
+    ],
+    "overall": 88,
+    "pace": 90,
+    "shooting": 88,
+    "passing": 67,
+    "dribbling": 80,
+    "defending": 39,
+    "physical": 88,
+    "stamina": 85,
+    "goalkeeping": 10,
+    "heading": 89,
+    "jumping": 93,
+    "crossing": 45,
+    "longShots": 73,
+    "composure": 83,
+    "freeKicks": 64,
+    "penalties": 85,
+    "discipline": 72,
+    "tags": [
+      "سرعتی",
+      "سرزن",
+      "تمام‌کننده"
+    ],
+    "aliases": [
+      "Osimen",
+      "Osimhen"
+    ]
+  },
+  {
+    "id": "baris-alper-yilmaz",
+    "name": "Baris Alper Yilmaz",
+    "club": "Galatasaray",
+    "league": "super-lig",
+    "positions": [
+      "RW",
+      "LW",
+      "ST"
+    ],
+    "overall": 80,
+    "pace": 80,
+    "shooting": 80,
+    "passing": 76,
+    "dribbling": 83,
+    "defending": 33,
+    "physical": 76,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 78,
+    "longShots": 62,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 73,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "cristiano-ronaldo",
+    "name": "Cristiano Ronaldo",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 89,
+    "pace": 76,
+    "shooting": 93,
+    "passing": 78,
+    "dribbling": 80,
+    "defending": 40,
+    "physical": 92,
+    "stamina": 72,
+    "goalkeeping": 10,
+    "heading": 94,
+    "jumping": 95,
+    "crossing": 65,
+    "longShots": 88,
+    "composure": 94,
+    "freeKicks": 76,
+    "penalties": 94,
+    "discipline": 67,
+    "tags": [
+      "تمام‌کننده",
+      "سرزن",
+      "پنالتی‌زن"
+    ]
+  },
+  {
+    "id": "sadio-mane",
+    "name": "Sadio Mane",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW",
+      "ST"
+    ],
+    "overall": 84,
+    "pace": 84,
+    "shooting": 84,
+    "passing": 78,
+    "dribbling": 89,
+    "defending": 32,
+    "physical": 75,
+    "stamina": 84,
+    "goalkeeping": 10,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 82,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 66,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "kingsley-coman",
+    "name": "Kingsley Coman",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW",
+      "RW"
+    ],
+    "overall": 83,
+    "pace": 86,
+    "shooting": 84,
+    "passing": 80,
+    "dribbling": 87,
+    "defending": 32,
+    "physical": 75,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 58,
+    "jumping": 75,
+    "crossing": 84,
+    "longShots": 68,
+    "composure": 78,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 74,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "joao-felix",
+    "name": "Joao Felix",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "AM",
+      "ST",
+      "LW"
+    ],
+    "overall": 82,
+    "pace": 77,
+    "shooting": 83,
+    "passing": 81,
+    "dribbling": 83,
+    "defending": 53,
+    "physical": 76,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 71,
+    "crossing": 63,
+    "longShots": 78,
+    "composure": 74,
+    "freeKicks": 71,
+    "penalties": 59,
+    "discipline": 74,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "angelo-gabriel",
+    "name": "Angelo Gabriel",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "RW"
+    ],
+    "overall": 77,
+    "pace": 81,
+    "shooting": 75,
+    "passing": 74,
+    "dribbling": 81,
+    "defending": 30,
+    "physical": 70,
+    "stamina": 74,
+    "goalkeeping": 10,
+    "heading": 53,
+    "jumping": 70,
+    "crossing": 79,
+    "longShots": 63,
+    "composure": 73,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 69,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "bento",
+    "name": "Bento",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 80,
+    "pace": 47,
+    "shooting": 29,
+    "passing": 64,
+    "dribbling": 33,
+    "defending": 28,
+    "physical": 82,
+    "stamina": 62,
+    "goalkeeping": 82,
+    "heading": 30,
+    "jumping": 74,
+    "crossing": 37,
+    "longShots": 32,
+    "composure": 77,
+    "freeKicks": 37,
+    "penalties": 37,
+    "discipline": 74,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 82,
+      "handling": 81,
+      "kicking": 81,
+      "reflexes": 80,
+      "positioning": 78
+    }
+  },
+  {
+    "id": "nawaf-al-aqidi",
+    "name": "Nawaf Al Aqidi",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 73,
+    "pace": 35,
+    "shooting": 20,
+    "passing": 59,
+    "dribbling": 29,
+    "defending": 22,
+    "physical": 71,
+    "stamina": 52,
+    "goalkeeping": 70,
+    "heading": 20,
+    "jumping": 62,
+    "crossing": 25,
+    "longShots": 20,
+    "composure": 65,
+    "freeKicks": 25,
+    "penalties": 25,
+    "discipline": 73,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 70,
+      "handling": 71,
+      "kicking": 76,
+      "reflexes": 76,
+      "positioning": 72
+    }
+  },
+  {
+    "id": "sultan-al-ghannam",
+    "name": "Sultan Al Ghannam",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "RB"
+    ],
+    "overall": 75,
+    "pace": 71,
+    "shooting": 54,
+    "passing": 68,
+    "dribbling": 64,
+    "defending": 75,
+    "physical": 75,
+    "stamina": 77,
+    "goalkeeping": 10,
+    "heading": 48,
+    "jumping": 65,
+    "crossing": 74,
+    "longShots": 58,
+    "composure": 68,
+    "freeKicks": 49,
+    "penalties": 53,
+    "discipline": 74,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "mohamed-simakan",
+    "name": "Mohamed Simakan",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB",
+      "RB"
+    ],
+    "overall": 80,
+    "pace": 63,
+    "shooting": 46,
+    "passing": 70,
+    "dribbling": 59,
+    "defending": 82,
+    "physical": 84,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 77,
+    "jumping": 69,
+    "crossing": 32,
+    "longShots": 27,
+    "composure": 72,
+    "freeKicks": 32,
+    "penalties": 32,
+    "discipline": 74,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "nader-al-sharari",
+    "name": "Nader Al Sharari",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 70,
+    "pace": 54,
+    "shooting": 33,
+    "passing": 55,
+    "dribbling": 44,
+    "defending": 69,
+    "physical": 70,
+    "stamina": 65,
+    "goalkeeping": 10,
+    "heading": 68,
+    "jumping": 60,
+    "crossing": 23,
+    "longShots": 20,
+    "composure": 63,
+    "freeKicks": 23,
+    "penalties": 23,
+    "discipline": 73,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "abdulelah-al-amri",
+    "name": "Abdulelah Al Amri",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 74,
+    "pace": 62,
+    "shooting": 39,
+    "passing": 61,
+    "dribbling": 52,
+    "defending": 75,
+    "physical": 74,
+    "stamina": 69,
+    "goalkeeping": 10,
+    "heading": 76,
+    "jumping": 68,
+    "crossing": 31,
+    "longShots": 26,
+    "composure": 71,
+    "freeKicks": 31,
+    "penalties": 31,
+    "discipline": 66,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "inigo-martinez",
+    "name": "Inigo Martinez",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 68,
+    "shooting": 49,
+    "passing": 71,
+    "dribbling": 58,
+    "defending": 83,
+    "physical": 82,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 82,
+    "jumping": 74,
+    "crossing": 37,
+    "longShots": 32,
+    "composure": 77,
+    "freeKicks": 37,
+    "penalties": 37,
+    "discipline": 70,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "nawaf-boushal",
+    "name": "Nawaf Boushal",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "RB",
+      "LB"
+    ],
+    "overall": 72,
+    "pace": 68,
+    "shooting": 55,
+    "passing": 69,
+    "dribbling": 63,
+    "defending": 75,
+    "physical": 72,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 62,
+    "crossing": 71,
+    "longShots": 55,
+    "composure": 65,
+    "freeKicks": 46,
+    "penalties": 50,
+    "discipline": 70,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "salem-al-najdi",
+    "name": "Salem Al Najdi",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 70,
+    "pace": 65,
+    "shooting": 54,
+    "passing": 64,
+    "dribbling": 61,
+    "defending": 71,
+    "physical": 70,
+    "stamina": 75,
+    "goalkeeping": 10,
+    "heading": 42,
+    "jumping": 59,
+    "crossing": 68,
+    "longShots": 52,
+    "composure": 62,
+    "freeKicks": 43,
+    "penalties": 47,
+    "discipline": 74,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "samu-costa",
+    "name": "Samu Costa",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 78,
+    "pace": 67,
+    "shooting": 62,
+    "passing": 76,
+    "dribbling": 71,
+    "defending": 81,
+    "physical": 82,
+    "stamina": 78,
+    "goalkeeping": 10,
+    "heading": 54,
+    "jumping": 71,
+    "crossing": 63,
+    "longShots": 64,
+    "composure": 74,
+    "freeKicks": 55,
+    "penalties": 59,
+    "discipline": 70,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "sami-al-najei",
+    "name": "Sami Al Najei",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 73,
+    "pace": 74,
+    "shooting": 72,
+    "passing": 74,
+    "dribbling": 76,
+    "defending": 43,
+    "physical": 64,
+    "stamina": 72,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 60,
+    "longShots": 75,
+    "composure": 71,
+    "freeKicks": 68,
+    "penalties": 56,
+    "discipline": 74,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "abdullah-al-khaibari",
+    "name": "Abdullah Al Khaibari",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "DM"
+    ],
+    "overall": 74,
+    "pace": 62,
+    "shooting": 57,
+    "passing": 71,
+    "dribbling": 68,
+    "defending": 72,
+    "physical": 79,
+    "stamina": 73,
+    "goalkeeping": 10,
+    "heading": 49,
+    "jumping": 66,
+    "crossing": 58,
+    "longShots": 59,
+    "composure": 69,
+    "freeKicks": 50,
+    "penalties": 54,
+    "discipline": 67,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "ayman-yahya",
+    "name": "Ayman Yahya",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW",
+      "RW"
+    ],
+    "overall": 74,
+    "pace": 80,
+    "shooting": 74,
+    "passing": 72,
+    "dribbling": 73,
+    "defending": 21,
+    "physical": 70,
+    "stamina": 72,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 78,
+    "longShots": 62,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 73,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "abdullah-al-hamddan",
+    "name": "Abdullah Al Hamddan",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 72,
+    "pace": 70,
+    "shooting": 75,
+    "passing": 66,
+    "dribbling": 64,
+    "defending": 20,
+    "physical": 70,
+    "stamina": 70,
+    "goalkeeping": 10,
+    "heading": 72,
+    "jumping": 64,
+    "crossing": 56,
+    "longShots": 57,
+    "composure": 67,
+    "freeKicks": 48,
+    "penalties": 69,
+    "discipline": 68,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "abdulrahman-ghareeb",
+    "name": "Abdulrahman Ghareeb",
+    "club": "Al Nassr",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 76,
+    "pace": 79,
+    "shooting": 74,
+    "passing": 71,
+    "dribbling": 81,
+    "defending": 23,
+    "physical": 71,
+    "stamina": 71,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 77,
+    "longShots": 61,
+    "composure": 71,
+    "freeKicks": 52,
+    "penalties": 56,
+    "discipline": 67,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "edouard-mendy",
+    "name": "Edouard Mendy",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "GK"
+    ],
+    "overall": 82,
+    "pace": 48,
+    "shooting": 27,
+    "passing": 65,
+    "dribbling": 34,
+    "defending": 34,
+    "physical": 83,
+    "stamina": 62,
+    "goalkeeping": 83,
+    "heading": 31,
+    "jumping": 75,
+    "crossing": 38,
+    "longShots": 33,
+    "composure": 78,
+    "freeKicks": 38,
+    "penalties": 38,
+    "discipline": 68,
+    "tags": [
+      "دروازه‌بان"
+    ],
+    "goalkeeperSkills": {
+      "diving": 83,
+      "handling": 79,
+      "kicking": 82,
+      "reflexes": 81,
+      "positioning": 84
+    }
+  },
+  {
+    "id": "roger-ibanez",
+    "name": "Roger Ibanez",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 81,
+    "pace": 70,
+    "shooting": 48,
+    "passing": 67,
+    "dribbling": 59,
+    "defending": 83,
+    "physical": 82,
+    "stamina": 76,
+    "goalkeeping": 10,
+    "heading": 84,
+    "jumping": 76,
+    "crossing": 39,
+    "longShots": 34,
+    "composure": 79,
+    "freeKicks": 39,
+    "penalties": 39,
+    "discipline": 74,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "ziyad-al-johani",
+    "name": "Ziyad Al Johani",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CM"
+    ],
+    "overall": 72,
+    "pace": 62,
+    "shooting": 64,
+    "passing": 77,
+    "dribbling": 63,
+    "defending": 58,
+    "physical": 70,
+    "stamina": 75,
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 62,
+    "crossing": 54,
+    "longShots": 69,
+    "composure": 65,
+    "freeKicks": 46,
+    "penalties": 50,
+    "discipline": 74,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "eduard-spertsyan",
+    "name": "Eduard Spertsyan",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 80,
+    "pace": 78,
+    "shooting": 79,
+    "passing": 79,
+    "dribbling": 83,
+    "defending": 51,
+    "physical": 70,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 55,
+    "jumping": 72,
+    "crossing": 64,
+    "longShots": 79,
+    "composure": 75,
+    "freeKicks": 72,
+    "penalties": 60,
+    "discipline": 70,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "artem-bondarenko",
+    "name": "Artem Bondarenko",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "AM",
+      "CM"
+    ],
+    "overall": 78,
+    "pace": 74,
+    "shooting": 78,
+    "passing": 81,
+    "dribbling": 81,
+    "defending": 48,
+    "physical": 70,
+    "stamina": 74,
+    "goalkeeping": 10,
+    "heading": 51,
+    "jumping": 68,
+    "crossing": 60,
+    "longShots": 75,
+    "composure": 71,
+    "freeKicks": 68,
+    "penalties": 56,
+    "discipline": 70,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "francisco-trincao",
+    "name": "Francisco Trincao",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "RW"
+    ],
+    "overall": 82,
+    "pace": 86,
+    "shooting": 83,
+    "passing": 75,
+    "dribbling": 81,
+    "defending": 31,
+    "physical": 74,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 58,
+    "jumping": 75,
+    "crossing": 84,
+    "longShots": 68,
+    "composure": 78,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 67,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "feras-al-buraikan",
+    "name": "Feras Al Buraikan",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 75,
+    "pace": 71,
+    "shooting": 74,
+    "passing": 70,
+    "dribbling": 70,
+    "defending": 22,
+    "physical": 72,
+    "stamina": 73,
+    "goalkeeping": 10,
+    "heading": 73,
+    "jumping": 65,
+    "crossing": 57,
+    "longShots": 58,
+    "composure": 68,
+    "freeKicks": 49,
+    "penalties": 70,
+    "discipline": 73,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "galeno",
+    "name": "Galeno",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 81,
+    "pace": 81,
+    "shooting": 78,
+    "passing": 75,
+    "dribbling": 83,
+    "defending": 34,
+    "physical": 74,
+    "stamina": 80,
+    "goalkeeping": 10,
+    "heading": 53,
+    "jumping": 70,
+    "crossing": 79,
+    "longShots": 63,
+    "composure": 73,
+    "freeKicks": 54,
+    "penalties": 58,
+    "discipline": 68,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "ivan-toney",
+    "name": "Ivan Toney",
+    "club": "Al Ahli",
+    "league": "saudi-pro-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 83,
+    "pace": 84,
+    "shooting": 84,
+    "passing": 79,
+    "dribbling": 73,
+    "defending": 35,
+    "physical": 80,
+    "stamina": 78,
+    "goalkeeping": 10,
+    "heading": 86,
+    "jumping": 78,
+    "crossing": 70,
+    "longShots": 71,
+    "composure": 81,
+    "freeKicks": 62,
+    "penalties": 83,
+    "discipline": 70,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "theo-hernandez",
+    "name": "Theo Hernandez",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LB"
+    ],
+    "overall": 85,
+    "pace": 83,
+    "shooting": 66,
+    "passing": 77,
+    "dribbling": 74,
+    "defending": 87,
+    "physical": 86,
+    "stamina": 84,
+    "goalkeeping": 10,
+    "heading": 60,
+    "jumping": 77,
+    "crossing": 86,
+    "longShots": 70,
+    "composure": 80,
+    "freeKicks": 61,
+    "penalties": 65,
+    "discipline": 67,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "ruben-neves",
+    "name": "Ruben Neves",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "DM",
+      "CM"
+    ],
+    "overall": 84,
+    "pace": 71,
+    "shooting": 62,
+    "passing": 80,
+    "dribbling": 73,
+    "defending": 82,
+    "physical": 85,
+    "stamina": 81,
+    "goalkeeping": 10,
+    "heading": 58,
+    "jumping": 75,
+    "crossing": 67,
+    "longShots": 68,
+    "composure": 78,
+    "freeKicks": 59,
+    "penalties": 63,
+    "discipline": 72,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "sergej-milinkovic-savic",
+    "name": "Sergej Milinkovic-Savic",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CM",
+      "AM"
+    ],
+    "overall": 84,
+    "pace": 73,
+    "shooting": 74,
+    "passing": 89,
+    "dribbling": 75,
+    "defending": 69,
+    "physical": 87,
+    "stamina": 88,
+    "goalkeeping": 10,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 65,
+    "longShots": 80,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 73,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "salem-al-dawsari",
+    "name": "Salem Al Dawsari",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 81,
+    "pace": 84,
+    "shooting": 82,
+    "passing": 77,
+    "dribbling": 80,
+    "defending": 30,
+    "physical": 71,
+    "stamina": 80,
+    "goalkeeping": 10,
+    "heading": 56,
+    "jumping": 73,
+    "crossing": 82,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 61,
+    "discipline": 68,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "gabriel-martinelli",
+    "name": "Gabriel Martinelli",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "LW"
+    ],
+    "overall": 83,
+    "pace": 83,
+    "shooting": 83,
+    "passing": 79,
+    "dribbling": 87,
+    "defending": 32,
+    "physical": 77,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 55,
+    "jumping": 72,
+    "crossing": 81,
+    "longShots": 65,
+    "composure": 75,
+    "freeKicks": 56,
+    "penalties": 60,
+    "discipline": 67,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "ollie-watkins",
+    "name": "Ollie Watkins",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "ST"
+    ],
+    "overall": 84,
+    "pace": 83,
+    "shooting": 87,
+    "passing": 81,
+    "dribbling": 74,
+    "defending": 35,
+    "physical": 85,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 85,
+    "jumping": 77,
+    "crossing": 69,
+    "longShots": 70,
+    "composure": 80,
+    "freeKicks": 61,
+    "penalties": 82,
+    "discipline": 71,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "hassan-tambakti",
+    "name": "Hassan Tambakti",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CB"
+    ],
+    "overall": 75,
+    "pace": 62,
+    "shooting": 42,
+    "passing": 61,
+    "dribbling": 48,
+    "defending": 74,
+    "physical": 80,
+    "stamina": 70,
+    "goalkeeping": 10,
+    "heading": 76,
+    "jumping": 68,
+    "crossing": 31,
+    "longShots": 26,
+    "composure": 71,
+    "freeKicks": 31,
+    "penalties": 31,
+    "discipline": 69,
+    "tags": [
+      "مدافع میانی"
+    ]
+  },
+  {
+    "id": "mohammed-kanno",
+    "name": "Mohammed Kanno",
+    "club": "Al Hilal",
+    "league": "saudi-pro-league",
+    "positions": [
+      "CM",
+      "DM"
+    ],
+    "overall": 75,
+    "pace": 69,
+    "shooting": 62,
+    "passing": 80,
+    "dribbling": 67,
+    "defending": 64,
+    "physical": 76,
+    "stamina": 79,
+    "goalkeeping": 10,
+    "heading": 52,
+    "jumping": 69,
+    "crossing": 61,
+    "longShots": 76,
+    "composure": 72,
+    "freeKicks": 53,
+    "penalties": 57,
+    "discipline": 70,
+    "tags": [
+      "میانهٔ میدان"
+    ]
+  },
+  {
+    "id": "lionel-messi",
+    "name": "Lionel Messi",
+    "club": "Inter Miami",
+    "league": "mls",
+    "positions": [
+      "RW",
+      "AM",
+      "ST"
+    ],
+    "overall": 91,
+    "pace": 77,
+    "shooting": 92,
+    "passing": 94,
+    "dribbling": 96,
+    "defending": 41,
+    "physical": 82,
+    "stamina": 65,
+    "goalkeeping": 10,
+    "heading": 45,
+    "jumping": 40,
+    "crossing": 90,
+    "longShots": 94,
+    "composure": 96,
+    "freeKicks": 95,
+    "penalties": 88,
+    "discipline": 68,
+    "tags": [
+      "بازی‌ساز",
+      "دریبل‌زن",
+      "ضربهٔ آزاد"
+    ]
+  },
+  {
+    "id": "luis-suarez",
+    "name": "Luis Suarez",
+    "club": "Inter Miami",
+    "league": "mls",
+    "positions": [
+      "ST"
+    ],
+    "overall": 83,
+    "pace": 79,
+    "shooting": 88,
+    "passing": 77,
+    "dribbling": 74,
+    "defending": 30,
+    "physical": 81,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 81,
+    "jumping": 73,
+    "crossing": 65,
+    "longShots": 66,
+    "composure": 76,
+    "freeKicks": 57,
+    "penalties": 78,
+    "discipline": 71,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "son-heung-min",
+    "name": "Son Heung-Min",
+    "club": "Los Angeles FC",
+    "league": "mls",
+    "positions": [
+      "LW",
+      "ST"
+    ],
+    "overall": 86,
+    "pace": 90,
+    "shooting": 87,
+    "passing": 84,
+    "dribbling": 86,
+    "defending": 38,
+    "physical": 81,
+    "stamina": 86,
+    "goalkeeping": 10,
+    "heading": 62,
+    "jumping": 79,
+    "crossing": 88,
+    "longShots": 72,
+    "composure": 82,
+    "freeKicks": 63,
+    "penalties": 67,
+    "discipline": 71,
+    "tags": [
+      "بازی در کناره"
+    ]
+  },
+  {
+    "id": "antoine-griezmann",
+    "name": "Antoine Griezmann",
+    "club": "Orlando City",
+    "league": "mls",
+    "positions": [
+      "AM",
+      "ST"
+    ],
+    "overall": 85,
+    "pace": 86,
+    "shooting": 83,
+    "passing": 88,
+    "dribbling": 89,
+    "defending": 56,
+    "physical": 77,
+    "stamina": 82,
+    "goalkeeping": 10,
+    "heading": 63,
+    "jumping": 80,
+    "crossing": 72,
+    "longShots": 87,
+    "composure": 83,
+    "freeKicks": 80,
+    "penalties": 68,
+    "discipline": 71,
+    "tags": [
+      "حضور در حمله"
+    ]
+  },
+  {
+    "id": "neymar",
+    "name": "Neymar",
+    "club": "Santos",
+    "league": "brasileirao",
+    "positions": [
+      "AM",
+      "LW"
+    ],
+    "overall": 85,
+    "pace": 78,
+    "shooting": 85,
+    "passing": 89,
+    "dribbling": 92,
+    "defending": 55,
+    "physical": 80,
+    "stamina": 65,
+    "goalkeeping": 10,
+    "heading": 42,
+    "jumping": 53,
+    "crossing": 85,
+    "longShots": 87,
+    "composure": 83,
+    "freeKicks": 89,
+    "penalties": 91,
+    "discipline": 69,
+    "tags": [
+      "دریبل‌زن",
+      "بازی‌ساز"
     ]
   }
 ]

@@ -17,6 +17,8 @@ export default function Lobby() {
     [busy, setBusy] = useState(false),
     [title, setTitle] = useState('جام دوستان'),
     [capacity, setCapacity] = useState(4),
+    [competition, setCompetition] = useState('cup'),
+    [selection, setSelection] = useState('normal'),
     [isPublic, setPublic] = useState(false),
     [code, setCode] = useState('');
   const refresh = useCallback(async () => {
@@ -55,13 +57,13 @@ export default function Lobby() {
           <div>
             <span className="g-kicker">FARSIDLE / FOOTBALL</span>
             <h1>
-              کهکشانی<span>تیم تو. جام شما.</span>
+              کهکشانی<span>تیم تو. رقابت شما.</span>
             </h1>
             <p>بازیکنان را انتخاب کنید، تیم‌ها را ببندید و مسابقات را با هم تماشا کنید.</p>
             <div className="g-hero-tags">
               <span>۲ تا ۸ نفر</span>
               <span>انتخاب نوبتی</span>
-              <span>مسابقات حذفی</span>
+              <span>جام یا لیگ</span>
             </div>
           </div>
           <div className="g-orbit" aria-hidden="true">
@@ -96,7 +98,9 @@ export default function Lobby() {
                 className="g-panel"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  enter('create', {
+                  enter('create_room', {
+                    p_competition: competition,
+                    p_selection: selection,
                     p_title: title,
                     p_public: isPublic,
                     p_capacity: Number(capacity),
@@ -104,7 +108,47 @@ export default function Lobby() {
                 }}
               >
                 <span className="g-kicker">میزبان باش</span>
-                <h2>یک جام تازه بساز</h2>
+                <h2>رقابت تازه بساز</h2>
+                <fieldset className="g-mode-choice">
+                  <legend>۱. نوع رقابت</legend>
+                  {[
+                    ['cup', 'جام حذفی'],
+                    ['league', 'لیگ'],
+                  ].map(([id, label]) => (
+                    <button
+                      type="button"
+                      key={id}
+                      aria-pressed={competition === id}
+                      onClick={() => setCompetition(id)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </fieldset>
+                <fieldset className="g-mode-choice">
+                  <legend>۲. انتخاب بازیکنان</legend>
+                  {[
+                    ['normal', 'عادی؛ انتخاب آزاد'],
+                    ['draft', 'درفت؛ پنج پیشنهاد'],
+                  ].map(([id, label]) => (
+                    <button
+                      type="button"
+                      key={id}
+                      aria-pressed={selection === id}
+                      onClick={() => setSelection(id)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </fieldset>
+                <p className="g-muted">
+                  {competition === 'league'
+                    ? 'هر تیم یک بار با همه بازی می‌کند؛ برد ۳ و تساوی ۱ امتیاز دارد.'
+                    : 'با صعود برندگان تا فینال رقابت کنید.'}{' '}
+                  {selection === 'draft'
+                    ? 'پیشنهادها ذخیره می‌شوند؛ یک ری‌رول در انتخاب اولیه و یک ری‌رول در هر مسابقه دارید.'
+                    : 'بازیکن را با نام، باشگاه و لیگ جست‌وجو کنید.'}
+                </p>
                 <label>
                   نام اتاق
                   <input
@@ -167,9 +211,10 @@ export default function Lobby() {
                 <div className="g-session-note">
                   <b>برای بازی وقت بگذار</b>
                   <p>
-                    هر انتخاب حداکثر ۶۰ ثانیه و هر مسابقه حدود ۸ دقیقه طول می‌کشد. وقت اضافه و
-                    پنالتی زمان بیشتری می‌برند. بازی‌های هر مرحله هم‌زمان‌اند؛ جام هشت‌نفره بدون
-                    احتساب انتخاب‌ها و وقت اضافه، حدود ۲۴ دقیقه طول می‌کشد.
+                    هر انتخاب حداکثر ۶۰ ثانیه و هر مسابقه حدود ۸ دقیقه بازی و ۲ دقیقه استراحت بین دو
+                    نیمه دارد. وقت اضافه و پنالتی زمان بیشتری می‌برند. بازی‌های هر مرحله
+                    هم‌زمان‌اند؛ جام هشت‌نفره بدون احتساب انتخاب‌ها و وقت اضافه، حدود ۳۰ دقیقه طول
+                    می‌کشد.
                   </p>
                 </div>
               </div>
@@ -205,7 +250,7 @@ export default function Lobby() {
                   {error ? 'فهرست در دسترس نیست.' : 'در حال دریافت اتاق‌ها…'}
                 </p>
               ) : !list.rooms.length ? (
-                <p className="g-muted">هنوز اتاق عمومی باز نیست. اولین جام را بساز.</p>
+                <p className="g-muted">هنوز اتاق عمومی باز نیست. اولین رقابت را بساز.</p>
               ) : (
                 <div className="g-room-list">
                   {list.rooms.map((r) => (
@@ -216,7 +261,10 @@ export default function Lobby() {
                     >
                       <span>
                         <b>{r.title}</b>
-                        <small>میزبان: {r.host}</small>
+                        <small>
+                          {r.competition === 'league' ? 'لیگ' : 'جام'} ·{' '}
+                          {r.selection === 'draft' ? 'درفت' : 'عادی'} · میزبان: {r.host}
+                        </small>
                       </span>
                       <span>
                         {fa(r.count)} / {fa(r.capacity)} نفر ←

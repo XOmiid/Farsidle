@@ -12,7 +12,7 @@ import {
 } from '../lib/galactic/rules.mjs';
 const load = async (p) => JSON.parse(await readFile(new URL('../' + p, import.meta.url), 'utf8'));
 const players = await load('data/galactic/players.json'),
-  config = await load('data/galactic/config.json');
+  config = { ...(await load('data/galactic/config.json')), engineVersion: 3 };
 const ids = Array.from(
   { length: 9 },
   (_, i) => '00000000-0000-4000-8000-' + String(i + 1).padStart(12, '0'),
@@ -95,7 +95,7 @@ test('real-player custom-rated pool supports eight unique XIs', () => {
   );
 
   assert.equal(new Set(players.map((p) => p.id)).size, players.length);
-  assert.equal(new Set(players.map((p) => p.league)).size, 5);
+  assert(new Set(players.map((p) => p.league)).size >= 9);
   assert(players.filter((p) => p.positions.includes('GK')).length >= 8);
   for (const p of players) {
     for (const k of [
