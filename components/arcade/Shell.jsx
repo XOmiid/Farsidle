@@ -10,6 +10,7 @@ const NAV = [
   { href: '/', name: 'خانه', icon: 'home' },
   { href: '/classic', name: 'کلاسیک', icon: 'collection' },
   { href: '/galactic', name: 'کهکشانی', icon: 'star' },
+  { href: '/name-family', name: 'اسم‌وفامیل', icon: 'collection' },
   { href: '/leaderboard', name: 'برترین‌ها', icon: 'trophy' },
   { href: '/profile', name: 'پروفایل', icon: 'user' },
 ];
