@@ -4330,6 +4330,38 @@ body {
   justify-content: space-between;
   gap: 12px;
 }
+.nf-order-list {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 18px;
+  padding: 0;
+  list-style: none;
+}
+.nf-order-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 5px 10px 5px 6px;
+  border: 1px solid #8ca6c844;
+  border-radius: 11px;
+  background: #202e42;
+}
+.nf-order-actions {
+  display: flex;
+  gap: 6px;
+}
+.nf-order-actions .button {
+  min-width: 38px;
+  min-height: 34px;
+  padding: 3px 9px;
+}
+.nf-save-status {
+  min-height: 24px;
+  color: #b6c8dd;
+  font-size: 0.85rem;
+}
 .nf-lobby-card {
   display: flex;
   align-items: center;

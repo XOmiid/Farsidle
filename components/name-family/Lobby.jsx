@@ -39,6 +39,15 @@ export default function Lobby() {
     [lobbies, setLobbies] = useState([]),
     [lobbyError, setLobbyError] = useState('');
   const signedIn = Boolean(player && !player.local);
+  function moveCategory(index, direction) {
+    setCats((current) => {
+      const next = [...current];
+      const target = index + direction;
+      if (target < 0 || target >= next.length) return current;
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    });
+  }
   const refreshLobbies = useCallback(async () => {
     if (!signedIn) return;
     try {
@@ -147,6 +156,36 @@ export default function Lobby() {
                 اتاق عمومی
               </label>
               <h2>ستون‌های بازی</h2>
+              <p>ترتیب این فهرست، ترتیب بررسی ستون‌ها را در پایان هر دور مشخص می‌کند.</p>
+              <ol className="nf-order-list" aria-label="ترتیب ستون‌های انتخاب‌شده">
+                {cats.map((category, index) => (
+                  <li key={category}>
+                    <strong>
+                      {fa(index + 1)}. {category}
+                    </strong>
+                    <span className="nf-order-actions">
+                      <button
+                        type="button"
+                        className="button"
+                        aria-label={'انتقال ' + category + ' به بالاتر'}
+                        disabled={index === 0}
+                        onClick={() => moveCategory(index, -1)}
+                      >
+                        ↑
+                      </button>
+                      <button
+                        type="button"
+                        className="button"
+                        aria-label={'انتقال ' + category + ' به پایین‌تر'}
+                        disabled={index === cats.length - 1}
+                        onClick={() => moveCategory(index, 1)}
+                      >
+                        ↓
+                      </button>
+                    </span>
+                  </li>
+                ))}
+              </ol>
               <div className="g-mode-choice">
                 {CATS.map((c) => (
                   <button
@@ -221,8 +260,8 @@ export default function Lobby() {
             <li>اتاق بسازید یا با کد دعوت وارد اتاق دوستان شوید؛ میزبان بازی را شروع می‌کند.</li>
             <li>در هر دور، همه با یک حرف تصادفی فارسی خانه‌های انتخاب‌شده را پر می‌کنند.</li>
             <li>
-              پاسخ‌ها را ذخیره کنید. با پر شدن همهٔ خانه‌ها می‌توانید «استپ» بزنید؛ زمان هم دور را
-              می‌بندد.
+              پاسخ‌ها هنگام نوشتن خودکار ذخیره می‌شوند. با زدن «استپ»، دیگران ۵ ثانیه برای تکمیل
+              پاسخ‌ها فرصت دارند؛ زمان دور هم آن را می‌بندد.
             </li>
             <li>
               پاسخ هر نفر را بازیکنان دیگر بررسی می‌کنند. هر بازیکن فقط به پاسخ دیگران رأی می‌دهد و

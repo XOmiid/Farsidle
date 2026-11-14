@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Shell from '@/components/arcade/Shell';
 import { getSupabase } from '@/lib/classic/gateway';
 import { useNow } from '@/components/galactic/Common';
@@ -10,7 +10,9 @@ export default function Room({ code }) {
     [answerDraft, setAnswerDraft] = useState({ key: '', values: {} }),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
-    [copied, setCopied] = useState(false);
+    [copied, setCopied] = useState(false),
+    [saveStatus, setSaveStatus] = useState('');
+  const autoSaveQueue = useRef(Promise.resolve());
   const now = useNow();
   const refresh = useCallback(async () => {
     try {
@@ -43,12 +45,46 @@ export default function Room({ code }) {
       });
       if (error) throw error;
       setRoom(data);
+      if (type === 'save') setSaveStatus('saved');
     } catch (e) {
       setError(e.message);
     } finally {
       setBusy(false);
     }
   };
+  const answerKey = room ? `${room.phase}:${room.round}:${room.self}` : '';
+  const savedAnswers = room
+    ? Object.fromEntries(
+        room.entries
+          .filter((entry) => entry.round === room.round && entry.user === room.self)
+          .map((entry) => [entry.category, entry.value]),
+      )
+    : {};
+  const answers = answerDraft.key === answerKey ? answerDraft.values : savedAnswers;
+  const roomPhase = room?.phase;
+  const roundNo = room?.round;
+  useEffect(() => {
+    if (roomPhase !== 'playing' || !answerKey || answerDraft.key !== answerKey) return;
+    const values = answerDraft.values;
+    const timer = setTimeout(() => {
+      autoSaveQueue.current = autoSaveQueue.current
+        .catch(() => {})
+        .then(async () => {
+          const sb = await getSupabase();
+          const { error } = await sb.rpc('name_family_act', {
+            p_code: code,
+            p_action: { type: 'save', answers: values, stop: false, round: roundNo },
+          });
+          if (error) throw error;
+          setSaveStatus('saved');
+        })
+        .catch((saveError) => {
+          setSaveStatus('error');
+          setError(saveError.message);
+        });
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [answerDraft, answerKey, roomPhase, roundNo, code]);
   if (!room)
     return (
       <Shell>
@@ -98,15 +134,9 @@ export default function Room({ code }) {
         </section>
       </Shell>
     );
-  const answerKey = `${room.phase}:${room.round}:${room.self}`;
-  const savedAnswers = Object.fromEntries(
-    room.entries
-      .filter((entry) => entry.round === room.round && entry.user === room.self)
-      .map((entry) => [entry.category, entry.value]),
-  );
-  const answers = answerDraft.key === answerKey ? answerDraft.values : savedAnswers;
-  const left = room.deadline
-      ? Math.max(0, Math.ceil((new Date(room.deadline).getTime() - now) / 1000))
+  const currentDeadline = room.stopDeadline || room.deadline;
+  const left = currentDeadline
+      ? Math.max(0, Math.ceil((new Date(currentDeadline).getTime() - now) / 1000))
       : null,
     pending = room.entries?.find(
       (x) => x.round === room.round && !x.reviewed && x.value && x.user !== room.self,
@@ -133,7 +163,14 @@ export default function Room({ code }) {
       setError('همهٔ پاسخ‌ها باید با حرف «' + room.letter + '» شروع شوند.');
       return;
     }
-    call('save', { answers, stop });
+    call('save', { answers, stop, round: room.round });
+  }
+  function moveRoomCategory(index, direction) {
+    const next = [...room.categories];
+    const target = index + direction;
+    if (target < 0 || target >= next.length) return;
+    [next[index], next[target]] = [next[target], next[index]];
+    call('reorder', { categories: next });
   }
   return (
     <Shell>
@@ -167,6 +204,37 @@ export default function Room({ code }) {
               بازیکنان ({room.members.length}/{room.capacity})
             </h2>
             <p>{room.members.map((m) => m.name).join('، ')}</p>
+            <h3>ترتیب ستون‌های بررسی</h3>
+            {room.host && <p>با فلش‌ها مشخص کنید بررسی با کدام ستون شروع شود.</p>}
+            <ol className="nf-order-list" aria-label="ترتیب فعلی ستون‌ها">
+              {room.categories.map((category, index) => (
+                <li key={category}>
+                  <strong>
+                    {fa(index + 1)}. {category}
+                  </strong>
+                  {room.host && (
+                    <span className="nf-order-actions">
+                      <button
+                        className="button"
+                        aria-label={'انتقال ' + category + ' به بالاتر'}
+                        disabled={busy || index === 0}
+                        onClick={() => moveRoomCategory(index, -1)}
+                      >
+                        ↑
+                      </button>
+                      <button
+                        className="button"
+                        aria-label={'انتقال ' + category + ' به پایین‌تر'}
+                        disabled={busy || index === room.categories.length - 1}
+                        onClick={() => moveRoomCategory(index, 1)}
+                      >
+                        ↓
+                      </button>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
             {room.host ? (
               <button
                 className="button ink-button"
@@ -186,40 +254,53 @@ export default function Room({ code }) {
               دور {fa(room.round)} از {fa(room.rounds)} · حرف «{room.letter}»
             </h2>
             {left !== null ? (
-              <p className="g-kicker">زمان باقی‌مانده: {fa(left)} ثانیه</p>
+              <p className="g-kicker">
+                {room.stopDeadline
+                  ? `استپ زده شد؛ ${fa(left)} ثانیه برای تکمیل پاسخ‌ها فرصت دارید.`
+                  : `زمان باقی‌مانده: ${fa(left)} ثانیه`}
+              </p>
             ) : (
               <p>تا وقتی همهٔ خانه‌ها را پر نکرده‌اید، ادامه دهید.</p>
             )}
+            <p className="nf-save-status" aria-live="polite">
+              {saveStatus === 'saving'
+                ? 'در حال ذخیرهٔ پاسخ‌ها…'
+                : saveStatus === 'error'
+                  ? 'ذخیره انجام نشد؛ دوباره تلاش کنید.'
+                  : saveStatus === 'saved'
+                    ? 'پاسخ‌ها ذخیره شدند.'
+                    : 'پاسخ‌ها هنگام نوشتن خودکار ذخیره می‌شوند.'}
+            </p>
             <div className="nf-grid">
               {room.categories.map((c) => (
                 <label key={c}>
                   {c}
                   <input
+                    disabled={left === 0}
                     value={answers[c] || ''}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      setSaveStatus('saving');
+                      setError('');
                       setAnswerDraft((draft) => ({
                         key: answerKey,
                         values: {
                           ...(draft.key === answerKey ? draft.values : savedAnswers),
                           [c]: e.target.value,
                         },
-                      }))
-                    }
+                      }));
+                    }}
                     placeholder={'با «' + room.letter + '»'}
                   />
                 </label>
               ))}
             </div>
             <div className="g-actions">
-              <button className="button" disabled={busy} onClick={() => saveAnswers(false)}>
-                ذخیرهٔ پاسخ‌ها
-              </button>
               <button
                 className="button ink-button"
-                disabled={busy}
+                disabled={busy || Boolean(room.stopDeadline) || left === 0}
                 onClick={() => saveAnswers(true)}
               >
-                استپ · پایان دور
+                {room.stopDeadline ? `پایان دور تا ${fa(left || 0)} ثانیه` : 'استپ · ۵ ثانیه فرصت'}
               </button>
             </div>
           </>
