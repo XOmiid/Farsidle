@@ -1,5 +1,41 @@
 create schema if not exists name_family;
 revoke all on schema name_family from public, anon, authenticated;
+create extension if not exists fuzzystrmatch with schema extensions;
+
+create or replace function name_family.normalize_answer(p_value text) returns text
+language sql immutable parallel safe set search_path = '' as $$
+  select regexp_replace(
+    translate(lower(coalesce(p_value, '')), 'أإآٱكيىةۀ', 'ااااکییهه'),
+    '[[:space:]‌‍‎‏ـًٌٍَُِّْٰ]+', '', 'g'
+  );
+$$;
+
+create or replace function name_family.answers_equivalent(p_left text, p_right text) returns boolean
+language plpgsql immutable parallel safe set search_path = '' as $$
+declare
+  left_value text := name_family.normalize_answer(p_left);
+  right_value text := name_family.normalize_answer(p_right);
+  left_length int;
+  right_length int;
+  distance int;
+begin
+  if left_value is null or right_value is null or left_value = '' or right_value = '' then
+    return false;
+  end if;
+  if left_value = right_value then return true; end if;
+
+  left_length := char_length(left_value);
+  right_length := char_length(right_value);
+  if least(left_length, right_length) < 5
+     or abs(left_length - right_length) > 2 then
+    return false;
+  end if;
+
+  distance := extensions.levenshtein(left_value, right_value);
+  return distance <= case when greatest(left_length, right_length) >= 10 then 2 else 1 end
+     and distance * 5 <= greatest(left_length, right_length);
+end
+$$;
 
 create table if not exists name_family.rooms (
   id uuid primary key default gen_random_uuid(),
@@ -84,11 +120,11 @@ begin
   if coalesce(jsonb_typeof(p_categories), '') <> 'array' then
     raise exception 'دسته‌بندی‌های اتاق معتبر نیست.';
   end if;
-  if jsonb_array_length(p_categories) not between 4 and 16
+  if jsonb_array_length(p_categories) not between 4 and 20
      or (select count(distinct category) from jsonb_array_elements_text(p_categories) as c(category)) <> jsonb_array_length(p_categories)
      or exists (
        select 1 from jsonb_array_elements_text(p_categories) as c(category)
-       where category not in ('اسم','فامیل','رنگ','غذا','حیوان','کشور','شهر','ماشین','اشیا','میوه','گل','شغل','ورزش','فیلم','اعضای بدن','لباس')
+       where category not in ('اسم','فامیل','رنگ','غذا','حیوان','کشور','شهر','ماشین','اشیا','میوه','گل','شغل','ورزش','فیلم','اعضای بدن','لباس','نام رستوران','نام کافه','باشگاه فوتبال','فوتبالیست','برند','نوشیدنی','شیرینی','بازیگر','خواننده','بازی ویدیویی','کتاب','ساز')
      ) then
     raise exception 'دسته‌بندی‌های انتخاب‌شده معتبر نیستند.';
   end if;
@@ -250,7 +286,7 @@ declare
   eligible int;
   is_valid boolean;
   filled int;
-  same_count int;
+  target_value text;
 begin
   if u is null then raise exception 'برای بازی وارد حساب شوید.'; end if;
   select * into r from name_family.rooms where code = upper(trim(p_code)) for update;
@@ -299,8 +335,8 @@ begin
       for cat, v in select key, value from jsonb_each_text(coalesce(p_action -> 'answers', '{}')) loop
         if not (r.categories ? cat) then continue; end if;
         v := left(trim(v), 80);
-        if v <> '' and left(lower(regexp_replace(v, '[إأآٱ]', 'ا', 'g')), 1)
-           <> left(lower(regexp_replace(letter, '[إأآٱ]', 'ا', 'g')), 1) then
+        if v <> '' and left(name_family.normalize_answer(v), 1)
+           <> left(name_family.normalize_answer(letter), 1) then
           v := '';
         end if;
         insert into name_family.entries (room_id, round_no, user_id, category, value)
@@ -333,18 +369,52 @@ begin
       from jsonb_each_text((select votes from name_family.entries where id = entry_id));
       select count(*) - 1 into eligible from name_family.members where room_id = r.id;
       if vote_count >= eligible then
+        select value into target_value from name_family.entries where id = entry_id;
         is_valid := yes_count >= floor(eligible / 2.0) + 1;
-        select count(*) filter (where value <> '') into filled
-        from name_family.entries where room_id = r.id and round_no = r.round_no and category = cat;
-        select count(*) into same_count
-        from name_family.entries
-        where room_id = r.id and round_no = r.round_no and category = cat
-          and lower(trim(value)) = lower(trim((select value from name_family.entries where id = entry_id)))
-          and value <> '';
+        if not is_valid then
+          select exists (
+            select 1
+            from name_family.entries accepted
+            where accepted.room_id = r.id and accepted.round_no = r.round_no
+              and accepted.category = cat and accepted.value <> ''
+              and accepted.valid is true and accepted.id <> entry_id
+              and name_family.answers_equivalent(accepted.value, target_value)
+          ) into is_valid;
+        end if;
+
         update name_family.entries
-        set reviewed = true, valid = is_valid,
-            points = case when is_valid then case when filled = 1 then 20 when same_count > 1 then 5 else 10 end else 0 end
+        set reviewed = true, valid = is_valid
         where id = entry_id;
+
+        if is_valid then
+          update name_family.entries answer
+          set reviewed = true, valid = true
+          where answer.room_id = r.id and answer.round_no = r.round_no
+            and answer.category = cat and answer.value <> ''
+            and name_family.answers_equivalent(answer.value, target_value);
+        end if;
+
+        select count(*) filter (where value <> '') into filled
+        from name_family.entries
+        where room_id = r.id and round_no = r.round_no and category = cat;
+
+        update name_family.entries answer
+        set points = case
+          when answer.valid is not true then 0
+          when filled = 1 then 20
+          when exists (
+            select 1 from name_family.entries other_answer
+            where other_answer.room_id = answer.room_id
+              and other_answer.round_no = answer.round_no
+              and other_answer.category = answer.category
+              and other_answer.id <> answer.id
+              and other_answer.value <> '' and other_answer.valid is true
+              and name_family.answers_equivalent(answer.value, other_answer.value)
+          ) then 5
+          else 10
+        end
+        where answer.room_id = r.id and answer.round_no = r.round_no
+          and answer.category = cat;
       end if;
 
     when 'advance' then
